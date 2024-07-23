@@ -1,0 +1,30 @@
+<app-nav></app-nav>
+
+<app-hero></app-hero>
+
+<app-about></app-about>
+
+<div class="row session" id="comofunciona">
+  <h3 class="session-title center top-5">Como Funciona</h3>
+  <app-banners [banners]="homeservice.homeBanners" [website]="websiteservice.website"></app-banners>
+  <div animateOnScroll animationName="bounceInLeft" class="col s12 center valign start">
+    <a id="criebtn" routerLink="/creator"
+      class="btn green btn-large waves-effect waves-light cta-button">crie seu boardgame agora!</a>
+  </div>
+</div>
+
+
+<div class="row session" id="resources">
+  <app-resources [section]="homeservice.homeSection"></app-resources>
+</div>
+
+
+<div class="row session" id="destaques">
+  <app-destaques [destaques]="homeservice.homeDestaques"></app-destaques>
+</div>
+
+
+
+<!-- <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+<div>Icons made by <a href="https://www.flaticon.com/<?=_('authors').'/'?>freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+<div>Icons made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>  -->

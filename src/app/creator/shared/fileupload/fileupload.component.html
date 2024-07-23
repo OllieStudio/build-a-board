@@ -1,0 +1,12 @@
+<div class="file-field input-field col s12 ol-fileupload">
+    <div class="btn white-text">
+      <i class="material-icons">image</i>
+      <span> {{label}}</span>
+      <input type="file" (change)="fileChanged($event)" accept="{{_accepts}}" >
+    </div>
+    <div class="file-path-wrapper">
+      <i *ngIf="!hideSpinner" class="material-icons spinner sufix">autorenew</i>
+        <input class="file-path validate" type="text">
+    </div>
+    <img src="{{_value}}" alt="image preview" class="preview" [hidden]="!_value">
+</div>

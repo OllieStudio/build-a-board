@@ -1,0 +1,40 @@
+ <form [formGroup]="jogoFormGroup">
+   <div class="row">
+     <label for="" class="col m12">
+       <h3 class="title  purple-text">Para quantos jogadores é o jogo?</h3>
+     </label>
+     <div class="col m12">
+       <app-range formControlName="jogadores" [tick]="1" [minDe]="1" [maxDe]="10" [minAte]="0" [maxAte]="20">
+       </app-range>
+     </div>
+     <div></div>
+     <label for="" class="col m12">
+       <h3 class="title  purple-text">Qual a Faíxa Etária indicada?</h3>
+     </label>
+     <div class="col m12">
+       <app-range formControlName="idade" [tick]="1" [minDe]="0" [maxDe]="18" [minAte]="0" [maxAte]="30">
+       </app-range>
+     </div>
+   </div>
+   <div class="row">
+     <label for="" class="col m12">
+       <h3 class="title  purple-text">Qual o tempo de montagem da partida (minutos)?</h3>
+     </label>
+     <div class="col m12">
+       <app-range formControlName="montagem" [tick]="5" [minDe]="0" [maxDe]="30" [minAte]="0" [maxAte]="60">
+       </app-range>
+     </div>
+     <label for="" class="col m12">
+       <h3 class="title  purple-text">Qual a duração média da partida (minutos)?</h3>
+     </label>
+     <div class="col m12">
+       <app-range formControlName="partida" [tick]="5" [minDe]="0" [maxDe]="120" [minAte]="0" [maxAte]="240">
+       </app-range>
+     </div>
+   </div>
+
+   <div class="row">
+     <button (click)="registerForm()" [disabled]="jogoFormGroup.invalid" class="btn green right next-step">próximo</button>
+   </div>
+
+ </form>

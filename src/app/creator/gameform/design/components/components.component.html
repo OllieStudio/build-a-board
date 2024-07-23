@@ -1,0 +1,9 @@
+<div id="components" class="tool-container" (cdkDropListDropped)="creator.dropElement($event)" cdkDropListConnectedTo="canvas" cdkDropList>
+   <app-searchbar></app-searchbar> 
+  <div cdkDrag [cdkDragData]="item" *ngFor="let item of creator.componentesData" (doubleclick)="creator.addComponentToCanvas(item)" class=" tool-item hoverable" >
+    <a routerLinkActive="active" class="grey-text">
+      <i class="material-icons-outlined grey-text">{{item.icon}}</i>
+      <span class="grey-text">{{item.title}}</span>
+    </a>
+  </div>
+</div>

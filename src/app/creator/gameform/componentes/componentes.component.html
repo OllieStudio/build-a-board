@@ -1,0 +1,64 @@
+<div class="container panel">
+  <div class="row" >
+    <div class="col grey lighten-3 s2 complistPanel" >
+      <div class="compListContainer">
+      <div id="itemList" [hidden]="showcomponents">
+        <app-componentlist *ngIf="items" (showItem)="showComponent($event)" [lista]="items" [action]="'remove'" ></app-componentlist>
+      </div>
+
+      <ul class="collapsible" [hidden]="!showcomponents" >
+        <li>
+          <div class="collapsible-header"><i class="material-icons">map</i>Tabuleiros</div>
+          <div class="collapsible-body">
+            <app-componentlist *ngIf="produtos" (showItem)="showItem($event)" [lista]="produtos" [action]="'add'"  [categoria]="'Tabuleiros'"></app-componentlist>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_alt</i>Peões</div>
+          <div class="collapsible-body">
+            <app-componentlist *ngIf="produtos"  (showItem)="showItem($event)" [lista]="produtos" [action]="'add'" [categoria]="'Peões'"></app-componentlist>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">casino</i>Dados</div>
+          <div class="collapsible-body">
+            <app-componentlist *ngIf="produtos"  (showItem)="showItem($event)" [lista]="produtos" [action]="'add'" [categoria]="'Dados'"></app-componentlist>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">view_carousel</i>Cartas</div>
+          <div class="collapsible-body">
+            <app-componentlist *ngIf="produtos"  (showItem)="showItem($event)" [lista]="produtos" [action]="'add'" [categoria]="'Cartas'"></app-componentlist>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">stars</i>Fichas</div>
+          <div class="collapsible-body">
+            <app-componentlist *ngIf="produtos"  (showItem)="showItem($event)" [lista]="produtos" [action]="'add'" [categoria]="'Fichas'"></app-componentlist>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">local_shipping</i>Miniaturas(3D)</div>
+          <div class="collapsible-body">
+            <app-componentlist *ngIf="produtos"  (showItem)="showItem($event)" [lista]="produtos" [action]="'add'" [categoria]="'Miniaturas'"></app-componentlist>
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">hourglass_empty</i>Outros</div>
+          <div class="collapsible-body">
+            <app-componentlist *ngIf="produtos"  (showItem)="showItem($event)" [lista]="produtos"[action]="'add'"  [categoria]="'Outros'"></app-componentlist>
+          </div>
+        </li>
+      </ul>
+    </div>
+      <a id="addCompBt" (click)="addComponent()" class="btn col s12 green">
+        <i class="material-icons" *ngIf="!showcomponents">add</i>
+        <i class="material-icons" *ngIf="showcomponents">visibility_off</i>
+      </a>
+
+    </div>
+    <div class="col purple lighten-4 subpanel ">
+      <app-itemdisplay (updateList)="updateList($event)" [game]="game" [item]="displayitem"></app-itemdisplay>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+ <form [formGroup]="jogoFormGroup" class="container">
+   <h3 class="title  purple-text">Vamos começar com as informações básicas do jogo:</h3>
+   <div class="row">
+     <div class="block col m12">
+       <label class="pink-text  validate active " for="titulo">Título</label>
+       <input name="titulo" id="titulo" formControlName="titulo" type="text">
+     </div>
+   </div>
+   <div class="row">
+
+     <div class="block col m12">
+       <label class="pink-text  validate active " for="subtitulo">sub-título</label>
+       <input name="subtitulo" id="subtitulo" formControlName="subtitulo" type="text" class="active">
+     </div>
+   </div>
+   <div class="row">
+
+     <div class="col m12">
+       <label class="pink-text" for="sinopse">Sinopse</label>
+       <div class="input-field col m12">
+         <textarea style="height: 140px;" name="sinopse" id="sinopse" class="browser-default" formControlName="sinopse"></textarea>
+       </div>
+     </div>
+   </div>
+   
+   <div class="row">
+    <button (click)="registerForm()" [disabled]="jogoFormGroup.invalid" class="btn green right next-step">próximo</button>
+  </div>
+
+ </form>

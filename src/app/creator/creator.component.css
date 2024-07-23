@@ -1,0 +1,9 @@
+#editor-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-height: 120vh;
+    padding-top: 64px;
+    background-color: rgba(255, 255, 255, 0.8);
+    }

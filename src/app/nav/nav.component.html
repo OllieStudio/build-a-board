@@ -1,0 +1,15 @@
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="" hidden >{{appTitle}}</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a [ngxScrollTo]="'#hero'"> Home</a></li>
+      <li><a [ngxScrollTo]="'#sobre'">Build-A-Board</a></li>
+      <li><a [ngxScrollTo]="'#comofunciona'">Como Funciona</a></li>
+      <li><a [ngxScrollTo]="'#resources'">Recursos</a></li>
+      <li><a [ngxScrollTo]="'#destaques'">Jogos em Destaque</a></li>
+      <li> <a id="criebtn" routerLink="/creator" class="btn orange waves-effect waves-light cta-button">crie seu boardgame!</a></li>
+      <!-- <li><a routerLink="/home">Contato</a></li>
+      <li><a routerLink="/home">FAQ</a></li> -->
+    </ul>
+  </div>
+</nav>

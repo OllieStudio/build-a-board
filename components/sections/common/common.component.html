@@ -1,0 +1,30 @@
+<!--   Common Section   -->
+<div class="section-common" >
+  <div class="parallax-container valign-wrapper">
+    <div class="section col s12 m5 no-pad-bot">
+      <div class="">
+        <div class="row center">
+          <h3 [style.font-family]="website?.font?.family"  class="header center customcolor2">{{section.heading}}</h3>
+          <h5 [style.font-family]="website?.font?.family"  [style.font-family]="website?.font?.family" class="header col s12 white-text">{{section.slogan}}</h5>
+        </div>
+      </div>
+    </div>
+    <div id="{{section.id}}" class="parallax img"  [style.background-image]="sanitizeSection(section.background)"></div>
+  </div>
+  <div class="container section-container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12 center">
+          <h3 [style.font-family]="website?.font?.family" ><i class="mdi-content-send brown-text"></i></h3>
+          <h4 [style.font-family]="website?.font?.family" >{{section.title | uppercase}}</h4>
+          <p class="left-align light" [innerHtml]="section.text"></p>
+          <div class="row s12" *ngIf="section.items">
+            <div class="col s3" *ngFor="let item of section.items">
+              <img src="{{item.url}}" alt="{{item.title}}" class="itemlogo">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

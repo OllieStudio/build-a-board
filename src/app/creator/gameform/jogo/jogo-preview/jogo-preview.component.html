@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col s7">
+
+
+    <div class="row container">
+
+      <h3 class="title purple-text">Dados do Jogo:</h3>
+      <div class="col m12 left">
+        <label class="col m5 title purple-text">Tipo de Jogo</label>
+        <label class="col m7 title pink-text">{{gamedataservice.game.tipo}}</label>
+      </div>
+      <div class="col m12 left">
+        <label class="col m5 title purple-text">Título</label>
+        <label class="col m7 title pink-text">{{gamedataservice.game.titulo}}</label>
+      </div>
+      <div class="col m12 left">
+        <label class="col m5 title purple-text">Sub-título</label>
+        <label class="col m7 title pink-text">{{gamedataservice.game.subtitulo}}</label>
+      </div>
+      <div class="col m12 left">
+        <label class="col m5 title purple-text">Sinopse</label>
+        <label class="col m7 title pink-text">{{gamedataservice.game.sinopse}}</label>
+      </div>
+    </div>
+    <div class="row container">
+      <h3 class="title purple-text">Partida:</h3>
+
+      <div class="col m12 left">
+        <label class="col m5 title purple-text">N° de Jogadores</label>
+        <label class="col m7 title pink-text">{{gamedataservice.game.jogadores | rangeLabel:'jogadores'}}</label>
+      </div>
+      <div class="col m12 left">
+        <label class="col m5 title purple-text">Faixa Etária</label>
+        <label class="col m7 title pink-text">{{gamedataservice.game.idade  | rangeLabel:'anos'}} </label>
+      </div>
+      <div class="col m12 left">
+        <label class="col m5 title purple-text">Montagem</label>
+        <label class="col m7 title pink-text">{{gamedataservice.game.montagem  | rangeLabel:'minutos'}} </label>
+      </div>
+      <div class="col m12 left">
+        <label class="col m5 title purple-text">Tempo de Partida</label>
+        <label class="col m7 title pink-text">{{gamedataservice.game.partida  | rangeLabel:'minutos'}}  </label>
+      </div>
+    </div>
+  </div>
+  <div class="col s5">
+    <div class="col s12  catalog-item">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{gamedataservice.game.header}}">
+        </div>
+        <div class="card-content">
+          <span class="card-title">{{gamedataservice.game.titulo}}</span>
+          <p>{{gamedataservice.game.sinopse}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">ver mais</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row container">
+  <h3 class="title purple-text">Dificuldade:</h3>
+  <div class="col m12 left ">
+    <label class="col m5 title purple-text">Complexidade</label>
+    <label class="col m7 title pink-text">{{gamedataservice.game.complexidade | ratingLabel }}</label>
+  </div>
+  <div class="col m12 left ">
+    <label class="col m5 title purple-text">Estratégia</label>
+    <label class="col m7 title pink-text">{{gamedataservice.game.estrategia | ratingLabel}}</label>
+  </div>
+  <div class="col m12 left ">
+    <label class="col m5 title purple-text">Sorte</label>
+    <label class="col m7 title pink-text">{{gamedataservice.game.sorte | ratingLabel}}</label>
+  </div>
+</div>
+<div class="row">
+  <div class="col m12 left">
+    <label class="col m3 title purple-text">Habilidades</label>
+    <div class="col m9">
+      <label *ngFor="let skill of gamedataservice.game.skills" [hidden]="!skill.length" class="title skill pink-text col s3">{{skill}}</label>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="row">
+    <button (click)="registerForm()" class="btn green right">gravar e continuar</button>
+    <a class="btn-flat purple-text right previous-step">voltar</a>
+  </div>
+</div>

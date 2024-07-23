@@ -1,0 +1,6 @@
+<ul [id]="stepperID" class="stepper ol-stepper-nav" [ngClass]="{'vertical': isVertical, 'horizontal': !isVertical}">
+    <li class="step" *ngFor="let step of steps; index as i" (click)="routeClick(i)">
+      <div class="step-title purple-text waves-effect waves-dark">{{ step.label }}</div>
+      <div class="step-content"></div>
+    </li>
+  </ul>

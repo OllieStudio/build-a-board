@@ -1,0 +1,15 @@
+nav{
+    position: fixed;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px 0 20px;
+    background: linear-gradient(to right,  rgba(0,0,0, 0.0),  rgba(0,0,0, 0.1),  rgba(0,0,0, 0.8));
+    box-shadow:none;
+    z-index: 999999;
+}
+
+.cta-button{
+    font-family: 'Barlow Condensed', cursive!important;
+    font-size: 20px;
+    font-weight: 800;
+}

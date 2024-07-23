@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col s4 ratinglabel pink-text">{{label}}</div>
+  <fieldset class="rating col s6">
+    <input (click)="setValue($event)" type="radio" id="{{idd}}5" name="{{idd}}" value="5" [checked]="isChecked(5)"/>
+    <label class = "full" for="{{idd}}5" title="Muitíssimo"></label>
+    <input (click)="setValue($event)" type="radio" id="{{idd}}4half" name="{{idd}}" value="4.5" [checked]="isChecked(4.5)" />
+    <label class="half" for="{{idd}}4half" title="Muito"></label>
+    <input (click)="setValue($event)" type="radio" id="{{idd}}4" name="{{idd}}" value="4" [checked]="isChecked(4)"/>
+    <label class = "full" for="{{idd}}4" title="Quase Muito"></label>
+    <input (click)="setValue($event)" type="radio" id="{{idd}}3half" name="{{idd}}" value="3.5" [checked]="isChecked(3.5)"/>
+    <label class="half" for="{{idd}}3half" title="Médio Alto"></label>
+    <input (click)="setValue($event)" type="radio" id="{{idd}}3" name="{{idd}}" value="3" [checked]="isChecked(3)"/>
+    <label class = "full" for="{{idd}}3" title="Médio"></label>
+    <input (click)="setValue($event)" type="radio" id="{{idd}}2half" name="{{idd}}" value="2.5" [checked]="isChecked(2.5)" />
+    <label class="half" for="{{idd}}2half" title="Médio baixo"></label>
+    <input (click)="setValue($event)" type="radio" id="{{idd}}2" name="{{idd}}" value="2" [checked]="isChecked(2)" />
+    <label class = "full" for="{{idd}}2" title="Pouco"></label>
+    <input (click)="setValue($event)" type="radio" id="{{idd}}1half" name="{{idd}}" value="1.5" [checked]="isChecked(1.5)" />
+    <label class="half" for="{{idd}}1half" title="Muito Pouco"></label>
+    <input (click)="setValue($event)" type="radio" id="{{idd}}1" name="{{idd}}" value="1" [checked]="isChecked(1)" />
+    <label class = "full" for="{{idd}}1" title="Quase Nada"></label>
+    <input (click)="setValue($event)" type="radio" id="{{idd}}half" name="{{idd}}" value="0.5" [checked]="isChecked(0.5)" />
+    <label class="half" for="{{idd}}half" title="Nada"></label>
+    
+</fieldset>
+</div>

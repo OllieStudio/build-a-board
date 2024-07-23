@@ -1,0 +1,50 @@
+<h3 class="title purple-text">Resumo</h3>
+
+<div class="card ">
+  <div class="row">
+    <h2 class="gametitle center">{{gamedataservice.game.titulo}}</h2>
+    <h3 class="title center">regras</h3>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h3 class="subtitle">Objetivo do Jogo</h3>
+    </div>
+    <div class="col s12 text-regras" [innerHTML]="gamedataservice.game.objetivo">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h3 class="subtitle">Preparação da Partida</h3>
+    </div>
+    <div class="col s12 text-regras" [innerHTML]="gamedataservice.game.preparacao">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h3 class="subtitle">Regras Básicas</h3>
+    </div>
+    <div class="col s12 text-regras" [innerHTML]="gamedataservice.game.regras">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h3 class="subtitle">Durante a Partida</h3>
+    </div>
+    <div class="col s12 text-regras" [innerHTML]="gamedataservice.game.durante">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <h3 class="subtitle">Conclusão do Jogo</h3>
+    </div>
+    <div class="col s12 text-regras" [innerHTML]="gamedataservice.game.conclusao">
+
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <button (click)="registerForm()" class="btn green right">gravar e
+      continuar</button>
+    <a class="btn-flat purple-text right previous-step">voltar</a>
+  </div>

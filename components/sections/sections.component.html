@@ -1,0 +1,8 @@
+
+  <div *ngFor="let section of sections" >
+    <div id="{{section.id}}"></div>
+    <app-header-section [section] = "section" [website]="website"  *ngIf="section.type === 'header'"></app-header-section>
+    <app-icon-section [section] = "section"  [website]="website" *ngIf="section.type === 'iconsection'"></app-icon-section>
+    <app-common-section [section] = "section"  [website]="website" *ngIf="section.type === 'common'"></app-common-section>
+  </div>
+

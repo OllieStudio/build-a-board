@@ -1,0 +1,24 @@
+<!--   Header Section   -->
+<div class="section-common">
+  <div class="parallax-container valign-wrapper">
+    <div class="section col s12 m5 ">
+      <div class="">
+        <div class="row center">
+          <h1 [style.font-family]="website?.font?.family" style="margin-top: 80px" class="header center customcolor2">{{section.heading}}
+          </h1>
+          <h5 [style.font-family]="website?.font?.family"  [style.font-family]="website?.font?.family" class="header col s12 white-text">{{section.slogan}}</h5>
+        </div>
+      </div>
+    </div>
+    <div id="{{section.id}}" class="parallax img" [style.background-image]="sanitizeSection(section.background)"></div>
+  </div>
+  <div class="container login-container">
+    <div class="row center">
+      <a (click)="showLogin = true;" *ngIf="!showLogin" id="acessar-button"
+        class="btn btn-large waves-effect waves-light col s8 push-s2 m4 push-m4 center" [style.backgroundColor]="website?.color1">Acessar</a>
+      <a [ngxScrollTo]="'#register'" *ngIf="!showLogin" id="cadastro-button"
+        class="btn-flat col s8 push-s2 white-text center" >primeiro acesso</a>
+    
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="slider row s12 top-5" slider >
+    <ul class="slides" >
+      <li *ngFor="let banner of banners trackBy:trackByFn">
+        <img src="{{banner.imagem}}" class="banner-img">
+        <!-- random image -->
+        <div class="caption center-align">
+          <h2 [style.font-family]="website?.font?.family" class="center white-text text-darken-3">{{banner.titulo}}</h2>
+          <h5 [style.font-family]="website?.font?.family"  [style.font-family]="website?.font?.family" class="light white-text text-darken-3">{{banner.subtitulo}}</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+  

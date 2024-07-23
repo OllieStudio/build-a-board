@@ -1,0 +1,300 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Creepster|Eater|Fascinate+Inline|Faster+One|Fontdiner+Swanky|Freckle+Face|Germania+One|Luckiest+Guy|Mystery+Quest|Nosifer|Rye|UnifrakturMaguntia|Wallpoet');
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed|Roboto:300|Yanone+Kaffeesatz:300&display=swap');
+
+/* font-family: 'Germania One', cursive;
+font-family: 'Luckiest Guy', cursive;
+font-family: 'Freckle Face', cursive;
+font-family: 'Faster One', cursive;
+font-family: 'Rye', cursive;
+font-family: 'UnifrakturMaguntia', cursive;
+font-family: 'Eater', cursive;
+font-family: 'Wallpoet', cursive;
+font-family: 'Fontdiner Swanky', cursive;
+font-family: 'Creepster', cursive;
+font-family: 'Nosifer', cursive;
+font-family: 'Mystery Quest', cursive;
+font-family: 'Fascinate Inline', cursive; */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  background: url("/assets/img/icons-lt.png");
+}
+
+.step-content{
+  overflow-y: hidden!important;
+}
+
+.mat-dialog-container {
+  width: 85vw !important;
+  height: 90vh !important;
+  margin-top: 5vh;
+  margin-left: 5vw;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.mat-dialog-content {
+  max-height: 72vh !important;
+  overflow: visible !important;
+}
+
+.cdk-overlay-pane {
+  max-width: 100vw !important;
+}
+
+.top-3{
+  margin-top: 3vh;
+}
+.top-5{
+  margin-top: 5vh;
+}
+.top-10{
+  margin-top: 10vh;
+}
+
+.session-title{
+  font-size: 30px;
+  font-weight: 900;
+}
+
+h1{
+  font-size: 54px;
+}
+
+h2.session-title{
+  font-size: 32px;
+  font-family:'Barlow Condensed', cursive!important; 
+  margin-top: 0px;
+}
+
+h2.gametitle{
+  font-size: 32px;
+  font-family:'Barlow Condensed', cursive!important; 
+  margin-top: 0px;
+}
+
+h3{
+    font-family: 'Barlow Condensed', cursive!important;
+    font-size: 20px;
+    margin:0px;
+}
+
+h3.title{
+  font-family: 'Barlow Condensed', cursive!important;
+    font-size: 28px;
+    margin:0px;
+  margin-bottom: 20px;
+}
+
+h3.subtitle{
+  font-family: 'Barlow Condensed', cursive!important;
+  text-decoration: underline;
+  font-size: 20px;
+  margin:0px;
+  margin-bottom: 20px;
+}
+
+.step-content{
+  display: none;
+}
+
+label{
+  font-family: 'Barlow Condensed', cursive!important;
+  font-size: 17px!important;
+   margin:0px;
+}
+
+.step-title{
+  font-family: 'Barlow Condensed', cursive!important;
+    font-size: 20px;
+    margin:0px;
+}
+
+.section{
+  margin-left: 8vw;
+  margin-right: 8vw;
+}
+
+
+.btn{
+    border-radius: 5px;
+}
+
+.mat-dialog-title{
+    font-size: 45px;
+}
+
+p.tiny{
+    font-size: 12px;
+    margin-left: -10px!important;
+}
+
+nav{
+  top: 0;
+  left: 0;
+    position: fixed;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 20px 0 20px;
+    background: linear-gradient(to right,  rgba(0,0,0, 0.0),  rgba(0,0,0, 0.1),  rgba(0,0,0, 0.8));
+    box-shadow:none;
+    z-index: 999999;
+}
+
+.cta-button{
+    font-family: 'Barlow Condensed', cursive!important;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.radioimg img{
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+}
+
+.slider .slides {
+  background-color: #3d5a8f;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); opacity: 1 }
+  50% { transform: scale(1.3); opacity: 1; }
+  60% { transform: scale(1); opacity: 1 }
+  80% { transform: scale(0.95) }
+  100% { transform: scale(1.1) }
+}
+
+.radioimg:hover img{ 
+  animation: bounce .5s;
+  transform: scale(1.1);
+ }
+
+   .list {
+    list-style:disc outside none;
+    display:list-item; 
+    }
+
+    .nw-editor {
+      height: 200px!important;
+    }
+
+    .link{
+      cursor: pointer;
+    }
+
+    [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+      border: 2px solid #dd1199;
+    }
+
+    [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+      background-color: #dd1199;
+  }
+
+  input[type='range'] {
+    /* overflow: hidden;
+    width: 80px;
+    -webkit-appearance: none; */
+    background-color: #dd1199;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    /*
+    -webkit-appearance: none; */
+    color: #dd1199;
+    /* height: 10px; */
+    /* margin-top: -1px; */
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+     /* -webkit-appearance: none;
+    cursor: ew-resize; */
+    width: 13px;
+    height: 13px;
+    background: #dd1199;
+    /* box-shadow: -80px 0 0 80px #dd1199; */
+  }
+
+/** FF*/
+input[type="range"]::-moz-range-progress {
+background-color: #dd1199; 
+}
+input[type="range"]::-moz-range-track {  
+background-color: #dd1199;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+background-color: #dd1199; 
+}
+input[type="range"]::-ms-fill-upper {  
+background-color: #dd1199;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: #dd1199;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+  background-color: #e689c7;
+}
+
+span.thumb.active{
+  background-color: #dd1199;
+}
+
+.ol-fileupload .btn{
+  width: 200px;
+  background-color: #3d5a8f;
+}
+
+/* TOOLBOX */
+
+.tool-container{
+  margin-left: 90px;
+  position: absolute;
+  top: 40px;
+  height: 86vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default!important;
+  opacity: 0.2;
+}
+
+
+.tool-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tool-item a{
+  color:white!important;
+  pointer-events: none;
+}
+
+.tool-item a span{    
+   font-size: 10px;
+   width: 100%;
+   text-align: center;
+   display: block;
+   line-height: 11px;
+   pointer-events: none;
+}
+
+.tool-item a i{    
+   font-size: 32px;
+   width: 100%;
+   text-align: center;
+}

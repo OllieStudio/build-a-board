@@ -1,0 +1,56 @@
+<div class="container" *ngIf="item">
+
+  <div class="row">
+    <div class="col s12">
+      <h3 class="purple-text itemnome ">{{item.nome}} </h3>
+    </div>
+  </div>
+
+  <div class="row mainrow">
+    <div class="col s5  valign-wrapper">
+      <img src="{{item.imagem}}" alt="" class="responsive-img valign">
+    </div>
+
+    <div class="col s7">
+
+      <div class="box">
+        <div class="row">
+          <span class="compNome">{{item.nome | titlecase}}</span>
+        </div>
+        <div class="row">
+          <span class="bold">Dimensões: </span>{{item.tamanho}}
+        </div>
+        <div class="row">
+          <span class="bold">Valor: </span>{{item.valor}}
+        </div>
+        <div class="row">
+          <span class="bold">Código: </span>{{item.codigo}}
+        </div>
+        <div class="row" *ngIf="item.colors">
+          <span class="bold left">Cores Disponíveis: </span>
+          <div>
+            <div (click)="setImg(color.img)" class="colordisplay {{color.cor}} left"
+              style="background-image: url({{color.img}});" *ngFor="let color of item.colors"></div>
+          </div>
+        </div>
+        <p class="valign-wrapper" *ngIf="item.customize">
+          <i class="material-icons green-text valign">check</i> <span class="valign">Customizável</span>
+        </p>
+      </div>
+      <div class="row valign-wrapper">
+        <div class="col s6 numericstepper valign">
+          <h3 class="strong purple-text center">Quantidade:</h3>
+          <app-numericstepper (changed)="getChanged($event)" [item]="item"></app-numericstepper>
+        </div>
+        <a (click)="addComponente(item)" *ngIf="item.action === 'add'"
+          class="right btn green btn-large waves-effect waves-light cta-button valign">adicionar
+          esse
+          ítem</a>
+        <a (click)="removeComponente(item)" *ngIf="item.action === 'remove'"
+          class="right btn red btn-large waves-effect waves-light cta-button valign">excluir item</a>&nbsp;&nbsp;
+        <a (click)="updateComponente(item)" *ngIf="changed && item.action === 'remove'"
+          class="right  green btn-floating btn-large waves-effect waves-light  valign"><i class="material-icons">save</i></a>
+      </div>
+    </div>
+  </div>
+</div>

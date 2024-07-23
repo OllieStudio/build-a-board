@@ -1,0 +1,22 @@
+{
+  "name": "@bit/ollieestudio.angularcomponents.crm.banners",
+  "version": "0.0.1",
+  "homepage": "https://bit.dev/ollieestudio/angularcomponents/crm/banners",
+  "main": "banners.module.ts",
+  "componentId": {
+    "scope": "ollieestudio.angularcomponents",
+    "name": "crm/banners",
+    "version": "0.0.1"
+  },
+  "dependencies": {
+    "@angular/core": "~15.2.0",
+    "@ollieestudio/fire-lib": "^5.2.3",
+    "@angular/common": "~15.2.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE",
+  "bit": {
+    "env": {}
+  }
+}

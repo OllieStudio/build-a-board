@@ -1,0 +1,10 @@
+  <label class="radioimg" >
+    <img src="{{image}}" ><br>
+    <input class="with-gap" type="radio" checked="{{isChecked}}"  value="{{label}}" name="{{group}}" #myid (click)="setValue($event)" />
+   <span><h3 class="title purple-text">{{label}}</h3></span> 
+  </label>
+  <div class="row legenda" >
+    <div class="col m12">
+      <label class="pink-text text-lighten-3">{{legenda}}</label>
+    </div>
+  </div>

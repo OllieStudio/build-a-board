@@ -1,0 +1,39 @@
+
+  .itemnome{
+    font-size: 30px!important;
+    margin-top:20px;
+  }
+
+  .itemquantidade{
+    font-size: 32px!important;
+    font-weight: bold;
+    margin-left: 5px;
+    
+  }
+
+  .container{
+    width: 90%!important;
+  }
+
+  .mainrow{
+    height: 57vh;
+  }
+
+  .mainrow .col{
+    height: 100%;
+  }
+
+  .bold{
+    font-weight: bold;
+  }
+
+  .box{
+    height: 75%;
+  }
+
+  .colordisplay{
+    width: 22px;
+    height: 22px;
+    margin: 0 5px 0 5px;
+    background-position: center;
+  }

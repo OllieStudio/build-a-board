@@ -1,0 +1,22 @@
+<form [formGroup]="jogoFormGroup" class="container">
+    <h3 class="title  purple-text">Selecione as imagens e tema do jogo:</h3>
+    <div class="row">
+      <app-fileupload formControlName="logo" [accepts]="'img'" [label]="'Logo'" [path]="pathlogo"></app-fileupload>
+    </div>
+    <div class="row">
+ 
+      <app-fileupload formControlName="header" [accepts]="'img'" [label]="'Header'" [path]="pathheader" ></app-fileupload>
+      
+    </div>
+    <div class="row">
+ 
+      <app-fileupload formControlName="background" [accepts]="'img'" [label]="'Imagem de Fundo'" [path]="pathbg" ></app-fileupload>
+      
+    </div>
+    
+    <div class="row">
+     <button (click)="registerForm()" [disabled]="jogoFormGroup.invalid" class="btn green right next-step">próximo</button>
+   </div>
+ 
+  </form>
+ 

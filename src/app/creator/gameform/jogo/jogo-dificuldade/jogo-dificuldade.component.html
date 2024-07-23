@@ -1,0 +1,40 @@
+ <form [formGroup]="jogoFormGroup">
+   <div class="row">
+     <div class="col m12">
+       <h3 class="title  purple-text">Defina o grau de dificuldade do jogo:</h3>
+       <div class="row">
+         <div class="col m6">
+           <app-rating [label]="'Complexidade'" [idd]="'complex'" formControlName="complexidade"></app-rating>
+           <!-- <label for=""  class="col m4">Complexidade</label>
+            <mat-slider class="col m8" min="0" max="10" step="1" tickInterval="2" thumbLabel
+              ></mat-slider> -->
+         </div>
+       </div>
+       <div class="row">
+         <div class="col m6">
+           <app-rating [label]="'Estratégia'" [idd]="'estrat'" formControlName="estrategia"></app-rating>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col m6">
+           <app-rating [label]="'Sorte'" [idd]="'sorte'" formControlName="sorte"></app-rating>
+         </div>
+       </div>
+     </div>
+
+     <div class="col m12">
+       <label for="" class="col m12">
+         <h3 class="title  purple-text">Quais as Habilidades Recomendadas?</h3>
+       </label>
+       <ng-container *ngFor="let skill of _skills">
+        <app-switch class="col m6" [group]="gamedataservice.game.skills" [ctrlname]="skill.ctrlname" formControlName="{{skill.ctrlname}}"
+          [label]="skill.label"></app-switch>
+      </ng-container>
+     </div>
+   </div>
+
+   <div class="row">
+     <button (click)="registerForm()" [disabled]="jogoFormGroup.invalid"
+       class="btn green right next-step">próximo</button>
+   </div>
+ </form>

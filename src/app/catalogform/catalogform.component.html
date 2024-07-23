@@ -1,0 +1,72 @@
+<div class="row white">
+    <form class="col s12"  [formGroup]="catalogFormGroup">
+        <div class="input-field col s6">
+            <select class="browser-default"  formControlName="categoria">
+              <option value="" disabled selected>Categoria</option>
+              <option value="Tabuleiros">Tabuleiros</option>
+              <option value="Peões">Peões</option>
+              <option value="Dados">Dados</option>
+              <option value="Cartas">Cartas</option>
+              <option value="Fichas">Fichas</option>
+              <option value="Miniaturas">Miniaturas(3D)</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+        
+          <div class="input-field col s6">
+            <select  class="browser-default"  formControlName="tema">
+              <option value="" disabled selected>Tema</option>
+              <option value="Geral">Geral</option>
+              <option value="Aventura">Aventura</option>
+              <option value="Espacial">Espacial</option>
+              <option value="Família">Família</option>
+              <option value="Futurista">Futurista</option>
+              <option value="Heróis">Heróis</option>
+              <option value="Natureza">Natureza</option>
+              <option value="Terror">Terror</option>
+              <option value="Medieval">Medieval</option>
+              <option value="Vintage">Vintage</option>
+            </select>
+          </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="nome" type="text" class="validate"  formControlName="nome">
+          <label for="nome">Nome</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="valor" type="text" class="validate"  formControlName="valor">
+          <label for="valor">Valor</label>
+        </div>
+      </div>
+     
+      <div class="row">
+        <div class="input-field col s4">
+          <input id="tamanho" type="text" class="validate"  formControlName="tamanho">
+          <label for="tamanho">Dimensões</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="codigo" type="text" class="validate"  formControlName="codigo">
+          <label for="codigo">Código</label>
+        </div>
+        <div class="input-field col s4">
+          Personalizável
+          <div class="switch">
+            <label>
+              Não
+              <input type="checkbox" formControlName="customize">
+              <span class="lever"></span>
+              Sim
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <input id="imagem" type="text" class="validate"  formControlName="imagem">
+          <label for="imagem">Imagem</label>
+      </div>
+
+      </form>
+      <div class="row">
+        <a (click)="registerForm()"  class="btn col s3 right green">salvar</a>
+      </div>
+  </div>

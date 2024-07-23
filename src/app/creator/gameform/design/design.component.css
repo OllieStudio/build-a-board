@@ -1,0 +1,16 @@
+#designmain{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #CCC;
+    margin-top: -15px;
+    display: flex;
+    flex-direction: row;
+}
+
+#toolbox{
+    flex-grow: 0;
+}
+
+#area{
+ flex-grow: 2;
+}

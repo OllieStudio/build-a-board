@@ -1,0 +1,22 @@
+<div class="design-menu grey z-depth-1">
+  <ul class="left valign-wrapper" *ngIf="creator.hasItem()">
+    <li>
+      <label for="componentename" class="black-text">Nome do Componente: </label>
+      <input type="text" name="componentename" id="componentename" class="browser-default" [(ngModel)]="history.currentSnapshot.name"
+       (keyup)="history.updateItemSnapshot({'name':$event.target.value})">
+    </li>
+    <li class="valign" >
+      <app-zoom  [value]="creator.zoomValue" (zoomValueChange)="creator.zoomValueChange($event)"></app-zoom>
+    </li>
+    <li class="valign">
+      <a [class.disabled]="history.disablePrevButton()" (click)="history.getPreviousItemSnapshot()" ><i class="material-icons-outlined  black-text">undo</i></a>
+      <a [class.disabled]="history.disableNextButton()" (click)="history.getNextItemSnapshot()" ><i class="material-icons-outlined  black-text">redo</i></a>
+    </li>
+    <li class="valign"><a ><i class="material-icons-outlined  black-text">more_vert</i></a></li>
+  </ul>
+    <ul class="right valign-wrapper">
+         <li class="valign"><a (click)="creator.saveItem()"><i class="material-icons-outlined  black-text">save</i></a></li>
+        <li class="valign"><a><i class="material-icons-outlined  black-text">refresh</i></a></li>
+        <li class="valign"><a><i class="material-icons-outlined  black-text">more_vert</i></a></li>
+      </ul>
+</div>

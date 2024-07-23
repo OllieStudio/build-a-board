@@ -1,0 +1,22 @@
+export interface Crm {
+    enterprise:any;
+    cliente:any;
+    titulo:string;
+    subtitulo:string;
+    assunto:string;
+    conteudo:string;
+    tipo:string;
+    envio:string;
+    ativo:boolean;
+    data:any;
+    dataenvio:any;
+    filtros:any;
+    gatilho:any;
+    id:string;
+    imagem:string;
+    status:string;
+    datacriacao:any;
+    timestamp:number;
+    timestamp_envio:number;
+    categorias:any;
+}

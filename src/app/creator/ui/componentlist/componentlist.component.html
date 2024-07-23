@@ -1,0 +1,5 @@
+<div class="item center center-align" *ngFor="let item of items" (click)="showItemFn(item)">
+    <img src="{{item.imagem}}" alt="" class="responsive-img link"> <br>
+  <span class="compNome">{{item.nome | titlecase}}</span>
+  <hr class="divider"/>
+</div>

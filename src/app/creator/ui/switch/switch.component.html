@@ -1,0 +1,9 @@
+<div class="switch">
+    <label>
+      {{Off}}
+      <input type="checkbox"  [checked]="_switchValue" (change)="setValue($event)" name="{{ctrlname}}" value="{{label}}">
+      <span class="lever"></span>
+      {{On}}
+    </label>
+    <span class="switchlabel pink-text">{{label}}</span>
+  </div>

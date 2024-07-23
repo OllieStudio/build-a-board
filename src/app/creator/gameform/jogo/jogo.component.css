@@ -1,0 +1,28 @@
+.mat-slide-toggle-content {
+    white-space: nowrap;
+   overflow: auto !important;
+   ; text-overflow: none!important; 
+}
+
+h3.title, label{
+    margin-top:10px;
+    margin-bottom:10px; 
+}
+
+.skill{
+    margin-bottom: 0!important;
+    margin-top: 0!important;
+}
+
+textarea{
+    height: 116px;
+    width: 387px;
+}
+
+#jogomain{
+    margin-left: 6vw;
+    margin-right: 6vw;
+    height: 90vh;
+    display: block;
+    overflow: auto;
+}

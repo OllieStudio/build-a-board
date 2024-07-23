@@ -1,0 +1,8 @@
+<div id="designmain">
+  <app-toolbox id="toolbox" [items]="menuItems" [closed]="creator.closeToolbox" (routeEmitter)="getTool($event)"></app-toolbox>
+  <div id="area">
+    <app-menu ></app-menu>
+    <app-canvas></app-canvas>
+    <app-drawer></app-drawer>
+  </div>  
+</div>

@@ -1,0 +1,21 @@
+<form [formGroup]="regrasFormGroup">
+  <h3 class="title  purple-text">Durante a partida</h3>
+      <div class="container">
+        <div class="row">
+
+          
+          <div class="row">
+            <h3>Descreva o que ocorre durante a partida:</h3>
+            <div class="col s12">
+              <ngx-wig formControlName="durante"
+                [placeholder]="'Digite o que ocorre em cada etapa ou rodada da partida.'" class="col m12 top-3"
+                >
+              </ngx-wig>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button (click)="registerForm()" [disabled]="regrasFormGroup.invalid" class="btn green right next-step">próximo</button>
+        </div>
+      </div>
+</form>

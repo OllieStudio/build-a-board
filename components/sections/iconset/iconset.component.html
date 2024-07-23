@@ -1,0 +1,33 @@
+<!--   Icon Section   -->
+<div class="section-icon" >
+  <div class="parallax-container valign-wrapper" *ngIf="section.background">
+    <div class="section col s12 m5 no-pad-bot">
+      <div class="">
+        <div class="row center">
+          <h3 [style.font-family]="website?.font?.family"  class="header center customcolor2">{{section.heading}}</h3>
+          <h5 [style.font-family]="website?.font?.family"  [style.font-family]="website?.font?.family" class="header col s12 white-text">{{section.slogan}}</h5>
+        </div>
+      </div>
+    </div>
+    <div id="{{section.id}}" class="parallax img"  [style.background-image]="sanitizeSection(section.background)"></div>
+  </div>
+  <div class="">
+    <div id="{{section.title}}_icons" class="container "  >
+      <div class="section">
+        <div class="row">
+          <div class="col s12">
+            <h3 [style.font-family]="website?.font?.family"  class="center customcolor2" *ngIf="!section.background">{{section.heading}}</h3>
+          </div>
+          <div class="col s12 m4 block" *ngFor="let block of section.blocks">
+            <div class="icon-block">
+              <h2 class="center customcolor2"><h2 class="center"><i class="large center customcolor2 material-icons" aria-hidden="true">{{block.icon}}</i></h2></h2>
+              <h5 [style.font-family]="website?.font?.family"  [style.font-family]="website?.font?.family" class="center">{{block.title}}</h5>
+
+              <p class="light justify">{{block.text}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

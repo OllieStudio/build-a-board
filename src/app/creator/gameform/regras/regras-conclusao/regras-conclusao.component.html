@@ -1,0 +1,26 @@
+<form [formGroup]="regrasFormGroup">
+  <h3 class="title  purple-text">Vencedor/Conclusão</h3>
+      <div class="container">
+        <div class="row">
+          <div class="col m12">
+            <h3>Descreva como é definido o vencedor:</h3>
+            <ngx-wig  formControlName="vencedor" [placeholder]="''" class="col m12 top-3"
+              >
+            </ngx-wig>
+          </div>
+
+          <div class="col m12 top-5">
+
+            <h3>Descreva como termina a partida:</h3>
+
+            <ngx-wig formControlName="conclusao" [placeholder]="''" class="col m12 top-3"
+              >
+            </ngx-wig>
+          </div>
+        </div>
+
+        <div class="row top-5">
+          <button (click)="registerForm()" [disabled]="regrasFormGroup.invalid" class="btn green right">próximo</button>
+        </div>
+      </div>
+</form>

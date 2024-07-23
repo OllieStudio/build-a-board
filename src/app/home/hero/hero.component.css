@@ -1,0 +1,27 @@
+#hero{
+    height: 100vh;
+    background: url("/assets/img/icons.png"), #59C173;
+      /* fallback for old browsers */
+      background: url("/assets/img/icons.png"), -webkit-linear-gradient(to right, #5D26C1, #a17fe0, #59C173);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: url("/assets/img/icons.png"), linear-gradient(to right, #5D26C1, #a17fe0, #59C173);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#hero h2{
+  
+    font-size: 44px!important;
+    text-shadow: #474747 3px 5px 2px;
+}
+
+#hero img{
+  max-height: 67vh;
+  margin-top: 8vh;
+}
+
+#down-btn {
+  font-size: 80px!important;
+  margin-top: -50px;
+  text-shadow: #474747 3px 5px 2px;
+}
+

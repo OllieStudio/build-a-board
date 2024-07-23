@@ -1,0 +1,35 @@
+<form [formGroup]="jogoFormGroup" class="">
+
+<div class="row">
+    <label for="" class="col m12">
+      <h3 class="title  purple-text">Qual será o tipo do jogo?</h3>
+    </label>
+    <div class="col m4">
+      <app-radioimage [legenda]="'Ex.: Dungeons & Dragons, Vampire, Dixit'" [label]="'RPG'" [group]="'tipojogo'"
+        [image]="'assets/img/sword.png'" formControlName="tipo"></app-radioimage>
+    </div>
+    <div class="col m4 ">
+      <app-radioimage [legenda]="'Ex.: Ludo, Banco Imobiliário, Detetive'" [label]="'Tabuleiro'" [group]="'tipojogo'"
+        [image]="'assets/img/dice.png'" formControlName="tipo"></app-radioimage>
+    </div>
+    <div class="col m4">
+      <app-radioimage [legenda]="'Ex.: Damas, Xadrez, Gamão'" [label]="'Clássicos'" [group]="'tipojogo'"
+        [image]="'assets/img/fun.png'" formControlName="tipo"></app-radioimage>
+    </div>
+    <div class="col m4">
+      <app-radioimage [legenda]="'Ex.: Baralho, Baralho personalizado, Uno, Memória'" [label]="'Cartas'"
+        [group]="'tipojogo'" [image]="'assets/img/poker.png'" formControlName="tipo"></app-radioimage>
+    </div>
+    <div class="col m4">
+      <app-radioimage [legenda]="'Ex.: Quebra-cabeça'" [label]="'Quebra-cabeça'" [group]="'tipojogo'"
+        [image]="'assets/img/puzzle.png'" formControlName="tipo"></app-radioimage>
+    </div>
+    <div class="col m4">
+      <app-radioimage [legenda]="'Ex.: Dominó clássico, com imagens'" [label]="'Dominó'" [group]="'tipojogo'"
+        [image]="'assets/img/dominoes.png'" formControlName="tipo"></app-radioimage>
+    </div>
+  </div>
+  <div class="row">
+    <button (click)="registerForm()" [disabled]="jogoFormGroup.invalid" class="btn green right next-step">próximo</button>
+  </div>
+</form>

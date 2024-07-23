@@ -1,0 +1,14 @@
+<div class="col s4 right-align">
+  <a [class.pulse]="mouseOvered1" [class.disabled]="item.quantidade == 1" (mouseover)="mouseOvered1=true" (mouseout)="mouseOvered1=false"
+    class="btn-floating purple link ">
+    <i (click)="item.quantidade = item.quantidade - 1; emitChange()"
+      class="material-icons  white-text   ">remove</i>
+  </a>
+</div>
+<input type="number" inputmode="numeric" pattern="[0-9]*" class="col s4 inputnum purple-text"
+  value="{{item.quantidade}}">
+<div class="col s4 left-align"> <a [class.pulse]="mouseOvered" (mouseover)="mouseOvered=true"
+    (mouseout)="mouseOvered=false" class="btn-floating  purple link ">
+    <i (click)="item.quantidade = item.quantidade + 1; emitChange()" class="material-icons white-text ">add</i>
+  </a>
+</div>

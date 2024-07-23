@@ -1,0 +1,20 @@
+<form [formGroup]="regrasFormGroup">
+  <h3 class="title  purple-text">Preparação</h3>
+      <div class="container">
+        <div class="row">
+          
+          <div class="row">
+            <h3>Descreva as etapas de preparação da partida:</h3>
+            <div class="col s12">
+              <ngx-wig formControlName="preparacao" 
+                [placeholder]="'Digite cada etapa separadamente e clique em salvar.'" class="col m12 top-3"
+                >
+              </ngx-wig>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button (click)="registerForm()" [disabled]="regrasFormGroup.invalid" class="btn green right next-step">próximo</button>
+        </div>
+      </div>
+</form>

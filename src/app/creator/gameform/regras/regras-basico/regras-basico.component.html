@@ -1,0 +1,20 @@
+<form [formGroup]="regrasFormGroup">
+  <h3 class="title  purple-text">Regras Básicas</h3>
+      <div class="container">
+        <div class="row">
+
+          
+          <div class="row">
+            <h3>Descreva as regras do jogo:</h3>
+            <div class="col s12">
+              <ngx-wig  formControlName="regras" [placeholder]="'Digite cada regra separadamente.'"
+                class="col m12 top-3" >
+              </ngx-wig>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button (click)="registerForm()" [disabled]="regrasFormGroup.invalid" class="btn green right next-step">próximo</button>
+        </div>
+      </div>
+</form>

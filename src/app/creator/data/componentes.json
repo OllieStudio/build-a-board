@@ -1,0 +1,177 @@
+  [
+    {
+      "icon": "pages",
+      "title": "Tabuleiro Quadrado",
+      "id": "tabuleiroquadrado",
+      "template": "<svg viewBox='0 0 500 500' width='500' height='500'><defs></defs><rect style='stroke: rgb(0, 0, 0); fill: rgb(123, 120, 120);' x='38.528' y='47.945' width='450' height='450' rx='5' ry='5'></rect><rect x='47.945' y='57.363' width='430' height='430' style='fill: rgb(216, 216, 216);'></rect></svg>",
+      "classname": "tabuleiro-quadrado"
+    },
+    {
+      "icon": "aspect_ratio",
+      "title": "Tabuleiro Retangular",
+      "id": "tabuleiroretangular",
+      "template": "<svg viewBox='0 0 800 500' width='800' height='500'><defs></defs><rect style='stroke: rgb(0, 0, 0); fill: rgb(123, 120, 120);' x='38.528' y='47.945' width='700' height='450' rx='5' ry='5'></rect><rect x='47.945' y='57.363' width='680' height='430' style='fill: rgb(216, 216, 216);'></rect></svg>",
+      "classname": "tabuleiro-retangular"
+    },
+    {
+      "icon": "hexagon",
+      "title": "Tabuleiro Hexagonal",
+      "id": "tabuleirohexagonal",
+      "template": "<svg viewBox='0 0 500 500' width='600' height='600'><defs></defs><path d='M 234.982 53.595 Q 240.154 50.609 245.326 53.595 L 407.372 147.152 Q 412.543 150.138 412.543 156.11 L 412.543 343.224 Q 412.543 349.196 407.372 352.182 L 245.326 445.739 Q 240.154 448.725 234.982 445.739 L 72.936 352.182 Q 67.765 349.196 67.765 343.224 L 67.765 156.11 Q 67.765 150.138 72.936 147.152 Z' style='fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 2px;' bx:shape='n-gon 240.154 249.667 199.058 199.058 6 0.03 1@330bc4b8'></path></svg>",
+      "classname": "tabuleiro-hexagonal"
+    },
+    {
+      "icon": "style",
+      "title": "Grupo 5 Cartas",
+      "id": "grupo5cartas",
+      "template": "<svg viewBox='101.077 58.065 278.077 438.93' width='278.077' height='438.93'><rect style='fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);' transform='matrix(0.999975, 0.007057, -0.007057, 0.999975, 6.402043, -6.91842)' x='98.215' y='64.292' width='275' height='437' rx='10' ry='10'></rect></svg>",
+      "classname": "grupo-5-cartas"
+    },
+    {
+      "icon": "style",
+      "title": "Grupo 12 Cartas",
+      "id": "grupo12cartas",
+      "template": "assets/templates/grupo12cartas.svg",
+      "classname": "grupo-12-cartas"
+    },
+    {
+      "icon": "style",
+      "title": "Grupo 25 Cartas",
+      "id": "grupo25cartas",
+      "template": "assets/templates/grupo25cartas.svg",
+      "classname": "grupo-25-cartas"
+    },
+    {
+      "icon": "casino",
+      "title": "Dado de 6 lados P",
+      "id": "dadode6ladosp",
+      "template": "assets/templates/dadode6ladosp.svg",
+      "classname": "dado-de-6-lados-p"
+    },
+    {
+      "icon": "casino",
+      "title": "Dado de 6 lados M",
+      "id": "dadode6ladosm",
+      "template": "assets/templates/dadode6ladosm.svg",
+      "classname": "dado-de-6-lados-m"
+    },
+    {
+      "icon": "casino",
+      "title": "Dado de 6 lados G",
+      "id": "dadode6ladosg",
+      "template": "assets/templates/dadode6ladosg.svg",
+      "classname": "dado-de-6-lados-g"
+    },
+    {
+      "icon": "casino",
+      "title": "Dado de Cores",
+      "id": "dadodecores",
+      "template": "assets/templates/dadodecores.svg",
+      "classname": "dado-de-cores"
+    },
+    {
+      "icon": "casino",
+      "title": "Dado de Formas",
+      "id": "dadodeformas",
+      "template": "assets/templates/dadodeformas.svg",
+      "classname": "dado-de-formas"
+    },
+    {
+      "icon": "casino",
+      "title": "Dado Customizável",
+      "id": "dadocustomizavel",
+      "template": "assets/templates/dadocustomizavel.svg",
+      "classname": "dado-customizavel"
+    },
+    {
+      "icon": "token",
+      "title": "Dado RPG 4 lados",
+      "id": "dadorpg4lados",
+      "template": "assets/templates/dadorpg4lados.svg",
+      "classname": "dado-rpg-4-lados"
+    },
+    {
+      "icon": "token",
+      "title": "Dado RPG 8 lados",
+      "id": "dadorpg8lados",
+      "template": "assets/templates/dadorpg8lados.svg",
+      "classname": "dado-rpg-8-lados"
+    },
+    {
+      "icon": "token",
+      "title": "Dado RPG 12 lados",
+      "id": "dadorpg12lados",
+      "template": "assets/templates/dadorpg12lados.svg",
+      "classname": "dado-rpg-12-lados"
+    },
+    {
+      "icon": "token",
+      "title": "Dado RPG 20 lados",
+      "id": "dadorpg20lados",
+      "template": "assets/templates/dadorpg20lados.svg",
+      "classname": "dado-rpg-20-lados"
+    },
+    {
+      "icon": "hourglass_empty",
+      "title": "Ampulheta",
+      "id": "ampulheta",
+      "template": "assets/templates/ampulheta.svg",
+      "classname": "ampulheta"
+    },
+    {
+      "icon": "flip_camera_android",
+      "title": "Roleta",
+      "id": "roleta",
+      "template": "assets/templates/roleta.svg",
+      "classname": "roleta"
+    },
+    {
+      "icon": "hdr_strong",
+      "title": "Marcador Botão P",
+      "id": "marcadorbotaop",
+      "template": "assets/templates/marcadorbotaop.svg",
+      "classname": "marcador-botao-p"
+    },
+    {
+      "icon": "hdr_strong",
+      "title": "Marcador Botão G",
+      "id": "marcadorbotaog",
+      "template": "assets/templates/marcadorbotaog.svg",
+      "classname": "marcador-botao-g"
+    },
+    {
+      "icon": "hdr_strong",
+      "title": "Marcador Cilindro",
+      "id": "marcadorcilindro",
+      "template": "assets/templates/marcadorcilindro.svg",
+      "classname": "marcador-cilindro"
+    },
+    {
+      "icon": "hdr_strong",
+      "title": "Marcador Cubo",
+      "id": "marcadorcubo",
+      "template": "assets/templates/marcadorcubo.svg",
+      "classname": "marcador-cubo"
+    },
+    {
+      "icon": "stars",
+      "title": "Fichas",
+      "id": "fichas",
+      "template": "assets/templates/fichas.svg",
+      "classname": "fichas"
+    },
+    {
+      "icon": "navigation",
+      "title": "Peão Cone",
+      "id": "peaocone",
+      "template": "assets/templates/peaocone.svg",
+      "classname": "peao-cone"
+    },
+    {
+      "icon": "navigation",
+      "title": "Peão Customizável",
+      "id": "peaocustomizavel",
+      "template": "assets/templates/peaocustomizavel.svg",
+      "classname": "peao-customizavel"
+    }
+  ]

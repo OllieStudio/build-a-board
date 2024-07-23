@@ -1,0 +1,95 @@
+.toolbox-nav{
+    width: 80px;
+    background: linear-gradient(to right, rgb(48, 47, 47), rgb(34, 33, 34));
+    height: 100vh;
+    padding: 40px 5px 10px 5px ;
+    z-index: 100;
+    position: fixed;
+}
+
+#router-container{
+    display: block;
+    width: 96%;
+    height: 100%;
+    overflow-x: hidden;
+    position: absolute;
+    margin-top: -277px;
+}
+
+#toolbox-drawer{
+    width: 380px;
+    background: linear-gradient(to left, rgb(48, 48, 48), rgb(24, 24, 24));
+    height: 100vh;
+    padding: 40px 5px 10px 5px;
+    top: 0;
+    z-index: 1;
+    position: relative;
+    transition-property: width;
+    transition-duration: 0.4s;
+    display: block;
+}
+
+.closed{
+    width: 80px!important;
+    left: 0vw!important;
+}
+
+
+.toolbox-nav li{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.toolbox-nav li:hover a{
+    color:white!important;
+}
+
+.toolbox-nav li a span{    
+     font-size: 10px;
+     width: 100%;
+     text-align: center;
+     display: block;
+}
+
+.toolbox-nav li a i{    
+     font-size: 32px;
+     width: 100%;
+     text-align: center;
+}
+
+.outlet{
+    transition-property: display;
+    transition-duration: 0.4s;
+}
+
+.BIeccA {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    height: 14px;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    margin-left: 332px;
+    margin-top: 31vh;
+    display: block;
+    transform: rotate(90deg);
+    transition-property: margin-left;
+    transition-duration: 0.4s;
+}
+
+
+.BIeccA i{
+    display: block;
+    margin-top: -17px;
+}
+
+.closed .BIeccA{
+    margin-left: 0!important;
+}
+
+.arrow{
+    margin-top: -30px;
+}

@@ -1,0 +1,14 @@
+.card-image{
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-content{
+    height: 180px;
+    overflow: hidden;
+}
+
+.session-title {
+    margin-bottom: 20px;
+    background-color:  rgba(255,255,255, 0.8);
+}

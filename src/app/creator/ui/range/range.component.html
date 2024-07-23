@@ -1,0 +1,14 @@
+<div class="col m5">
+ <p class="tiny left col m4 rangetitle pink-text" >De: {{deValue}}</p> 
+ <p class="range-field col m8">
+  <input type="range" (change)="updateDe($event)" value="0" value="{{deValue}}"  min="{{minDe}}" max="{{maxDe}}" step="{{tick}}"  />
+</p>
+</div>
+<div class="col m5">
+ <p class="tiny left col m4 rangetitle pink-text" >Até: {{ateValue}}</p>
+ <p class="range-field col m8">
+  <input type="range"  #ctrate (change)="updateAte($event)" value="{{ateValue}}" min="{{deValue || minAte}}" max="{{maxAte}}" step="{{tick}}"/>
+</p> 
+</div>
+
+

@@ -1,0 +1,22 @@
+{
+  "name": "@bit/ollieestudio.angularcomponents.sections",
+  "version": "0.0.4",
+  "homepage": "https://bit.dev/ollieestudio/angularcomponents/sections",
+  "main": "sections.module.ts",
+  "componentId": {
+    "scope": "ollieestudio.angularcomponents",
+    "name": "sections",
+    "version": "0.0.4"
+  },
+  "dependencies": {
+    "@angular/core": "~15.2.0",
+    "@angular/platform-browser": "~15.2.0",
+    "@angular/common": "~15.2.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE",
+  "bit": {
+    "env": {}
+  }
+}

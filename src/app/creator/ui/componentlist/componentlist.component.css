@@ -1,0 +1,14 @@
+.compNome{
+    font-size: 10px;
+    font-variant-caps: titling-caps;
+    line-height: 6px;
+}
+
+.divider{
+    border-top: 1px dashed rgb(228, 65, 92);
+}
+
+.item .responsive-img{
+    width: 130px!important;
+    margin: 0 auto;
+}

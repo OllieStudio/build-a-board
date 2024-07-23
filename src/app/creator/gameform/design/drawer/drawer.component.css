@@ -1,0 +1,40 @@
+.design-drawer{
+    width: 95%;
+    height: 200px;
+    display: block;
+    line-height: 95px;
+    
+    position: absolute;
+    background: linear-gradient(to top, rgb(255, 255, 255), rgb(223, 223, 223));
+    border-radius: 10px 0px 0px 0px;
+    bottom : 25px;
+    transition-property: bottom;
+    transition-duration: 0.7s;
+}
+
+.opened{
+    bottom: 145px!important;
+}
+
+
+
+
+.BIeccA {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    height: 14px;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    margin-left: 48vw;
+    margin-top: -13px;
+    display: block;
+}
+
+.arrow{
+    margin-top: -21px;
+    margin-left: 0;
+    display: block;
+}
+

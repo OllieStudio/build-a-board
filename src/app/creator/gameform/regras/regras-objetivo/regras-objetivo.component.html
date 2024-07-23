@@ -1,0 +1,17 @@
+<form [formGroup]="regrasFormGroup">
+  <h3 class="title  purple-text">Objetivo</h3>
+      <div class="container">
+        <div class="row">
+          <h3>Qual é o objetivo do jogo?</h3>
+          <div class="col m12">
+            <ngx-wig formControlName="objetivo" [placeholder]="'Descreva o objetivo aqui.'"
+              class="col m12 top-3" >
+            </ngx-wig>
+          </div>
+        </div>
+
+        <div class="row">
+          <button (click)="registerForm()" [disabled]="regrasFormGroup.invalid" class="btn green right next-step">próximo</button>
+        </div>
+      </div>
+</form>

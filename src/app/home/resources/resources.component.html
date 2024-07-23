@@ -1,0 +1,19 @@
+<div id="resources" class="row purple white-text">
+  <h3 class="session-title center top-10">Recursos</h3>
+  <div class="section">
+    <div class="row">
+      <div class="col s12 m4 block" *ngFor="let block of section.blocks">
+        <div class="icon-block">
+          <h2 class="center customcolor2">
+            <h2 class="center"><i class="large center customcolor2 material-icons" aria-hidden="true">{{block.icon}}</i>
+            </h2>
+          </h2>
+          <h5 [style.font-family]="website?.font?.family" [style.font-family]="website?.font?.family" class="center">
+            {{block.title}}</h5>
+
+          <p class="light justify">{{block.text}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
