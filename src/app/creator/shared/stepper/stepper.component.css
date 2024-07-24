@@ -1,0 +1,12 @@
+
+.stepper{
+    height: 64vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: initial;
+}
+
+.step{
+  height: 5vh;
+}

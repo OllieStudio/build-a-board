@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Creepster|Eater|Fascinate+Inline|Faster+One|Fontdiner+Swanky|Freckle+Face|Germania+One|Luckiest+Guy|Mystery+Quest|Nosifer|Rye|UnifrakturMaguntia|Wallpoet');
 @import url('https://fonts.googleapis.com/css?family=Barlow+Condensed|Roboto:300|Yanone+Kaffeesatz:300&display=swap');
+@import url('./css/auxiliar.css');
 
 /* font-family: 'Germania One', cursive;
 font-family: 'Luckiest Guy', cursive;
@@ -28,6 +29,15 @@ body {
 
 body {
   background: url("/assets/img/icons-lt.png");
+}
+
+.next-step{
+    position: fixed;
+    right: 2vw;
+    bottom: 10vh;
+    border-radius: 60px!important;
+    min-width: 140px;
+    height: 53px;
 }
 
 .step-content{
@@ -117,6 +127,7 @@ label{
   font-family: 'Barlow Condensed', cursive!important;
     font-size: 20px;
     margin:0px;
+    background: none!important;
 }
 
 .section{

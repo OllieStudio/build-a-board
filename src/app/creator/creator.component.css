@@ -3,7 +3,8 @@
     top: 0;
     left: 0;
     width: 100vw;
-    min-height: 120vh;
     padding-top: 64px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.95);
+    height: 100vh;
+    overflow-y: auto ;
     }

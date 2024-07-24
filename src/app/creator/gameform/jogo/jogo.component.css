@@ -22,7 +22,6 @@ textarea{
 #jogomain{
     margin-left: 6vw;
     margin-right: 6vw;
-    height: 90vh;
+    height: auto;
     display: block;
-    overflow: auto;
 }
