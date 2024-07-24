@@ -18,6 +18,12 @@
 .top-5 {
     margin-top: 5vh!important;
 }
+.top-6 {
+    margin-top: 6vh!important;
+}
+.top-7 {
+    margin-top: 7vh!important;
+}
 
 .top-8 {
     margin-top: 8vh!important;
@@ -79,6 +85,10 @@
     margin-left: 15vw!important;
 }
 
+.left-20 {
+    margin-left: 20vw!important;
+}
+
 .right-1 {
     margin-right: 1vw!important;
 }
@@ -103,6 +113,10 @@
     display: flex!important;
     justify-content: center!important;
     align-items: center!important;
+  }
+
+  .fixed{
+    position:fixed;
   }
 
   .ptop-1 {

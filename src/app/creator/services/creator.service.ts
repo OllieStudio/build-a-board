@@ -41,7 +41,7 @@ export interface ElementSnapshot {
 
 export class CreatorUIService implements OnInit {
   public zoomValue:number = 100;
-  public message: string = "Hello World!";
+  public message: string = "";
   public closeToolbox: boolean = true;
   public componentesData: Componente[] = [];
   public game:Jogo;
