@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
+import { Modifier } from 'src/app/services/interfaces/componente';
 
 @Component({
   selector: 'app-modifier',
@@ -10,9 +11,13 @@ import { CreatorUIService } from 'src/app/creator/services/creator.service';
   styleUrls: ['./modifier.component.css']
 })
 export class ModifierComponent {
-  @Input() modifier:any;
+  @Input() modifier:Modifier;
+  show: boolean = false;
   
   constructor(public creator:CreatorUIService){
+  }
 
+  toggle(){
+    this.show = !this.show;
   }
 }

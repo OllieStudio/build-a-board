@@ -24,6 +24,8 @@
     "@angular/pwa": "^15.2.6",
     "@angular/router": "~15.2.8",
     "@angular/service-worker": "~15.2.8",
+    "@bit/ollieestudio.angularcomponents.crm.banners": "file:./components/crm/banners",
+    "@bit/ollieestudio.angularcomponents.sections": "file:./components/sections",
     "@ckeditor/ckeditor5-angular": "^6.0.1",
     "@nicky-lenaers/ngx-scroll-to": "^14.0.0",
     "@ollieestudio/fire-lib": "^5.2.3",
@@ -42,9 +44,7 @@
     "rxjs": "~7.8.0",
     "three": "^0.151.3",
     "three-orbitcontrols-ts": "^0.1.2",
-    "zone.js": "~0.13.0",
-    "@bit/ollieestudio.angularcomponents.crm.banners": "file:./components/crm/banners",
-    "@bit/ollieestudio.angularcomponents.sections": "file:./components/sections"
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~15.2.6",

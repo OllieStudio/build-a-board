@@ -1,16 +1,16 @@
 <div class="modifier">
-    <div class="row">
-        <div class="col m10 modifier-title">
+    <div class="row modifier-header bottom-1">
+        <div class="col m10 modifier-title bottom-0">
             {{modifier.title}}
         </div>
         <div class="col m2">
-            <i class="material-icons"> arrow_up</i>
-        </div>
-        <div class="col s12 modifier-descr">
-            {{modifier.description}}
+            <i class="material-icons white-text link" *ngIf="!show" (click)="toggle()"> expand_more</i>
+            <i class="material-icons white-text link" *ngIf="show" (click)="toggle()"> expand_less</i>
         </div>
     </div>
-    <div class="row">
-
+    <div class="row modifier-content top-0" [hidden]="!show">
+        <div class="col s12 modifier-descr bottom-0 top-0">
+            {{modifier.description}}
+        </div>
     </div>
 </div>

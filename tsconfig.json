@@ -16,6 +16,9 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "types": [
+      "ckeditor__ckeditor5-build-classic"
+    ],
     "lib": [
       "es2018",
       "dom"
