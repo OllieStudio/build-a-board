@@ -7,24 +7,28 @@
       "classname": "tabuleiro-quadrado",
       "type": "SVG",
       "modifiers":[
-        {"type": "size",
-        "title":"Tamanho",
-        "description":"Selecione o tamanho do seu tabuleiro",
-          "options": [
-            "20x20",
-            "30x30",
-            "45x45"
+        {
+          "type": "radio",
+          "property": "size",
+          "title":"Tamanho",
+          "description":"Selecione o tamanho do seu tabuleiro",
+            "options": [
+              "20x20",
+              "30x30",
+              "45x45"
           ]  
         },
         {
-          "type":"background",
+          "type":"image",
+          "property":"background",
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
           "options":["upload", "image-prompt"],
           "image-prompt":"generate a square background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
         },
         {
-          "type":"track",
+          "type":"image",
+          "property":"track",
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
           "options":["upload", "image-prompt", "svg-prompt"],
@@ -32,7 +36,8 @@
          "svg-prompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
         },
         {
-          "type":"material",
+          "type":"radio",
+          "property":"material",
           "title":"Material",
           "options":["paper", "leather"]
         }
@@ -46,24 +51,28 @@
       "classname": "tabuleiro-retangular",
       "type": "SVG",
       "modifiers":[
-        {"type": "size",
-        "title":"Tamanho",
-        "description":"Selecione o tamanho do seu tabuleiro",
-          "options": [
-            "30x20",
-            "45x30",
-            "60x45"
-          ]  
+        {
+          "type": "radio",
+          "property": "size",
+          "title":"Tamanho",
+          "description":"Selecione o tamanho do seu tabuleiro",
+            "options": [
+              "30x20",
+              "45x30",
+              "60x45"
+            ]  
         },
         {
-          "type":"background",
+          "type":"image",
+          "property":"background",
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
           "options":["upload", "image-prompt"],
           "image-prompt":"generate a rectangular background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
         },
         {
-          "type":"track",
+          "type":"image",
+          "property":"track",
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
           "options":["upload", "image-prompt", "svg-prompt"],
@@ -71,7 +80,8 @@
           "svg-prompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
         },
         {
-          "type":"material",
+          "type":"radio",
+          "property":"material",
           "title":"Material",
           "options":["paper", "leather"]
         }
@@ -85,24 +95,28 @@
       "classname": "tabuleiro-hexagonal",
       "type": "SVG",
       "modifiers":[
-        {"type": "size",
-        "title":"Tamanho",
-        "description":"Selecione o tamanho do seu tabuleiro",
-          "options": [
-            "30x30",
-            "45x45",
-            "60x60"
-          ]  
+        {
+          "type": "radio",
+          "property": "size",
+          "title":"Tamanho",
+          "description":"Selecione o tamanho do seu tabuleiro",
+            "options": [
+              "30x30",
+              "45x45",
+              "60x60"
+            ]  
         },
         {
-          "type":"background",
+          "type":"image",
+          "property":"background",
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
           "options":["upload", "image-prompt"],
           "image-prompt":"generate a hexagonal background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
         },
         {
-          "type":"track",
+          "type":"image",
+          "property":"track",
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
           "options":["upload", "image-prompt", "svg-prompt"],
@@ -110,7 +124,8 @@
          "svg-prompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
         },
         {
-          "type":"material",
+          "type":"radio",
+          "property":"material",
           "title":"Material",
           "options":["paper", "leather"]
         }
