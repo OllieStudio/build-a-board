@@ -1,0 +1,9 @@
+.modifiers-panel{
+    position: fixed;
+    top:20vh;
+    right: 2vw;
+    background-color: blueviolet;
+    width: 20vw;
+    min-height: 10vh;
+    height: auto;
+}

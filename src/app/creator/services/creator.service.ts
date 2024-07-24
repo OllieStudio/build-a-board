@@ -1,6 +1,6 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Injectable, OnInit } from '@angular/core';
-import { Componente } from '../../services/interfaces/componente';
+import { EventEmitter, Injectable, OnInit } from '@angular/core';
+import { Componente, Modifier } from '../../services/interfaces/componente';
 import componentes_data from '../data/componentes.json';
 import { Jogo } from '../../services/interfaces/jogo';
 import { GameDataService } from './gamedata.service';
@@ -46,11 +46,12 @@ export class CreatorUIService implements OnInit {
   public componentesData: Componente[] = [];
   public game:Jogo;
   hasItemLoaded: boolean;
+  modifiers: EventEmitter<Modifier[]> = new EventEmitter();
 
   constructor(private gamedataservice:GameDataService, private history:HistoryService) {
     this.componentesData  = componentes_data;
     this.game = this.gamedataservice.game;
-    console.log(this.componentesData)
+    //console.log(this.componentesData)
    }
 
   ngOnInit(): void {
@@ -77,7 +78,12 @@ export class CreatorUIService implements OnInit {
     this.closeToolBox();
     this.hasItemLoaded = true;
     
-    this.placeSvgInDiv(item.template, 'editableObject')
+    this.placeSvgInDiv(item.template, 'editableObject');
+    this.setModifiers(item.modifiers);
+  }
+
+  setModifiers(modifiers:Modifier[]) {
+    this.modifiers.emit(modifiers);
   }
 
   placeSvgInDiv(svgFileUrl: string, divElementId: string): void {

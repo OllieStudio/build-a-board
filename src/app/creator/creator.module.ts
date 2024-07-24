@@ -50,6 +50,7 @@ import { ComponentsComponent } from './gameform/design/components/components.com
 import { SearchbarComponent } from './shared/searchbar/searchbar.component';
 import { ZoomComponent } from './ui/zoom/zoom.component';
 import { HistoryService } from './services/history.service';
+import { ModifiersPanelComponent } from './gameform/design/modifiers/modifiers-panel/modifiers-panel.component';
 
 
 
@@ -92,7 +93,8 @@ import { HistoryService } from './services/history.service';
     MenuComponent,
     ComponentsComponent,
     SearchbarComponent,
-    ZoomComponent
+    ZoomComponent,
+    
   ],
   exports:[
     CreatorComponent
@@ -108,7 +110,8 @@ import { HistoryService } from './services/history.service';
     FileuploadModule,
     ToolboxModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    ModifiersPanelComponent
   ],
   providers:  [ AuthService, FormService, DatabaseService, HistoryService,
     HttpClient,  DatePipe, AngularFirestoreModule],

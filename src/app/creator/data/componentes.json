@@ -4,21 +4,117 @@
       "title": "Tabuleiro Quadrado",
       "id": "tabuleiroquadrado",
       "template": "<svg viewBox='0 0 500 500' width='500' height='500'><defs></defs><rect style='stroke: rgb(0, 0, 0); fill: rgb(123, 120, 120);' x='38.528' y='47.945' width='450' height='450' rx='5' ry='5'></rect><rect x='47.945' y='57.363' width='430' height='430' style='fill: rgb(216, 216, 216);'></rect></svg>",
-      "classname": "tabuleiro-quadrado"
+      "classname": "tabuleiro-quadrado",
+      "type": "SVG",
+      "modifiers":[
+        {"type": "size",
+        "title":"Tamanho",
+        "description":"Selecione o tamanho do seu tabuleiro",
+          "options": [
+            "20x20",
+            "30x30",
+            "45x45"
+          ]  
+        },
+        {
+          "type":"background",
+          "title":"Fundo",
+          "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
+          "options":["upload", "image-prompt"],
+          "image-prompt":"generate a square background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
+        },
+        {
+          "type":"track",
+          "title":"Trilha",
+          "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
+          "options":["upload", "image-prompt", "svg-prompt"],
+          "image-prompt":"generate a square image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
+         "svg-prompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
+        },
+        {
+          "type":"material",
+          "title":"Material",
+          "options":["paper", "leather"]
+        }
+      ]
     },
     {
       "icon": "aspect_ratio",
       "title": "Tabuleiro Retangular",
       "id": "tabuleiroretangular",
       "template": "<svg viewBox='0 0 800 500' width='800' height='500'><defs></defs><rect style='stroke: rgb(0, 0, 0); fill: rgb(123, 120, 120);' x='38.528' y='47.945' width='700' height='450' rx='5' ry='5'></rect><rect x='47.945' y='57.363' width='680' height='430' style='fill: rgb(216, 216, 216);'></rect></svg>",
-      "classname": "tabuleiro-retangular"
+      "classname": "tabuleiro-retangular",
+      "type": "SVG",
+      "modifiers":[
+        {"type": "size",
+        "title":"Tamanho",
+        "description":"Selecione o tamanho do seu tabuleiro",
+          "options": [
+            "30x20",
+            "45x30",
+            "60x45"
+          ]  
+        },
+        {
+          "type":"background",
+          "title":"Fundo",
+          "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
+          "options":["upload", "image-prompt"],
+          "image-prompt":"generate a rectangular background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
+        },
+        {
+          "type":"track",
+          "title":"Trilha",
+          "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
+          "options":["upload", "image-prompt", "svg-prompt"],
+          "image-prompt":"generate a rectangular image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
+          "svg-prompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
+        },
+        {
+          "type":"material",
+          "title":"Material",
+          "options":["paper", "leather"]
+        }
+      ]
     },
     {
       "icon": "hexagon",
       "title": "Tabuleiro Hexagonal",
       "id": "tabuleirohexagonal",
       "template": "<svg viewBox='0 0 500 500' width='600' height='600'><defs></defs><path d='M 234.982 53.595 Q 240.154 50.609 245.326 53.595 L 407.372 147.152 Q 412.543 150.138 412.543 156.11 L 412.543 343.224 Q 412.543 349.196 407.372 352.182 L 245.326 445.739 Q 240.154 448.725 234.982 445.739 L 72.936 352.182 Q 67.765 349.196 67.765 343.224 L 67.765 156.11 Q 67.765 150.138 72.936 147.152 Z' style='fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 2px;' bx:shape='n-gon 240.154 249.667 199.058 199.058 6 0.03 1@330bc4b8'></path></svg>",
-      "classname": "tabuleiro-hexagonal"
+      "classname": "tabuleiro-hexagonal",
+      "type": "SVG",
+      "modifiers":[
+        {"type": "size",
+        "title":"Tamanho",
+        "description":"Selecione o tamanho do seu tabuleiro",
+          "options": [
+            "30x30",
+            "45x45",
+            "60x60"
+          ]  
+        },
+        {
+          "type":"background",
+          "title":"Fundo",
+          "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
+          "options":["upload", "image-prompt"],
+          "image-prompt":"generate a hexagonal background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
+        },
+        {
+          "type":"track",
+          "title":"Trilha",
+          "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
+          "options":["upload", "image-prompt", "svg-prompt"],
+          "image-prompt":"generate a hexagonal image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
+         "svg-prompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
+        },
+        {
+          "type":"material",
+          "title":"Material",
+          "options":["paper", "leather"]
+        }
+      ]
     },
     {
       "icon": "style",

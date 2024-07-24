@@ -1,0 +1,6 @@
+
+<ul [id]="modifiers" class="modifiers-panel">
+    <li class="step" *ngFor="let modifier of modifiers; index as i">
+      <app-modifier [modifier]="modifier"></app-modifier>
+    </li>
+  </ul>
