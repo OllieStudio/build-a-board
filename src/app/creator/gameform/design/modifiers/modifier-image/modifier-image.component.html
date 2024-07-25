@@ -1,0 +1,14 @@
+  <div class="top-1">
+    <button *ngFor="let tab of modifier.options" [ngClass]="{'active': activeTab == tab}"  (click)="setActiveTab(tab)">{{tab}}</button>
+  </div>
+  
+  <div class="row bottom-0 top-2" [hidden]="activeTab != 'upload'">
+      <app-fileupload [accepts]="'img'" [label]="''" [path]="path"></app-fileupload>
+  </div>
+  <div class="row bottom-0 top-2" [hidden]="activeTab != 'imageprompt'">
+    <app-prompt-input [path]="path" [prompt]="modifier.imageprompt"></app-prompt-input>
+  </div>
+  <div class="row bottom-0 top-2"  [hidden]="activeTab != 'svgprompt'">
+    <app-prompt-input [path]="path" [prompt]="modifier.svgprompt"></app-prompt-input>
+  </div>
+  

@@ -23,17 +23,17 @@
           "property":"background",
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
-          "options":["upload", "image-prompt"],
-          "image-prompt":"generate a square background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
+          "options":["upload", "imageprompt"],
+          "imageprompt":"generate a square background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
         },
         {
           "type":"image",
           "property":"track",
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
-          "options":["upload", "image-prompt", "svg-prompt"],
-          "image-prompt":"generate a square image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
-         "svg-prompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
+          "options":["upload", "imageprompt", "svgprompt"],
+          "imageprompt":"generate a square image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
+         "svgprompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
         },
         {
           "type":"radio",
@@ -67,17 +67,17 @@
           "property":"background",
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
-          "options":["upload", "image-prompt"],
-          "image-prompt":"generate a rectangular background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
+          "options":["upload", "imageprompt"],
+          "imageprompt":"generate a rectangular background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
         },
         {
           "type":"image",
           "property":"track",
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
-          "options":["upload", "image-prompt", "svg-prompt"],
-          "image-prompt":"generate a rectangular image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
-          "svg-prompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
+          "options":["upload", "imageprompt", "svgprompt"],
+          "imageprompt":"generate a rectangular image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
+          "svgprompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
         },
         {
           "type":"radio",
@@ -111,17 +111,17 @@
           "property":"background",
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
-          "options":["upload", "image-prompt"],
-          "image-prompt":"generate a hexagonal background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
+          "options":["upload", "imageprompt"],
+          "imageprompt":"generate a hexagonal background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
         },
         {
           "type":"image",
           "property":"track",
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
-          "options":["upload", "image-prompt", "svg-prompt"],
-          "image-prompt":"generate a hexagonal image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
-         "svg-prompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
+          "options":["upload", "imageprompt", "svgprompt"],
+          "imageprompt":"generate a hexagonal image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
+          "svgprompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
         },
         {
           "type":"radio",

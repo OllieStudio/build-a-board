@@ -1,0 +1,8 @@
+<form >
+    <p *ngFor="let option of modifier.options">
+      <label>
+        <input name="{{modifier.property}}" value="{{option}}" type="radio" />
+        <span>{{option}}</span>
+      </label>
+    </p>
+  </form>

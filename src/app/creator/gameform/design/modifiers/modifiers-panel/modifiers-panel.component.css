@@ -1,11 +1,15 @@
 .modifiers-panel{
     position: fixed;
-    top:20vh;
+    top: 15vh;
     right: 2vw;
     width: 20vw;
     min-height: 10vh;
-    height: auto;
+    max-height: 80vh;
     display: flex;
     flex-direction: column;
     gap: 6px;
+    z-index: 2;
+    overflow-y: auto;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }

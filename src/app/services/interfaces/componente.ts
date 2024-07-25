@@ -13,10 +13,12 @@ export interface Componente {
 
 
 export interface Modifier {
+  component?: any;
+  property: any;
   type: string;
   title: string;
   description?: string;
   options: string[];
-  'image-prompt'?: string;
-  'svg-prompt'?: string;
+  imageprompt?: string;
+  svgprompt?: string;
 }

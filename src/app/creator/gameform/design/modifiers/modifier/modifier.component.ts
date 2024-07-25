@@ -2,11 +2,13 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
 import { Modifier } from 'src/app/services/interfaces/componente';
+import { ModifierRadioComponent } from '../modifier-radio/modifier-radio.component';
+import { ModifierImageComponent } from '../modifier-image/modifier-image.component';
 
 @Component({
   selector: 'app-modifier',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ModifierRadioComponent, ModifierImageComponent],
   templateUrl: './modifier.component.html',
   styleUrls: ['./modifier.component.css']
 })

@@ -79,11 +79,15 @@ export class CreatorUIService implements OnInit {
     this.hasItemLoaded = true;
     
     this.placeSvgInDiv(item.template, 'editableObject');
-    this.setModifiers(item.modifiers);
+    this.setModifiers(item);
   }
 
-  setModifiers(modifiers:Modifier[]) {
-    this.modifiers.emit(modifiers);
+  setModifiers(component:Componente) {
+    component.modifiers.forEach(element => {
+      element.component = component.id;
+    });
+    
+    this.modifiers.emit(component.modifiers);
   }
 
   placeSvgInDiv(svgFileUrl: string, divElementId: string): void {

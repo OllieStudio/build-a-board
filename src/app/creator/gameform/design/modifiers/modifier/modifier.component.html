@@ -1,5 +1,5 @@
-<div class="modifier">
-    <div class="row modifier-header bottom-1">
+<div class="modifier bottom-0">
+    <div class="row modifier-header bottom-0">
         <div class="col m10 modifier-title bottom-0">
             {{modifier.title}}
         </div>
@@ -8,10 +8,12 @@
             <i class="material-icons white-text link" *ngIf="show" (click)="toggle()"> expand_less</i>
         </div>
     </div>
-    <div class="row modifier-content top-0" [hidden]="!show">
-        <div class="col s12 modifier-descr bottom-0 top-0">
+    <div class="row modifier-content top-1 bottom-0" [hidden]="!show">
+        <div class="col s12 modifier-descr bottom-1 top-0">
             {{modifier.description}}
         </div>
        
+        <app-modifier-radio *ngIf="modifier.type == 'radio'" [modifier]="modifier"></app-modifier-radio>
+        <app-modifier-image *ngIf="modifier.type == 'image'" [modifier]="modifier"></app-modifier-image>
     </div>
 </div>
