@@ -123,6 +123,31 @@ export class CreatorUIService implements OnInit {
   updateItemModifier(modifier:Modifier, value:any){
     this.currentComponent[modifier.property] = value;
     this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
+    switch (modifier.property) {
+      case 'background': this.setComponentBackground(value);
+        break;
+      // case 'track': this.setComponentColor(value);
+      //   break;
+      // case 'color': this.setComponentColor(value);
+      //   break;
+      // case 'font': this.setComponentFont(value);
+      //   break;
+      // case 'fontsize': this.setComponentFontSize(value);
+      //   break;
+      // case 'text': this.setComponentText(value)
+      //   break;
+    
+      default:
+        break;
+    }
+  }
+  
+  setComponentBackground(value: any) {
+    const divElement = document.getElementById('editableObject');
+    if (divElement) {
+      const object = divElement.childNodes[0] as HTMLElement;
+      object.style.background = `url(${value}) center / cover no-repeat`;
+    }
   }
 
   saveItem(){

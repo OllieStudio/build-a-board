@@ -3,7 +3,7 @@
       "icon": "pages",
       "title": "Tabuleiro Quadrado",
       "id": "tabuleiroquadrado",
-      "template": "<svg viewBox='0 0 500 500' width='500' height='500'><defs></defs><rect style='stroke: rgb(0, 0, 0); fill: rgb(123, 120, 120);' x='38.528' y='47.945' width='450' height='450' rx='5' ry='5'></rect><rect x='47.945' y='57.363' width='430' height='430' style='fill: rgb(216, 216, 216);'></rect></svg>",
+      "template": "<svg viewBox='0 0 500 500' width='500' height='500' style='background:#FFF'><defs></defs><rect style='stroke: rgb(0, 0, 0); fill: none;' x='0' y='0' width='500' height='500' rx='5' ry='5'></rect></svg>",
       "classname": "tabuleiro-quadrado",
       "type": "SVG",
       "modifiers":[
@@ -47,7 +47,7 @@
       "icon": "aspect_ratio",
       "title": "Tabuleiro Retangular",
       "id": "tabuleiroretangular",
-      "template": "<svg viewBox='0 0 800 500' width='800' height='500'><defs></defs><rect style='stroke: rgb(0, 0, 0); fill: rgb(123, 120, 120);' x='38.528' y='47.945' width='700' height='450' rx='5' ry='5'></rect><rect x='47.945' y='57.363' width='680' height='430' style='fill: rgb(216, 216, 216);'></rect></svg>",
+      "template": "<svg viewBox='0 0 800 500' width='800' height='500' style='background:#FFF'><defs></defs><rect style='stroke: rgb(0, 0, 0); fill: none;' x='0' y='0' width='800' height='500' rx='5' ry='5'></rect></svg>",
       "classname": "tabuleiro-retangular",
       "type": "SVG",
       "modifiers":[
