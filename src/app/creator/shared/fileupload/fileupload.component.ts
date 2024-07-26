@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { StorageService } from '@ollieestudio/fire-lib';
 
@@ -19,6 +19,8 @@ export class FileuploadComponent implements ControlValueAccessor, OnInit {
 @Input() label:string;
 @Input() accepts:string;
 @Input() path: any;
+@Output() valueChange:EventEmitter<any> = new EventEmitter();
+
 onChange: any = () => {};
 onTouch: any = () => {};
 public _value: any;
@@ -98,6 +100,7 @@ fileChanged(event){
     await this.storage.uploadPDF(file, this.path).then(result => {
       this._value = result;
       this.onChange(result);
+      this.valueChange.emit(result);
       this.hideSpinner = true;
     })
   }
@@ -106,6 +109,7 @@ fileChanged(event){
     await this.storage.uploadImage(file, this.path).then(result => {
       this._value = result;
       this.onChange(result);
+      this.valueChange.emit(result);
       this.hideSpinner = true;
     });
   }

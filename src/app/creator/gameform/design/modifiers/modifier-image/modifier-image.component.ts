@@ -4,6 +4,7 @@ import { Modifier } from 'src/app/services/interfaces/componente';
 import { GameDataService } from 'src/app/creator/services/gamedata.service';
 import { FileuploadModule } from 'src/app/creator/shared/fileupload/fileupload.module';
 import { PromptInputComponent } from 'src/app/creator/shared/prompt-input/prompt-input.component';
+import { CreatorUIService } from 'src/app/creator/services/creator.service';
 
 @Component({
   selector: 'app-modifier-image',
@@ -15,7 +16,7 @@ import { PromptInputComponent } from 'src/app/creator/shared/prompt-input/prompt
 export class ModifierImageComponent {
   @Input() modifier:Modifier = {} as Modifier;
 
-  constructor(private gamedataservice:GameDataService){
+  constructor(private gamedataservice:GameDataService, private creator: CreatorUIService){
 
   }
   
@@ -24,5 +25,9 @@ export class ModifierImageComponent {
 
   setActiveTab(tab: string) {
     this.activeTab = tab;
+  }
+
+  onValueChange(event: any) {
+    this.creator.updateItemModifier(this.modifier, event)
   }
 }

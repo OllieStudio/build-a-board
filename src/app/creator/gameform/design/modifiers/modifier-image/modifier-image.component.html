@@ -3,7 +3,7 @@
   </div>
   
   <div class="row bottom-0 top-2" [hidden]="activeTab != 'upload'">
-      <app-fileupload [accepts]="'img'" [label]="''" [path]="path"></app-fileupload>
+      <app-fileupload (valueChange)="onValueChange($event)" [accepts]="'img'" [label]="''" [path]="path"></app-fileupload>
   </div>
   <div class="row bottom-0 top-2" [hidden]="activeTab != 'imageprompt'">
     <app-prompt-input [path]="path" [prompt]="modifier.imageprompt"></app-prompt-input>

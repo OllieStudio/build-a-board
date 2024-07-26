@@ -1,11 +1,11 @@
 <div class="modifier bottom-0">
-    <div class="row modifier-header bottom-0">
+    <div class="row modifier-header bottom-0" (click)="toggle()">
         <div class="col m10 modifier-title bottom-0">
             {{modifier.title}}
         </div>
         <div class="col m2">
-            <i class="material-icons white-text link" *ngIf="!show" (click)="toggle()"> expand_more</i>
-            <i class="material-icons white-text link" *ngIf="show" (click)="toggle()"> expand_less</i>
+            <i class="material-icons white-text link" *ngIf="!show" > expand_more</i>
+            <i class="material-icons white-text link" *ngIf="show" > expand_less</i>
         </div>
     </div>
     <div class="row modifier-content top-1 bottom-0" [hidden]="!show">

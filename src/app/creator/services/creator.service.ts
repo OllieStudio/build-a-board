@@ -47,6 +47,7 @@ export class CreatorUIService implements OnInit {
   public game:Jogo;
   hasItemLoaded: boolean;
   modifiers: EventEmitter<Modifier[]> = new EventEmitter();
+  currentComponent: Componente;
 
   constructor(private gamedataservice:GameDataService, private history:HistoryService) {
     this.componentesData  = componentes_data;
@@ -83,10 +84,7 @@ export class CreatorUIService implements OnInit {
   }
 
   setModifiers(component:Componente) {
-    component.modifiers.forEach(element => {
-      element.component = component.id;
-    });
-    
+    this.currentComponent = component;
     this.modifiers.emit(component.modifiers);
   }
 
@@ -118,10 +116,16 @@ export class CreatorUIService implements OnInit {
   }
 
   nameChange(nameValue:string){
-    
+    this.currentComponent['name'] = nameValue;
+    this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
+  }
+
+  updateItemModifier(modifier:Modifier, value:any){
+    this.currentComponent[modifier.property] = value;
+    this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
   }
 
   saveItem(){
-
+    
   }
 }

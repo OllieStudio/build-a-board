@@ -1,7 +1,9 @@
 <form >
     <p *ngFor="let option of modifier.options">
       <label>
-        <input name="{{modifier.property}}" value="{{option}}" type="radio" />
+        <input name="{{modifier.property}}" value="{{option}}" type="radio" 
+        (ngModelChange)="onOptionChange($event)"
+        [(ngModel)]="selectedOption"/>
         <span>{{option}}</span>
       </label>
     </p>
