@@ -2,7 +2,7 @@
     position: relative;
     height: 100px;
     width:  100px;
-    padding:2px;
+    padding:0 2px 0 2px;
 }
 .preview-content{
     height: 84px;
@@ -12,8 +12,7 @@
 }
 .preview-container .tools-container{
     position: absolute;
-    bottom: 0px;
-    background: rgba(0, 0, 0, 0.4);
+    bottom: -1px;
 }
 
 .tools-container i{
