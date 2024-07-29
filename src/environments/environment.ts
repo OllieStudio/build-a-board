@@ -15,7 +15,8 @@ export const environment = {
     measurementId: "G-9YT2R839SP"
   },
   termsofservice:"https://mypage.html",
-  privacypolicy:"https://mypage.html"
+  privacypolicy:"https://mypage.html",
+  GEMINI_API_KEY: 'AIzaSyBVFQwZ14WwRrMQvhblhITdaXV3cec1IyI'
 };
 
 /*

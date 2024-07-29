@@ -51,6 +51,7 @@ import { ZoomComponent } from './ui/zoom/zoom.component';
 import { HistoryService } from './services/history.service';
 import { ModifiersPanelComponent } from './gameform/design/modifiers/modifiers-panel/modifiers-panel.component';
 import { UploadsComponent } from './gameform/design/uploads/uploads.component';
+import { AiButtonComponent } from './shared/ai-button/ai-button.component';
 
 
 
@@ -112,7 +113,8 @@ import { UploadsComponent } from './gameform/design/uploads/uploads.component';
     FormsModule,
     DragDropModule,
     ModifiersPanelComponent,
-    UploadsComponent
+    UploadsComponent,
+    AiButtonComponent
   ],
   providers:  [ AuthService, FormService, DatabaseService, HistoryService,
     HttpClient,  DatePipe, AngularFirestoreModule],

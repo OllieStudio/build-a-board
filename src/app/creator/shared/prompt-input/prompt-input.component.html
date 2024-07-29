@@ -1,7 +1,6 @@
 <div class="input-field col m12 top-0 bottom-0">
-    <textarea style="height: 40px;" name="prompt" id="prompt" class="prompt-input browser-default top-0 bottom-0" formControlName="prompt"></textarea>
+    <textarea #prompt style="height: 40px;" name="prompt" id="prompt" class="prompt-input browser-default top-0 bottom-0" formControlName="prompt"></textarea>
 </div>
 <div class="col m12">
-    <a  class="btn generate-btn valign-wrapper"> <i class="material-symbols-outlined top-0 bottom-0 valign">bolt</i> 
-        <span class="valign">gerar com IA</span></a>
+    <app-ai-button label="gerar com IA" (click)="generate(prompt.value)"></app-ai-button>
 </div>

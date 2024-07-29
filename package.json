@@ -28,6 +28,7 @@
     "@bit/ollieestudio.angularcomponents.sections": "file:./components/sections",
     "@ckeditor/ckeditor5-angular": "^6.0.1",
     "@ckeditor/ckeditor5-build-classic": "^42.0.2",
+    "@google/generative-ai": "^0.16.0",
     "@nicky-lenaers/ngx-scroll-to": "^14.0.0",
     "@ollieestudio/fire-lib": "^5.2.3",
     "@types/three": "^0.150.2",

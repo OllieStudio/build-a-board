@@ -1,21 +1,21 @@
 button {
-    margin-right: 10px;
-    padding: 4px 8px;
-    border: 1px solid #CCC;
-    background-color: #3c3d3e;
-    color: white;
-    cursor: pointer;
-    font-size: 10px;
-    border-radius: 18px;
-  }
-  
-  button:hover {
-    background-color: #606061;
-  }
-  
-  button.active {
-    background-color: #7d1cec;
-  }
+  margin-right: 10px;
+  padding: 4px 8px;
+  border: 1px solid #CCC;
+  background-color: #3c3d3e;
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  border-radius: 18px;
+}
+
+button:hover {
+  background-color: #606061;
+}
+
+button.active {
+  background-color: #7d1cec;
+}
   
   div {
     margin-top: 20px;

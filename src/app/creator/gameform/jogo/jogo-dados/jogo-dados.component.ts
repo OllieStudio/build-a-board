@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormService, InputBase, MaterializeService } from '@ollieestudio/fire-lib';
 import { GameDataService } from '../../../services/gamedata.service';
+import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
 
 @Component({
   selector: 'app-jogo-dados',
@@ -18,7 +19,7 @@ export class JogoDadosComponent implements OnInit {
     
   ]
   
-  constructor(public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
+  constructor(private aiService:GoogleGeminiAIService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
     this.jogoFormGroup = this.forms.toFormGroup(this.fields);
   }
 
@@ -26,6 +27,11 @@ export class JogoDadosComponent implements OnInit {
     this.jogoFormGroup.patchValue(this.gamedataservice.game);
     this.material.delay(1000)
     this.material.updateTextFields();
+  }
+
+  async generateSinopsis(text:string){
+    const sinopsis = await this.aiService.improveText(text, '1 paragraph sinopsis');
+    this.jogoFormGroup.patchValue({sinopse:sinopsis})
   }
 
   registerForm(){

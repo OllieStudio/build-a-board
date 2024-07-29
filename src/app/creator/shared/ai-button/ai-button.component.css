@@ -1,0 +1,12 @@
+.generate-btn{
+    border-radius: 14px;
+    font-size: 11px;
+    background: linear-gradient(to right, #840aa6 0%, #3f045d 100%);
+    padding: 0px 18px;
+    height: 27px;
+    line-height: 27px;
+}
+
+.generate-btn i{
+    font-size: 15px;
+}

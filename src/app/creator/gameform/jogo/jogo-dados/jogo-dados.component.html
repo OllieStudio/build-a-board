@@ -18,8 +18,10 @@
      <div class="col m12">
        <label class="pink-text" for="sinopse">Sinopse</label>
        <div class="input-field col m12">
-         <textarea style="height: 140px;" name="sinopse" id="sinopse" class="browser-default" formControlName="sinopse"></textarea>
-       </div>
+         <textarea #sinopse style="height: 140px;" name="sinopse" id="sinopse" class="browser-default" formControlName="sinopse"></textarea>
+          <app-ai-button label="gerar com IA" (click)="generateSinopsis(sinopse.value)"></app-ai-button> 
+        </div>
+
      </div>
    </div>
    
