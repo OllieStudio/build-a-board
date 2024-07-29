@@ -30,7 +30,6 @@ import { JogoDificuldadeComponent } from './gameform/jogo/jogo-dificuldade/jogo-
 import { JogoPreviewComponent } from './gameform/jogo/jogo-preview/jogo-preview.component';
 import { JogoTipoComponent } from './gameform/jogo/jogo-tipo/jogo-tipo.component';
 import { JogoTemaComponent } from './gameform/jogo/jogo-tema/jogo-tema.component';
-import { StepperComponent } from './shared/stepper/stepper.component';
 import { StepperModule } from './shared/stepper/stepper.module';
 import { FileuploadModule } from './shared/fileupload/fileupload.module';
 import { RatingLabelPipe } from './pipes/rating-label.pipe';
@@ -51,6 +50,7 @@ import { SearchbarComponent } from './shared/searchbar/searchbar.component';
 import { ZoomComponent } from './ui/zoom/zoom.component';
 import { HistoryService } from './services/history.service';
 import { ModifiersPanelComponent } from './gameform/design/modifiers/modifiers-panel/modifiers-panel.component';
+import { UploadsComponent } from './gameform/design/uploads/uploads.component';
 
 
 
@@ -111,7 +111,8 @@ import { ModifiersPanelComponent } from './gameform/design/modifiers/modifiers-p
     ToolboxModule,
     FormsModule,
     DragDropModule,
-    ModifiersPanelComponent
+    ModifiersPanelComponent,
+    UploadsComponent
   ],
   providers:  [ AuthService, FormService, DatabaseService, HistoryService,
     HttpClient,  DatePipe, AngularFirestoreModule],

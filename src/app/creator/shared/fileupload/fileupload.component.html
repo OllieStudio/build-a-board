@@ -2,10 +2,10 @@
     <div class="btn white-text col s3">
       <i class="material-icons">image</i>
       <span> {{label}}</span>
-      <input type="file" (change)="fileChanged($event)" accept="{{_accepts}}" >
+      <input type="file" (change)="fileChanged($event)" accept="{{_accepts}}" [multiple]="multiple" >
     </div>
     <div class="col s9 center">
       <i *ngIf="!hideSpinner" class="material-icons spinner sufix">autorenew</i>
-      <img src="{{_value}}" alt="image preview" class="responsive-img " [hidden]="!_value">
+      <img src="{{_value}}" alt="image preview" class="responsive-img " [hidden]="!_value || multiple">
     </div>
 </div>

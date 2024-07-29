@@ -9,6 +9,5 @@ import { HistoryService } from 'src/app/creator/services/history.service';
 })
 export class MenuComponent {
   constructor(public creator:CreatorUIService, public history:HistoryService) {
-    console.log("teste")
   }
 }

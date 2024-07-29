@@ -28,9 +28,9 @@ export class JogoTemaComponent {
     this.jogoFormGroup.patchValue(this.gamedataservice.game);
     this.material.delay(1000)
     this.material.updateTextFields();
-    this.pathlogo = `game/${this.gamedataservice.game.titulo}/imgs/logo_${new Date().getTime() }.png`
-    this.pathheader = `game/${this.gamedataservice.game.titulo}/imgs/header_${new Date().getTime() }.png`
-    this.pathbg = `game/${this.gamedataservice.game.titulo}/imgs/bg_${new Date().getTime() }.png`
+    this.pathlogo = `game/${this.gamedataservice.game.titulo}/imgs/logo_`
+    this.pathheader = `game/${this.gamedataservice.game.titulo}/imgs/header_`
+    this.pathbg = `game/${this.gamedataservice.game.titulo}/imgs/bg_`
   }
 
   registerForm(){

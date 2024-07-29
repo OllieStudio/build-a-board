@@ -24,7 +24,7 @@ export class ModifierImageComponent {
 
   }
   
-  path:string = `game/${this.gamedataservice.game.titulo}/components/${this.modifier?.component}/${this.modifier?.property}_${new Date().getTime() }.png`;
+  path:string = `game/${this.gamedataservice.game.titulo}/components/${this.modifier?.component}/${this.modifier?.property}_`;
   activeTab: string = 'upload';
 
   setActiveTab(tab: string) {
@@ -37,15 +37,7 @@ export class ModifierImageComponent {
   }
 
   private addToUploads(event: any) {
-    const upload: Upload = {
-      tipo: this.creator.currentComponent.classname,
-      url: event,
-      timestamp: new Date().getTime(),
-      name: this.creator.currentComponent.classname + "_" + this.modifier.type + "_" + new Date().getTime(),
-      alt: "",
-      description: "",
-      component: this.creator.currentComponent.id
-    };
-    this.uploads.addUpload(upload);
+    
+    this.uploads.addUpload(event, this.creator.currentComponent, this.modifier);
   }
 }

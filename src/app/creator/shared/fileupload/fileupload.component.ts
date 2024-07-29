@@ -19,6 +19,7 @@ export class FileuploadComponent implements ControlValueAccessor, OnInit {
 @Input() label:string;
 @Input() accepts:string;
 @Input() path: any;
+@Input() multiple: boolean = false;
 @Output() valueChange:EventEmitter<any> = new EventEmitter();
 
 onChange: any = () => {};
@@ -62,42 +63,48 @@ constructor(private storage:StorageService){
     
   }
 
-fileChanged(event){
-  var file:File = event.target.files[0]; 
-  var myReader:FileReader = new FileReader();
-  this.hideSpinner = false;
-  
-  myReader.onloadend = async e=>{
-    if(!this.path){
-      this._value = myReader.result.toString();
-      this.onChange(myReader.result.toString());
-      this.hideSpinner = true;
-    }else{
-      switch (this.accepts) {
-        case 'xls': this._accepts = ".csv,.xls,.xlsx, .txt";
-        break;
-        case 'img': 
-        let fileImg:any = myReader.result.toString().split(',')[1];
-        await this.uploadImg(fileImg);
-        break;
-        case 'pdf': 
-        let filePDF:any = myReader.result.toString().split(',')[1];
-        await this.uploadPDF(filePDF);
-        break;
-        case 'doc': this._accepts  =".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-        break;
-      
-        default: this._accepts  = "";
-          break;
-      }
-       
-    }
-  }
-  myReader.readAsDataURL(file);
-}
 
-  async uploadPDF(file: any) {
-    await this.storage.uploadPDF(file, this.path).then(result => {
+  fileChanged(event) {
+    var files: File[] = Array.from(event.target.files);
+    this.hideSpinner = false;
+  
+    files.forEach(file => {
+      var myReader: FileReader = new FileReader();
+  
+      myReader.onloadend = async e => {
+        if (!this.path) {
+          this._value = myReader.result.toString();
+          this.onChange(myReader.result.toString());
+          this.hideSpinner = true;
+        } else {
+          switch (this.accepts) {
+            case 'xls': 
+              this._accepts = ".csv,.xls,.xlsx, .txt";
+              break;
+            case 'img':
+              let fileImg: any = myReader.result.toString().split(',')[1];
+              await this.uploadImg(fileImg, file.name);
+              break;
+            case 'pdf':
+              let filePDF: any = myReader.result.toString().split(',')[1];
+              await this.uploadPDF(filePDF, file.name);
+              break;
+            case 'doc':
+              this._accepts = ".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+              break;
+            default:
+              this._accepts = "";
+              break;
+          }
+        }
+      };
+  
+      myReader.readAsDataURL(file);
+    });
+  }
+  
+  async uploadPDF(file: any, filename:string) {
+    await this.storage.uploadPDF(file, this.path + filename ).then(result => {
       this._value = result;
       this.onChange(result);
       this.valueChange.emit(result);
@@ -105,8 +112,8 @@ fileChanged(event){
     })
   }
 
-  private async uploadImg(file: any) {
-    await this.storage.uploadImage(file, this.path).then(result => {
+  private async uploadImg(file: any, filename:string) {
+    await this.storage.uploadImage(file, this.path + filename).then(result => {
       this._value = result;
       this.onChange(result);
       this.valueChange.emit(result);

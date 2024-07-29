@@ -1,7 +1,16 @@
-<div class="row">
-    <div class="col s4 preview-container" *ngFor="let upload of uploads">
-        <img src="{{upload.file}}" alt="image preview" class="responsive-img">
-        <i class="material-icons">delete</i>
-        <i class="material-icons">info</i>
+<div class="tool-container">
+
+    <div class="row top-5">
+        <app-fileupload id="singleton" (valueChange)="onValueChange($event)" [accepts]="'img'" [label]="'enviar arquivos'"
+            [path]="path" [multiple]="true"></app-fileupload>
+    </div>
+    <div class="row">
+        <div class="col s4 preview-container" *ngFor="let upload of uploads">
+          <div class="preview-content"  [ngStyle]="{'background-image': 'url('+upload.url+')'}"></div>
+           <div class="tools-container">
+               <i class="material-icons white-text link right">delete</i>
+               <i class="material-icons white-text link right">info</i>
+           </div>
+        </div>
     </div>
 </div>

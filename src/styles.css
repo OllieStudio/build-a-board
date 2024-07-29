@@ -31,6 +31,10 @@ body {
   background: url("/assets/img/icons-lt.png");
 }
 
+#singleton .row .col{
+  width: 100%!important;
+}
+
 .next-step{
     position: fixed;
     right: 2vw;
@@ -277,6 +281,7 @@ span.thumb.active{
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;
+  min-width: 70%;
 }
 
 a.disabled {
