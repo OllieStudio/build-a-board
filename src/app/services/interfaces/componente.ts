@@ -13,7 +13,7 @@ export interface Componente {
 
 
 export interface Modifier {
-  component?: any;
+  component?: Componente;
   property: any;
   type: string;
   title: string;

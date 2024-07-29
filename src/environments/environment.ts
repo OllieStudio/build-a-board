@@ -10,7 +10,9 @@ export const environment = {
     databaseURL: "https://buildaboard2018.firebaseio.com",
     projectId: "buildaboard2018",
     storageBucket: "buildaboard2018.appspot.com",
-    messagingSenderId: "674214686193"
+    messagingSenderId: "674214686193",
+    appId: "1:674214686193:web:dcb4158829bb7ffd8ae850",
+    measurementId: "G-9YT2R839SP"
   },
   termsofservice:"https://mypage.html",
   privacypolicy:"https://mypage.html"

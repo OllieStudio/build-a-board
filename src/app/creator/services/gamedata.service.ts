@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormService, DatabaseService, InputBase, MaterializeService } from '@ollieestudio/fire-lib';
 import { Jogo } from 'src/app/services/interfaces/jogo';
+import { Upload } from 'src/app/services/interfaces/upload';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class GameDataService {
 
   
   constructor(public forms:FormService, public database:DatabaseService<Jogo>, public router:Router, public material:MaterializeService) { }
-
+  
   generateForm(form:FormGroup, fields:InputBase[]){
     form = this.forms.toFormGroup(fields);
   }
@@ -34,11 +35,13 @@ export class GameDataService {
     this.jogoEmitter.next(this.game);
     console.log(this.game)
   }
-
+  
   registerForm(nextroute){
     this.database.set(this.game, 'GAMES').then(result =>{
-     this.material.toast("Jogo salvo com sucesso!", 3000, 'green');
-     this.router.navigateByUrl(nextroute)
+      this.material.toast("Jogo salvo com sucesso!", 3000, 'green');
+      this.router.navigateByUrl(nextroute)
     })
   }
+  
+ 
 }

@@ -1,6 +1,7 @@
 import { Componente } from "./componente";
 
 export interface Jogo {
+  uploads: any;
   complexidade: number;
   estrategia: number;
   idade: string;

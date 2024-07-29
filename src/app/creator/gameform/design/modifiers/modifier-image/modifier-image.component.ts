@@ -5,6 +5,9 @@ import { GameDataService } from 'src/app/creator/services/gamedata.service';
 import { FileuploadModule } from 'src/app/creator/shared/fileupload/fileupload.module';
 import { PromptInputComponent } from 'src/app/creator/shared/prompt-input/prompt-input.component';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
+import { UploadsComponent } from '../../uploads/uploads.component';
+import { UploadService } from 'src/app/services/upload.service';
+import { Upload } from 'src/app/services/interfaces/upload';
 
 @Component({
   selector: 'app-modifier-image',
@@ -16,7 +19,8 @@ import { CreatorUIService } from 'src/app/creator/services/creator.service';
 export class ModifierImageComponent {
   @Input() modifier:Modifier = {} as Modifier;
 
-  constructor(private gamedataservice:GameDataService, private creator: CreatorUIService){
+  constructor(private gamedataservice:GameDataService, private creator: CreatorUIService,
+     private uploads:UploadService){
 
   }
   
@@ -28,6 +32,20 @@ export class ModifierImageComponent {
   }
 
   onValueChange(event: any) {
-    this.creator.updateItemModifier(this.modifier, event)
+    this.creator.updateItemModifier(this.modifier, event);
+    this.addToUploads(event);
+  }
+
+  private addToUploads(event: any) {
+    const upload: Upload = {
+      tipo: this.creator.currentComponent.classname,
+      url: event,
+      timestamp: new Date().getTime(),
+      name: this.creator.currentComponent.classname + "_" + this.modifier.type + "_" + new Date().getTime(),
+      alt: "",
+      description: "",
+      component: this.creator.currentComponent.id
+    };
+    this.uploads.addUpload(upload);
   }
 }
