@@ -2,5 +2,5 @@
     <textarea #prompt style="height: 40px;" name="prompt" id="prompt" class="prompt-input browser-default top-0 bottom-0" formControlName="prompt"></textarea>
 </div>
 <div class="col m12">
-    <app-ai-button label="gerar com IA" (click)="generate(prompt.value)"></app-ai-button>
+    <app-ai-button [label]="label" (click)="generate(prompt.value)"></app-ai-button>
 </div>

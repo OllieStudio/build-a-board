@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase, FormService, MaterializeService } from '@ollieestudio/fire-lib';
 import { GameDataService } from '../../../services/gamedata.service';
+import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
 
 @Component({
   selector: 'app-jogo-tema',
@@ -20,7 +21,7 @@ export class JogoTemaComponent {
     {key:"background", required:false},
   ]
   
-  constructor(public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
+  constructor(private aiservice:GoogleGeminiAIService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
     this.jogoFormGroup = this.forms.toFormGroup(this.fields);
   }
 
@@ -35,6 +36,21 @@ export class JogoTemaComponent {
 
   registerForm(){
     this.gamedataservice.addDataToGame(this.jogoFormGroup.getRawValue());
+  }
+
+  async generateLogo(prompt){
+    const logo = await this.aiservice.textToSVG(prompt, '300x300px logo');
+    this.jogoFormGroup.patchValue({logo:logo})
+  }
+
+  async generateHeader(prompt){
+    const header = await this.aiservice.textToSVG(prompt, '1140x400px header');
+    this.jogoFormGroup.patchValue({header:header})
+  }
+
+  async generateBg(prompt){
+    const bg = await this.aiservice.textToSVG(prompt, '1920x1140px background image');
+    this.jogoFormGroup.patchValue({background:bg})
   }
 
 }

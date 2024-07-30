@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AiButtonComponent } from '../ai-button/ai-button.component';
 
@@ -10,11 +10,14 @@ import { AiButtonComponent } from '../ai-button/ai-button.component';
   styleUrls: ['./prompt-input.component.css']
 })
 export class PromptInputComponent {
-@Input() prompt:string;
+@Output() output:EventEmitter<string> = new EventEmitter();
+@Input() base:string;
+@Input() label:string;
 @Input() path:string;
 
 
 generate(prompt:string){
-
+  this.output.emit(`${this.base} ${prompt}`);
 }
+
 }

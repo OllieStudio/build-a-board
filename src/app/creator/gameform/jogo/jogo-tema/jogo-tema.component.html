@@ -1,17 +1,20 @@
 <form [formGroup]="jogoFormGroup" >
     <h3 class="title  purple-text">Selecione as imagens e tema do jogo:</h3>
     <div class="row">
-      <app-fileupload formControlName="logo" [accepts]="'img'" [label]="'Logo'" [path]="pathlogo"></app-fileupload>
+      <app-fileupload formControlName="logo" [accepts]="'img'" [label]="'Enviar Logo'" [path]="pathlogo"></app-fileupload>
+      <app-prompt-input [label]="'gerar logo com IA'" (output)="generateLogo($event)"></app-prompt-input>
     </div>
     <div class="row">
  
-      <app-fileupload formControlName="header" [accepts]="'img'" [label]="'Header'" [path]="pathheader" ></app-fileupload>
+      <app-fileupload formControlName="header" [accepts]="'img'" [label]="'Enviar Header'" [path]="pathheader" ></app-fileupload>
+      <app-prompt-input [label]="'gerar header com IA'" (output)="generateHeader($event)"></app-prompt-input>
       
     </div>
     <div class="row">
  
-      <app-fileupload formControlName="background" [accepts]="'img'" [label]="'Imagem de Fundo'" [path]="pathbg" ></app-fileupload>
-      
+      <app-fileupload formControlName="background" [accepts]="'img'" [label]="'Enviar Background'" [path]="pathbg" ></app-fileupload>
+      <app-prompt-input [label]="'gerar fundo com IA'" (output)="generateBg($event)"></app-prompt-input>
+
     </div>
     
     <div class="row">

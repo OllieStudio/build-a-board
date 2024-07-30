@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase, FormService, MaterializeService } from '@ollieestudio/fire-lib';
 import { GameDataService } from '../../../services/gamedata.service';
+import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
 
 @Component({
   selector: 'app-regras-partida',
@@ -15,7 +16,7 @@ export class RegrasPartidaComponent {
     {key:"durante", required:true},
   ]
   
-  constructor(public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
+  constructor(private aiService:GoogleGeminiAIService ,public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
     this.regrasFormGroup = this.forms.toFormGroup(this.fields);
   }
 
@@ -27,5 +28,10 @@ export class RegrasPartidaComponent {
 
   registerForm(){
     this.gamedataservice.addDataToGame(this.regrasFormGroup.getRawValue());
+  }
+
+  async generateRules(text:string){
+    const rules = await this.aiService.improveText(text, ' correct and improve the innerText keeping the html tags');
+    this.regrasFormGroup.patchValue({durante:rules})
   }
 }

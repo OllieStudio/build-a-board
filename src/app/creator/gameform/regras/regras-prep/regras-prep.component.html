@@ -10,6 +10,8 @@
                 [placeholder]="'Digite cada etapa separadamente e clique em salvar.'" class="col m12 top-3"
                 >
               </ngx-wig>
+              <app-ai-button label="gerar com IA" class="top-2" (click)="generateRules(this.regrasFormGroup.controls['preparacao'].value)"></app-ai-button> 
+
             </div>
           </div>
         </div>
