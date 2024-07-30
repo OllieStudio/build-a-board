@@ -5,6 +5,8 @@ import componentes_data from '../data/componentes.json';
 import { Jogo } from '../../services/interfaces/jogo';
 import { GameDataService } from './gamedata.service';
 import { HistoryService } from './history.service';
+import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
+import { ImageService } from './image.service';
 
 export interface ItemSnapshot {
   id:string;
@@ -49,7 +51,7 @@ export class CreatorUIService implements OnInit {
   modifiers: EventEmitter<Modifier[]> = new EventEmitter();
   currentComponent: Componente;
 
-  constructor(private gamedataservice:GameDataService, private history:HistoryService) {
+  constructor(private imageservice:ImageService, private gamedataservice:GameDataService, private aiservice:GoogleGeminiAIService, private history:HistoryService) {
     this.componentesData  = componentes_data;
     this.game = this.gamedataservice.game;
     //console.log(this.componentesData)
@@ -121,7 +123,7 @@ export class CreatorUIService implements OnInit {
   }
 
   nameChange(nameValue:string){
-    this.currentComponent['name'] = nameValue;
+    this.currentComponent.name = nameValue;
     this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
   }
 
@@ -178,7 +180,18 @@ export class CreatorUIService implements OnInit {
     }
   }
 
-  saveItem(){
-    
+  async saveItem(){
+    if(!this.currentComponent.name) this.currentComponent.name = this.currentComponent.title;
+    if(this.currentComponent.prompt3d) this.currentComponent.three = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
+    if(this.currentComponent.action) this.currentComponent.actioncode = await this.aiservice.textToCode(this.currentComponent.action);
+     this.currentComponent.template = this.getElementTemplate();
+     this.currentComponent.imagem = await this.imageservice.convertElementToImage(document.getElementById('editableObject'));
+     this.gamedataservice.saveComponent(this.currentComponent) ;   
+  }
+
+ 
+
+  describe3D(currentComponent: Componente): string {
+    return `${currentComponent.prompt3d} with ${currentComponent.modifiers.map(modifier => {if(currentComponent[modifier.property]) return modifier.property + ': ' + currentComponent[modifier.property]}).join(', ')}`
   }
 }

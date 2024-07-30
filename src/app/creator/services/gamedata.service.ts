@@ -2,6 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormService, DatabaseService, InputBase, MaterializeService } from '@ollieestudio/fire-lib';
+import { Componente } from 'src/app/services/interfaces/componente';
 import { Jogo } from 'src/app/services/interfaces/jogo';
 import { Upload } from 'src/app/services/interfaces/upload';
 
@@ -9,6 +10,7 @@ import { Upload } from 'src/app/services/interfaces/upload';
   providedIn: 'root'
 })
 export class GameDataService {
+ 
   public jogoEmitter:EventEmitter<Jogo> = new EventEmitter;
   game: Jogo = {} as Jogo;
   jogoFormGroup: any;
@@ -43,5 +45,11 @@ export class GameDataService {
     })
   }
   
+  saveComponent(currentComponent: Componente) {
+    currentComponent.id = currentComponent.name.toLowerCase().replace(/\s/g, '');
+    this.database.set(currentComponent, 'GAMES/'+this.game.id+'/COMPONENTS').then(result =>{
+      this.material.toast("Componente salvo com sucesso!", 3000, 'green');
+    })
+  }
  
 }

@@ -1,5 +1,9 @@
 export interface Componente {
+  actioncode?: any;
+  prompt3d?: any;
+  name?: string;
   action?: string;
+  three?: string;
   quantidade?: number;
   imagem?: any;
   categoria?: string;
