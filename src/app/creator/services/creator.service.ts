@@ -130,8 +130,8 @@ export class CreatorUIService implements OnInit {
     switch (modifier.property) {
       case 'background': this.setComponentBackground(value);
         break;
-      // case 'track': this.setComponentColor(value);
-      //   break;
+      case 'track': this.addSVGLayer(value);
+         break;
       // case 'color': this.setComponentColor(value);
       //   break;
       // case 'font': this.setComponentFont(value);
@@ -146,6 +146,21 @@ export class CreatorUIService implements OnInit {
       }
       this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
     }
+  
+    addSVGLayer(value: any) {
+      const divElement = document.getElementById('editableObject');
+      if (divElement) {
+        const bg = divElement.childNodes[0] as HTMLElement;
+        const object = document.createElement('object');
+        object.data = value;
+        object.style.position = 'absolute';
+        object.style.top = '0';
+        object.style.left = '0';
+        object.style.width = '100%';
+        object.style.height = '100%';
+        divElement.insertBefore(object, bg);
+      }
+  }
     
     setComponentBackground(value: string) {
     const divElement = document.getElementById('editableObject');
