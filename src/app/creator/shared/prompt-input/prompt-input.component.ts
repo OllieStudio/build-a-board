@@ -17,7 +17,7 @@ export class PromptInputComponent {
 
 
 generate(prompt:string){
-  this.output.emit(`${this.base} ${prompt}`);
+  this.output.emit(`${this.base || ''} ${prompt}`);
 }
 
 }

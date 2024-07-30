@@ -72,8 +72,8 @@ export class GoogleGeminiAIService {
       const result = await this.model.generateContent(prompt);
       const svgContent = await result.response.text();
       const match = svgContent.match(/<svg[\s\S]*?<\/svg>/);
-      return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(match)}`;
-      return this.sanitizer.bypassSecurityTrustHtml(match[0]);
+      return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(match[0])}`;
+      return this.sanitizer.bypassSecurityTrustHtml('data:image/svg+xml;charset=utf-8,' + match[0]);
 
     } catch (error) {
       console.error('Error generating SVG:', error);

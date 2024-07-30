@@ -30,7 +30,7 @@ export class JogoDadosComponent implements OnInit {
   }
 
   async generateSinopsis(text:string){
-    const sinopsis = await this.aiService.improveText(text, ' generate 1 paragraph sinopsis, you can be very creative');
+    const sinopsis = await this.aiService.improveText(text, ' generate 1 paragraph sinopsis with maximum of 60 words, you can be very creative');
     this.jogoFormGroup.patchValue({sinopse:sinopsis})
   }
 

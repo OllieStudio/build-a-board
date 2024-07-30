@@ -69,10 +69,15 @@ export class CreatorUIService implements OnInit {
   componenteToSnapshot(data: any): ItemSnapshot {
     let snapshot:ItemSnapshot = {} as ItemSnapshot;
     snapshot.id = data.id;
-    snapshot.template = data.template.replace(/\n/g,'') ;
+    snapshot.template = this.getElementTemplate();//data.template.replace(/\n/g,'') ;
     snapshot.timestamp = ~~(Date.now());
     snapshot.gameid = this.gamedataservice.game.id;
     return snapshot;
+  }
+
+  getElementTemplate(): string {
+    const divElement = document.getElementById('editableObject');
+    return divElement.innerHTML;
   }
   
   addNewComponentToCanvas(item:Componente) {
@@ -122,7 +127,6 @@ export class CreatorUIService implements OnInit {
 
   updateItemModifier(modifier:Modifier, value:any){
     this.currentComponent[modifier.property] = value;
-    this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
     switch (modifier.property) {
       case 'background': this.setComponentBackground(value);
         break;
@@ -136,17 +140,26 @@ export class CreatorUIService implements OnInit {
       //   break;
       // case 'text': this.setComponentText(value)
       //   break;
-    
+      
       default:
         break;
+      }
+      this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
     }
-  }
-  
-  setComponentBackground(value: any) {
+    
+    setComponentBackground(value: string) {
     const divElement = document.getElementById('editableObject');
     if (divElement) {
       const object = divElement.childNodes[0] as HTMLElement;
       object.style.background = `url(${value}) center / cover no-repeat`;
+      
+      // if(value.startsWith('data:image/svg+xml;')){
+      //   const newElement = document.createElement('img');
+      //   newElement.src = value;
+      //   // newElement.type = 'image/svg+xml';
+      //   divElement.replaceChild(newElement, object)
+      // }else{
+      // }
     }
   }
 

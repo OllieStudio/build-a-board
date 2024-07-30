@@ -24,7 +24,8 @@
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
           "options":["upload", "imageprompt"],
-          "imageprompt":"generate a square background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
+          "imageprompt":" a square background image " ,
+          "svgprompt":" a square background image " 
         },
         {
           "type":"image",
@@ -33,7 +34,7 @@
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
           "options":["upload", "imageprompt", "svgprompt"],
           "imageprompt":"generate a square image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
-         "svgprompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
+         "svgprompt":" a boardgame track " 
         },
         {
           "type":"radio",
@@ -68,7 +69,8 @@
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
           "options":["upload", "imageprompt"],
-          "imageprompt":"generate a rectangular background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
+          "imageprompt":"generate a rectangular background image " ,
+          "svgprompt":"generate a rectangular background image " 
         },
         {
           "type":"image",
@@ -76,8 +78,8 @@
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
           "options":["upload", "imageprompt", "svgprompt"],
-          "imageprompt":"generate a rectangular image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
-          "svgprompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
+          "imageprompt":" a rectangular image with transparent background for a boardgame track" ,
+          "svgprompt":" a boardgame track with " 
         },
         {
           "type":"radio",
@@ -112,7 +114,8 @@
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
           "options":["upload", "imageprompt"],
-          "imageprompt":"generate a hexagonal background image for a boardgame named %NAME% about %SINOPSIS% with %DETAILS%" 
+          "imageprompt":"generate a hexagonal background image ", 
+          "svgprompt":"generate a hexagonal background image " 
         },
         {
           "type":"image",
@@ -120,8 +123,8 @@
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
           "options":["upload", "imageprompt", "svgprompt"],
-          "imageprompt":"generate a hexagonal image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
-          "svgprompt":"generate svg code for a boardgame track with %STEPS% steps and %DETAILS%" 
+          "imageprompt":" a hexagonal image with transparent background for a boardgame track " ,
+          "svgprompt":" a boardgame track " 
         },
         {
           "type":"radio",

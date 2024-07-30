@@ -8,6 +8,7 @@ import { CreatorUIService } from 'src/app/creator/services/creator.service';
 import { UploadsComponent } from '../../uploads/uploads.component';
 import { UploadService } from 'src/app/services/upload.service';
 import { Upload } from 'src/app/services/interfaces/upload';
+import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
 
 @Component({
   selector: 'app-modifier-image',
@@ -19,7 +20,7 @@ import { Upload } from 'src/app/services/interfaces/upload';
 export class ModifierImageComponent {
   @Input() modifier:Modifier = {} as Modifier;
 
-  constructor(private gamedataservice:GameDataService, private creator: CreatorUIService,
+  constructor(private aiservice:GoogleGeminiAIService, private gamedataservice:GameDataService, private creator: CreatorUIService,
      private uploads:UploadService){
 
   }
@@ -37,7 +38,18 @@ export class ModifierImageComponent {
   }
 
   private addToUploads(event: any) {
-    
     this.uploads.addUpload(event, this.creator.currentComponent, this.modifier);
+  }
+
+  async generateImage(prompt){
+    const bg = await this.aiservice.textToSVG(prompt, this.modifier.svgprompt);
+    this.creator.updateItemModifier(this.modifier, bg);
+
+  }
+
+  async generateSVG(prompt){
+    const bg = await this.aiservice.textToSVG(prompt, this.modifier.svgprompt);
+    this.creator.updateItemModifier(this.modifier, bg);
+
   }
 }
