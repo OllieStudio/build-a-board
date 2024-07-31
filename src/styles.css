@@ -31,6 +31,10 @@ body {
   background: url("/assets/img/icons-lt.png");
 }
 
+textarea{
+  padding: 8px 13px!important;
+}
+
 #singleton .row .col{
   width: 100%!important;
 }

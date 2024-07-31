@@ -16,7 +16,38 @@
     bottom: 20px!important;
 }
 
+.components-container{
+    width:auto;
+    display: flex;
+    flex-direction: row;
+}
 
+.component{
+    width: 130px;
+    height: 155px;
+    margin: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 7px #464545;
+}
+
+.component p{
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    line-height: 26px;
+    text-align: center;
+}
+
+.component-image{
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin: 7px;
+}
 
 
 .BIeccA {

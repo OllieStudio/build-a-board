@@ -51,5 +51,9 @@ export class GameDataService {
       this.material.toast("Componente salvo com sucesso!", 3000, 'green');
     })
   }
+
+  getComponents() {
+    return this.database.listValues('GAMES/'+this.game.id+'/COMPONENTS');
+  }
  
 }
