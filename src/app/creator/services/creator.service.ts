@@ -185,8 +185,12 @@ export class CreatorUIService implements OnInit {
     if(this.currentComponent.prompt3d) this.currentComponent.three = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
     if(this.currentComponent.action) this.currentComponent.actioncode = await this.aiservice.textToCode(this.currentComponent.action);
      this.currentComponent.template = this.getElementTemplate();
-     this.currentComponent.imagem = await this.imageservice.convertElementToImage(document.getElementById('editableObject'));
+     this.currentComponent.imagem = await this.imageservice.convertElementToImage(this.getHTMLElement());
      this.gamedataservice.saveComponent(this.currentComponent) ;   
+  }
+  getHTMLElement(): HTMLElement {
+    const divElement = document.getElementById('editableObject');
+    return divElement;
   }
 
  

@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { InputBase, FormService, MaterializeService } from '@ollieestudio/fire-lib';
 import { GameDataService } from '../../../services/gamedata.service';
 import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
+import { GoogleImagenService } from 'src/app/services/google-imagen.service';
 
 @Component({
   selector: 'app-jogo-tema',
@@ -21,7 +22,7 @@ export class JogoTemaComponent {
     {key:"background", required:false},
   ]
   
-  constructor(private aiservice:GoogleGeminiAIService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
+  constructor(private genIA:GoogleImagenService, private aiservice:GoogleGeminiAIService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
     this.jogoFormGroup = this.forms.toFormGroup(this.fields);
   }
 
@@ -49,7 +50,7 @@ export class JogoTemaComponent {
   }
 
   async generateBg(prompt){
-    const bg = await this.aiservice.textToSVG(prompt, '1920x1140px background image');
+    const bg = await this.genIA.generateImages(prompt + ' 1920x1140px background image', 4)[0];
     this.jogoFormGroup.patchValue({background:bg})
   }
 

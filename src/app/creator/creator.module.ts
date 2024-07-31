@@ -19,7 +19,7 @@ import { SwitchComponent } from './ui/switch/switch.component';
 import { NgxWigModule } from 'ngx-wig';
 import { NgPipesModule } from 'ng-pipes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { AuthService, FormService, DatabaseService, AngularFirestoreModule } from '@ollieestudio/fire-lib';
 import { AppRoutingModule } from '../app-routing.module';
 import { CreatorNavComponent } from './creator-nav/creator-nav.component';
@@ -119,6 +119,6 @@ import { PromptInputComponent } from './shared/prompt-input/prompt-input.compone
     PromptInputComponent
   ],
   providers:  [ AuthService, FormService, DatabaseService, HistoryService,
-    HttpClient,  DatePipe, AngularFirestoreModule],
+    HttpClient, DatePipe, AngularFirestoreModule],
 })
 export class CreatorModule { }

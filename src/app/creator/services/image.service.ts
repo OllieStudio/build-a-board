@@ -7,7 +7,11 @@ import html2canvas from 'html2canvas';
 })
 export class ImageService {
 
-    convertElementToImage(element: HTMLElement, scale: number = 2): Promise<string> {
-        return html2canvas(element, { scale }).then(canvas => canvas.toDataURL('image/png'));
-      }
+  convertElementToImage(element: HTMLElement, scale: number = 2): Promise<string> {
+    return html2canvas(element, {
+      scale,
+      useCORS: true, // Enables cross-origin resource sharing if you have external resources
+      backgroundColor: null // Ensures it respects the element's background
+    }).then(canvas => canvas.toDataURL('image/png'));
+  }
 }

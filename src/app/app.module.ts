@@ -9,7 +9,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ReactiveFormsModule } from "@angular/forms";
 import { ContatoComponent } from './contato/contato.component';
 import { ConfigService, AuthService, FormService, DatabaseService, CookieService, CepService, AngularFireModule, AngularFireAuthModule, AngularFireStorageModule, AngularFirestoreModule } from '@ollieestudio/fire-lib';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { FirebaseConfigService } from './services/firebase-config.service';
 import { CatalogformComponent } from './catalogform/catalogform.component';
@@ -34,7 +34,8 @@ import { NgxWigModule } from 'ngx-wig';
     ScrollToModule.forRoot(),
     AnimateOnScrollModule.forRoot(),
     ReactiveFormsModule,
-    NgxWigModule
+    NgxWigModule,
+    HttpClientModule
    ],
   providers:  [ ConfigService, AuthService, FormService, DatabaseService, CookieService,  
     CepService,  HttpClient, FirebaseConfigService, DatePipe, AngularFirestoreModule],
