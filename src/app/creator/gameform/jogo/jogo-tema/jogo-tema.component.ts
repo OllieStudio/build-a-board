@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { InputBase, FormService, MaterializeService } from '@ollieestudio/fire-lib';
 import { GameDataService } from '../../../services/gamedata.service';
 import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
-import { GoogleImagenService } from 'src/app/services/google-imagen.service';
+import { VertexAIService } from 'src/app/services/google-vertex-ai.service';
 
 @Component({
   selector: 'app-jogo-tema',
@@ -22,7 +22,7 @@ export class JogoTemaComponent {
     {key:"background", required:false},
   ]
   
-  constructor(private genIA:GoogleImagenService, private aiservice:GoogleGeminiAIService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
+  constructor(private vertex:VertexAIService, private aiservice:GoogleGeminiAIService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
     this.jogoFormGroup = this.forms.toFormGroup(this.fields);
   }
 
@@ -40,17 +40,18 @@ export class JogoTemaComponent {
   }
 
   async generateLogo(prompt){
-    const logo = await this.aiservice.textToSVG(prompt, '300x300px logo');
+    //const logo = await this.aiservice.textToSVG(prompt, '300x300px logo');
+    const logo = await this.vertex.generateImage('a clipart style logo with transparent background and ' + prompt);
     this.jogoFormGroup.patchValue({logo:logo})
   }
 
   async generateHeader(prompt){
-    const header = await this.aiservice.textToSVG(prompt, '1140x400px header');
+    const header = await this.vertex.generateImage('a 16:9 header with ' + prompt);
     this.jogoFormGroup.patchValue({header:header})
   }
 
   async generateBg(prompt){
-    const bg = await this.genIA.generateImages(prompt + ' 1920x1140px background image', 4)[0];
+    const bg = await this.vertex.generateImage('a 1:1 background image with ' + prompt);
     this.jogoFormGroup.patchValue({background:bg})
   }
 
