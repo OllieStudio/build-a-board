@@ -27,6 +27,8 @@ onTouch: any = () => {};
 public _value: any;
 public _accepts: any;
 public hideSpinner:boolean = true;
+  fileImg: string;
+  filename: string;
 
 constructor(private storage:StorageService){
 
@@ -75,6 +77,8 @@ constructor(private storage:StorageService){
         if (!this.path) {
           this._value = myReader.result.toString();
           this.onChange(myReader.result.toString());
+          this.fileImg = myReader.result.toString().split(',')[1]; 
+          this.filename = file.name;
           this.hideSpinner = true;
         } else {
           switch (this.accepts) {
@@ -112,8 +116,8 @@ constructor(private storage:StorageService){
     })
   }
 
-  private async uploadImg(file: any, filename:string) {
-    await this.storage.uploadImage(file, this.path + filename).then(result => {
+  public async uploadImg(file: any = this.fileImg, filename:string = this.filename) {
+    await this.storage.uploadImage(file.replace('data:image/png;base64, ', ''), this.path + filename).then(result => {
       this._value = result;
       this.onChange(result);
       this.valueChange.emit(result);

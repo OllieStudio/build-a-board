@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase, FormService, MaterializeService } from '@ollieestudio/fire-lib';
 import { GameDataService } from '../../../services/gamedata.service';
 import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
-import { VertexAIService } from 'src/app/services/google-vertex-ai.service';
+import { ArtStyle, AspectRatio, VertexAIService } from 'src/app/services/google-vertex-ai.service';
+import { FileuploadComponent } from 'src/app/creator/shared/fileupload/fileupload.component';
 
 @Component({
   selector: 'app-jogo-tema',
@@ -11,7 +12,15 @@ import { VertexAIService } from 'src/app/services/google-vertex-ai.service';
   styleUrls: ['./jogo-tema.component.css']
 })
 export class JogoTemaComponent {
+  @ViewChild('logoControl') logoControl:FileuploadComponent;
+  @ViewChild('headerControl') headerControl:FileuploadComponent;
+  @ViewChild('bgControl') bgControl:FileuploadComponent;
+  
   public jogoFormGroup: FormGroup;
+
+  public hideSpinnerLogo:boolean = true;
+  public hideSpinnerHeader:boolean = true;
+  public hideSpinnerBg:boolean = true;
   pathlogo:String;
   pathheader:String;
   pathbg:String;
@@ -30,29 +39,37 @@ export class JogoTemaComponent {
     this.jogoFormGroup.patchValue(this.gamedataservice.game);
     this.material.delay(1000)
     this.material.updateTextFields();
+  }
+  
+  async registerForm(){
+    
     this.pathlogo = `game/${this.gamedataservice.game.titulo}/imgs/logo_`
     this.pathheader = `game/${this.gamedataservice.game.titulo}/imgs/header_`
     this.pathbg = `game/${this.gamedataservice.game.titulo}/imgs/bg_`
-  }
-
-  registerForm(){
+    if(this.jogoFormGroup.getRawValue().logo) await this.logoControl.uploadImg(this.jogoFormGroup.getRawValue().logo, 'logo.png');
+    if(this.jogoFormGroup.getRawValue().header) await this.headerControl.uploadImg(this.jogoFormGroup.getRawValue().header, 'header.png');
+    if(this.jogoFormGroup.getRawValue().background) await this.bgControl.uploadImg(this.jogoFormGroup.getRawValue().background, 'bg.png');
     this.gamedataservice.addDataToGame(this.jogoFormGroup.getRawValue());
   }
 
   async generateLogo(prompt){
     //const logo = await this.aiservice.textToSVG(prompt, '300x300px logo');
-    const logo = await this.vertex.generateImage('a clipart style logo with transparent background and ' + prompt);
+    const logo = await this.vertex.generateImage('a clipart style logo with transparent background and ' + prompt, AspectRatio.Square, ArtStyle.Sketch);
+    this.hideSpinnerLogo = true;
     this.jogoFormGroup.patchValue({logo:logo})
+    
   }
 
   async generateHeader(prompt){
-    const header = await this.vertex.generateImage('a 16:9 header with ' + prompt);
+    const header = await this.vertex.generateImage('a header with ' + prompt, AspectRatio.Landscape, ArtStyle.DigitalArt);
+    this.hideSpinnerHeader = true;
     this.jogoFormGroup.patchValue({header:header})
   }
 
   async generateBg(prompt){
-    const bg = await this.vertex.generateImage('a 1:1 background image with ' + prompt);
-    this.jogoFormGroup.patchValue({background:bg})
+    const bg = await this.vertex.generateImage('a background image with ' + prompt, AspectRatio.Square, ArtStyle.DigitalArt);
+    this.hideSpinnerBg = true;
+    this.jogoFormGroup.patchValue({background:bg});
   }
 
 }

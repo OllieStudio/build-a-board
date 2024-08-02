@@ -1,6 +1,7 @@
 <div class="input-field col m12 top-0 bottom-0">
     <textarea #prompt style="height: 40px;" name="prompt" id="prompt" class="prompt-input browser-default top-0 bottom-0" formControlName="prompt"></textarea>
 </div>
-<div class="col m12">
-    <app-ai-button [label]="label" (click)="generate(prompt.value)"></app-ai-button>
+<div class="col m12 valign-wrapper">
+    <app-ai-button [label]="label" class="valign" (click)="generate(prompt.value)"></app-ai-button>
+    <i *ngIf="!hideSpinner" class="material-icons spinner sufix valign left-1">autorenew</i>
 </div>

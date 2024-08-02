@@ -14,10 +14,11 @@ export class PromptInputComponent {
 @Input() base:string;
 @Input() label:string;
 @Input() path:string;
-
+@Input() hideSpinner:boolean;
 
 generate(prompt:string){
   this.output.emit(`${this.base || ''} ${prompt}`);
+  this.hideSpinner = false;
 }
 
 }

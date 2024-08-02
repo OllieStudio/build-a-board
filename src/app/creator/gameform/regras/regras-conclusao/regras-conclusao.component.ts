@@ -30,8 +30,8 @@ export class RegrasConclusaoComponent {
     this.gamedataservice.addDataToGame(this.regrasFormGroup.getRawValue());
   }
 
-  async generateRules(text:string){
+  async generateRules(field:string, text:string){
     const rules = await this.aiService.improveText(text, ' correct and improve the innerText keeping the html tags');
-    this.regrasFormGroup.patchValue({vencedor:rules})
+    this.regrasFormGroup.patchValue({[field]:rules})
   }
 }

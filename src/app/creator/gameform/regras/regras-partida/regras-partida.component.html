@@ -8,10 +8,10 @@
             <h3>Descreva o que ocorre durante a partida:</h3>
             <div class="col s12">
               <ngx-wig formControlName="durante"
-                [placeholder]="'Digite o que ocorre em cada etapa ou rodada da partida.'" class="col m12 top-3"
+                [placeholder]="'Digite o que ocorre em cada etapa ou rodada da partida.'" class="col m12 top-3 bottom-1"
                 >
               </ngx-wig>
-              <app-ai-button label="gerar com IA" class="top-2" (click)="generateRules(this.regrasFormGroup.controls['durante'].value)"></app-ai-button> 
+              <app-ai-button label="gerar com IA" class="top-2 left-1" (click)="generateRules(this.regrasFormGroup.controls['durante'].value)"></app-ai-button> 
 
             </div>
           </div>
