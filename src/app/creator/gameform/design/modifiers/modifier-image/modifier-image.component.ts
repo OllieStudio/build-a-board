@@ -20,6 +20,7 @@ import { ArtStyle, AspectRatio, VertexAIService } from 'src/app/services/google-
 })
 export class ModifierImageComponent {
   @Input() modifier:Modifier = {} as Modifier;
+  hideSpinner = true;
 
   constructor(private vertex:VertexAIService, private aiservice:GoogleGeminiAIService, private gamedataservice:GameDataService, private creator: CreatorUIService,
      private uploads:UploadService){
@@ -45,7 +46,6 @@ export class ModifierImageComponent {
   async generateImage(prompt){
     const bg = await this.vertex.generateImage(this.modifier.imageprompt + prompt, AspectRatio.Square, ArtStyle.DigitalArt);
     this.creator.updateItemModifier(this.modifier, bg);
-
   }
 
   async generateSVG(prompt){

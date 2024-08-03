@@ -111,6 +111,10 @@ export class CreatorUIService implements OnInit {
   }
 
   closeToolBox(){
+    if(!this.closeToolbox) this.closeToolbox = true;
+  }
+
+  toggleToolbox(){
     this.closeToolbox = !this.closeToolbox;
   }
 
@@ -167,25 +171,28 @@ export class CreatorUIService implements OnInit {
     setComponentBackground(value: string) {
     const divElement = document.getElementById('editableObject');
     if (divElement) {
-      const object = divElement.childNodes[0] as HTMLElement;
-      object.style.background = `url(${value}) center / cover no-repeat`;
-      
-      // if(value.startsWith('data:image/svg+xml;')){
-      //   const newElement = document.createElement('img');
-      //   newElement.src = value;
-      //   // newElement.type = 'image/svg+xml';
-      //   divElement.replaceChild(newElement, object)
-      // }else{
-      // }
+      const imgElement = document.createElement('img');
+      imgElement.src = value;
+      imgElement.alt = 'Background Image';
+      imgElement.style.width = '100%';
+      imgElement.style.height = '100%';
+      imgElement.style.objectFit = 'cover';
+      imgElement.style.position = 'absolute'; // Ensure the image covers the div
+      imgElement.style.top = '0';
+      imgElement.style.left = '0';
+
+        divElement.childNodes[1]  ? divElement.replaceChild(imgElement, divElement.childNodes[1]) 
+    : divElement.appendChild(imgElement);
     }
   }
 
   async saveItem(){
+    await this.checkBase64Image();
     if(!this.currentComponent.name) this.currentComponent.name = this.currentComponent.title;
     if(this.currentComponent.prompt3d) this.currentComponent.three = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
     if(this.currentComponent.action) this.currentComponent.actioncode = await this.aiservice.textToCode(this.currentComponent.action);
      this.currentComponent.template = this.getElementTemplate();
-     this.currentComponent.imagem = await this.imageservice.convertElementToImage(this.getHTMLElement());
+     this.currentComponent.imagem = this.currentComponent['background'] || await this.imageservice.convertElementToImage(this.getHTMLElement());
      this.gamedataservice.saveComponent(this.currentComponent) ;   
   }
   getHTMLElement(): HTMLElement {
@@ -198,4 +205,23 @@ export class CreatorUIService implements OnInit {
   describe3D(currentComponent: Componente): string {
     return `${currentComponent.prompt3d} with ${currentComponent.modifiers.map(modifier => {if(currentComponent[modifier.property]) return modifier.property + ': ' + currentComponent[modifier.property]}).join(', ')}`
   }
+
+  async checkBase64Image() {
+    const divElement = document.getElementById('editableObject');
+    const imgElements = divElement.getElementsByTagName('img');
+  
+    for (let i = 0; i < imgElements.length; i++) {
+      const imgElement = imgElements[i];
+      const src = imgElement.src;
+      const isBase64 = src.startsWith('data:image/');
+  
+        if (isBase64) {
+         const url = await this.imageservice.uploadImg(src, `${this.currentComponent.classname}.png`, `game/${this.gamedataservice.game.titulo}/imgs/` );
+         imgElement.src = url;
+         if(this.currentComponent['background']) this.currentComponent['background'] = url;
+        }
+    }
+  
+  }
+  
 }
