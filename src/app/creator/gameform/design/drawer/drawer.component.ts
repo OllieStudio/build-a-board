@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
 import { GameDataService } from 'src/app/creator/services/gamedata.service';
 import { Componente } from 'src/app/services/interfaces/componente';
@@ -9,7 +9,7 @@ import { Componente } from 'src/app/services/interfaces/componente';
   styleUrls: ['./drawer.component.css']
 })
 export class DrawerComponent {
- public opened:boolean = false;
+ @Input() closed:boolean = false;
   components: Componente[];
 
  constructor(private gameservice:GameDataService, public creator:CreatorUIService){

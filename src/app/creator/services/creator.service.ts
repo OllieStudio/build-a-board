@@ -7,6 +7,7 @@ import { GameDataService } from './gamedata.service';
 import { HistoryService } from './history.service';
 import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
 import { ImageService } from './image.service';
+import { UploadService } from 'src/app/services/upload.service';
 
 export interface ItemSnapshot {
   id:string;
@@ -50,8 +51,9 @@ export class CreatorUIService implements OnInit {
   hasItemLoaded: boolean;
   modifiers: EventEmitter<Modifier[]> = new EventEmitter();
   currentComponent: Componente;
+  closedrawer: boolean = true;
 
-  constructor(private imageservice:ImageService, private gamedataservice:GameDataService, private aiservice:GoogleGeminiAIService, private history:HistoryService) {
+  constructor(private uploads:UploadService, private imageservice:ImageService, private gamedataservice:GameDataService, private aiservice:GoogleGeminiAIService, private history:HistoryService) {
     this.componentesData  = componentes_data;
     this.game = this.gamedataservice.game;
     //console.log(this.componentesData)
@@ -84,6 +86,7 @@ export class CreatorUIService implements OnInit {
   
   addNewComponentToCanvas(item:Componente) {
     this.closeToolBox();
+    this.closeDrawer();
     this.hasItemLoaded = true;
     
     this.placeSvgInDiv(item.template, 'editableObject');
@@ -112,6 +115,14 @@ export class CreatorUIService implements OnInit {
 
   closeToolBox(){
     if(!this.closeToolbox) this.closeToolbox = true;
+  }
+
+  closeDrawer() {
+    if(!this.closedrawer) this.closedrawer = true;
+  }
+
+  toggleDrawer() {
+    this.closedrawer = !this.closedrawer;
   }
 
   toggleToolbox(){
@@ -218,6 +229,8 @@ export class CreatorUIService implements OnInit {
         if (isBase64) {
          const url = await this.imageservice.uploadImg(src, `${this.currentComponent.classname}.png`, `game/${this.gamedataservice.game.titulo}/imgs/` );
          imgElement.src = url;
+         this.uploads.addUpload(url, this.currentComponent, this.currentComponent.modifiers.find(modifier => modifier.property === 'background')[0]);
+
          if(this.currentComponent['background']) this.currentComponent['background'] = url;
         }
     }

@@ -8,7 +8,8 @@ import { CreatorUIService } from 'src/app/creator/services/creator.service';
 })
 export class CanvasComponent {
   constructor(public creator:CreatorUIService){
-
+    this.creator.closeToolBox();
+    this.creator.closeDrawer();
   }
 
 }

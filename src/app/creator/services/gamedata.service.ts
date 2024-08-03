@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { FormService, DatabaseService, InputBase, MaterializeService } from '@ollieestudio/fire-lib';
 import { Componente } from 'src/app/services/interfaces/componente';
 import { Jogo } from 'src/app/services/interfaces/jogo';
-import { Upload } from 'src/app/services/interfaces/upload';
 
 @Injectable({
   providedIn: 'root'
