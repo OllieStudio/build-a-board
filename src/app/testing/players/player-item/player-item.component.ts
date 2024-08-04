@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Player } from '../../testing.component';
 
 @Component({
   selector: 'app-player-item',
@@ -9,5 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./player-item.component.css']
 })
 export class PlayerItemComponent {
-
+  @Input() player:Player;
+  @Input() active:boolean;
 }

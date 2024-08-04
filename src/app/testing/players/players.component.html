@@ -1,1 +1,6 @@
-<div id="players"></div>
+<div id="players" class="scroll-panel">
+    <!-- <span id="players-title">Jogadores</span> -->
+    <div id="players-container">
+        <app-player-item *ngFor="let player of testing.players" [active]="player.index === testing.currentPlayer" [player]="player"></app-player-item>
+    </div>
+</div>

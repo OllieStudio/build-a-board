@@ -3,7 +3,7 @@ export interface Componente {
   prompt3d?: any;
   name?: string;
   action?: string;
-  three?: string;
+  three?: any;
   quantidade?: number;
   imagem?: any;
   categoria?: string;

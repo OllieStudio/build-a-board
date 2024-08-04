@@ -1,9 +1,10 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThreeJsService } from '../three-js.service';
+import { ThreeService } from '../three-js.service';
 import * as THREE from 'three';
 import { GameDataService } from 'src/app/creator/services/gamedata.service';
 import { Componente } from 'src/app/services/interfaces/componente';
+import { TestingService } from '../testing.service';
 
 @Component({
   selector: 'app-scene',
@@ -12,39 +13,30 @@ import { Componente } from 'src/app/services/interfaces/componente';
   templateUrl: './scene.component.html',
   styleUrls: ['./scene.component.css']
 })
-export class SceneComponent {
+export class SceneComponent implements OnInit {
   @ViewChild('container', { static: true }) container: ElementRef<HTMLDivElement>;
 
-  constructor(private threeJsService: ThreeJsService, private gamedata:GameDataService) {}
+  constructor(private testing:TestingService) {}
 
   ngOnInit(): void {
-    this.threeJsService.init(this.container.nativeElement);
-    this.loadInitialObjects();
-  }
-
-  async loadInitialObjects(): Promise<void> {
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    this.threeJsService.addObject(cube);
-
-       this.gamedata.getComponents().subscribe(res =>
-        this.loadComponents(res)
-       )
-  }
-
-  loadComponents(components:Componente[]){
-      components.filter(comp => comp.three).forEach(comp =>{
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        this.threeJsService.addObject(cube);
-      })
+    this.testing.initializeScene(this.container.nativeElement);
   }
 
   onAngleChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     const angle = parseFloat(input.value);
-    this.threeJsService.updateCameraAngle(angle);
+   // this.threeJsService.updateCameraAngle(angle);
+
+   /*  updateCameraAngle(angle: number): void {
+      const radius = 5; // distance from the center
+      const radianAngle = THREE.MathUtils.degToRad(angle);
+  
+      // Calculate new camera position
+      const x = radius * Math.sin(radianAngle);
+      const z = radius * Math.cos(radianAngle);
+  
+      this.camera.position.set(x, this.camera.position.y, z);
+      this.camera.lookAt(this.scene.position);
+    } */
   }
 }

@@ -1,1 +1,4 @@
-<p>player-item works!</p>
+<div class="player-item" [class.active]="active" >
+    <i class="material-icons player-avatar"  [ngStyle]="{ 'color': player.color }" >person</i>
+    <span class="player-name">{{ player.name }}</span>
+</div>

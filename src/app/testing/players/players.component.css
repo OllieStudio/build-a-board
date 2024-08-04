@@ -1,10 +1,34 @@
 #players{
-    width: 40vw;
-    height: 140px;
+    width: 35vw;
+    height: 115px;
     border-radius: 20px;
-    background: linear-gradient(to bottom, rgb(137, 136, 136), rgb(92, 91, 92));
-    padding:11px;
+    background: linear-gradient(to right, rgb(143, 143, 143), rgb(95, 95, 95));
+    padding: 10px;
     position: absolute;
     top: 12vh;
-    right: 20px;
+    right: 10px;
+    box-shadow: 2px 3px 5px #a3a4a5;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#players-container{
+    width:auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap:10px;
+    z-index:1
+}
+
+#players-title{
+    position: absolute;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: white;
+    top: 5px;
+    right: 15px;
+    z-index:99999;
 }

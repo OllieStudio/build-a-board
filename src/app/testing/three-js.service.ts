@@ -1,59 +1,176 @@
-// three-js.service.ts
+// src/app/services/three.service.ts
 import { Injectable, NgZone } from '@angular/core';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { DragControls } from 'three/examples/jsm/controls/DragControls';
+import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class ThreeJsService {
+export class ThreeService {
   private scene: THREE.Scene;
   private camera: THREE.PerspectiveCamera;
-  private renderer;
-  private animate: () => void;
+  private renderer: THREE.WebGLRenderer;
+  private controls: OrbitControls;
+  private dragControls: DragControls;
+  private transformControls: TransformControls;
+  private ambientLight: THREE.AmbientLight;
+  private directionalLight: THREE.DirectionalLight;
+  private draggableObjects: THREE.Object3D[] = [];
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone) {
+    
+  }
 
-  init(container: HTMLElement): void {
-    if(!this.scene){
-      this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0xCCCCCC);
+  public initializeScene(container:HTMLElement) {
+    // Scene setup
+    this.scene = new THREE.Scene();
+    this.scene.background = new THREE.Color(0xDDDDDD);
+
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    this.camera.position.z = 5;
-    
-    try {
-      this.renderer = new THREE.WebGLRenderer({ antialias: true });
-    } catch (e) {
-      this.renderer = new THREE.WebGL1Renderer({ antialias: true });
-    }
-    
+    this.renderer = new THREE.WebGLRenderer({ antialias: true });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    container.appendChild(this.renderer.domElement);
-    
+
+    // Controls
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.controls.enableDamping = true;
+
+    // Lighting
+    this.ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    this.scene.add(this.ambientLight);
+    this.directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    this.directionalLight.position.set(5, 10, 7.5).normalize();
+    this.scene.add(this.directionalLight);
+
+    // Camera position
     this.camera.position.set(5, 5, 5);
-    this.camera.lookAt(this.scene.position);
-    
-    this.animate = () => {
-      requestAnimationFrame(this.animate);
-      this.renderer.render(this.scene, this.camera);
-    };
-    
+    this.camera.lookAt(0, 0, 0);
+
+    container.appendChild(this.renderer.domElement);
+
+    // Animation loop
     this.ngZone.runOutsideAngular(() => this.animate());
   }
+
+  private animate() {
+    requestAnimationFrame(() => this.animate());
+    this.controls.update();
+    this.renderer.render(this.scene, this.camera);
+  }
+
+  public getRendererDomElement(): HTMLElement {
+    return this.renderer.domElement;
+  }
+
+  public loadModelFromString(modelData: string) {
+    const loader = new GLTFLoader();
+    loader.parse(modelData, '', (gltf) => {
+      const model = gltf.scene;
+      model.position.set(0, 0.5, 0);
+      this.scene.add(model);
+      this.enableInteractions(model);
+    });
+  }
+
+  public loadModelFromUrl(modelUrl: string) {
+    const loader = new GLTFLoader();
+    loader.load(modelUrl, (gltf) => {
+      const model = gltf.scene;
+      model.position.set(0, 0.5, 0);
+      this.scene.add(model);
+      this.enableInteractions(model);
+    });
+  }
+
+  public addObject(geometry: THREE.BufferGeometry, color: string) {
+    const material = new THREE.MeshStandardMaterial({ color });
+    const mesh = new THREE.Mesh(geometry, material);
+    this.scene.add(mesh);
+    this.enableInteractions(mesh);
+  }
+
+  private enableInteractions(object: THREE.Object3D) {
+    // Add the object to the draggable objects array
+    this.draggableObjects.push(object);
+
+    // Reinitialize DragControls with the updated set of draggable objects
+    if (this.dragControls) {
+        this.dragControls.dispose();
+    }
+    this.dragControls = new DragControls(this.draggableObjects, this.camera, this.renderer.domElement);
+    this.dragControls.addEventListener('dragstart', () => {
+        this.controls.enabled = false;
+    });
+    this.dragControls.addEventListener('dragend', () => {
+        this.controls.enabled = true;
+    });
+
+    // Initialize or update TransformControls
+    if (!this.transformControls) {
+        this.transformControls = new TransformControls(this.camera, this.renderer.domElement);
+        this.scene.add(this.transformControls);
+    }
+    this.transformControls.detach(); // Detach current object if any
+    this.transformControls.attach(object);
+
+    // Set mode to 'rotate' to enable rotation controls
+    this.transformControls.setMode('rotate');
 }
+
+
+  public async loadBoard(textureUrl: string, boardWidth: number, boardHeight: number) {
+    const maxWidth = 1024;
   
-  addObject(object: THREE.Object3D): void {
-    this.scene.add(object);
+    const blobToBase64 = (blob: Blob): Promise<string> => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  
+    const fetchImageAsBase64 = async (url: string): Promise<string> => {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
+      return blobToBase64(await response.blob());
+    };
+  
+    const createTextureFromBase64 = async (base64: string): Promise<THREE.Texture> => {
+      const image = new Image();
+      image.src = base64;
+      await new Promise<void>(resolve => image.onload = () => resolve());
+  
+      if (image.width > maxWidth) {
+        const canvas = document.createElement('canvas');
+        const scale = maxWidth / image.width;
+        canvas.width = maxWidth;
+        canvas.height = image.height * scale;
+        const ctx = canvas.getContext('2d')!;
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        image.src = canvas.toDataURL();
+        await new Promise<void>(resolve => image.onload = () => resolve());
+      }
+  
+      const texture = new THREE.Texture(image);
+      texture.needsUpdate = true;
+      return texture;
+    };
+  
+    try {
+      const base64Texture = await fetchImageAsBase64(textureUrl);
+      const texture = await createTextureFromBase64(base64Texture);
+  
+      const board = new THREE.Mesh(
+        new THREE.PlaneGeometry(boardWidth, boardHeight),
+        new THREE.MeshBasicMaterial({ map: texture })
+      );
+      board.rotation.x = -Math.PI / 2;
+      this.scene.add(board);
+      this.enableInteractions(board);
+    } catch (error) {
+      console.error('Error loading texture:', error);
+    }
   }
-
-  updateCameraAngle(angle: number): void {
-    const radius = 5; // distance from the center
-    const radianAngle = THREE.MathUtils.degToRad(angle);
-
-    // Calculate new camera position
-    const x = radius * Math.sin(radianAngle);
-    const z = radius * Math.cos(radianAngle);
-
-    this.camera.position.set(x, this.camera.position.y, z);
-    this.camera.lookAt(this.scene.position);
-  }
+  
 }

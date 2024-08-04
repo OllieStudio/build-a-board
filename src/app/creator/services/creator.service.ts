@@ -200,7 +200,7 @@ export class CreatorUIService implements OnInit {
   async saveItem(){
     await this.checkBase64Image();
     if(!this.currentComponent.name) this.currentComponent.name = this.currentComponent.title;
-    if(this.currentComponent.prompt3d) this.currentComponent.three = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
+    if(this.currentComponent.three?.prompt3d) this.currentComponent.three.code = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
     if(this.currentComponent.action) this.currentComponent.actioncode = await this.aiservice.textToCode(this.currentComponent.action);
      this.currentComponent.template = this.getElementTemplate();
      this.currentComponent.imagem = this.currentComponent['background'] || await this.imageservice.convertElementToImage(this.getHTMLElement());
