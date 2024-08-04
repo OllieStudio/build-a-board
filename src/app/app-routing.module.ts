@@ -23,6 +23,7 @@ import { CreateComponent } from './creator/gameform/design/create/create.compone
 import { ElementsComponent } from './creator/gameform/design/elements/elements.component';
 import { TextComponent } from './creator/gameform/design/text/text.component';
 import { UploadsComponent } from './creator/gameform/design/uploads/uploads.component';
+import { TestingComponent } from './testing/testing.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -54,8 +55,8 @@ const routes: Routes = [
     { path: 'text', component:TextComponent,  },
     { path: 'create', component:CreateComponent,  },
 ] },
-{ path: 'testing', component:ComponentesComponent },
-  ]},
+{ path: 'testing', component:TestingComponent },
+    ]},
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)

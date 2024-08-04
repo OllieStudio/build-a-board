@@ -1,0 +1,18 @@
+#testing-scene{
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(213, 212, 212));
+    z-index: 0;
+    position:absolute;
+    top: 60px;
+    margin-left: 0;
+}
+
+#container{
+    width: 100vw;
+    height: 100vh;
+    position:absolute;
+    margin-top: 0px;
+    margin-left: 0;
+}

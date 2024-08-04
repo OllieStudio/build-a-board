@@ -1,0 +1,10 @@
+#players{
+    width: 40vw;
+    height: 140px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, rgb(137, 136, 136), rgb(92, 91, 92));
+    padding:11px;
+    position: absolute;
+    top: 12vh;
+    right: 20px;
+}
