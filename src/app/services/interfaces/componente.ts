@@ -12,17 +12,20 @@ export interface Componente {
   classname:string;
   icon:string;
   title:string;
+  multiple?:string;
   modifiers?: Modifier[];
 }
 
 
 export interface Modifier {
+  multiple?: any;
+  ratio?: string;
   component?: Componente;
   property: any;
   type: string;
   title: string;
   description?: string;
-  options: string[];
+  options?: string[];
   imageprompt?: string;
   svgprompt?: string;
 }

@@ -149,6 +149,8 @@ export class CreatorUIService implements OnInit {
         break;
       case 'track': this.addSVGLayer(value);
          break;
+      case 'group': this.addGroupComponents(modifier, value);
+         break;
       // case 'color': this.setComponentColor(value);
       //   break;
       // case 'font': this.setComponentFont(value);
@@ -163,6 +165,19 @@ export class CreatorUIService implements OnInit {
       }
       this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
     }
+
+  async addGroupComponents(modifier: Modifier, value: any) {
+    if(confirm(`Deseja adicionar ${value} ${modifier.multiple} ao grupo ${this.currentComponent.name}?`)){
+      const element = this.componentesData.find(el => el.id === modifier.multiple);
+      element.imagem = element.template;
+
+      for (let index = 0; index < value; index++) {
+        element['group'] = this.currentComponent.name;
+        element.name = modifier.multiple + '-' + index;
+        this.gamedataservice.saveComponent(element);
+      }
+    }
+  }
   
     addSVGLayer(value: any) {
       const divElement = document.getElementById('editableObject');

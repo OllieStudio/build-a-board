@@ -53,6 +53,7 @@
       "id": "tabuleiroretangular",
       "template": "<svg viewBox='0 0 800 500' width='800' height='500' style='background:#FFF'><defs></defs><rect style='stroke: rgb(0, 0, 0); stroke-width:5; fill: none;' x='0' y='0' width='800' height='500' rx='5' ry='5'></rect></svg>",
       "classname": "tabuleiro-retangular",
+      "ratio":"16:9",
       "three":{
         "type":"board"
       },
@@ -144,25 +145,201 @@
       ]
     },
     {
-      "icon": "style",
-      "title": "Grupo 5 Cartas",
-      "id": "grupo5cartas",
-      "template": "<svg viewBox='101.077 58.065 278.077 438.93' width='278.077' height='438.93'><rect style='fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);' transform='matrix(0.999975, 0.007057, -0.007057, 0.999975, 6.402043, -6.91842)' x='98.215' y='64.292' width='275' height='437' rx='10' ry='10'></rect></svg>",
-      "classname": "grupo-5-cartas"
+      "icon": "web_stories",
+      "title": "Deck Cartas 44x67mm",
+      "id": "deckcartasP",
+      "template": "<svg viewBox='101.077 58.065 278.077 438.93' width='278.077' height='438.93'><rect style='fill:none; stroke: rgb(0, 0, 0);' transform='matrix(0.999975, 0.007057, -0.007057, 0.999975, 6.402043, -6.91842)' x='98.215' y='64.292' width='275' height='437' rx='10' ry='10'></rect></svg>",
+      "classname": "deck-cartas-P",
+      "type":"SVG",
+      "modifiers":[
+        {
+          "type": "radio",
+          "property": "group",
+          "multiple":"carta-P",
+          "title":"Deck",
+          "description":"A quantidade de cartas do deck",
+            "options": [
+              "32",
+              "64"
+          ]  
+        },
+        {
+          "type":"image",
+          "property":"background",
+          "title":"Verso",
+          "ratio":"9:16",
+          "description":"Envie ou descreva a imagem do verso das cartas",
+          "options":["upload", "imageprompt"],
+          "imageprompt":" a card back face "
+        },
+        {
+          "type":"radio",
+          "property":"material",
+          "title":"Material",
+          "options":["papel couche", "papel couche laminado"]
+        }
+      ]
+    },
+    
+    {
+      "icon": "web_stories",
+      "title": "Deck Cartas 56x87mm",
+      "id": "deckcartasM",
+      "template": "<svg viewBox='101.077 58.065 278.077 438.93' width='278.077' height='438.93'><rect style='fill:none; stroke: rgb(0, 0, 0);' transform='matrix(0.999975, 0.007057, -0.007057, 0.999975, 6.402043, -6.91842)' x='98.215' y='64.292' width='275' height='437' rx='10' ry='10'></rect></svg>",
+      "classname": "deck-cartas-M",
+      "type":"SVG",
+      "modifiers":[
+        {
+          "type": "radio",
+          "property": "group",
+          "multiple":"carta-M",
+          "title":"Deck",
+          "description":"A quantidade de cartas do deck",
+            "options": [
+              "22",
+              "66"
+          ]  
+        },
+        {
+          "type":"image",
+          "property":"background",
+          "title":"Verso",
+          "ratio":"9:16",
+          "description":"Envie ou descreva a imagem do verso das cartas",
+          "options":["upload", "imageprompt"],
+          "imageprompt":" a card back face "
+        },
+        {
+          "type":"radio",
+          "property":"material",
+          "title":"Material",
+          "options":["papel couche", "papel couche laminado"]
+        }
+      ]
     },
     {
-      "icon": "style",
-      "title": "Grupo 12 Cartas",
-      "id": "grupo12cartas",
-      "template": "assets/templates/grupo12cartas.svg",
-      "classname": "grupo-12-cartas"
+      "icon": "web_stories",
+      "title": "Deck Cartas 63x88mm",
+      "id": "deckcartasG",
+      "template": "<svg viewBox='101.077 58.065 278.077 438.93' width='278.077' height='438.93'><rect style='fill:none; stroke: rgb(0, 0, 0);' transform='matrix(0.999975, 0.007057, -0.007057, 0.999975, 6.402043, -6.91842)' x='98.215' y='64.292' width='275' height='437' rx='10' ry='10'></rect></svg>",
+      "classname": "deck-cartas-G",
+      "type":"SVG",
+      "modifiers":[
+        {
+          "type": "radio",
+          "property": "group",
+          "multiple":"carta-G",
+          "title":"Deck",
+          "description":"A quantidade de cartas do deck",
+          "options": [
+              "18",
+              "36",
+              "54"
+            ]  
+          },
+          {
+          "type":"image",
+          "property":"background",
+          "title":"Verso",
+          "ratio":"9:16",
+          "description":"Envie ou descreva a imagem do verso das cartas",
+          "options":["upload", "imageprompt"],
+          "imageprompt":" a card back face "
+        },
+          {
+            "type":"image",
+            "property":"background",
+            "title":"Imagem",
+            "ratio":"9:16",
+            "description":"Envie ou descreva a imagem da carta",
+          "options":["upload", "imageprompt"],
+          "imageprompt":" a card face "
+        },
+        {
+          "type":"radio",
+          "property":"material",
+          "title":"Material",
+          "options":["papel couche", "papel couche laminado"]
+        }
+      ]
     },
     {
-      "icon": "style",
-      "title": "Grupo 25 Cartas",
-      "id": "grupo25cartas",
-      "template": "assets/templates/grupo25cartas.svg",
-      "classname": "grupo-25-cartas"
+      "icon": "crop_portrait",
+      "title": "Carta 44x67mm",
+      "id": "carta-P",
+      "template": "<svg viewBox='101.077 58.065 278.077 438.93' width='278.077' height='438.93'><rect style='fill:none; stroke: rgb(0, 0, 0);' transform='matrix(0.999975, 0.007057, -0.007057, 0.999975, 6.402043, -6.91842)' x='98.215' y='64.292' width='275' height='437' rx='10' ry='10'></rect></svg>",
+      "classname": "carta-p",
+      "type":"SVG",
+      "modifiers":[
+        {
+          "type": "radio",
+          "property": "deck",
+          "title":"Deck",
+          "description":"Selecione o deck/grupo dessa carta",
+            "options": [ ]  
+        },
+        {
+          "type":"image",
+          "property":"background",
+          "title":"Imagem",
+          "ratio":"9:16",
+          "description":"Envie ou descreva a imagem da carta",
+          "options":["upload", "imageprompt"],
+          "imageprompt":" a card face "
+        }
+      ]
+    },
+    {
+      "icon": "crop_portrait",
+      "title": "Carta 56x87mm",
+      "id": "carta-M",
+      "template": "<svg viewBox='101.077 58.065 278.077 438.93' width='278.077' height='438.93'><rect style='fill:none; stroke: rgb(0, 0, 0);' transform='matrix(0.999975, 0.007057, -0.007057, 0.999975, 6.402043, -6.91842)' x='98.215' y='64.292' width='275' height='437' rx='10' ry='10'></rect></svg>",
+      "classname": "carta-m",
+      "type":"SVG",
+      "modifiers":[
+        {
+          "type": "radio",
+          "property": "deck",
+          "title":"Deck",
+          "description":"Selecione o deck/grupo dessa carta",
+            "options": [ ]  
+        },
+        {
+          "type":"image",
+          "property":"background",
+          "title":"Imagem",
+          "ratio":"9:16",
+          "description":"Envie ou descreva a imagem da carta",
+          "options":["upload", "imageprompt"],
+          "imageprompt":" a card face "
+        }
+      ]
+    },
+    {
+      "icon": "crop_portrait",
+      "title": "Carta 63x88mm",
+      "id": "carta-G",
+      "template": "<svg viewBox='101.077 58.065 278.077 438.93' width='278.077' height='438.93'><rect style='fill:none; stroke: rgb(0, 0, 0);' transform='matrix(0.999975, 0.007057, -0.007057, 0.999975, 6.402043, -6.91842)' x='98.215' y='64.292' width='275' height='437' rx='10' ry='10'></rect></svg>",
+      "classname": "carta-g",
+      "type":"SVG",
+      "modifiers":[
+        {
+          "type": "radio",
+          "property": "deck",
+          "title":"Deck",
+          "description":"Selecione o deck/grupo dessa carta",
+            "options": [ ]  
+        },
+          {
+            "type":"image",
+            "property":"background",
+            "title":"Imagem",
+            "ratio":"9:16",
+            "description":"Envie ou descreva a imagem da carta",
+          "options":["upload", "imageprompt"],
+          "imageprompt":" a card face "
+        }
+      ]
     },
     {
       "icon": "casino",

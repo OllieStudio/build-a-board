@@ -10,21 +10,24 @@ import { UploadService } from 'src/app/services/upload.service';
 import { Upload } from 'src/app/services/interfaces/upload';
 import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
 import { ArtStyle, AspectRatio, VertexAIService } from 'src/app/services/google-vertex-ai.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-modifier-image',
   standalone: true,
-  imports: [CommonModule, FileuploadModule, PromptInputComponent],
+  imports: [CommonModule, FileuploadModule, PromptInputComponent, FormsModule],
   templateUrl: './modifier-image.component.html',
   styleUrls: ['./modifier-image.component.css']
 })
 export class ModifierImageComponent {
   @Input() modifier:Modifier = {} as Modifier;
   hideSpinner = true;
+  styles: string[];
+  selectedStyle:string;
 
   constructor(private vertex:VertexAIService, private aiservice:GoogleGeminiAIService, private gamedataservice:GameDataService, private creator: CreatorUIService,
      private uploads:UploadService){
-
+      this.styles = this.enumToArray(ArtStyle);
   }
   
   path:string = `game/${this.gamedataservice.game.titulo}/components/${this.modifier?.component}/${this.modifier?.property}_`;
@@ -43,14 +46,17 @@ export class ModifierImageComponent {
     this.uploads.addUpload(event, this.creator.currentComponent, this.modifier);
   }
 
-  async generateImage(prompt){
-    const bg = await this.vertex.generateImage(this.modifier.imageprompt + prompt, AspectRatio.Square, ArtStyle.DigitalArt);
+  async generateImage(prompt, style:any = ArtStyle.DigitalArt){
+    const bg = await this.vertex.generateImage(this.modifier.imageprompt + prompt, this.modifier.ratio || AspectRatio.Square, style);
     this.creator.updateItemModifier(this.modifier, bg);
   }
 
   async generateSVG(prompt){
     const bg = await this.aiservice.textToSVG(prompt, this.modifier.svgprompt);
     this.creator.updateItemModifier(this.modifier, bg);
+  }
 
+   enumToArray(enumObj: any): string[] {
+    return Object.keys(enumObj).filter(key => isNaN(Number(key)));
   }
 }

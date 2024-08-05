@@ -35,6 +35,14 @@ textarea{
   padding: 8px 13px!important;
 }
 
+select.small{
+  padding: 0!important;
+    font-size: 12px;
+    height: 23px;
+    border-radius: 20px;
+    width: 200px;
+}
+
 #singleton .row .col{
   width: 100%!important;
 }
@@ -321,6 +329,7 @@ a.disabled {
 
 
 .spinner{
+  color:rgb(124, 92, 137);
   animation-name: spin;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;

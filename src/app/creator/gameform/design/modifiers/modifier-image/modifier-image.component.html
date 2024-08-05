@@ -6,7 +6,10 @@
       <app-fileupload (valueChange)="onValueChange($event)" [accepts]="'img'" [label]="''" [path]="path"></app-fileupload>
   </div>
   <div class="row bottom-0 top-2" [hidden]="activeTab != 'imageprompt'">
-    <app-prompt-input [hideSpinner]="hideSpinner" [label]="'gerar com IA'" (output)="generateImage($event)" [base]=""></app-prompt-input>
+    <select id="styleSelect" [(ngModel)]="selectedStyle" class="browser-default small left-1 bottom-1">
+      <option *ngFor="let style of styles" [value]="style">{{ style }}</option>
+    </select>
+    <app-prompt-input [hideSpinner]="hideSpinner" [label]="'gerar com IA'" (output)="generateImage($event, selectedStyle)" [base]=""></app-prompt-input>
   </div>
   <div class="row bottom-0 top-2"  [hidden]="activeTab != 'svgprompt'">
     <app-prompt-input [hideSpinner]="hideSpinner" [label]="'gerar com IA'" (output)="generateSVG($event)" [base]=""></app-prompt-input>
