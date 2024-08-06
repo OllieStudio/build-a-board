@@ -1,3 +1,8 @@
 .text-container{
     padding:10px;
 }
+
+.textcard{
+    cursor: grab;
+    pointer-events: none;
+}

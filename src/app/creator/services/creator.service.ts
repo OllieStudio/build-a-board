@@ -1,6 +1,6 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { EventEmitter, Injectable, OnInit } from '@angular/core';
-import { Componente, Modifier } from '../../services/interfaces/componente';
+import { Componente, Modifier, Texto } from '../../services/interfaces/componente';
 import componentes_data from '../data/componentes.json';
 import { Jogo } from '../../services/interfaces/jogo';
 import { GameDataService } from './gamedata.service';
@@ -69,6 +69,36 @@ export class CreatorUIService implements OnInit {
     if ( event.previousContainer.id === "components" && event.container.id === "canvas") {
       this.addNewComponentToCanvas(event.item.data);
       this.history.addItemSnapshot(this.componenteToSnapshot(event.item.data));
+    }
+  }
+  
+  dropText(event: CdkDragDrop<string[]>) {
+    console.log(event);
+    if ( event.previousContainer.id === "text-container" && event.container.id === "editableObject") {
+      this.addTextToComponent(event.item.data);
+      this.history.addItemSnapshot(this.componenteToSnapshot(event.item.data));
+    }
+  }
+
+  addTextToComponent(data: Texto) {
+    const container = document.getElementById('container');
+    if (container) {
+      const span = document.createElement('span');
+      span.textContent = data.content;
+
+      span.style.fontFamily = data.selectedFont;
+      span.style.fontSize = data.selectedSize + 'px';
+      span.style.fontStyle = data.selectedStyle;
+      span.style.color = data.selectedColor; 
+
+      span.style.position = 'absolute';
+      span.style.top = '50%';
+      span.style.left = '35%';
+      span.style.width = 'auto';
+      span.style.height = 'auto';
+
+      container.appendChild(span);
+      this.history.addItemSnapshot(this.componenteToSnapshot(data));
     }
   }
 
@@ -264,6 +294,7 @@ export class CreatorUIService implements OnInit {
   async saveItem(){
     await this.checkBase64Image();
     if(!this.currentComponent.name) this.currentComponent.name = this.currentComponent.title;
+    if(!this.currentComponent.id) this.currentComponent.id = this.currentComponent.name.toLowerCase().replace(/\s/g, '');
     if(this.currentComponent.three?.prompt3d) this.currentComponent.three.code = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
     if(this.currentComponent.action) this.currentComponent.actioncode = await this.aiservice.textToCode(this.currentComponent.action);
      this.currentComponent.template = this.getElementTemplate();
@@ -290,7 +321,7 @@ export class CreatorUIService implements OnInit {
       const isBase64 = src.startsWith('data:image/');
   
         if (isBase64) {
-         const url = await this.imageservice.uploadImg(src, `${this.currentComponent.classname}.png`, `game/${this.gamedataservice.game.titulo}/imgs/` );
+         const url = await this.imageservice.uploadImg(src, `${this.currentComponent.id}.png`, `game/${this.gamedataservice.game.titulo}/imgs/` );
          imgElement.src = url;
          this.uploads.addUpload(url, this.currentComponent, this.currentComponent.modifiers.find(modifier => modifier.property === 'background')[0]);
 
