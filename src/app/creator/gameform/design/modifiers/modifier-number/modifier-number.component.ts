@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ModifierNumberComponent {
   @Input() modifier:Modifier;
-  numberInput: string;
+  numberInput: number = 1;
   
   constructor(private creator: CreatorUIService){
   }

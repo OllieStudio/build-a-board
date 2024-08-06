@@ -90,8 +90,29 @@ export class CreatorUIService implements OnInit {
     this.closeDrawer();
     this.hasItemLoaded = true;
     
-    this.placeSvgInDiv(item.template, 'editableObject');
+    switch (item.type) {
+      case 'SVG':
+        this.placeSvgInDiv(item.template, 'editableObject');
+        break;
+        case 'PNG':
+          this.placePNGinDiv(item.template);
+          break;
+    
+          default:
+          this.placeSvgInDiv(item.template, 'editableObject');
+        break;
+    }
     this.setModifiers(item);
+  }
+  
+  placePNGinDiv(template: string) {
+    const divElement = document.getElementById('editableObject');
+    divElement.style.width = '200px';
+    divElement.style.height = '200px';
+    divElement.style.border = '1px solid #555';
+    divElement.style.borderRadius = '20px';
+    divElement.style.paddingTop = '60px';
+    this.setComponentBackground(template);
   }
 
   setModifiers(component:Componente) {

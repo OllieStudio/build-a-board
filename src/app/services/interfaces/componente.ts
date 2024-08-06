@@ -1,4 +1,5 @@
 export interface Componente {
+  type?: any;
   actioncode?: any;
   prompt3d?: any;
   name?: string;
