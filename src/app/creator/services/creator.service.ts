@@ -9,6 +9,7 @@ import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service
 import { ImageService } from './image.service';
 import { UploadService } from 'src/app/services/upload.service';
 import { firstValueFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export interface ItemSnapshot {
   id:string;
@@ -54,7 +55,7 @@ export class CreatorUIService implements OnInit {
   currentComponent: Componente;
   closedrawer: boolean = true;
 
-  constructor(private uploads:UploadService, private imageservice:ImageService, private gamedataservice:GameDataService, private aiservice:GoogleGeminiAIService, private history:HistoryService) {
+  constructor(private http:HttpClient, private uploads:UploadService, private imageservice:ImageService, private gamedataservice:GameDataService, private aiservice:GoogleGeminiAIService, private history:HistoryService) {
     this.componentesData  = componentes_data;
     this.game = this.gamedataservice.game;
     //console.log(this.componentesData)
@@ -92,7 +93,7 @@ export class CreatorUIService implements OnInit {
     
     switch (item.type) {
       case 'SVG':
-        this.placeSvgInDiv(item.template, 'editableObject');
+        this.placeSvgFileInDiv(item.template, 'editableObject');
         break;
         case 'PNG':
           this.placePNGinDiv(item.template);
@@ -103,6 +104,15 @@ export class CreatorUIService implements OnInit {
         break;
     }
     this.setModifiers(item);
+  }
+
+
+  placeSvgFileInDiv(template: string, arg1: string) {
+    this.http.get(template, { responseType: 'text' }).subscribe(
+      data => {
+        this.placeSvgInDiv(data, 'editableObject');
+      }
+    );
   }
   
   placePNGinDiv(template: string) {
