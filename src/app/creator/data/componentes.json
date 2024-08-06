@@ -343,10 +343,45 @@
     },
     {
       "icon": "casino",
-      "title": "Dado de 6 lados P",
-      "id": "dadode6ladosp",
-      "template": "<svg xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:cc='http://creativecommons.org/ns#' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' width='140mm' height='180mm' viewBox='0 0 140 180' version='1.1' id='svg8' inkscape:version='0.92.1 r15371' sodipodi:docname='dice-template.svg'><defs id='defs2' /><sodipodi:namedview id='base' pagecolor='#ffffff' bordercolor='#666666' borderopacity='1.0' inkscape:pageopacity='0.0' inkscape:pageshadow='2' inkscape:zoom='0.66624505' inkscape:cx='529.30269' inkscape:cy='407.52776' inkscape:document-units='mm' inkscape:current-layer='layer1' showgrid='false' inkscape:window-width='1366' inkscape:window-height='706' inkscape:window-x='-8' inkscape:window-y='-8' inkscape:window-maximized='1' inkscape:snap-global='false' fit-margin-top='0' fit-margin-left='0' fit-margin-right='0' fit-margin-bottom='0' /><metadata id='metadata5'><rdf:RDF><cc:Work rdf:about=''><dc:format>image/svg+xml</dc:format><dc:type rdf:resource='http://purl.org/dc/dcmitype/StillImage' /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><g inkscape:label='Layer 1' inkscape:groupmode='layer' id='layer1' transform='translate(84.036705,-68.133988)'><path style='fill:none;stroke:#000000;stroke-width:1.49408317;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1' d='M -31.981272,85.776084 -32.046278,234.34844 5.6397548,234.71269 5.5952814,85.843538 Z' id='path4496' inkscape:connector-curvature='0' sodipodi:nodetypes='ccccc' /><path style='fill:none;stroke:#000000;stroke-width:1.49408317;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1' d='m -69.732305,122.52457 113.79704,0.36425 -0.738942,36.78896 -113.105173,0.27142 z' id='path4498' inkscape:connector-curvature='0' sodipodi:nodetypes='ccccc' /><path style='fill:none;stroke:#000000;stroke-width:1.49408317;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1' d='M -32.415742,196.83099 H 5.6397605 l 7.3894185,-4.37097 -0.738942,-27.68278 -6.6504765,-4.73521 -37.6620845,0.32039 -6.893371,4.3305 -0.04447,28.0875 z' id='path4500' inkscape:connector-curvature='0' sodipodi:nodetypes='ccccccccc' /><path style='fill:none;stroke:#000000;stroke-width:1.49408317;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1' d='m -32.025745,122.56505 -6.869422,-4.11465 -0.106045,-28.303351 6.954945,-4.370965 4.803124,-7.325414 28.8187291,0.364249 4.1497056,7.156778 6.9344213,3.770635 v 28.775518 l -7.0199469,4.37097' id='path4502' inkscape:connector-curvature='0' sodipodi:nodetypes='cccccccccc' /><path style='fill:none;stroke:#000000;stroke-width:1.49408317;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1' d='m 44.064735,122.88882 6.281004,5.09945 v 26.9543 l -7.019946,4.73521' id='path4506' inkscape:connector-curvature='0' /><path style='fill:none;stroke:#000000;stroke-width:1.49408317;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1' d='m -69.732305,122.52457 -7.019946,4.73521 v 28.41128 l 6.834023,4.27814' id='path4508' inkscape:connector-curvature='0' sodipodi:nodetypes='cccc' /></g></svg>",
-      "classname": "dado-de-6-lados-p"
+      "title": "Dado de 6 lados",
+      "id": "dadode6lados",
+      "template": "<svg width='300px' height='300px' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><path fill='#FFFFFF' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M448,341.37V170.61A32,32,0,0,0,432.11,143l-152-88.46a47.94,47.94,0,0,0-48.24,0L79.89,143A32,32,0,0,0,64,170.61V341.37A32,32,0,0,0,79.89,369l152,88.46a48,48,0,0,0,48.24,0l152-88.46A32,32,0,0,0,448,341.37Z'/><polyline fill='#FFFFFF' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' points='69 153.99 256 263.99 443 153.99'/><line fill='#FFFFFF' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' x1='256' y1='463.99' x2='256' y2='263.99'/><ellipse cx='256' cy='152' rx='24' ry='16'/><ellipse cx='208' cy='296' rx='16' ry='24'/><ellipse cx='112' cy='328' rx='16' ry='24'/><ellipse cx='304' cy='296' rx='16' ry='24'/><ellipse cx='400' cy='240' rx='16' ry='24'/><ellipse cx='304' cy='384' rx='16' ry='24'/><ellipse cx='400' cy='328' rx='16' ry='24'/></svg>",
+      "classname": "dado-de-6-lados-p",
+      "type":"SVG",
+      "modifiers":[
+        {
+          "type": "radio",
+          "property": "size",
+          "title":"Tamanho",
+          "description":"Selecione o tamanho do seu dado",
+            "options": [ 
+              "12mm",
+              "18mm",
+              "26mm"
+                      ]  
+        },
+        {
+          "type": "number",
+          "property": "ammount",
+          "title":"Quantidade",
+          "description":"Informe a quantidade de dados"
+        },
+        {
+          "type": "color",
+          "property": "color",
+          "title":"Cor",
+          "description":"Selecione a a cor do dado(s)",
+          "options":[
+            "white",
+            "yellow",
+            "red",
+            "blue",
+            "purple",
+            "green",
+            "black"
+          ]
+        }
+      ]
     },
     {
       "icon": "casino",

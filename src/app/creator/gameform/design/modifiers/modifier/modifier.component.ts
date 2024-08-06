@@ -4,11 +4,14 @@ import { CreatorUIService } from 'src/app/creator/services/creator.service';
 import { Modifier } from 'src/app/services/interfaces/componente';
 import { ModifierRadioComponent } from '../modifier-radio/modifier-radio.component';
 import { ModifierImageComponent } from '../modifier-image/modifier-image.component';
+import { ModifierInputComponent } from '../modifier-input/modifier-input.component';
+import { ModifierNumberComponent } from '../modifier-number/modifier-number.component';
+import { ModifierColorComponent } from '../modifier-color/modifier-color.component';
 
 @Component({
   selector: 'app-modifier',
   standalone: true,
-  imports: [CommonModule, ModifierRadioComponent, ModifierImageComponent],
+  imports: [CommonModule, ModifierColorComponent, ModifierRadioComponent, ModifierImageComponent, ModifierInputComponent, ModifierNumberComponent],
   templateUrl: './modifier.component.html',
   styleUrls: ['./modifier.component.css']
 })

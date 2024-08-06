@@ -8,6 +8,7 @@ import { HistoryService } from './history.service';
 import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
 import { ImageService } from './image.service';
 import { UploadService } from 'src/app/services/upload.service';
+import { firstValueFrom } from 'rxjs';
 
 export interface ItemSnapshot {
   id:string;
@@ -151,8 +152,8 @@ export class CreatorUIService implements OnInit {
          break;
       case 'group': this.addGroupComponents(modifier, value);
          break;
-      // case 'color': this.setComponentColor(value);
-      //   break;
+       case 'color': this.setComponentColor(value);
+         break;
       // case 'font': this.setComponentFont(value);
       //   break;
       // case 'fontsize': this.setComponentFontSize(value);
@@ -164,6 +165,23 @@ export class CreatorUIService implements OnInit {
         break;
       }
       this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
+    }
+  
+  setComponentColor(value: any) {
+    const divElement = document.getElementById('editableObject');
+    const obj = divElement.childNodes[0] as SVGElement;
+    if (obj) {
+      const updateFill = (element: SVGElement, color: string) => {
+        const elements = element.querySelectorAll('*');
+        elements.forEach((el: SVGElement) => {
+          const currentFill = el.getAttribute('fill');
+          if (currentFill != null) {
+            el.setAttribute('fill', color);
+          }
+        });
+      };
+      updateFill(obj, value);
+      }
     }
 
   async addGroupComponents(modifier: Modifier, value: any) {
@@ -221,12 +239,11 @@ export class CreatorUIService implements OnInit {
      this.currentComponent.imagem = this.currentComponent['background'] || await this.imageservice.convertElementToImage(this.getHTMLElement());
      this.gamedataservice.saveComponent(this.currentComponent) ;   
   }
+
   getHTMLElement(): HTMLElement {
     const divElement = document.getElementById('editableObject');
     return divElement;
   }
-
- 
 
   describe3D(currentComponent: Componente): string {
     return `${currentComponent.prompt3d} with ${currentComponent.modifiers.map(modifier => {if(currentComponent[modifier.property]) return modifier.property + ': ' + currentComponent[modifier.property]}).join(', ')}`

@@ -15,6 +15,8 @@
        
         <app-modifier-radio *ngIf="modifier.type == 'radio'" [modifier]="modifier"></app-modifier-radio>
         <app-modifier-input *ngIf="modifier.type == 'input'" [modifier]="modifier"></app-modifier-input>
+        <app-modifier-number *ngIf="modifier.type == 'number'" [modifier]="modifier"></app-modifier-number>
         <app-modifier-image *ngIf="modifier.type == 'image'" [modifier]="modifier"></app-modifier-image>
+        <app-modifier-color *ngIf="modifier.type == 'color'" [modifier]="modifier"></app-modifier-color>
     </div>
 </div>

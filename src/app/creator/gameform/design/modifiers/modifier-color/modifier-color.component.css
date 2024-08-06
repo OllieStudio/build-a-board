@@ -1,0 +1,35 @@
+form {
+    display: flex;
+    flex-direction: row;
+    gap: 1px;
+    width: 100%;
+  }
+  
+  label {
+    margin-right: 0.5rem;
+  }
+  
+  .custom-select {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .options {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 1000;
+  }
+  
+  .option {
+    height: 35px;
+    width: 30px;
+    cursor: pointer;
+  }
+  
+  

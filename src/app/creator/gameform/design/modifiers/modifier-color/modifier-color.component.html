@@ -1,0 +1,13 @@
+<form>
+  <div *ngIf="!limitOptions">
+    <label for="color">Select color:</label>
+    <input id="color" type="color" [(ngModel)]="color" name="color">
+  </div>
+
+  <div *ngIf="limitOptions" class="custom-select">
+        <div *ngFor="let colorOption of colorOptions" class="option" [style.background]="colorOption"
+          (click)="onColorChange(colorOption)">
+        </div>
+  </div>
+</form>
+
