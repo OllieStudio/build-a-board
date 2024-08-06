@@ -16,7 +16,8 @@ export const environment = {
   },
   termsofservice:"https://mypage.html",
   privacypolicy:"https://mypage.html",
-  GEMINI_API_KEY: 'AIzaSyBVFQwZ14WwRrMQvhblhITdaXV3cec1IyI'
+  GEMINI_API_KEY: 'AIzaSyBVFQwZ14WwRrMQvhblhITdaXV3cec1IyI',
+  FONTS_API_KEY: 'AIzaSyAOhYM4h4O0SjYI_GQZ7hzvepUALTFGgbM'
 };
 
 /*

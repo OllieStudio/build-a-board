@@ -30,3 +30,16 @@ export interface Modifier {
   imageprompt?: string;
   svgprompt?: string;
 }
+
+export interface Texto{
+  selectedFont: string;
+  selectedSize: number;
+  selectedStyle: string;
+  selectedColor: string;
+  content:string;
+  id:string;
+  top?:number;
+  left?:number;
+  width?:number;
+  height?:number;
+}

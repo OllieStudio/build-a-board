@@ -1,1 +1,31 @@
-<p>text works!</p>
+<div class="tool-container">
+
+    <div class="top-5">
+        <button class="tab-button" [ngClass]="{'active': activeTab == 'edit'}"  (click)="activeTab = 'edit'">editar</button>
+        <button class="tab-button" [ngClass]="{'active': activeTab == 'upload'}"  (click)=" activeTab = 'upload'">upload</button>
+      </div>
+
+    <div class="row top-5 text-container" [hidden]="activeTab != 'upload'">
+        <span class="tool-title">Envie seus textos em XLS ou CSV</span>
+        <app-fileupload id="singleton" (valueChange)="onFileUploaded($event)" [accepts]="'xls'" [label]="'enviar arquivo'"
+            [path]="path" [multiple]="true"></app-fileupload>
+    </div>
+
+    <div class="row top-5 text-container" [hidden]="activeTab != 'edit'">
+       <app-font-selector (colorChange)="onColorChange($event)" (fontChange)="onFontChange($event)" (sizeChange)="onFontSizeChange($event)" (styleChange)="onFontStyleChange($event)"></app-font-selector>
+        <textarea #textinput class="top-3" name="textInput" cols="30" rows="10" [(NgModel)]="currentContent"
+        [ngStyle]="{'font-family': selectedFont, 'color': selectedColor, 'font-size': selectedSize + 'px', 'font-style': selectedStyle}"
+         style="height: 90px;"></textarea>
+        <app-ai-button label="gerar com IA" (click)="generateText(textinput.value)"></app-ai-button> 
+        <a (click)="registerText(textinput.value)" class="btn col s12 top-3 blue darken-1 valign-wrapper">
+            <i class="material-icons valign">save</i>
+            salvar</a>
+    </div>
+
+    <div class="row">
+        <div class="col s12 textcard" *ngFor="let item of items" >
+                <span [ngStyle]="{'font-family': item.selectedFont, 'color': item.selectedColor, 'font-size': item.selectedSize + 'px', 'font-style': item.selectedStyle}"
+                class="card-title">{{item.content}}</span>
+        </div>
+    </div>
+</div>

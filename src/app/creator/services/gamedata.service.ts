@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormService, DatabaseService, InputBase, MaterializeService } from '@ollieestudio/fire-lib';
-import { Componente } from 'src/app/services/interfaces/componente';
+import { Componente, Texto } from 'src/app/services/interfaces/componente';
 import { Jogo } from 'src/app/services/interfaces/jogo';
 
 @Injectable({
@@ -51,8 +51,19 @@ export class GameDataService {
     })
   }
 
+  saveText(text: Texto) {
+    text.id = text.content.toLowerCase().replace(/\s/g, '').substring(0, 15);
+    this.database.set(text, 'GAMES/'+this.game.id+'/TEXTS').then(result =>{
+      this.material.toast("Texto salvo com sucesso!", 3000, 'green');
+    })
+  }
+
   getComponents() {
     return this.database.listValues('GAMES/'+this.game.id+'/COMPONENTS');
+  }
+  
+  getTexts() {
+    return this.database.listValues('GAMES/'+this.game.id+'/TEXTS');
   }
  
 }

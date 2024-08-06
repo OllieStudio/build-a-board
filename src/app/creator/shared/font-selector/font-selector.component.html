@@ -1,0 +1,21 @@
+<!-- src/app/font-picker/font-picker.component.html -->
+<div class="font-picker row">
+    <select class="browser-default small col s5" id="font-family" [(ngModel)]="selectedFont" (change)="onFontChange()">
+      <option *ngFor="let font of fonts" [value]="font">{{font}}</option>
+    </select>
+  
+    <select  class="browser-default small col s3" id="font-style" [(ngModel)]="selectedStyle" (change)="onStyleChange()">
+      <option *ngFor="let style of styles" [value]="style">{{style}}</option>
+    </select>
+
+    <select class="browser-default small col s2" id="font-size" [(ngModel)]="selectedSize" (change)="onSizeChange()">
+      <option *ngFor="let size of sizes" [value]="size">{{size}}</option>
+    </select>
+
+    <input class="browser-default small col s2"  type="color" id="font-color" [(ngModel)]="selectedColor" (change)="onColorChange()">
+  
+    <!-- <div class="preview" [ngStyle]="{'font-family': selectedFont, 'font-size': selectedSize + 'px', 'font-style': selectedStyle}">
+      The quick brown fox jumps over the lazy dog
+    </div> -->
+  </div>
+  

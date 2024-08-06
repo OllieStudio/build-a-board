@@ -1,0 +1,19 @@
+/* src/app/font-picker/font-picker.component.css */
+.font-picker {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    margin: 0 auto;
+  }
+  
+  .font-picker label {
+    margin-top: 10px;
+  }
+  
+  .preview {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
