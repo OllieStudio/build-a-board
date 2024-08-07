@@ -3,6 +3,16 @@
 }
 
 .textcard{
-    cursor: grab;
+    cursor:pointer;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #767474;
+}
+
+.textcard span{
     pointer-events: none;
+    user-select: none; /* Standard */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
 }

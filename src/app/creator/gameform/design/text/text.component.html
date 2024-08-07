@@ -3,7 +3,8 @@
     <div class="top-5">
         <button class="tab-button" [ngClass]="{'active': activeTab == 'edit'}"  (click)="activeTab = 'edit'">editar</button>
         <button class="tab-button" [ngClass]="{'active': activeTab == 'upload'}"  (click)=" activeTab = 'upload'">upload</button>
-      </div>
+        <i *ngIf="activeTab != ''" class="material-icons link right grey-text" style="font-size: 17px;" (click)="activeTab = ''">close</i>
+    </div>
 
     <div class="row top-5 text-container" [hidden]="activeTab != 'upload'">
         <span class="tool-title">Envie seus textos em XLS ou CSV</span>
@@ -12,17 +13,12 @@
     </div>
 
     <div class="row top-5 text-container" [hidden]="activeTab != 'edit'">
-       <app-font-selector (colorChange)="onColorChange($event)" (fontChange)="onFontChange($event)" (sizeChange)="onFontSizeChange($event)" (styleChange)="onFontStyleChange($event)"></app-font-selector>
-        <textarea #textinput class="top-3" name="textInput" cols="30" rows="10" [(ngModel)]="currentContent"
-        [ngStyle]="{'font-family': selectedFont, 'color': selectedColor, 'font-size': selectedSize + 'px', 'font-style': selectedStyle}"
-         style="height: 90px;"></textarea>
-        <app-ai-button label="gerar com IA" (click)="generateText(textinput.value)"></app-ai-button> 
-        <a (click)="registerText(textinput.value)" class="btn col s12 top-3 blue darken-1 valign-wrapper">
-            <i class="material-icons valign">save</i>
-            salvar</a>
+       <app-text-editor (textChange)="registerText($event)" [textData]="editText"></app-text-editor>
     </div>
 
-    <div id="text-container" class="row" (cdkDropListDropped)="creator.dropText($event)" cdkDropListConnectedTo="canvas" cdkDropList>
+   
+
+    <div id="text-container" class="row top-5" (cdkDropListDropped)="creator.dropText($event)" cdkDropListConnectedTo="editableObject" cdkDropList>
         <div class="col s12 textcard" *ngFor="let item of items" cdkDrag [cdkDragData]="item">
                 <span [ngStyle]="{'font-family': item.selectedFont, 'color': item.selectedColor, 'font-size': item.selectedSize + 'px', 'font-style': item.selectedStyle}"
                 class="card-title">{{item.content}}</span>

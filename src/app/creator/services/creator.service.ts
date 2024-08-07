@@ -1,4 +1,4 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { EventEmitter, Injectable, OnInit } from '@angular/core';
 import { Componente, Modifier, Texto } from '../../services/interfaces/componente';
 import componentes_data from '../data/componentes.json';
@@ -54,6 +54,7 @@ export class CreatorUIService implements OnInit {
   modifiers: EventEmitter<Modifier[]> = new EventEmitter();
   currentComponent: Componente;
   closedrawer: boolean = true;
+  isDragDisabled:boolean = false;
 
   constructor(private http:HttpClient, private uploads:UploadService, private imageservice:ImageService, private gamedataservice:GameDataService, private aiservice:GoogleGeminiAIService, private history:HistoryService) {
     this.componentesData  = componentes_data;
@@ -74,18 +75,20 @@ export class CreatorUIService implements OnInit {
   
   dropText(event: CdkDragDrop<string[]>) {
     console.log(event);
-    if ( event.previousContainer.id === "text-container" && event.container.id === "editableObject") {
+    if ( event.previousContainer.id === "text-container") {
       this.addTextToComponent(event.item.data);
       this.history.addItemSnapshot(this.componenteToSnapshot(event.item.data));
     }
   }
 
   addTextToComponent(data: Texto) {
-    const container = document.getElementById('container');
+    const container = document.getElementById('editableObject');
+    //this.isDragDisabled = true;
+
     if (container) {
       const span = document.createElement('span');
       span.textContent = data.content;
-
+      span.id = data.id;
       span.style.fontFamily = data.selectedFont;
       span.style.fontSize = data.selectedSize + 'px';
       span.style.fontStyle = data.selectedStyle;
@@ -93,13 +96,36 @@ export class CreatorUIService implements OnInit {
 
       span.style.position = 'absolute';
       span.style.top = '50%';
-      span.style.left = '35%';
+      span.style.left = '25%';
       span.style.width = 'auto';
       span.style.height = 'auto';
 
-      container.appendChild(span);
-      this.history.addItemSnapshot(this.componenteToSnapshot(data));
-    }
+      // Add CDK Drag and DragBoundary directives
+    span.classList.add('cdk-drag');
+    span.setAttribute('cdkDragBoundary', '#editableObject');
+    span.setAttribute('cdkDrag', '');
+
+    container.appendChild(span);
+    this.addModifier(data);
+    
+    this.history.addItemSnapshot(this.componenteToSnapshot(data));
+    
+  }
+  }
+
+  addModifier(data: Texto) {
+    let modifier:Modifier = {} as Modifier;
+    modifier.component = this.currentComponent;
+    modifier.type = 'text';
+    modifier.property = 'text';
+    modifier.title = 'Texto';
+    modifier.data = data;
+    this.currentComponent.modifiers.push(modifier);
+    this.setModifiers(this.currentComponent);
+  }
+
+  updateDragElement(event: CdkDragEnd<any>, data: Texto): any {
+    throw new Error('Method not implemented.');
   }
 
   componenteToSnapshot(data: any): ItemSnapshot {
@@ -215,7 +241,7 @@ export class CreatorUIService implements OnInit {
          break;
        case 'color': this.setComponentColor(value);
          break;
-      // case 'font': this.setComponentFont(value);
+       case 'text': this.updateTextElement(value);
       //   break;
       // case 'fontsize': this.setComponentFontSize(value);
       //   break;
@@ -227,6 +253,14 @@ export class CreatorUIService implements OnInit {
       }
       this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
     }
+
+  updateTextElement(data: Texto) {
+      const span = document.getElementById(data.id);
+      span.style.fontFamily = data.selectedFont;
+      span.style.fontSize = data.selectedSize + 'px';
+      span.style.fontStyle = data.selectedStyle;
+      span.style.color = data.selectedColor; 
+  }
   
   setComponentColor(value: any) {
     const divElement = document.getElementById('editableObject');

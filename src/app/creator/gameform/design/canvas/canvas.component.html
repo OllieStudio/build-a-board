@@ -2,7 +2,10 @@
 <div id="canvas" cdkDropList (cdkDropListDropped)="creator.dropElement($event)" cdkDropListConnectedTo="components" class="design-canvas" >
 </div>
 
-<div id="editableObject" [ngStyle]="{'zoom': creator.zoomValue/100}" cdkDragBoundary="#canvas" cdkDrag></div>
+<div id="editableObject" [ngStyle]="{'zoom': creator.zoomValue/100}" cdkDragBoundary="#canvas" 
+[cdkDragDisabled]="creator.isDragDisabled"
+cdkDrag cdkDropList (cdkDropListDropped)="creator.dropText($event)" cdkDropListConnectedTo="text-container"
+class="editable-object"></div>
 
 <div class="message">{{creator.message}}</div>
 dhay

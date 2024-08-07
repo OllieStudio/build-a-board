@@ -7,6 +7,7 @@ import { CreatorUIService } from 'src/app/creator/services/creator.service';
   styleUrls: ['./canvas.component.css']
 })
 export class CanvasComponent {
+  
   constructor(public creator:CreatorUIService){
     this.creator.closeToolBox();
     this.creator.closeDrawer();

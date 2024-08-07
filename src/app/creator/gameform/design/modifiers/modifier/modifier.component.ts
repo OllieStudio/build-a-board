@@ -7,11 +7,12 @@ import { ModifierImageComponent } from '../modifier-image/modifier-image.compone
 import { ModifierInputComponent } from '../modifier-input/modifier-input.component';
 import { ModifierNumberComponent } from '../modifier-number/modifier-number.component';
 import { ModifierColorComponent } from '../modifier-color/modifier-color.component';
+import { ModifierTextComponent } from '../modifier-text/modifier-text.component';
 
 @Component({
   selector: 'app-modifier',
   standalone: true,
-  imports: [CommonModule, ModifierColorComponent, ModifierRadioComponent, ModifierImageComponent, ModifierInputComponent, ModifierNumberComponent],
+  imports: [CommonModule, ModifierTextComponent, ModifierColorComponent, ModifierRadioComponent, ModifierImageComponent, ModifierInputComponent, ModifierNumberComponent],
   templateUrl: './modifier.component.html',
   styleUrls: ['./modifier.component.css']
 })

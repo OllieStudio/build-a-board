@@ -29,6 +29,7 @@ export interface Modifier {
   options?: string[];
   imageprompt?: string;
   svgprompt?: string;
+  data?:any;
 }
 
 export interface Texto{

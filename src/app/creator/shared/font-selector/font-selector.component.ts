@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoogleFontsService } from './google-fonts.service';
 import { FormsModule } from '@angular/forms';
@@ -15,10 +15,10 @@ export class FontSelectorComponent {
   sizes: number[] = [8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40];
   styles: string[] = ['normal', 'italic', 'oblique', 'bold', 'bold italic', 'bold oblique'];
 
-  selectedFont: string = 'Roboto';
-  selectedSize: number = 16;
-  selectedStyle: string = 'normal';
-  selectedColor: string = "#CCC";
+  @Input() selectedFont: string = 'Roboto';
+  @Input() selectedSize: number = 16;
+  @Input() selectedStyle: string = 'normal';
+  @Input() selectedColor: string = "#CCC";
 
   @Output() sizeChange = new EventEmitter<number>();
   @Output() styleChange = new EventEmitter<string>();

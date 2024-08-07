@@ -7,7 +7,7 @@
     </li>
     <li class="valign" >
       <app-zoom  [value]="creator.zoomValue" (zoomValueChange)="creator.zoomValueChange($event)"></app-zoom>
-    </li>
+    </li> 
     <li class="valign">
       <a [class.disabled]="history.disablePrevButton()" (click)="history.getPreviousItemSnapshot()" ><i class="material-icons-outlined  black-text">undo</i></a>
       <a [class.disabled]="history.disableNextButton()" (click)="history.getNextItemSnapshot()" ><i class="material-icons-outlined  black-text">redo</i></a>
