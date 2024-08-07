@@ -1,4 +1,5 @@
 export interface Componente {
+  allowdrop?: boolean;
   type?: any;
   actioncode?: any;
   prompt3d?: any;
@@ -33,6 +34,8 @@ export interface Modifier {
 }
 
 export interface Texto{
+  horizontalAlign: string;
+  verticalAlign: string;
   selectedFont: string;
   selectedSize: number;
   selectedStyle: string;

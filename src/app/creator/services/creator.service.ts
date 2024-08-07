@@ -75,7 +75,7 @@ export class CreatorUIService implements OnInit {
   
   dropText(event: CdkDragDrop<string[]>) {
     console.log(event);
-    if ( event.previousContainer.id === "text-container") {
+    if ( event.previousContainer.id === "text-container" && this.currentComponent.allowdrop) {
       this.addTextToComponent(event.item.data);
       this.history.addItemSnapshot(this.componenteToSnapshot(event.item.data));
     }
@@ -95,10 +95,20 @@ export class CreatorUIService implements OnInit {
       span.style.color = data.selectedColor; 
 
       span.style.position = 'absolute';
-      span.style.top = '50%';
-      span.style.left = '25%';
-      span.style.width = 'auto';
-      span.style.height = 'auto';
+      span.style.top = '0';
+      span.style.left = '0';
+      span.style.width = '100%';
+      span.style.height = '100%';
+     // span.style.textAlign = 'center';
+     // span.style.verticalAlign = 'middle';
+      span.style.display = 'flex';
+      span.style.flexDirection = 'column';
+      span.style.padding = '5%';
+
+      span.style.justifyContent = 'center';
+      span.style.alignItems = 'center';
+      span.style.pointerEvents = 'none';
+      span.style.userSelect = 'none';
 
       // Add CDK Drag and DragBoundary directives
     span.classList.add('cdk-drag');
@@ -260,6 +270,9 @@ export class CreatorUIService implements OnInit {
       span.style.fontSize = data.selectedSize + 'px';
       span.style.fontStyle = data.selectedStyle;
       span.style.color = data.selectedColor; 
+      span.innerText = data.content;
+      span.style.justifyContent = data.verticalAlign;
+      span.style.alignItems = data.horizontalAlign;
   }
   
   setComponentColor(value: any) {
