@@ -20,6 +20,8 @@
        <div class="input-field col m12">
          <textarea #sinopse style="height: 140px;" name="sinopse" id="sinopse" class="browser-default" formControlName="sinopse"></textarea>
           <app-ai-button label="gerar com IA" (click)="generateSinopsis(sinopse.value)"></app-ai-button> 
+          <i *ngIf="!hidespinner" class="material-icons spinner sufix valign left-1">autorenew</i>
+
         </div>
 
      </div>

@@ -4,12 +4,11 @@
         <app-fileupload id="singleton" (valueChange)="onValueChange($event)" [accepts]="'img'" [label]="'enviar arquivos'"
             [path]="path" [multiple]="true"></app-fileupload>
     </div>
-    <div class="row">
-        <div class="col s4 preview-container top-1" *ngFor="let upload of uploads">
+    <div id="upload-container" class="row" (cdkDropListDropped)="creator.dropText($event)" cdkDropListConnectedTo="editableObject" cdkDropList>
+        <div class="col s4 preview-container top-1" *ngFor="let upload of uploads" cdkDrag [cdkDragData]="upload">
           <div class="preview-content"  [ngStyle]="{'background-image': 'url('+upload.url+')'}"></div>
            <div class="tools-container">
-               <i class="material-icons white-text link right">delete</i>
-               <i class="material-icons white-text link right">info</i>
+               <i (click)="removeUpload(upload)" class="material-icons white-text link right">delete</i>
            </div>
         </div>
     </div>

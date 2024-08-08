@@ -121,7 +121,7 @@ constructor(private storage:StorageService){
   }
 
   public async uploadImg(file: any = this.fileImg, filename:string = this.filename) {
-    await this.storage.uploadImage(file.replace('data:image/png;base64, ', ''), this.path + filename).then(result => {
+    await this.storage.uploadImage(file.split(',')[1], this.path + filename).then(result => {
       this._value = result;
       this.onChange(result);
       this.valueChange.emit(result);

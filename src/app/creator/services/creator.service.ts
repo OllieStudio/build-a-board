@@ -84,6 +84,10 @@ export class CreatorUIService implements OnInit {
       this.addSVGModifier(event.item.data);
       this.history.addItemSnapshot(this.componenteToSnapshot(event.item.data));
     }
+    if ( event.previousContainer.id === "upload-container") {
+      this.setComponentBackground(event.item.data.url);
+      this.history.addItemSnapshot(this.componenteToSnapshot(event.item.data));
+    }
   }
 
   addTextToComponent(data: Texto) {
@@ -130,7 +134,7 @@ export class CreatorUIService implements OnInit {
 
   addTextModifier(data: Texto) {
     let modifier:Modifier = {} as Modifier;
-    modifier.component = this.currentComponent;
+    modifier.component = this.currentComponent.id;
     modifier.type = 'text';
     modifier.property = 'text';
     modifier.title = 'Texto';
@@ -141,7 +145,7 @@ export class CreatorUIService implements OnInit {
 
   addSVGModifier(data: Elemento) {
     let modifier:Modifier = {} as Modifier;
-    modifier.component = this.currentComponent;
+    modifier.component = this.currentComponent.id;
     modifier.type = 'svg';
     modifier.property = 'svg';
     modifier.title = 'Elemento';
@@ -332,7 +336,6 @@ export class CreatorUIService implements OnInit {
     addSVGLayer(value: any, id?:string) {
       const divElement = document.getElementById('editableObject');
       if (divElement) {
-        const bg = divElement.childNodes[0] as HTMLElement;
         
         const object = document.createElement('object');
         object.data = value;
@@ -355,7 +358,7 @@ export class CreatorUIService implements OnInit {
         div.style.userSelect = 'none';
 
         div.append(object);
-        divElement.insertBefore(div, bg);
+        divElement.appendChild(div);
       }
   }
     

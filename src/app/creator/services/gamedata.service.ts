@@ -9,7 +9,6 @@ import { Jogo } from 'src/app/services/interfaces/jogo';
   providedIn: 'root'
 })
 export class GameDataService {
-
   public jogoEmitter:EventEmitter<Jogo> = new EventEmitter;
   game: Jogo = {} as Jogo;
   jogoFormGroup: any;
@@ -57,8 +56,16 @@ export class GameDataService {
     })
   }
 
+   removeText(texto: Texto) {
+    this.database.delete(texto, 'GAMES/'+this.game.id+'/TEXTS')
+  }
+
   getComponents() {
     return this.database.listValues('GAMES/'+this.game.id+'/COMPONENTS');
+  }
+
+    removeComponent(component: Componente) {
+      this.database.delete(component, 'GAMES/'+this.game.id+'/COMPONENTS')
   }
   
   getTexts() {

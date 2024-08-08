@@ -22,7 +22,7 @@ export interface Componente {
 export interface Modifier {
   multiple?: any;
   ratio?: string;
-  component?: Componente;
+  component?: string;
   property: any;
   type: string;
   title: string;

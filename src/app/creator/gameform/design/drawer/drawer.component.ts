@@ -15,4 +15,8 @@ export class DrawerComponent {
  constructor(private gameservice:GameDataService, public creator:CreatorUIService){
     this.gameservice.getComponents().subscribe(res => this.components = res)
  }
+
+ removeComponent(component:Componente){
+  this.gameservice.removeComponent(component)
+ }
 }

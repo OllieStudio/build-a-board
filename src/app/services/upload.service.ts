@@ -30,8 +30,8 @@ export class UploadService {
   }
 
   removeUpload(upload: Upload) {
+    upload.id = upload['idField'];
     this.database.delete(upload, 'GAMES/'+this.gameservice.game.id+'/UPLOADS').then(list =>{
-      
     })
   }
 

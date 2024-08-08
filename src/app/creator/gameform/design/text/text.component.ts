@@ -37,6 +37,8 @@ export class TextComponent {
 
   }
 
-  
+  removeText(texto: Texto){
+    this.gameservice.removeText(texto);
+  }
 
 }

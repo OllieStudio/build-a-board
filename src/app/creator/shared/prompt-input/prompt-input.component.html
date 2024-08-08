@@ -4,4 +4,8 @@
 <div class="col m12 valign-wrapper">
     <app-ai-button [label]="label" class="valign" (click)="generate(prompt.value)"></app-ai-button>
     <i *ngIf="!hideSpinner" class="material-icons spinner sufix valign left-1">autorenew</i>
+    <select id="styleSelect"  (change)="onStyleChange($event)" style="width: 200px;" class="browser-default small left-1 bottom-1 col s12 left">
+        <option value="">selecionar estilo</option>
+        <option *ngFor="let style of styles" [value]="style">{{ style }}</option>
+    </select>
 </div>

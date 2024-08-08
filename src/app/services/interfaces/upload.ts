@@ -1,5 +1,6 @@
 
 export interface Upload{
+    id?: any;
     tipo:string;
     url:string;
     timestamp:number;

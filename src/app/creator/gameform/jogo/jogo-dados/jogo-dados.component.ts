@@ -11,6 +11,7 @@ import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service
 })
 export class JogoDadosComponent implements OnInit {
   public jogoFormGroup: FormGroup;
+  hidespinner:boolean = true;
 
   private fields:InputBase[] = [
     {key:"titulo", required:true},
@@ -30,8 +31,12 @@ export class JogoDadosComponent implements OnInit {
   }
 
   async generateSinopsis(text:string){
+    this.hidespinner = false;
+    this.gamedataservice.game.titulo = this.jogoFormGroup.getRawValue().titulo;
+    this.gamedataservice.game.subtitulo = this.jogoFormGroup.getRawValue().subtitulo;
     const sinopsis = await this.aiService.improveText(text, ' generate 1 paragraph sinopsis with maximum of 60 words, you can be very creative');
-    this.jogoFormGroup.patchValue({sinopse:sinopsis})
+    this.jogoFormGroup.patchValue({sinopse:sinopsis});
+    this.hidespinner = true;
   }
 
   registerForm(){
