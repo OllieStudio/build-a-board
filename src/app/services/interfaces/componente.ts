@@ -49,6 +49,7 @@ export interface Texto{
 }
 
 export interface Elemento{
+  size: string;
   name: string;
   horizontalAlign: string;
   verticalAlign: string;

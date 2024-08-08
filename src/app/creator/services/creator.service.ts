@@ -281,10 +281,11 @@ export class CreatorUIService implements OnInit {
     }
 
   updateSVGElement(data:Elemento) {
-      const span = document.getElementById(data.id);
-      span.style.color = data.selectedColor; 
-      span.style.justifyContent = data.verticalAlign;
-      span.style.alignItems = data.horizontalAlign;
+      const object = document.getElementById(data.id);
+      object.style.color = data.selectedColor; 
+      object.style.justifyContent = data.verticalAlign;
+      object.style.alignItems = data.horizontalAlign;
+      object.style.width = `${data.size}%`;
   }
 
   updateTextElement(data: Texto) {
@@ -335,8 +336,8 @@ export class CreatorUIService implements OnInit {
         
         const object = document.createElement('object');
         object.data = value;
-        object.width = '50%';
-        object.height = 'auto';
+        object.style.width = '50%';
+        object.style.height = 'auto';
 
         const div = document.createElement('div');
         div.id = id;

@@ -20,9 +20,9 @@ export class ModifierSvgComponent {
     this.selectedOption = '';
   }
 
-  onSVGChange(event: any) {
-    this.modifier.data = {...this.modifier.data, ...event};
-    this.creator.updateItemModifier(this.modifier, {id: this.modifier.data.id, ...event})
+  changeSize(event: any) {
+    this.modifier.data.size = event;
+    this.creator.updateItemModifier(this.modifier, this.modifier.data)
   }
 
   onVerticalChange($event){
