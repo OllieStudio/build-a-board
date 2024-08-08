@@ -50,7 +50,7 @@ export class GoogleGeminiAIService {
   }
 
   async textToCode(prompt: string): Promise<any> {
-    prompt = 'you are working on a virtual board game, create javascript code for a virtual ' + prompt;
+    prompt = 'you are working on a virtual board game, create javascript code for ' + prompt;
 
     try {
       const result = await this.model.generateContent(prompt);

@@ -160,7 +160,7 @@
           "type": "radio",
           "property": "group",
           "multiple":"carta-P",
-          "title":"Deck",
+          "title":"Tamanho do Deck",
           "description":"A quantidade de cartas do deck",
             "options": [
               "32",
@@ -181,6 +181,27 @@
           "property":"material",
           "title":"Material",
           "options":["papel couche", "papel couche laminado"]
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Baralho",
+          "actions":[
+            {
+              "id":"shuffle",
+              "title": "Embaralhar",
+              "prompt": "Shuffle list of %TOTAL_CARDS% cards"
+            }, 
+            {
+              "id":"deal",
+              "title": "Distribuir",
+              "prompt": "Distribute %HAND_CARDS% cards for %NUM_PLAYERS% players"
+            }, 
+            {
+              "id":"pick",
+              "title": "Sortear",
+              "prompt": "Pick %PICK_CARDS% cards from list"
+            }]
         }
       ]
     },
@@ -198,7 +219,7 @@
           "type": "radio",
           "property": "group",
           "multiple":"carta-M",
-          "title":"Deck",
+          "title":"Tamanho do Deck",
           "description":"A quantidade de cartas do deck",
             "options": [
               "22",
@@ -219,6 +240,27 @@
           "property":"material",
           "title":"Material",
           "options":["papel couche", "papel couche laminado"]
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Deck",
+          "actions":[
+            {
+              "id":"shuffle",
+              "title": "Embaralhar",
+              "prompt": "Shuffle list of  %TOTAL_CARDS% cards"
+            }, 
+            {
+              "id":"deal",
+              "title": "Distribuir",
+              "prompt": "Distribute %HAND_CARDS% cards for %NUM_PLAYERS% players"
+            }, 
+            {
+              "id":"pick",
+              "title": "Sortear",
+              "prompt": "Pick %PICK_CARDS% cards from list"
+            }]
         }
       ]
     },
@@ -235,7 +277,7 @@
           "type": "radio",
           "property": "group",
           "multiple":"carta-G",
-          "title":"Deck",
+          "title":"Tamanho do Deck",
           "description":"A quantidade de cartas do deck",
           "options": [
               "18",
@@ -252,20 +294,32 @@
           "options":["upload", "imageprompt"],
           "imageprompt":" a card back face "
         },
-          {
-            "type":"image",
-            "property":"background",
-            "title":"Imagem",
-            "ratio":"9:16",
-            "description":"Envie ou descreva a imagem da carta",
-          "options":["upload", "imageprompt"],
-          "imageprompt":" a card face "
-        },
         {
           "type":"radio",
           "property":"material",
           "title":"Material",
           "options":["papel couche", "papel couche laminado"]
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Baralho",
+          "actions":[
+            {
+              "id":"shuffle",
+              "title": "Embaralhar",
+              "prompt": "Shuffle list of %TOTAL_CARDS% cards"
+            }, 
+            {
+              "id":"deal",
+              "title": "Distribuir",
+              "prompt": "Distribute %HAND_CARDS% cards for %NUM_PLAYERS% players"
+            }, 
+            {
+              "id":"pick",
+              "title": "Sortear",
+              "prompt": "Pick %PICK_CARDS% cards from list"
+            }]
         }
       ]
     },
@@ -389,6 +443,18 @@
             "green",
             "black"
           ]
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Componente",
+          "actions":[
+            {
+              "id":"roll",
+              "title": "Jogar",
+              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+            }
+          ]
         }
       ]
     },
@@ -405,6 +471,18 @@
           "property": "ammount",
           "title":"Quantidade",
           "description":"Informe a quantidade de dados"
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Componente",
+          "actions":[
+            {
+              "id":"roll",
+              "title": "Jogar",
+              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+            }
+          ]
         }]
         },
     {
@@ -420,6 +498,18 @@
           "property": "ammount",
           "title":"Quantidade",
           "description":"Informe a quantidade de dados"
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Componente",
+          "actions":[
+            {
+              "id":"roll",
+              "title": "Jogar",
+              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+            }
+          ]
         }]
     },
     {
@@ -430,7 +520,18 @@
       "classname": "dado-customizavel",
       "allowdrop":true,
       "modifiers":[
-        
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Componente",
+          "actions":[
+            {
+              "id":"roll",
+              "title": "Jogar",
+               "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -458,6 +559,18 @@
             "red",
             "blue",
             "purple"
+          ]
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Componente",
+          "actions":[
+            {
+              "id":"roll",
+              "title": "Jogar",
+              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+            }
           ]
         }
       ]
@@ -489,6 +602,18 @@
             "blue",
             "purple"
           ]
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Componente",
+          "actions":[
+            {
+              "id":"roll",
+              "title": "Jogar",
+              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+            }
+          ]
         }
       ]
     },
@@ -518,6 +643,18 @@
             "blue",
             "purple"
           ]
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Componente",
+          "actions":[
+            {
+              "id":"roll",
+              "title": "Jogar",
+              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+            }
+          ]
         }
       ]
     },
@@ -541,6 +678,18 @@
             "blue",
             "black",
             "white"
+          ]
+        },
+        {
+          "type":"actions",
+          "property":"actions",
+          "title":"Ações do Componente",
+          "actions":[
+            {
+              "id":"timer",
+              "title": "Temporizador",
+              "prompt":"Timer for 1 minute"
+            }
           ]
         }
       ]

@@ -2,19 +2,19 @@
     <h3 class="title  purple-text">Selecione as imagens e tema do jogo:</h3>
     <div class="row">
       <app-fileupload  #logoControl formControlName="logo" [accepts]="'img'" [label]="'Enviar Logo'" [path]="pathlogo"></app-fileupload>
-      <app-prompt-input [hideSpinner]="hideSpinnerLogo" [label]="'gerar logo com IA'" (styleChange)="logoStyle = $event" (output)="generateLogo($event)"></app-prompt-input>
+      <app-prompt-input [isImage]="true" [hideSpinner]="hideSpinnerLogo" [label]="'gerar logo com IA'" (styleChange)="logoStyle = $event" (output)="generateLogo($event)"></app-prompt-input>
       
     </div>
     <div class="row">
  
       <app-fileupload #headerControl formControlName="header" [accepts]="'img'" [label]="'Enviar Header'" [path]="pathheader" ></app-fileupload>
-      <app-prompt-input [hideSpinner]="hideSpinnerHeader" [label]="'gerar header com IA'" (styleChange)="headerStyle = $event" (output)="generateHeader($event)"></app-prompt-input>
+      <app-prompt-input [isImage]="true" [hideSpinner]="hideSpinnerHeader" [label]="'gerar header com IA'" (styleChange)="headerStyle = $event" (output)="generateHeader($event)"></app-prompt-input>
       
     </div>
     <div class="row">
  
       <app-fileupload #bgControl formControlName="background" [accepts]="'img'" [label]="'Enviar Background'" [path]="pathbg" ></app-fileupload>
-      <app-prompt-input [hideSpinner]="hideSpinnerBg" [label]="'gerar fundo com IA'" (styleChange)="bgStyle = $event" (output)="generateBg($event)"></app-prompt-input>
+      <app-prompt-input [isImage]="true" [hideSpinner]="hideSpinnerBg" [label]="'gerar fundo com IA'" (styleChange)="bgStyle = $event" (output)="generateBg($event)"></app-prompt-input>
     </div>
     
     <div class="row">

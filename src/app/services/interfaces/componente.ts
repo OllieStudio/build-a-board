@@ -1,7 +1,6 @@
 export interface Componente {
   allowdrop?: boolean;
   type?: any;
-  actioncode?: any;
   prompt3d?: any;
   name?: string;
   action?: string;
@@ -15,11 +14,13 @@ export interface Componente {
   icon:string;
   title:string;
   multiple?:string;
+  actions?: GameAction[];
   modifiers?: Modifier[];
 }
 
 
 export interface Modifier {
+  actions?: GameAction[];
   multiple?: any;
   ratio?: string;
   component?: string;
@@ -61,4 +62,11 @@ export interface Elemento{
   left?:number;
   width?:number;
   height?:number;
+}
+
+export interface GameAction{
+  id: string;
+  title: string;
+  prompt: string;
+  code?: string;
 }

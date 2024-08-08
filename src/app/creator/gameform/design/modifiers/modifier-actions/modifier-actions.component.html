@@ -1,0 +1,12 @@
+
+  <div class="row bottom-0 top-2"  *ngFor="let action of modifier.actions" >
+    <div class="col s12 action-title bottom-1 top-0">
+      {{action.title}}
+  </div>
+    <app-prompt-input [hideSpinner]="hideSpinner" [label]="'gerar com IA'"  [code]="action.code" (output)="generateCode($event, action)" [prompt]="action.prompt"></app-prompt-input>
+    <a (click)="testCode(action)" [ngClass]="{ 'disabled': !action.code }"  class="btn col s12 top-3 green valign-wrapper">
+      <i class="material-icons valign">play_circle</i>
+      <span class="valign"> testar ação</span>
+      </a>
+  </div>
+  

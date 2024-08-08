@@ -13,12 +13,13 @@
             {{modifier.description}}
         </div>
        
-        <app-modifier-radio *ngIf="modifier.type == 'radio'" [modifier]="modifier"></app-modifier-radio>
-        <app-modifier-input *ngIf="modifier.type == 'input'" [modifier]="modifier"></app-modifier-input>
-        <app-modifier-number *ngIf="modifier.type == 'number'" [modifier]="modifier"></app-modifier-number>
-        <app-modifier-image *ngIf="modifier.type == 'image'" [modifier]="modifier"></app-modifier-image>
-        <app-modifier-color *ngIf="modifier.type == 'color'" [modifier]="modifier"></app-modifier-color>
-        <app-modifier-text *ngIf="modifier.type == 'text'" [modifier]="modifier"></app-modifier-text>
-        <app-modifier-svg *ngIf="modifier.type == 'svg'" [modifier]="modifier"></app-modifier-svg>
+        <app-modifier-radio     *ngIf="modifier.type == 'radio'"    [modifier]="modifier"></app-modifier-radio>
+        <app-modifier-input     *ngIf="modifier.type == 'input'"    [modifier]="modifier"></app-modifier-input>
+        <app-modifier-number    *ngIf="modifier.type == 'number'"   [modifier]="modifier"></app-modifier-number>
+        <app-modifier-image     *ngIf="modifier.type == 'image'"    [modifier]="modifier"></app-modifier-image>
+        <app-modifier-color     *ngIf="modifier.type == 'color'"    [modifier]="modifier"></app-modifier-color>
+        <app-modifier-text      *ngIf="modifier.type == 'text'"     [modifier]="modifier"></app-modifier-text>
+        <app-modifier-svg       *ngIf="modifier.type == 'svg'"      [modifier]="modifier"></app-modifier-svg>
+        <app-modifier-actions   *ngIf="modifier.type == 'actions'"  [modifier]="modifier"></app-modifier-actions>
     </div>
 </div>

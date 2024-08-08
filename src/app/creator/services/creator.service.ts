@@ -386,7 +386,6 @@ export class CreatorUIService implements OnInit {
     if(!this.currentComponent.name) this.currentComponent.name = this.currentComponent.title;
     if(!this.currentComponent.id) this.currentComponent.id = this.currentComponent.name.toLowerCase().replace(/\s/g, '');
     if(this.currentComponent.three?.prompt3d) this.currentComponent.three.code = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
-    if(this.currentComponent.action) this.currentComponent.actioncode = await this.aiservice.textToCode(this.currentComponent.action);
      this.currentComponent.template = this.getElementTemplate();
      this.currentComponent.imagem = this.currentComponent['background'] || await this.imageservice.convertElementToImage(this.getHTMLElement());
      this.gamedataservice.saveComponent(this.currentComponent) ;   

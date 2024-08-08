@@ -9,11 +9,12 @@ import { ModifierNumberComponent } from '../modifier-number/modifier-number.comp
 import { ModifierColorComponent } from '../modifier-color/modifier-color.component';
 import { ModifierTextComponent } from '../modifier-text/modifier-text.component';
 import { ModifierSvgComponent } from '../modifier-svg/modifier-svg.component';
+import { ModifierActionsComponent } from '../modifier-actions/modifier-actions.component';
 
 @Component({
   selector: 'app-modifier',
   standalone: true,
-  imports: [CommonModule, ModifierSvgComponent, ModifierTextComponent, ModifierColorComponent, ModifierRadioComponent, ModifierImageComponent, ModifierInputComponent, ModifierNumberComponent],
+  imports: [CommonModule, ModifierActionsComponent, ModifierSvgComponent, ModifierTextComponent, ModifierColorComponent, ModifierRadioComponent, ModifierImageComponent, ModifierInputComponent, ModifierNumberComponent],
   templateUrl: './modifier.component.html',
   styleUrls: ['./modifier.component.css']
 })
