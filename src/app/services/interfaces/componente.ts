@@ -34,6 +34,7 @@ export interface Modifier {
 }
 
 export interface Texto{
+  textAlign: string;
   horizontalAlign: string;
   verticalAlign: string;
   selectedFont: string;

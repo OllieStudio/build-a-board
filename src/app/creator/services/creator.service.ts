@@ -298,6 +298,7 @@ export class CreatorUIService implements OnInit {
       span.style.fontSize = data.selectedSize + 'px';
       span.style.fontStyle = data.selectedStyle;
       span.style.color = data.selectedColor; 
+      span.style.textAlign = data.textAlign;
       span.innerText = data.content;
       span.style.justifyContent = data.verticalAlign;
       span.style.alignItems = data.horizontalAlign;

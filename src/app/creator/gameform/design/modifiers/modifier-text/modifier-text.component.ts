@@ -32,6 +32,18 @@ export class ModifierTextComponent {
 
   onHorizontalChange($event){
     this.modifier.data.horizontalAlign = $event;
+    switch ($event) {
+      case 'start':
+        this.modifier.data.textAlign = 'left';
+        break;
+      case 'center':
+        this.modifier.data.textAlign = 'center';
+        break;
+      case 'end':
+        this.modifier.data.textAlign = 'right';
+        break;
+    }
+    
     this.creator.updateItemModifier(this.modifier, this.modifier.data);
   }
   

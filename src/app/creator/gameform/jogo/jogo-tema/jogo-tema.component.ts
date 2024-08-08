@@ -7,6 +7,7 @@ import { ArtStyle, AspectRatio, VertexAIService } from 'src/app/services/google-
 import { FileuploadComponent } from 'src/app/creator/shared/fileupload/fileupload.component';
 import { UploadService } from 'src/app/services/upload.service';
 import { Upload } from 'src/app/services/interfaces/upload';
+import { Componente } from 'src/app/services/interfaces/componente';
 
 @Component({
   selector: 'app-jogo-tema',
@@ -91,17 +92,15 @@ export class JogoTemaComponent {
   }
 
   addUploads(item:string){
-    let upload:Upload = {
-      tipo: item,
-      url: this.jogoFormGroup.getRawValue()[item],
-      timestamp: new Date().getTime(),
-      name: item,
-      alt: '',
-      description: '',
-      component: ''
+    let temp:Componente = {
+      id: item,
+      template: '',
+      classname: item,
+      icon: '',
+      title: item
     }
 
-    this.uploads.addUpload(upload);
+    this.uploads.addUpload(this.jogoFormGroup.getRawValue()[item], temp);
   }
 
 }
