@@ -430,15 +430,7 @@
       "classname": "dado-customizavel",
       "allowdrop":true,
       "modifiers":[
-        {
-            "type":"image",
-            "property":"background",
-            "title":"Imagem",
-            "ratio":"9:16",
-            "description":"Envie ou descreva a imagem de fundo do dado",
-          "options":["upload", "imageprompt"],
-          "imageprompt":" a card face "
-        }
+        
       ]
     },
     {

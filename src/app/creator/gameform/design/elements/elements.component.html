@@ -1,1 +1,24 @@
-<p>elements works!</p>
+<div class="tool-container">
+
+    <div class="top-5">
+        <button class="tab-button" [ngClass]="{'active': activeTab == 'edit'}"  (click)="activeTab = 'edit'">prompt</button>
+        <button class="tab-button" [ngClass]="{'active': activeTab == 'upload'}"  (click)=" activeTab = 'upload'">upload</button>
+        <i *ngIf="activeTab != ''" class="material-icons link right grey-text" style="font-size: 17px;" (click)="activeTab = ''">close</i>
+    </div>
+
+    <div class="row top-5 text-container" [hidden]="activeTab != 'upload'">
+        <span class="tool-title">Envie elementos em SVG</span>
+        <app-fileupload id="singleton" (valueChange)="onFileUploaded($event)" [accepts]="'svg'" [label]="'enviar SVG'"></app-fileupload>
+    </div>
+
+      <div class="row top-5 text-container" [hidden]="activeTab != 'edit'">
+        <app-prompt-input [hideSpinner]="hideSpinner" [label]="'gerar com IA'" (output)="generateSVG($event)" [base]=""></app-prompt-input>
+    </div>
+
+    <div id="svg-container" class="row top-5" (cdkDropListDropped)="creator.dropText($event)" cdkDropListConnectedTo="editableObject" cdkDropList>
+        <div class="col s6 svgcard top-3" *ngFor="let item of items" cdkDrag [cdkDragData]="item">
+                <img src="{{item.template}}" alt="" class="responsive-img">
+                <span>{{item.name}}</span>
+        </div>
+    </div>
+</div>

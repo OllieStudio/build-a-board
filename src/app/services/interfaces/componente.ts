@@ -47,3 +47,16 @@ export interface Texto{
   width?:number;
   height?:number;
 }
+
+export interface Elemento{
+  name: string;
+  horizontalAlign: string;
+  verticalAlign: string;
+  selectedColor: string;
+  template:string;
+  id:string;
+  top?:number;
+  left?:number;
+  width?:number;
+  height?:number;
+}

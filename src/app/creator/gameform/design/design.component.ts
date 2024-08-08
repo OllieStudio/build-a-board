@@ -12,7 +12,7 @@ import { CreatorUIService } from '../../services/creator.service';
 export class DesignComponent implements OnInit {
   enableZoom: boolean;
   zoomSpeed: number;
-  menuItems = [  { icon: 'extension', route: 'components', title: 'Componentes' },  { icon: 'cloud_upload', route: 'uploads', title: 'Uploads' },  { icon: 'interests', route: 'elements', title: 'Elementos' },  { icon: 'text_fields', route: 'text', title: 'Texto' },  { icon: 'palette', route: 'create', title: 'Criar' },  { icon: 'star', route: 'elements', title: 'Elementos' },];
+  menuItems = [  { icon: 'extension', route: 'components', title: 'Componentes' },  { icon: 'cloud_upload', route: 'uploads', title: 'Uploads' },  { icon: 'interests', route: 'elements', title: 'Elementos' },  { icon: 'text_fields', route: 'text', title: 'Texto' },  /* { icon: 'palette', route: 'create', title: 'Criar' },  { icon: 'star', route: 'elements', title: 'Elementos' }, */];
 
   constructor(private router:Router, public creator:CreatorUIService) {}
 

@@ -18,7 +18,7 @@ import { StorageService } from '@ollieestudio/fire-lib';
 export class FileuploadComponent implements ControlValueAccessor, OnInit {
 @Input() label:string;
 @Input() accepts:string;
-@Input() path: any;
+@Input() path: string;
 @Input() multiple: boolean = false;
 @Output() valueChange:EventEmitter<any> = new EventEmitter();
 
@@ -40,6 +40,8 @@ constructor(private storage:StorageService){
       case 'img': this._accepts  = "image/x-png,image/gif,image/jpeg";
       break;
       case 'pdf': this._accepts  = "application/pdf";
+      break;
+      case 'svg': this._accepts  = "image/svg+xml";
       break;
       case 'doc': this._accepts  =".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
       break;
@@ -78,6 +80,7 @@ constructor(private storage:StorageService){
           this._value = myReader.result.toString();
           this.onChange(myReader.result.toString());
           this.fileImg = myReader.result.toString().split(',')[1]; 
+          this.valueChange.emit(myReader.result.toString());
           this.filename = file.name;
           this.hideSpinner = true;
         } else {
@@ -85,6 +88,7 @@ constructor(private storage:StorageService){
             case 'xls': 
               this._accepts = ".csv,.xls,.xlsx, .txt";
               break;
+            case 'svg':
             case 'img':
               let fileImg: any = myReader.result.toString().split(',')[1];
               await this.uploadImg(fileImg, file.name);

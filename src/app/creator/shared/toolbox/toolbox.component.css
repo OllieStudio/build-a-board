@@ -3,11 +3,12 @@
     background: linear-gradient(to right, rgb(48, 47, 47), rgb(34, 33, 34));
     height: 93vh;
     padding: 0px ;
+    padding-top: 60px;
     z-index: 100;
     position: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
 }
 

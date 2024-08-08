@@ -1,6 +1,6 @@
 import { CdkDragDrop, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { EventEmitter, Injectable, OnInit } from '@angular/core';
-import { Componente, Modifier, Texto } from '../../services/interfaces/componente';
+import { Componente, Elemento, Modifier, Texto } from '../../services/interfaces/componente';
 import componentes_data from '../data/componentes.json';
 import { Jogo } from '../../services/interfaces/jogo';
 import { GameDataService } from './gamedata.service';
@@ -79,6 +79,11 @@ export class CreatorUIService implements OnInit {
       this.addTextToComponent(event.item.data);
       this.history.addItemSnapshot(this.componenteToSnapshot(event.item.data));
     }
+    if ( event.previousContainer.id === "svg-container" && this.currentComponent.allowdrop) {
+      this.addSVGLayer(event.item.data.template, event.item.data.id);
+      this.addSVGModifier(event.item.data);
+      this.history.addItemSnapshot(this.componenteToSnapshot(event.item.data));
+    }
   }
 
   addTextToComponent(data: Texto) {
@@ -116,19 +121,30 @@ export class CreatorUIService implements OnInit {
     span.setAttribute('cdkDrag', '');
 
     container.appendChild(span);
-    this.addModifier(data);
+    this.addTextModifier(data);
     
     this.history.addItemSnapshot(this.componenteToSnapshot(data));
     
   }
   }
 
-  addModifier(data: Texto) {
+  addTextModifier(data: Texto) {
     let modifier:Modifier = {} as Modifier;
     modifier.component = this.currentComponent;
     modifier.type = 'text';
     modifier.property = 'text';
     modifier.title = 'Texto';
+    modifier.data = data;
+    this.currentComponent.modifiers.push(modifier);
+    this.setModifiers(this.currentComponent);
+  }
+
+  addSVGModifier(data: Elemento) {
+    let modifier:Modifier = {} as Modifier;
+    modifier.component = this.currentComponent;
+    modifier.type = 'svg';
+    modifier.property = 'svg';
+    modifier.title = 'Elemento';
     modifier.data = data;
     this.currentComponent.modifiers.push(modifier);
     this.setModifiers(this.currentComponent);
@@ -252,9 +268,9 @@ export class CreatorUIService implements OnInit {
        case 'color': this.setComponentColor(value);
          break;
        case 'text': this.updateTextElement(value);
-      //   break;
-      // case 'fontsize': this.setComponentFontSize(value);
-      //   break;
+        break;
+       case 'svg': this.updateSVGElement(value);
+        break;
       // case 'text': this.setComponentText(value)
       //   break;
       
@@ -263,6 +279,13 @@ export class CreatorUIService implements OnInit {
       }
       this.history.addItemSnapshot(this.componenteToSnapshot(this.currentComponent));
     }
+
+  updateSVGElement(data:Elemento) {
+      const span = document.getElementById(data.id);
+      span.style.color = data.selectedColor; 
+      span.style.justifyContent = data.verticalAlign;
+      span.style.alignItems = data.horizontalAlign;
+  }
 
   updateTextElement(data: Texto) {
       const span = document.getElementById(data.id);
@@ -305,18 +328,33 @@ export class CreatorUIService implements OnInit {
     }
   }
   
-    addSVGLayer(value: any) {
+    addSVGLayer(value: any, id?:string) {
       const divElement = document.getElementById('editableObject');
       if (divElement) {
         const bg = divElement.childNodes[0] as HTMLElement;
+        
         const object = document.createElement('object');
         object.data = value;
-        object.style.position = 'absolute';
-        object.style.top = '0';
-        object.style.left = '0';
-        object.style.width = '100%';
-        object.style.height = '100%';
-        divElement.insertBefore(object, bg);
+        object.width = '50%';
+        object.height = 'auto';
+
+        const div = document.createElement('div');
+        div.id = id;
+        div.style.position = 'absolute';
+        div.style.top = '0';
+        div.style.left = '0';
+        div.style.width = '100%';
+        div.style.height = '100%';
+        div.style.display = 'flex';
+        div.style.flexDirection = 'column';
+        div.style.padding = '5%';
+        div.style.justifyContent = 'center';
+        div.style.alignItems = 'center';
+        div.style.pointerEvents = 'none';
+        div.style.userSelect = 'none';
+
+        div.append(object);
+        divElement.insertBefore(div, bg);
       }
   }
     

@@ -53,6 +53,7 @@ import { ModifiersPanelComponent } from './gameform/design/modifiers/modifiers-p
 import { UploadsComponent } from './gameform/design/uploads/uploads.component';
 import { AiButtonComponent } from './shared/ai-button/ai-button.component';
 import { PromptInputComponent } from './shared/prompt-input/prompt-input.component';
+import { ElementsComponent } from './gameform/design/elements/elements.component';
 
 
 
@@ -116,7 +117,8 @@ import { PromptInputComponent } from './shared/prompt-input/prompt-input.compone
     ModifiersPanelComponent,
     UploadsComponent,
     AiButtonComponent,
-    PromptInputComponent
+    PromptInputComponent,
+    ElementsComponent
   ],
   providers:  [ AuthService, FormService, DatabaseService, HistoryService,
     HttpClient, DatePipe, AngularFirestoreModule],
