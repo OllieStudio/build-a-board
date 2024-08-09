@@ -28,7 +28,7 @@
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
           "options":["upload", "imageprompt"],
-          "imageprompt":" a square background image " ,
+          "imageprompt":" visto por cima em perpendicular  " ,
           "svgprompt":" a square background image " 
         },
         {
@@ -37,7 +37,7 @@
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
           "options":["upload", "imageprompt", "svgprompt"],
-          "imageprompt":"generate a square image with transparent background for a boardgame track with %STEPS% steps and %DETAILS%" ,
+          "imageprompt":" visto por cima em perpendicular, fundo transparente " ,
          "svgprompt":" a boardgame track " 
         },
         {
@@ -78,7 +78,7 @@
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
           "options":["upload", "imageprompt"],
-          "imageprompt":"generate a rectangular background image " ,
+          "imageprompt":"visto por cima em perpendicular, formato retangular " ,
           "svgprompt":"generate a rectangular background image " 
         },
         {
@@ -87,7 +87,7 @@
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
           "options":["upload", "imageprompt", "svgprompt"],
-          "imageprompt":" a rectangular image with transparent background for a boardgame track" ,
+          "imageprompt":" visto por cima em perpendicular, fundo transparente " ,
           "svgprompt":" a boardgame track with " 
         },
         {
@@ -127,8 +127,8 @@
           "title":"Fundo",
           "description":"Envie ou descreva a imagem de fundo do seu tabuleiro e veja a mágica acontecer",
           "options":["upload", "imageprompt"],
-          "imageprompt":"generate a hexagonal background image ", 
-          "svgprompt":"generate a hexagonal background image " 
+          "imageprompt":"visto por cima em perpendicular, formato hexagonal ", 
+          "svgprompt":" generate a hexagonal background image " 
         },
         {
           "type":"image",
@@ -136,7 +136,7 @@
           "title":"Trilha",
           "description":"Envie ou descreva os detalhes da trilha ou área de cartas do seu tabuleiro",
           "options":["upload", "imageprompt", "svgprompt"],
-          "imageprompt":" a hexagonal image with transparent background for a boardgame track " ,
+          "imageprompt":" visto por cima em perpendicular, fundo transparente  " ,
           "svgprompt":" a boardgame track " 
         },
         {
@@ -174,7 +174,7 @@
           "ratio":"9:16",
           "description":"Envie ou descreva a imagem do verso das cartas",
           "options":["upload", "imageprompt"],
-          "imageprompt":" a card back face "
+          "imageprompt":" com cantos arredondados "
         },
         {
           "type":"radio",
@@ -480,7 +480,7 @@
             {
               "id":"roll",
               "title": "Jogar",
-              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+              "prompt":"Pick 1 value from list [AMARELO, AZUL, VERDE, LARANJA, PRETO, VERMELHO] from %TOTAL_DICES% DICES"
             }
           ]
         }]
@@ -507,7 +507,7 @@
             {
               "id":"roll",
               "title": "Jogar",
-              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+              "prompt":"Pick 1 value from list [AMARELO, AZUL, VERDE, LARANJA, PRETO, VERMELHO] from %TOTAL_DICES% DICES"
             }
           ]
         }]
@@ -528,7 +528,7 @@
             {
               "id":"roll",
               "title": "Jogar",
-               "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+               "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to 6"
             }
           ]
         }
@@ -569,7 +569,7 @@
             {
               "id":"roll",
               "title": "Jogar",
-              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to 4"
             }
           ]
         }
@@ -611,7 +611,7 @@
             {
               "id":"roll",
               "title": "Jogar",
-              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to 8"
             }
           ]
         }
@@ -652,7 +652,7 @@
             {
               "id":"roll",
               "title": "Jogar",
-              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to %TOTAL_VALUE%"
+              "prompt":"Pick 1 number from %TOTAL_DICES% DICES FROM 1 to 20"
             }
           ]
         }

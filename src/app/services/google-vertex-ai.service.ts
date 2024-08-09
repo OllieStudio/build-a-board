@@ -18,7 +18,9 @@ export enum ArtStyle {
   Sketch = "sketch",
   Watercolor = "watercolor",
   Cyberpunk = "cyberpunk",
-  PopArt = "pop_art"
+  PopArt = "pop_art",
+  Ilustração = "Ilustração",
+  Vetor = "Vetor"
 }
 
 
@@ -33,9 +35,7 @@ export class VertexAIService {
   constructor(private http: HttpClient, private gameservice: GameDataService) { }
 
   async generateImage(prompt: string, ratio:string = AspectRatio.Square, style:string = ArtStyle.DigitalArt): Promise<any> {
-    prompt = `you are working on a ${this.gameservice.game.tipo} game design, the game is named 
-    '${this.gameservice.game.titulo} - ${this.gameservice.game.subtitulo}',
-     please generate image for a ${prompt}, you can be creative.`;
+    prompt = `a ${prompt} for a ${this.gameservice.game.tipo} game named ${this.gameservice.game.titulo}.`;
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { 

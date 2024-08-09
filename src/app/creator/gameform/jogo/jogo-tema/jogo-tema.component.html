@@ -18,7 +18,10 @@
     </div>
     
     <div class="row">
-     <button (click)="registerForm()" [disabled]="jogoFormGroup.invalid" class="btn green right next-step">próximo</button>
+     <button (click)="registerForm()" [disabled]="jogoFormGroup.invalid" class="btn green right next-step">
+    <i *ngIf="!hideSpinner" class="material-icons spinner sufix valign left-1">autorenew</i>
+      
+      próximo</button>
    </div>
  
   </form>

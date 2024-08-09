@@ -21,6 +21,7 @@ export class JogoTemaComponent {
   
   public jogoFormGroup: FormGroup;
 
+  public hideSpinner:boolean = true;
   public hideSpinnerLogo:boolean = true;
   public hideSpinnerHeader:boolean = true;
   public hideSpinnerBg:boolean = true;
@@ -50,7 +51,7 @@ export class JogoTemaComponent {
   }
   
   async registerForm(){
-    
+    this.hideSpinner = false;
     this.pathlogo = `game/${this.gamedataservice.game.titulo}/imgs/logo_`
     this.pathheader = `game/${this.gamedataservice.game.titulo}/imgs/header_`
     this.pathbg = `game/${this.gamedataservice.game.titulo}/imgs/bg_`
@@ -69,6 +70,8 @@ export class JogoTemaComponent {
     }
 
     this.gamedataservice.addDataToGame(this.jogoFormGroup.getRawValue());
+    this.hideSpinner = true;
+
   }
 
   async generateLogo(prompt){

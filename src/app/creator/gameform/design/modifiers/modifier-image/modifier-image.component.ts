@@ -47,7 +47,7 @@ export class ModifierImageComponent {
   }
 
   async generateImage(prompt, style:any = ArtStyle.DigitalArt){
-    const bg = await this.vertex.generateImage(this.modifier.imageprompt + prompt, this.modifier.ratio || AspectRatio.Square, style);
+    const bg = await this.vertex.generateImage(`${style}, ${prompt}, ${this.modifier.imageprompt}`, this.modifier.ratio || AspectRatio.Square, style);
     this.creator.updateItemModifier(this.modifier, bg);
   }
 
