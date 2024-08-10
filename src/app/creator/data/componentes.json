@@ -700,7 +700,11 @@
       "id": "peao",
       "template": "assets/svg/pawn.svg",
       "type":"SVG",
-      "classname": "peao-cone",
+      "three":{
+        "type": "file",
+        "file":"assets/OBJ/pawn.obj"
+      },
+      "classname": "peao-tradicional",
       "modifiers":[
         {
           "type": "color",

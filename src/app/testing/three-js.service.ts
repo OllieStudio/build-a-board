@@ -2,6 +2,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { DragControls } from 'three/examples/jsm/controls/DragControls';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
@@ -45,7 +46,7 @@ export class ThreeService {
     this.scene.add(this.directionalLight);
 
     // Camera position
-    this.camera.position.set(5, 5, 5);
+    this.camera.position.set(0, 15, 25);
     this.camera.lookAt(0, 0, 0);
 
     container.appendChild(this.renderer.domElement);
@@ -74,6 +75,29 @@ export class ThreeService {
     });
   }
 
+  public loadModelFromFile(modelFile: string, color:any) {
+    const objLoader = new OBJLoader();
+    objLoader.load(modelFile, (object) => {
+      object.position.set(10, 0.2, Math.floor(Math.random() * 10) + 1);
+      
+      // Create a new material (e.g., red color)
+    const newMaterial = new THREE.MeshStandardMaterial({ color: color });
+
+    // Traverse the model's scene graph to find all meshes and apply the new material
+      object.traverse(function (node) {
+        if ((node as THREE.Mesh).isMesh) {
+          const mesh = node as THREE.Mesh;
+          mesh.material = newMaterial;
+      }
+    });
+
+      this.scene.add(object);
+      this.enableInteractions(object);
+    });
+  }
+
+ 
+
   public loadModelFromUrl(modelUrl: string) {
     const loader = new GLTFLoader();
     loader.load(modelUrl, (gltf) => {
@@ -91,7 +115,9 @@ export class ThreeService {
     this.enableInteractions(mesh);
   }
 
-  private enableInteractions(object: THREE.Object3D) {
+  
+
+  private enableInteractions(object: THREE.Object3D, constrain?:boolean) {
     // Add the object to the draggable objects array
     this.draggableObjects.push(object);
 
@@ -107,6 +133,14 @@ export class ThreeService {
         this.controls.enabled = true;
     });
 
+    // Constrain movement to X and Z axes only
+    this.dragControls.addEventListener('drag', (event) => {
+        // Prevent movement on the Y axis
+        if(constrain) object.position.y = 0;
+        if(constrain) object.rotation.x = -Math.PI/2;
+
+    });
+
     // Initialize or update TransformControls
     if (!this.transformControls) {
         this.transformControls = new TransformControls(this.camera, this.renderer.domElement);
@@ -115,9 +149,18 @@ export class ThreeService {
     this.transformControls.detach(); // Detach current object if any
     this.transformControls.attach(object);
 
-    // Set mode to 'rotate' to enable rotation controls
-    this.transformControls.setMode('rotate');
+    // Set mode to 'translate' to enable translation controls
+    this.transformControls.setMode('translate');
+
+    // Constrain translation to X and Z axes
+    this.transformControls.setTranslationSnap(0.1);
+    this.transformControls.addEventListener('objectChange', () => {
+        // Prevent movement on the Y axis during translation
+        if(constrain) object.position.y = 0;
+        if(constrain) object.rotation.x = -Math.PI/2;
+    });
 }
+
 
 
   public async loadBoard(textureUrl: string, boardWidth: number, boardHeight: number) {
@@ -166,8 +209,10 @@ export class ThreeService {
         new THREE.MeshBasicMaterial({ map: texture })
       );
       board.rotation.x = -Math.PI / 2;
+      board.position.y = 0.01;
+
       this.scene.add(board);
-      this.enableInteractions(board);
+      this.enableInteractions(board, true);
     } catch (error) {
       console.error('Error loading texture:', error);
     }

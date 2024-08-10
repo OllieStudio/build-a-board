@@ -46,6 +46,9 @@ export class TestingService {
             case 'code':
               this.threeJsService.loadModelFromString(comp.three.code);
               break;
+            case 'file':
+              this.threeJsService.loadModelFromFile(comp.three.file, comp.color);
+              break;
             case 'basic':
               this.threeJsService.addObject(comp.three.geometry, comp.color);
               break;

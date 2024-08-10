@@ -82,12 +82,11 @@ export class GoogleGeminiAIService {
   }
 
   async textTo3D(prompt: string): Promise<any> {
-    prompt = `you are an expert in 3D modeling working on a virtual board game design, 
-    please create a three.js code for a 3D model of: ${prompt}, generate code only for the element` ;
+    prompt = `generate GLTF three.js code for a 3D model of ${prompt}` ;
     try {
       const result = await this.model.generateContent(prompt);
       const response = await result.response.text();
-      return response;
+      return response.replace().replace('```GLTF', '').replace('```');
     } catch (error) {
       console.error('Error generating 3D model:', error);
       throw error;

@@ -397,7 +397,9 @@ export class CreatorUIService implements OnInit {
   }
 
   describe3D(currentComponent: Componente): string {
-    return `${currentComponent.prompt3d} with ${currentComponent.modifiers.map(modifier => {if(currentComponent[modifier.property]) return modifier.property + ': ' + currentComponent[modifier.property]}).join(', ')}`
+    const prompt = `${currentComponent.three?.prompt3d} with ${currentComponent.modifiers.map(modifier => {if(currentComponent[modifier.property]) return modifier.property + ': ' + currentComponent[modifier.property]}).join(', ')}`
+    console.log(prompt);
+    return prompt
   }
 
   async checkBase64Image() {
