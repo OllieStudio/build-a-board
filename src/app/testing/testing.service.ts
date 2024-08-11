@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { ThreeService } from './three-js.service';
 import { GameDataService } from '../creator/services/gamedata.service';
 import { Player } from './testing.component';
+import { Componente } from '../services/interfaces/componente';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestingService {
   players:Player[];
+  controls:Componente[];
   colors = ['red', 'green', 'blue', 'yellow', 'black', 'white'];
   currentPlayer:number = 0;
   currentRound:number = 0;
+  activeControl: Componente;
 
   constructor(private threeJsService: ThreeService, private gamedata:GameDataService) {}
 
@@ -57,21 +60,10 @@ export class TestingService {
         })
       }
 
-  onAngleChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    const angle = parseFloat(input.value);
-   // this.threeJsService.updateCameraAngle(angle);
-
-   /*  updateCameraAngle(angle: number): void {
-      const radius = 5; // distance from the center
-      const radianAngle = THREE.MathUtils.degToRad(angle);
-  
-      // Calculate new camera position
-      const x = radius * Math.sin(radianAngle);
-      const z = radius * Math.cos(radianAngle);
-  
-      this.camera.position.set(x, this.camera.position.y, z);
-      this.camera.lookAt(this.scene.position);
-    } */
-  }
+      initControls(): void {
+        const getControls = this.gamedata.getComponents().subscribe(res =>{
+          this.controls = res.filter(comp => comp.actions);
+          getControls.unsubscribe();
+        })
+        }
 }

@@ -1,1 +1,15 @@
-<p>controls works!</p>
+<div id="controls" class="scroll-panel">
+    <!-- <span id="players-title">Jogadores</span> -->
+    <div id="round-counter">
+        <p class="top-0 bottom-0">RODADA</p>
+        <h1 class="top-0 bottom-2">{{testing.currentRound}}</h1>
+    </div>
+    <div id="controls-container">
+        <app-control-item *ngFor="let control of testing.controls" [control]="control" (click)="controlSelected($event)"></app-control-item>
+    </div>
+</div>
+
+<div id="activeControl" class="component" [hidden]="!testing.activeControl" >
+    <img src="{{testing.activeControl?.imagem}}" class="component-image" [ngClass]="testing.activeControl?.classname" alt="">
+    <!-- <p class="component-name">{{control.classname}}</p> -->
+</div>

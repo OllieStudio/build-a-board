@@ -1,3 +1,5 @@
 node_modules/**
 .angular/**
 dist/base/**
+src/environments/environment.ts
+src/environments/environment.prod.ts

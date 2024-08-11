@@ -1,21 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Creepster|Eater|Fascinate+Inline|Faster+One|Fontdiner+Swanky|Freckle+Face|Germania+One|Luckiest+Guy|Mystery+Quest|Nosifer|Rye|UnifrakturMaguntia|Wallpoet');
 @import url('https://fonts.googleapis.com/css?family=Barlow+Condensed|Roboto:300|Yanone+Kaffeesatz:300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Foldit:wght@100..900&display=swap');
 @import url('./css/auxiliar.css');
 
-/* font-family: 'Germania One', cursive;
-font-family: 'Luckiest Guy', cursive;
-font-family: 'Freckle Face', cursive;
-font-family: 'Faster One', cursive;
-font-family: 'Rye', cursive;
-font-family: 'UnifrakturMaguntia', cursive;
-font-family: 'Eater', cursive;
-font-family: 'Wallpoet', cursive;
-font-family: 'Fontdiner Swanky', cursive;
-font-family: 'Creepster', cursive;
-font-family: 'Nosifer', cursive;
-font-family: 'Mystery Quest', cursive;
-font-family: 'Fascinate Inline', cursive; */
+
 
 html,
 body {
@@ -65,6 +54,15 @@ select.small, input.small{
   margin-top: 5vh;
   margin-left: 5vw;
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.deck-cartas-P, .deck-cartas-M, .deck-cartas-G{
+    box-shadow:
+                2px 2px 0px rgba(0, 0, 0, 0.3),
+                4px 4px 0px rgba(0, 0, 0, 0.3),
+                6px 6px 0px rgba(0, 0, 0, 0.3),
+                8px 8px 0px rgba(0, 0, 0, 0.3),
+                10px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
 .mat-dialog-content {

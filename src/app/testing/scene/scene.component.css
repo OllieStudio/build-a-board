@@ -1,6 +1,6 @@
 #testing-scene{
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     display: block;
     background: linear-gradient(to right, rgb(255, 255, 255), rgb(213, 212, 212));
     z-index: 0;
