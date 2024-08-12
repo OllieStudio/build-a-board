@@ -28,6 +28,11 @@ import { LoginComponent } from './login/login.component';
 import { LoginButtonsComponent } from './login/login-buttons/login-buttons.component';
 import { LoginEmailComponent } from './login/login-email/login-email.component';
 import { HomeCreatorComponent } from './creator/home-creator/home-creator.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutProductsComponent } from './checkout/checkout-products/checkout-products.component';
+import { CheckoutAddressComponent } from './checkout/checkout-address/checkout-address.component';
+import { CheckoutFinalComponent } from './checkout/checkout-final/checkout-final.component';
+import { CheckoutPaymentComponent } from './checkout/checkout-payment/checkout-payment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -60,6 +65,13 @@ const routes: Routes = [
     { path: 'create', component:CreateComponent,  },
 ] },
 { path: 'testing', component:TestingComponent },
+{ path: 'checkout', component:CheckoutComponent, children:[
+    { path: '', redirectTo: 'products', pathMatch: 'full' },
+    { path: 'products', component:CheckoutProductsComponent},
+    { path: 'address',  component:CheckoutAddressComponent },
+    { path: 'final', component:CheckoutFinalComponent },
+    { path: 'payment', component:CheckoutPaymentComponent }
+  ] },
     ]},
   {
     path: 'login', component:LoginComponent, children:[

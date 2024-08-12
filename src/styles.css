@@ -387,14 +387,34 @@ a.disabled {
   border-radius: 6px; /* Roundness of the track */
 }
 
+.game-logo{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.game-logo-container{
+    height: 100%;
+    width:100px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    position: absolute !important;
+    top: 0px !important;
+    left: 0px !important;
+    z-index: 9999;
+
+}
+
 
 /* styles login */
 
   .container{
-    width:100%;
-    display:flex;
-    flex-direction:row;
-    justify-content: space-evenly;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
   }
 
   .container.large{
@@ -467,11 +487,18 @@ element.style {
 }
 
 
-.logintitle{
+h5.logintitle{
   font-family: "Barlow Condensed" !important;
   font-size: 40px !important;
   font-weight: 800;
   color: #9C27B0;
+}
+
+h6.loginsubtitle{
+  font-family: "Barlow Condensed" !important;
+  font-size: 30px !important;
+  font-weight: 800;
+  color: #771d86;
 }
 
 

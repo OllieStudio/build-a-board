@@ -11,7 +11,7 @@ import { Jogo } from 'src/app/services/interfaces/jogo';
 export class GameDataService {
 
   public jogoEmitter:EventEmitter<Jogo> = new EventEmitter;
-  game: Jogo = {} as Jogo;
+  game:Jogo;
   jogoFormGroup: any;
   
   constructor(public forms:FormService, public database:DatabaseService<Jogo>, public router:Router, public material:MaterializeService) { }

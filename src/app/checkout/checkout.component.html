@@ -1,0 +1,30 @@
+<div class="overlay">
+    <div class="container">
+      <h5 class="valign logintitle col s12 left top-10 left-2">
+        <i class="material-icons left ">shopping_basket</i>CHECKOUT</h5>
+    </div>
+  
+    <div class="row container top-3">
+      <div class="col s5">
+        <div class="col s12  catalog-item">
+          <div class="card">
+            <div class="card-image">
+              <div class="game-logo-container">
+                <img src="{{gamedataservice.game?.logo}}" class="game-logo">
+              </div>
+              <img src="{{gamedataservice.game?.header}}">
+            </div>
+            <div class="card-content">
+              <span class="card-title">{{gamedataservice.game?.titulo}}</span>
+              <p>{{gamedataservice.game?.sinopse}}</p>
+            </div>
+            <div class="card-action">
+              <a href="#">ver mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s7">
+        <router-outlet></router-outlet>
+      </div>
+    </div>

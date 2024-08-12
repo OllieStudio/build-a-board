@@ -1,9 +1,19 @@
 <div class="left-5 top-10">
 
-    <h5 class="logintitle top-5">Olá {{user.displayName}},</h5>
-    <div class=" gameselector">
-        <div class="gameitem" *ngFor="let game from games">
-            
+    <h5 class="logintitle top-5">Olá {{user?.displayName}},</h5>
+    <h6 class="loginsubtitle top-2 bottom-5">{{welcomeMessage}}</h6>
+    <div class=" gameselector top-5">
+        <div class="gameitem" *ngFor="let game of games" (click)="getProject(game.id)">
+            <div class="imgcontainer">
+                <img src="{{game.logo}}" alt="">
+            </div>
+            <span>{{game.titulo}}</span>
+        </div>
+        <div class="gameitem" (click)="newProject()">
+            <div class="imgcontainer">
+                <img src="/assets/img/newproject.png" alt="">
+            </div>
+            <span class="top-2">Novo Projeto</span>
         </div>
     </div>
 </div>

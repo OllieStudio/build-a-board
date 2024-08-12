@@ -1,0 +1,13 @@
+input{
+    padding: 4px;
+    border-radius: 9px;
+    border: 1px solid #543696;
+    width:100%;
+  }
+
+  .input-field>label {
+    position: relative!important;
+    top: -67px!important;
+    width: 100%;
+    display: block;
+  }

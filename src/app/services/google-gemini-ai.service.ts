@@ -94,8 +94,8 @@ export class GoogleGeminiAIService {
   }
 
   async improveText(prompt: string, type:string): Promise<any> {
-    prompt = `you are working on a ${this.gameservice.game.tipo} game named 
-    '${this.gameservice.game.titulo} - ${this.gameservice.game.subtitulo}' , 
+    prompt = `you are working on a ${this.gameservice.game?.tipo || 'a'} game named 
+    '${this.gameservice.game?.titulo} - ${this.gameservice.game?.subtitulo}' , 
     please ${type} keeping the original language: ${prompt}
     ` ;
     try {

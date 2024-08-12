@@ -14,7 +14,7 @@ export class JogoComponent implements OnInit  {
   }
 
   ngOnInit(): void {
-    this.gamedataservice.getGame('lAmehvWJfleriLkqzY6r'); 
+    // this.gamedataservice.getGame('lAmehvWJfleriLkqzY6r'); 
   }
  
  

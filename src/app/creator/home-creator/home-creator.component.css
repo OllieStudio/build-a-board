@@ -1,0 +1,34 @@
+.gameselector{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.gameitem .imgcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    width: 250px;   
+    height: 250px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: 3px solid purple;
+    background: linear-gradient(to bottom, rgb(255 255 255), rgb(160, 158, 158));
+    box-shadow: 3px 2px 5px #666565;
+    padding:15px;
+}
+
+.gameitem img{
+    width: 100%;
+}
+
+.gameitem span{
+    font-family: "Barlow Condensed" !important;
+    font-size: 25px !important;
+    font-weight: 800;
+    color: #9C27B0;
+}

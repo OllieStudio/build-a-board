@@ -1,0 +1,28 @@
+<h6 class="bottom-5 loginsubtitle">Componentes</h6>
+<div class="product-item row" *ngFor="let product of products">
+    <i class="material-icons col s2">{{product.icon}}</i>
+    <span class="col s6">{{product.name}}</span>
+    <span class="col s2">{{product.ammount || 1}}</span>
+    <span class="col s2"> $ {{product.price}}</span>
+</div>
+<div class="product-item row">
+    <i class="material-icons col s2">menu_book</i>
+    <span class="col s6">Livro de Regras</span>
+    <span class="col s2">1</span>
+    <span class="col s2"> $ 12</span>
+</div>
+<div class="product-item row" >
+    <i class="material-icons col s2">inventory_2</i>
+    <span class="col s6">Embalagem</span>
+    <span class="col s2">1</span>
+    <span class="col s2"> $ 20</span>
+</div>
+<hr>
+<div class="product-item row" >
+    <i class="material-icons col s2"></i>
+    <span class="col s6"></span>
+    <span class="col s2">TOTAL</span>
+    <span class="col s2"> $ {{total}}</span>
+</div>
+
+<button (click)="next()" class="btn green right next-step">próximo</button>
