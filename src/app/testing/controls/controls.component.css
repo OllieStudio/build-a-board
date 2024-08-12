@@ -50,9 +50,21 @@
 
 .component-image{
     /* width: 85px; */
-    height: 75px;
+    height: 70%;    
+
     object-fit: contain;
     margin: 10px;
+}
+
+.actionbutton{
+    margin-right: 10px;
+    padding: 4px 12px;
+    border: 1px solid #CCC;
+    background-color: #3c3d3e;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    border-radius: 18px;
 }
 
 .component-name{
@@ -71,8 +83,9 @@
  background: linear-gradient(to bottom, rgb(255 255 255), rgb(160, 158, 158));
  box-shadow: 3px 2px 5px #666565;
  position:absolute;
- bottom: 15vh;
+ bottom: 10vh;
  right: 5vw;
  width:20vw;
  height: 20vw;
+ z-index: 999;
 }

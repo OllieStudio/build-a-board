@@ -10,56 +10,56 @@ import { InputBase, FormService, CepService } from '@ollieestudio/fire-lib';
    imports: [CommonModule, ReactiveFormsModule],
    styleUrls: ['./address-form.component.css'],
   template: `
-   <div class="col s12 m4 input-field" [hidden]="address">
+   <div class="col s12 m4 " [hidden]="address">
+   <label for="cepbusca" class="active">Informe o CEP</label>
       <input id="cepbusca" #cepbusca type="text"  class="validate browser-default bordered"
         (keyup)="cep.cepKeyUp($event)" />
-      <label for="cepbusca" class="active">Informe o CEP</label>
   </div>
 
 <form id="formAddress" name="formAddress" [formGroup]="formAddress" [hidden]="!address">
   <div class="row">
-    <div class="col s12 input-field">
+    <div class="col s12 ">
+    <label for="responsavel" class="active">Responsável</label>
       <input id="responsavel" type="text" class="validate browser-default" [minlength]="4" [formControlName]="'responsavel'" />
-      <label for="responsavel" class="active">Responsável</label>
     </div>
   </div>
 
   <div class="row ">
-      <div class="col m10 s12 input-field">
+      <div class="col m10 s12 ">
+      <label for="ender" class="active">Endereço</label>
         <input id="ender" type="text" class="validate browser-default" [formControlName]="'logradouro'" />
-        <label for="ender" class="active">Endereço</label>
       </div>
-      <div class="col m2 s6 input-field">
+      <div class="col m2 s6 ">
+      <label for="num" class="active">Nº</label>
         <input id="num" type="text" class="validate browser-default" [formControlName]="'numero'"
          />
-        <label for="num" class="active">Nº</label>
       </div>
-      <div class="col m6 s6 input-field">
+      <div class="col m6 s6 ">
+      <label for="complemento" class="active">complemento</label>
         <input id="complemento" type="text" class="validate browser-default" [formControlName]="'complemento'" />
-        <label for="complemento" class="active">complemento</label>
       </div>
   </div>
 
   <div class="row">
-    <div class="col s12 m6 input-field">
+    <div class="col s12 m6 ">
+    <label for="cep" class="active">CEP</label>
       <input id="cep" type="text" class="validate browser-default"
         [formControlName]="'cep'" />
-      <label for="cep" class="active">CEP</label>
     </div>
-    <div class="col s12 m6 input-field">
+    <div class="col s12 m6 ">
+    <label for="bairro" class="active">bairro</label>
         <input id="bairro" type="text" class="validate browser-default" [formControlName]="'bairro'" />
-        <label for="bairro" class="active">bairro</label>
     </div>
   </div>
 
   <div class="row">
-      <div class="col s8 m6 input-field">
+      <div class="col s8 m6 ">
+      <label for="cidade" class="active">cidade</label>
         <input id="cidade" type="text" class="validate browser-default" [formControlName]="'localidade'" />
-        <label for="cidade" class="active">cidade</label>
       </div>
-      <div class="col s4 m6 input-field">
+      <div class="col s4 m6 ">
+      <label for="uf" class="active">uf</label>
         <input id="uf" type="text" class="validate browser-default" [formControlName]="'uf'" />
-        <label for="uf" class="active">uf</label>
       </div>
   </div>
 </form>

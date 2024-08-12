@@ -1,6 +1,7 @@
 import { Componente } from "./componente";
 
 export interface Jogo {
+  adress: any;
   user: string;
   datacriacao: number;
   uploads: any;

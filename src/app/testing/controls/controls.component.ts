@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlItemComponent } from './control-item/control-item.component';
 import { TestingService } from '../testing.service';
-import { Componente } from 'src/app/services/interfaces/componente';
+import { Componente, GameAction } from 'src/app/services/interfaces/componente';
+import { ScriptRunnerService } from '../script-runner.service';
 
 @Component({
   selector: 'app-controls',
@@ -13,7 +14,7 @@ import { Componente } from 'src/app/services/interfaces/componente';
 })
 export class ControlsComponent implements OnInit{
 
-  constructor(public testing: TestingService){
+  constructor(public testing: TestingService, private runner:ScriptRunnerService){
     
   }
 
@@ -24,4 +25,8 @@ export class ControlsComponent implements OnInit{
    controlSelected(control:Componente){
     this.testing.activeControl = control;
    }
+
+   testCode(action: GameAction, mockParameters?: any[]) {
+    alert(this.runner.runScript(action.code, [1, 6]));
+  }
 }

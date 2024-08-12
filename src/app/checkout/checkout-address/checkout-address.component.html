@@ -1,4 +1,6 @@
 <h6 class="bottom-5 loginsubtitle">Informações de Entrega</h6>
 <div class="row">
     <app-address-form  #address class="col m12 s12" (addressChange)="calculoFrete($event)"></app-address-form>
+
+    <button (click)="next()" class="btn green right next-step">próximo</button>
   </div>
