@@ -3,7 +3,7 @@
     <a href="#!" class="brand-logo">
       <img src="assets/img/logo.png" alt="" class="logo">
     </a>
-    <ul id="main-links" class="left grey-text text-lighten-1">
+    <ul id="main-links" class="left grey-text text-lighten-1" *ngIf="gameservice.game">
       <li class="hoverable" routerLink="./sobre">
         <h3 class="valign-wrapper">
           <i class="material-icons valign ">fingerprint</i> SOBRE O JOGO</h3>
@@ -21,10 +21,10 @@
     </ul>
     
     <ul id="tool-link" class="right hide-on-med-and-down">
-      <li><a href="sass.html"><i class="material-icons grey-text">search</i></a></li>
-      <li><a href="badges.html"><i class="material-icons grey-text">visibility</i></a></li>
-      <li><a href="collapsible.html"><i class="material-icons grey-text">home</i></a></li>
-      <li><a href="mobile.html"><i class="material-icons grey-text">account_circle</i></a></li>
+      <li><a ><i class="material-icons grey-text">search</i></a></li>
+      <li><a ><i class="material-icons grey-text">visibility</i></a></li>
+      <li><a [routerLink]="'./home'" ><i class="material-icons grey-text">home</i></a></li>
+      <li><a ><i class="material-icons grey-text">account_circle</i></a></li>
     </ul>
   </div>
 </nav>

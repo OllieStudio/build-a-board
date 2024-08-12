@@ -386,3 +386,190 @@ a.disabled {
   background: lightgrey; /* Color of the track */
   border-radius: 6px; /* Roundness of the track */
 }
+
+
+/* styles login */
+
+  .container{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+  }
+
+  .container.large{
+    height: 27vh;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .large .logo-p{
+    max-height:33vh;
+    max-width:68vw;
+  }
+
+
+  .large{
+    font-size:17px;
+}
+
+  .suffix{
+    position:absolute;
+    margin-left: -38px;
+    margin-top: 22px;
+  }
+
+  nav{
+    position: fixed;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px 0 20px;
+    background: linear-gradient( to bottom right, #9C27B0, #E91E63);
+    box-shadow:none;
+    z-index: 999999;
+}
+
+.cta-button{
+    font-family: 'Barlow Condensed', cursive!important;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.logo {
+  height: 60px;
+  margin-top: 2px;
+}
+
+#login-buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: unset;
+  align-items: center;
+  width: 100vw;
+}
+
+button{
+  font-family: "Barlow Condensed" !important;
+  font-size: 17px !important;
+}
+
+#login-buttons button{
+  max-width:initial;
+  width: 80vw;
+}
+
+element.style {
+  z-index: 998;
+  display: block;
+  opacity: 0.5;
+}
+
+
+.logintitle{
+  font-family: "Barlow Condensed" !important;
+  font-size: 40px !important;
+  font-weight: 800;
+  color: #9C27B0;
+}
+
+
+
+.firebaseui-card-content{
+	padding-left: 10px!important;
+	padding-right: 10px!important;
+}
+
+.firebaseui-idp-text-long {
+	display: none !important;
+}
+
+.firebaseui-idp-text-short {
+	display: table-cell !important;
+	font-family: "Barlow Condensed";
+	/* text-shadow: 3px 3px 0px rgba(255, 152, 0, 0.8); */
+	color: #FFF !important;
+	font-size: 17px !important;
+}
+
+.firebaseui-idp-button, .purple {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	background-color: #7d4886 !important;
+	border-radius: 20px !important;
+	width: 300px!important;
+}
+
+.firebaseui-idp-button {
+  direction: ltr;
+  font-weight: 500;
+  height: auto;
+  line-height: normal;
+  max-width: 220px;
+  min-height: 40px;
+  padding: 8px 16px;
+  text-align: left;
+  width: 100%;
+}
+
+.mdl-button--raised {
+  background: #9e9e9e33;
+  box-shadow: 0 2px 2px #00000024, 0 3px 1px -2px #0003, 0 1px 5px #0000001f;
+}
+
+.mdl-button {
+  background: transparent;
+  border: none;
+  border-radius: 2px;
+  color: #000;
+  position: relative;
+  height: 36px;
+  margin: 0;
+  min-width: 64px;
+  padding: 0 16px;
+  display: inline-block;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0;
+  overflow: hidden;
+  will-change: box-shadow;
+  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  line-height: 36px;
+  vertical-align: middle;
+}
+
+.firebaseui-idp-icon {
+  border: none;
+  display: inline-block;
+  height: 18px;
+  vertical-align: middle;
+  width: 18px;
+}
+
+.firebaseui-idp-text-short {
+  display: table-cell!important;
+  font-family: 'Barlow Condensed';
+  color: #fff!important;
+  font-size: 17px!important;
+}
+
+.firebaseui-idp-text {
+  color: #fff;
+  display: table-cell;
+  font-size: 14px;
+  padding-left: 16px;
+  text-transform: none;
+  vertical-align: middle;
+}
+
+.overlay{
+  background: rgba(255, 255, 255, 0.6);
+  height: 100vh;
+}

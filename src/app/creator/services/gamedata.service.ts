@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormService, DatabaseService, InputBase, MaterializeService } from '@ollieestudio/fire-lib';
+import { FormService, DatabaseService, InputBase, MaterializeService, QueryFn } from '@ollieestudio/fire-lib';
 import { Componente, Elemento, Texto } from 'src/app/services/interfaces/componente';
 import { Jogo } from 'src/app/services/interfaces/jogo';
 
@@ -9,6 +9,7 @@ import { Jogo } from 'src/app/services/interfaces/jogo';
   providedIn: 'root'
 })
 export class GameDataService {
+
   public jogoEmitter:EventEmitter<Jogo> = new EventEmitter;
   game: Jogo = {} as Jogo;
   jogoFormGroup: any;
@@ -78,6 +79,11 @@ export class GameDataService {
     
   getCommonElements() {
     return this.database.listValues('ELEMENTS');
+    }
+
+    listProjects(user:string) {
+      let query: QueryFn = ref => ref.where('user', '==', user);
+      return this.database.queryValues('GAMES', query);
     }
  
   saveElemento(elem: Elemento) {

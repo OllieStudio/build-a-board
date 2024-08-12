@@ -24,12 +24,16 @@ import { ElementsComponent } from './creator/gameform/design/elements/elements.c
 import { TextComponent } from './creator/gameform/design/text/text.component';
 import { UploadsComponent } from './creator/gameform/design/uploads/uploads.component';
 import { TestingComponent } from './testing/testing.component';
+import { LoginComponent } from './login/login.component';
+import { LoginButtonsComponent } from './login/login-buttons/login-buttons.component';
+import { LoginEmailComponent } from './login/login-email/login-email.component';
+import { HomeCreatorComponent } from './creator/home-creator/home-creator.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {path:'home', component:HomeComponent},
   {path:'creator', component:CreatorComponent, children:[
-    { path: '', redirectTo: 'sobre', pathMatch: 'full' },
+    { path: '', component:HomeCreatorComponent},
     { path: 'sobre', component:JogoComponent, children:[
       { path: '', redirectTo: 'tipo', pathMatch: 'full' },
       { path: 'tipo', component:JogoTipoComponent },
@@ -58,9 +62,10 @@ const routes: Routes = [
 { path: 'testing', component:TestingComponent },
     ]},
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  },
+    path: 'login', component:LoginComponent, children:[
+      { path: '',  component:LoginButtonsComponent },
+      { path: 'email', component:LoginEmailComponent },
+    ] },
   {
     path: 'contato',
     loadChildren: () => import('./contato/contato.module').then(m => m.ContatoModule)
