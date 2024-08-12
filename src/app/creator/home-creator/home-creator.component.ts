@@ -36,7 +36,14 @@ export class HomeCreatorComponent {
   }
 
   getProject(id:string){
-    this.gameservice.getGame(id);
+    this.gameservice.getGame(id).subscribe(data=>{
+      this.gameservice.game = data.data();
+      this.gameservice.router.navigateByUrl('/creator/sobre')
+    })
+  }
+
+  deleteProject(id:string){
+    this.gameservice.deleteProject(id);
     this.gameservice.router.navigateByUrl('/creator/sobre')
   }
 

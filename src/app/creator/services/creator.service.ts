@@ -412,7 +412,7 @@ export class CreatorUIService implements OnInit {
       const isBase64 = src.startsWith('data:image/');
   
         if (isBase64) {
-         const url = await this.imageservice.uploadImg(src, `${this.currentComponent.id}.png`, `game/${this.gamedataservice.game.titulo}/imgs/` );
+         const url = await this.imageservice.uploadImg(src, `${this.currentComponent.id}.png`, `game/${this.gamedataservice.game.id}/imgs/` );
          imgElement.src = url;
          this.uploads.addUpload(url, this.currentComponent, this.currentComponent.modifiers.find(modifier => modifier.property === 'background')[0]);
 

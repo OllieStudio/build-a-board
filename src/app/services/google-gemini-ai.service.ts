@@ -94,10 +94,13 @@ export class GoogleGeminiAIService {
   }
 
   async improveText(prompt: string, type:string): Promise<any> {
-    prompt = `you are working on a ${this.gameservice.game?.tipo || 'a'} game named 
-    '${this.gameservice.game?.titulo} - ${this.gameservice.game?.subtitulo}' , 
-    please ${type} keeping the original language: ${prompt}
-    ` ;
+    if(this.gameservice.game){
+      prompt = `you are working on a ${this.gameservice.game?.tipo || 'a'} game named 
+      '${this.gameservice.game?.titulo} - ${this.gameservice.game?.subtitulo}' , 
+      please ${type} keeping the original language: ${prompt}`
+    }else{
+      prompt = `you are working on a board game please ${type} keeping the original language: ${prompt}`
+    } ;
     try {
       const result = await this.model.generateContent(prompt);
       const response = await result.response.text();

@@ -28,6 +28,8 @@ export class AppComponent {
           this.auth.stateObservable.subscribe((user:any)=>{
             if(user == null){
               this.router.navigate(['/login']);
+            }else{
+              this.auth.User = user;
             }
           })
         }

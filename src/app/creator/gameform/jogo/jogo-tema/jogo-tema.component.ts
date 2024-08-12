@@ -52,10 +52,12 @@ export class JogoTemaComponent {
   
   async registerForm(){
     this.hideSpinner = false;
-    this.pathlogo = `game/${this.gamedataservice.game.titulo}/imgs/logo_`
-    this.pathheader = `game/${this.gamedataservice.game.titulo}/imgs/header_`
-    this.pathbg = `game/${this.gamedataservice.game.titulo}/imgs/bg_`
+    this.pathlogo = `game/${this.gamedataservice.game.id}/imgs/`;
+    this.pathheader = `game/${this.gamedataservice.game.id}/imgs/`;
+    this.pathbg = `game/${this.gamedataservice.game.id}/imgs/`;
 
+    await this.material.delay(2000);
+    
     if(this.jogoFormGroup.getRawValue().logo?.includes('data:image')){
       await this.logoControl.uploadImg(this.jogoFormGroup.getRawValue().logo, 'logo.png');
       this.addUploads('logo');
@@ -76,7 +78,7 @@ export class JogoTemaComponent {
 
   async generateLogo(prompt){
     //const logo = await this.aiservice.textToSVG(prompt, '300x300px logo');
-    const logo = await this.vertex.generateImage('a clipart style logo with transparent background and ' + prompt, AspectRatio.Square, this.logoStyle);
+    const logo = await this.vertex.generateImage('a vector style logo with transparent background and ' + prompt, AspectRatio.Square, this.logoStyle);
     this.hideSpinnerLogo = true;
     this.jogoFormGroup.patchValue({logo:logo})
     

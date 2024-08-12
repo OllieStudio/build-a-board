@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { InputBase, FormService } from '@ollieestudio/fire-lib';
 import { GameDataService } from '../../../services/gamedata.service';
@@ -9,7 +9,7 @@ import { Jogo } from 'src/app/services/interfaces/jogo';
   templateUrl: './jogo-tipo.component.html',
   styleUrls: ['./jogo-tipo.component.css']
 })
-export class JogoTipoComponent {
+export class JogoTipoComponent implements OnInit{
   public jogoFormGroup: FormGroup;
 
   private fields:InputBase[] = [
@@ -24,6 +24,7 @@ export class JogoTipoComponent {
 
   ngOnInit(): void {
     this.jogoFormGroup.patchValue(this.gamedataservice.game);
+    this.jogoFormGroup.controls['tipojogo'].value(this.gamedataservice.game.tipo);
   }
 
   registerForm(){

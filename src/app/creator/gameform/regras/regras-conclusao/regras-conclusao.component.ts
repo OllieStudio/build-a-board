@@ -11,6 +11,10 @@ import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service
 })
 export class RegrasConclusaoComponent {
   public regrasFormGroup: FormGroup;
+  hidespinner:any = {
+    conclusao:true,
+    vencedor:true
+  }
 
   private fields:InputBase[] = [
     {key:"vencedor", required:true},
@@ -31,7 +35,9 @@ export class RegrasConclusaoComponent {
   }
 
   async generateRules(field:string, text:string){
+    this.hidespinner[field] = false;
     const rules = await this.aiService.improveText(text, ' correct and improve the innerText keeping the html tags');
     this.regrasFormGroup.patchValue({[field]:rules})
+    this.hidespinner[field] = true;
   }
 }

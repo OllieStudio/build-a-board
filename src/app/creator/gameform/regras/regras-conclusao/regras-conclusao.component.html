@@ -7,7 +7,7 @@
             <ngx-wig  formControlName="vencedor" [placeholder]="''" class="col m12 top-3 bottom-1"
               ></ngx-wig>
               <app-ai-button label="gerar com IA" class="top-2 left-1" (click)="generateRules('vencedor', this.regrasFormGroup.controls['vencedor'].value)"></app-ai-button> 
-
+              <i *ngIf="!hidespinner.vencedor" class="material-icons spinner sufix valign left-1">autorenew</i>
           </div>
 
           <div class="col m12 top-5">
@@ -17,7 +17,7 @@
             <ngx-wig formControlName="conclusao" [placeholder]="''" class="col m12 top-3 bottom-1"
               >  </ngx-wig>
               <app-ai-button label="gerar com IA" class="top-2 left-1" (click)="generateRules('conclusao', this.regrasFormGroup.controls['conclusao'].value)"></app-ai-button> 
-
+              <i *ngIf="!hidespinner.conclusao" class="material-icons spinner sufix valign left-1">autorenew</i>
           </div>
         </div>
 

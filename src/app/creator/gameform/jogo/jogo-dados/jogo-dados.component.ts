@@ -40,7 +40,11 @@ export class JogoDadosComponent implements OnInit {
   }
 
   registerForm(){
-    this.gamedataservice.addDataToGame(this.jogoFormGroup.getRawValue());
+    if(!this.gamedataservice.game.id){
+      this.gamedataservice.createGame(this.jogoFormGroup.getRawValue());
+    }else{
+      this.gamedataservice.addDataToGame(this.jogoFormGroup.getRawValue());
+    }
   }
 
 }

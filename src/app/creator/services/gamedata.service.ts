@@ -1,20 +1,24 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormService, DatabaseService, InputBase, MaterializeService, QueryFn } from '@ollieestudio/fire-lib';
+import { FormService, DatabaseService, InputBase, MaterializeService, QueryFn, AuthService } from '@ollieestudio/fire-lib';
 import { Componente, Elemento, Texto } from 'src/app/services/interfaces/componente';
 import { Jogo } from 'src/app/services/interfaces/jogo';
+import { Usuario } from 'src/app/services/interfaces/usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameDataService {
+  deleteProject(id: string) {
+    throw new Error('Method not implemented.');
+  }
 
   public jogoEmitter:EventEmitter<Jogo> = new EventEmitter;
   game:Jogo;
   jogoFormGroup: any;
   
-  constructor(public forms:FormService, public database:DatabaseService<Jogo>, public router:Router, public material:MaterializeService) { }
+  constructor(public forms:FormService, private auth:AuthService<Usuario>, public database:DatabaseService<Jogo>, public router:Router, public material:MaterializeService) { }
   
   generateForm(form:FormGroup, fields:InputBase[]){
     form = this.forms.toFormGroup(fields);
@@ -25,15 +29,32 @@ export class GameDataService {
   }
 
   getGame(id:string){
-    this.database.get(id, 'GAMES', 'default').subscribe(game =>{
-      this.game = game.data();
+    return this.database.get(id, 'GAMES', 'default')
+  }
+
+  createGame(formdata: any){
+    this.game = formdata;
+    this.game.user = this.auth.User.uid;
+    this.game.datacriacao = new Date().getTime();
+    this.database.add(this.game, 'GAMES').then(res =>{
+      this.game.id = res['id'];
+      this.database.update(this.game, 'GAMES').then(res =>{
+        this.jogoEmitter.next(this.game);
+        this.material.toast("Jogo salvo com sucesso!", 3000, 'green');
+      })
     })
   }
   
   addDataToGame(formdata: any) {
     this.game = {...this.game, ...formdata};
-    this.jogoEmitter.next(this.game);
-    console.log(this.game)
+    if(this.game.id){
+      this.database.update(this.game, 'GAMES').then(res =>{
+        this.jogoEmitter.next(this.game);
+        this.material.toast("Jogo salvo com sucesso!", 3000, 'green');
+      })
+    }else{
+      this.jogoEmitter.next(this.game);
+    }
   }
   
   registerForm(nextroute){
