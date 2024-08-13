@@ -16,6 +16,7 @@ export class RegrasBasicoComponent {
     {key:"regras", required:true},
     
   ]
+  hidespinner: boolean = true;
   
   constructor( private aiService:GoogleGeminiAIService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
     this.regrasFormGroup = this.forms.toFormGroup(this.fields);
@@ -32,7 +33,9 @@ export class RegrasBasicoComponent {
   }
 
   async generateRules(text:string){
+    this.hidespinner = false;
     const rules = await this.aiService.improveText(text, ' correct and improve the innerText keeping the html tags');
     this.regrasFormGroup.patchValue({regras:rules})
+    this.hidespinner = true;
   }
 }

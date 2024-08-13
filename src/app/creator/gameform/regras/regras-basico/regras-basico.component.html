@@ -10,7 +10,7 @@
               <ngx-wig [id]="'rules'" formControlName="regras" [placeholder]="'Digite cada regra separadamente.'"
                 class="col m12 top-3 bottom-2" >
               </ngx-wig>
-              <app-ai-button label="gerar com IA" class="top-2 left-1" (click)="generateRules(this.regrasFormGroup.controls['regras'].value)"></app-ai-button> 
+              <app-ai-button [hideSpinner]="hidespinner" label="gerar com IA" class="top-2 left-1" (click)="generateRules(this.regrasFormGroup.controls['regras'].value)"></app-ai-button> 
             </div>
           </div>
         </div>

@@ -9,7 +9,6 @@
  
       <app-fileupload #headerControl formControlName="header" [accepts]="'img'" [label]="'Enviar Header'" [path]="pathheader" ></app-fileupload>
       <app-prompt-input [isImage]="true" [hideSpinner]="hideSpinnerHeader" [label]="'gerar header com IA'" (styleChange)="headerStyle = $event" (output)="generateHeader($event)"></app-prompt-input>
-      
     </div>
     <div class="row">
  

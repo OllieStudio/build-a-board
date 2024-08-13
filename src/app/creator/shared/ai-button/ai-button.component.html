@@ -1,3 +1,6 @@
-<a  class="btn generate-btn valign-wrapper"> <i class="material-symbols-outlined top-0 bottom-0 valign">bolt</i> 
-    <span class="valign">{{label}}</span></a>
+<a  class="btn generate-btn valign-wrapper"> 
+    <i *ngIf="hideSpinner" class="material-symbols-outlined top-0 bottom-0 valign right-1">bolt</i> 
+    <i *ngIf="!hideSpinner" class="material-icons spinner top-0 bottom-0 sufix valign right-1">autorenew</i>
+    <span class="valign right-1">{{label}}</span>
+</a>
     

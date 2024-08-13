@@ -78,6 +78,7 @@ export class JogoTemaComponent {
 
   async generateLogo(prompt){
     //const logo = await this.aiservice.textToSVG(prompt, '300x300px logo');
+    this.hideSpinnerLogo = false;
     const logo = await this.vertex.generateImage('a vector style logo with transparent background and ' + prompt, AspectRatio.Square, this.logoStyle);
     this.hideSpinnerLogo = true;
     this.jogoFormGroup.patchValue({logo:logo})
@@ -85,12 +86,14 @@ export class JogoTemaComponent {
   }
 
   async generateHeader(prompt){
+    this.hideSpinnerHeader = false;
     const header = await this.vertex.generateImage('a header with ' + prompt, AspectRatio.Landscape, this.headerStyle);
     this.hideSpinnerHeader = true;
     this.jogoFormGroup.patchValue({header:header})
   }
 
   async generateBg(prompt){
+    this.hideSpinnerBg = false;
     const bg = await this.vertex.generateImage('a background image with ' + prompt, AspectRatio.Square, this.bgStyle);
     this.hideSpinnerBg = true;
     this.jogoFormGroup.patchValue({background:bg});

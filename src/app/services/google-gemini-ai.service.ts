@@ -106,7 +106,7 @@ export class GoogleGeminiAIService {
       const response = await result.response.text();
       return response;
     } catch (error) {
-      console.error('Error generating 3D model:', error);
+      console.error('Error generating Text:', error);
       throw error;
     }
   }

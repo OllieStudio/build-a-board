@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist/base",
+    "site":"buildaboard2018",
     "ignore": [
       "firebase.json",
       "**/.*",

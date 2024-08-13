@@ -18,6 +18,7 @@ export class RegrasConclusaoComponent {
 
   private fields:InputBase[] = [
     {key:"vencedor", required:true},
+    {key:"conclusao", required:false},
   ]
   
   constructor(private aiService:GoogleGeminiAIService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {

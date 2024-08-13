@@ -9,5 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./ai-button.component.css']
 })
 export class AiButtonComponent {
+  @Input() hideSpinner:boolean = true;
   @Input() label:string;
 }

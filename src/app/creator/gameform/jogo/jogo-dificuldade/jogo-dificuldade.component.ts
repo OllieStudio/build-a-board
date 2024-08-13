@@ -10,7 +10,7 @@ import { GameDataService } from '../../../services/gamedata.service';
 })
 export class JogoDificuldadeComponent implements OnInit {
   jogoFormGroup: FormGroup;
-  _skills = [  { label: 'Estratégia', ctrlname: 'skill1' },  { label: 'Raciocínio', ctrlname: 'skill2' },  { label: 'Cálculo', ctrlname: 'skill3' },  { label: 'Força', ctrlname: 'skill4' },  { label: 'Velocidade', ctrlname: 'skill5' },  { label: 'Fala', ctrlname: 'skill6' },  { label: 'Leitura', ctrlname: 'skill7' },  { label: 'Percepção', ctrlname: 'skill8' },  { label: 'Dedução', ctrlname: 'skill9' },  { label: 'Desenho', ctrlname: 'skill10' },  { label: 'Coletividade', ctrlname: 'skill11' },  { label: 'Conhecimento', ctrlname: 'skill12' },  { label: 'Línguas estrangeiras', ctrlname: 'skill13' },  { label: 'Expressão corporal', ctrlname: 'skill14' }];
+  _skills = [  { label: 'Estratégia', ctrlname: 'skill1' },  { label: 'Raciocínio', ctrlname: 'skill2' },  { label: 'Cálculo', ctrlname: 'skill3' },  { label: 'Força', ctrlname: 'skill4' },  { label: 'Velocidade', ctrlname: 'skill5' },  { label: 'Fala', ctrlname: 'skill6' },  { label: 'Leitura', ctrlname: 'skill7' },  { label: 'Percepção', ctrlname: 'skill8' },  { label: 'Dedução', ctrlname: 'skill9' },  { label: 'Desenho', ctrlname: 'skill10' },  { label: 'Coletividade', ctrlname: 'skill11' },  { label: 'Conhecimento', ctrlname: 'skill12' },  { label: 'Línguas estrangeiras', ctrlname: 'skill13' },  { label: 'Expressão corporal', ctrlname: 'skill14' }, { label: 'Criatividade', ctrlname: 'skill15' }];
 
   private fields:InputBase[] = [
     {key:"complexidade", required:true},
