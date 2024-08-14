@@ -3,7 +3,6 @@
     <div class="row">
       <app-fileupload  #logoControl formControlName="logo" [accepts]="'img'" [label]="'Enviar Logo'" [path]="pathlogo"></app-fileupload>
       <app-prompt-input [isImage]="true" [hideSpinner]="hideSpinnerLogo" [label]="'gerar logo com IA'" (styleChange)="logoStyle = $event" (output)="generateLogo($event)"></app-prompt-input>
-      
     </div>
     <div class="row">
  
@@ -18,7 +17,7 @@
     
     <div class="row">
      <button (click)="registerForm()" [disabled]="jogoFormGroup.invalid" class="btn green right next-step">
-    <i *ngIf="!hideSpinner" class="material-icons spinner sufix valign left-1">autorenew</i>
+    <i *ngIf="!hideSpinner" class="material-icons spinner sufix valign right-1">autorenew</i>
       
       próximo</button>
    </div>

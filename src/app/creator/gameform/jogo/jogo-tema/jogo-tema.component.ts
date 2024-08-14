@@ -8,6 +8,7 @@ import { FileuploadComponent } from 'src/app/creator/shared/fileupload/fileuploa
 import { UploadService } from 'src/app/services/upload.service';
 import { Upload } from 'src/app/services/interfaces/upload';
 import { Componente } from 'src/app/services/interfaces/componente';
+import { ImageService } from 'src/app/creator/services/image.service';
 
 @Component({
   selector: 'app-jogo-tema',
@@ -38,8 +39,9 @@ export class JogoTemaComponent {
   logoStyle: string;
   headerStyle: string;
   bgStyle: string;
+  remBgLogo: string;
   
-  constructor(private vertex:VertexAIService, private uploads:UploadService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
+  constructor(private vertex:VertexAIService, private imageservice:ImageService, private uploads:UploadService, public gamedataservice:GameDataService, private forms:FormService, private material:MaterializeService) {
     this.jogoFormGroup = this.forms.toFormGroup(this.fields);
     
   }
@@ -79,7 +81,8 @@ export class JogoTemaComponent {
   async generateLogo(prompt){
     //const logo = await this.aiservice.textToSVG(prompt, '300x300px logo');
     this.hideSpinnerLogo = false;
-    const logo = await this.vertex.generateImage('a vector style logo with transparent background and ' + prompt, AspectRatio.Square, this.logoStyle);
+    const logo = await this.vertex.generateImage(`a logo with ` + prompt, AspectRatio.Square, this.logoStyle);
+    // this.remBgLogo = await this.imageservice.removeColor(logo, {r:0, g:0, b:0});
     this.hideSpinnerLogo = true;
     this.jogoFormGroup.patchValue({logo:logo})
     

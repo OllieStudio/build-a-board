@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { AuthService, ConfigService, DatabaseService } from '@ollieestudio/fire-lib';
 import { environment } from 'src/environments/environment';
 import { Usuario } from './services/interfaces/usuario';
+import { LoginService } from './login/login.service';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,12 @@ export class AppComponent {
             if(user == null){
               this.router.navigate(['/login']);
             }else{
-              this.auth.User = user;
+              this.auth.User = {uid: user.uid
+                , phoneNumber: user.providerData[0]?.phoneNumber || ''
+              , displayName: user.displayName || ''
+              , email: user.email || ''
+              , photoURL: user.photoURL || ''
+              , providerId: user.providerData[0]?.providerId || ''} as Usuario;
             }
           })
         }

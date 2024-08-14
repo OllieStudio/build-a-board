@@ -33,6 +33,7 @@ import { CheckoutProductsComponent } from './checkout/checkout-products/checkout
 import { CheckoutAddressComponent } from './checkout/checkout-address/checkout-address.component';
 import { CheckoutFinalComponent } from './checkout/checkout-final/checkout-final.component';
 import { CheckoutPaymentComponent } from './checkout/checkout-payment/checkout-payment.component';
+import { UserInfoComponent } from './login/user-info/user-info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -65,6 +66,7 @@ const routes: Routes = [
     { path: 'create', component:CreateComponent,  },
 ] },
 { path: 'testing', component:TestingComponent },
+{ path: 'profile', component:UserInfoComponent },
 { path: 'checkout', component:CheckoutComponent, children:[
     { path: '', redirectTo: 'products', pathMatch: 'full' },
     { path: 'products', component:CheckoutProductsComponent},
