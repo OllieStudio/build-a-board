@@ -1,8 +1,7 @@
 <div class="design-menu grey z-depth-1">
   <ul class="left valign-wrapper" *ngIf="creator.hasItem()">
     <li>
-      <label for="componentename" class="black-text">Nome do Componente: </label>
-      <input type="text" name="componentename" id="componentename" class="browser-default" [(ngModel)]="creator.currentComponent.name"
+      <input type="text" placeholder="Nome do Componente" name="componentename" id="componentename" class="browser-default" [(ngModel)]="creator.currentComponent.name"
        >
     </li>
     <li class="valign" >

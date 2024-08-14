@@ -3,7 +3,7 @@
 </div>
 <div class="col m12 valign-wrapper">
     <app-ai-button [hideSpinner]="hideSpinner" [label]="label" class="valign" (click)="generate(promptarea.value)"></app-ai-button>
-    <select id="styleSelect" *ngIf="isImage"  (change)="onStyleChange($event)" style="width: 200px;" class="browser-default small left-1 bottom-1 col s12 left">
+    <select id="styleSelect" *ngIf="isImage" [(ngModel)]="selectedStyle" (change)="onStyleChange($event)" style="width: 200px;" class="browser-default small left-1 bottom-1 col s12 left">
         <option value="">selecionar estilo</option>
         <option *ngFor="let style of styles" [value]="style">{{ style }}</option>
     </select>

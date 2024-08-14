@@ -46,14 +46,18 @@ export class ModifierImageComponent {
     this.uploads.addUpload(event, this.creator.currentComponent, this.modifier);
   }
 
-  async generateImage(prompt, style:any = ArtStyle.DigitalArt){
-    const bg = await this.vertex.generateImage(`${style}, ${prompt}, ${this.modifier.imageprompt}`, this.modifier.ratio || AspectRatio.Square, style);
+  async generateImage(prompt){
+    this.hideSpinner = false;
+    const bg = await this.vertex.generateImage(`${prompt}, ${this.modifier.imageprompt}`, this.modifier.ratio || AspectRatio.Square, this.selectedStyle);
     this.creator.updateItemModifier(this.modifier, bg);
+    this.hideSpinner = true;
   }
-
+  
   async generateSVG(prompt){
+    this.hideSpinner = false;
     const bg = await this.aiservice.textToSVG(prompt, this.modifier.svgprompt);
     this.creator.updateItemModifier(this.modifier, bg);
+    this.hideSpinner = true;
   }
 
    enumToArray(enumObj: any): string[] {

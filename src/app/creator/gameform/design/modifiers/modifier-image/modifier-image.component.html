@@ -6,9 +6,9 @@
       <app-fileupload (valueChange)="onValueChange($event)" [accepts]="'img'" [label]="''" [path]="path"></app-fileupload>
   </div>
   <div class="row bottom-0 top-2" [hidden]="activeTab != 'imageprompt'">
-    <app-prompt-input [isImage]="true" [hideSpinner]="hideSpinner" [label]="'gerar com IA'" (styleChange)="selectedStyle = $event" (output)="generateImage($event, selectedStyle)" [base]=""></app-prompt-input>
+    <app-prompt-input [isImage]="true" [hideSpinner]="hideSpinner" [label]="" (styleChange)="selectedStyle = $event" (output)="generateImage($event)" [base]=""></app-prompt-input>
   </div>
   <div class="row bottom-0 top-2"  [hidden]="activeTab != 'svgprompt'">
-    <app-prompt-input [hideSpinner]="hideSpinner" [label]="'gerar com IA'" (output)="generateSVG($event)" [base]=""></app-prompt-input>
+    <app-prompt-input [hideSpinner]="hideSpinner" [label]="" (output)="generateSVG($event)" [base]=""></app-prompt-input>
   </div>
   

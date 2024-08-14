@@ -71,6 +71,7 @@ export class CreatorUIService implements OnInit {
       this.addNewComponentToCanvas(event.item.data);
       this.history.addItemSnapshot(this.componenteToSnapshot(event.item.data));
     }
+
   }
   
   dropText(event: CdkDragDrop<string[]>) {

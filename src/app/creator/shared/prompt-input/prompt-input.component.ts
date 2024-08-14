@@ -25,7 +25,14 @@ selectedStyle:string;
 styles: any;
 
 constructor(){
-  this.styles = this.enumToArray(ArtStyle);
+  this.styles = [
+    "Foto",
+    "Vetor",
+    "Ilustração",
+    "Pintura",
+    "Desenho de HQ",
+    "Logomarca"
+  ]
 }
 
 

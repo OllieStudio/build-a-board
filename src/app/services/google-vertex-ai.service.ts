@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { GameDataService } from '../creator/services/gamedata.service';
+import { GoogleGeminiAIService } from './google-gemini-ai.service';
 
 export enum AspectRatio {
   Square = "1:1",
@@ -12,15 +13,16 @@ export enum AspectRatio {
 }
 
 export enum ArtStyle {
-  Photograph = "photograph",
-  DigitalArt = "digital_art",
-  Landscape = "landscape",
+  Realista = "foto realista",
+  DigitalArt = "digitalart",
+  Paisagem = "landscape",
   Sketch = "sketch",
-  Watercolor = "watercolor",
+  Aquarela = "watercolor",
   Cyberpunk = "cyberpunk",
   PopArt = "pop_art",
   Ilustração = "Ilustração",
-  Vetor = "Vetor"
+  Vetorial = "Vetorial",
+  Cartoon = "desenho cartoon"
 }
 
 
@@ -32,10 +34,11 @@ export class VertexAIService {
 
   private apiUrl = 'https://us-central1-buildaboard2018.cloudfunctions.net/generateImage';
 
-  constructor(private http: HttpClient, private gameservice: GameDataService) { }
+  constructor(private http: HttpClient, private gemini:GoogleGeminiAIService) { }
 
   async generateImage(prompt: string, ratio:string = AspectRatio.Square, style:string = ArtStyle.DigitalArt): Promise<any> {
-    prompt = `a ${prompt} for a ${this.gameservice.game.tipo} game named ${this.gameservice.game.titulo}.`;
+    prompt = ` ${style} of ${prompt}`;
+    prompt = await this.gemini.translateText(prompt, "Translate to english");
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { 
@@ -45,6 +48,6 @@ export class VertexAIService {
    };
 
     const result:any = await firstValueFrom(this.http.post<any>(this.apiUrl, body, { headers: headers }));
-    return `data:image/png;base64, ${result.predictions[0].bytesBase64Encoded}`;
+    return `data:image/png;base64, ${result.predictions[0]?.bytesBase64Encoded}`;
   }
 }

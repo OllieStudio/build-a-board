@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CreatorUIService } from '../../services/creator.service';
 
 @Component({
   selector: 'app-toolbox',
@@ -8,15 +9,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ToolboxComponent {
   @Input() items:any[];
-  @Input() closed:boolean = true;
   @Output() routeEmitter: EventEmitter<string> = new EventEmitter();
 
-  constructor(){
+  constructor(public creator:CreatorUIService){
 
   }
 
   getRoute(route:string) {
-    this.closed = false;
+    this.creator.closeToolbox = false;
     this.routeEmitter.next(route);
 }
 }

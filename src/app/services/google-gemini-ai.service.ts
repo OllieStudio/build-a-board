@@ -110,4 +110,17 @@ export class GoogleGeminiAIService {
       throw error;
     }
   }
+  
+  async translateText(prompt: string, type:string): Promise<any> {
+    
+      prompt = ` ${type} : ${prompt}`
+    try {
+      const result = await this.model.generateContent(prompt);
+      const response = await result.response.text();
+      return response;
+    } catch (error) {
+      console.error('Error generating Text:', error);
+      throw error;
+    }
+  }
 }

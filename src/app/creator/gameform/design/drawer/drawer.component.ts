@@ -9,7 +9,6 @@ import { Componente } from 'src/app/services/interfaces/componente';
   styleUrls: ['./drawer.component.css']
 })
 export class DrawerComponent {
- @Input() closed:boolean = false;
   components: Componente[];
 
  constructor(private gameservice:GameDataService, public creator:CreatorUIService){
