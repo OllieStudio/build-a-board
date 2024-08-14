@@ -20,7 +20,7 @@ import { NgxWigModule } from 'ngx-wig';
   declarations: [
     AppComponent,
     ContatoComponent,
-    CatalogformComponent,
+    CatalogformComponent
   ],
   imports: [
     BrowserModule,

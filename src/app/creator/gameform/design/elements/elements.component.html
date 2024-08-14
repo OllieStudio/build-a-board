@@ -15,8 +15,10 @@
         <app-prompt-input [hideSpinner]="hideSpinner" [label]="'gerar com IA'" (output)="generateSVG($event)" [base]=""></app-prompt-input>
     </div>
 
+  <p class="disclaimer">Arraste ou clique 2x para inserir no componente em edição</p>
+
     <div id="svg-container" class="row top-5" (cdkDropListDropped)="creator.dropText($event)" cdkDropListConnectedTo="editableObject" cdkDropList>
-        <div class="col s6 svgcard top-3" *ngFor="let item of items" cdkDrag [cdkDragData]="item">
+        <div class="col s6 svgcard top-3" *ngFor="let item of items" cdkDrag [cdkDragData]="item" (dblclick)="creator.addSVGLayer(item.template, item.id);creator.addSVGModifier(item)">
                 <img src="{{item.template}}" alt="" class="responsive-img">
                 <span>{{item.name}}</span>
         </div>

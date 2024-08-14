@@ -7,7 +7,8 @@ import { CreatorUIService } from 'src/app/creator/services/creator.service';
   styleUrls: ['./components.component.css']
 })
 export class ComponentsComponent {
-
+  searchTerm:any;
+  
   constructor(public creator:CreatorUIService){
 
   }

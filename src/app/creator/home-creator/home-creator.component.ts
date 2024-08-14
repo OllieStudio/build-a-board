@@ -55,4 +55,6 @@ export class HomeCreatorComponent {
   async getWelcomeMessage(){
     this.welcomeMessage = await this.gemini.improveText('criar uma frase de boas vindas criativa e engraçada, perguntando em que projeto vamos trabalhar hoje', ' generate a creative and fun phrase of maximum 10 words' )
   }
+
+
 }

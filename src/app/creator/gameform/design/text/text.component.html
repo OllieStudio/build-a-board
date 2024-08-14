@@ -16,10 +16,11 @@
        <app-text-editor (textChange)="registerText($event)" [textData]="editText"></app-text-editor>
     </div>
 
+  <p class="disclaimer">Arraste ou clique 2x para inserir o texto no componente em edição</p>
    
 
     <div id="text-container" class="row top-5" (cdkDropListDropped)="creator.dropText($event)" cdkDropListConnectedTo="editableObject" cdkDropList>
-        <div class="col s12 textcard" *ngFor="let item of items" cdkDrag [cdkDragData]="item">
+        <div class="col s12 textcard" *ngFor="let item of items" cdkDrag [cdkDragData]="item" (dblclick)="creator.addTextToComponent(item)">
                 <span [ngStyle]="{'font-family': item.selectedFont, 'color': item.selectedColor, 'font-size': item.selectedSize + 'px', 'font-style': item.selectedStyle}"
                 class="card-title">{{item.content}}</span>
                <i (click)="removeText(item)" class="material-icons white-text link right">delete</i>

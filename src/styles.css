@@ -505,6 +505,13 @@ h6.loginsubtitle{
   color: #771d86;
 }
 
+.disclaimer{
+  font-family: "Barlow Condensed" !important;
+  font-size: 14px !important;
+  font-weight: 600;
+  color: #ffffff;
+}
+
 
 
 .firebaseui-card-content{
