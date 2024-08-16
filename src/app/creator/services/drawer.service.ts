@@ -10,6 +10,10 @@ export class DrawerService {
   constructor() { }
 
 
+  openToolBox(){
+    if(this.closeToolbox) this.closeToolbox = false;
+  }
+  
   closeToolBox(){
     if(!this.closeToolbox) this.closeToolbox = true;
   }

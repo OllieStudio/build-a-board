@@ -51,7 +51,7 @@ export class ElementsComponent {
 }
 
 addElement(item:Elemento){
-  this.elements.addSvgElement(item.template, item.id);
+  this.elements.addSvgElement(item);
   this.modifiers.addSVGModifier(item)
 }
 }

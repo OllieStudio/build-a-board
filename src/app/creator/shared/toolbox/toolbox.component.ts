@@ -17,7 +17,7 @@ export class ToolboxComponent {
   }
 
   getRoute(route:string) {
-    this.drawer.closeToolbox = false;
+    this.drawer.openToolBox();
     this.routeEmitter.next(route);
 }
 }
