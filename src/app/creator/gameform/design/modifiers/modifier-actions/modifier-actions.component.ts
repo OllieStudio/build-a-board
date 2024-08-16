@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { GameDataService } from 'src/app/creator/services/gamedata.service';
 import { ScriptRunnerService } from 'src/app/testing/script-runner.service';
 import { Action } from 'rxjs/internal/scheduler/Action';
+import { ModifiersService } from 'src/app/creator/services/modifiers.service';
 
 @Component({
   selector: 'app-modifier-actions',
@@ -23,7 +24,7 @@ export class ModifierActionsComponent {
   actions: GameAction[];
   selectedStyle:string;
 
-  constructor(private aiservice:GoogleGeminiAIService, private runner:ScriptRunnerService, private gameservice:GameDataService, private creator: CreatorUIService){
+  constructor(private aiservice:GoogleGeminiAIService, private runner:ScriptRunnerService, private gameservice:GameDataService, private modifierservice: ModifiersService){
     // this.actions = this.modifier.actions;
   }
 
@@ -32,7 +33,7 @@ export class ModifierActionsComponent {
     const code = await this.aiservice.textToCode(' a function named ' + action.id + ', that performs ' + prompt + ', consider words surrounded by % as parameters if present');
     this.modifier.actions.find(a => a.id == action.id).code = code.replace("```javascript", "").replace("```", "");
     this.modifier.actions.find(a => a.id == action.id).prompt = prompt;
-    this.creator.updateItemModifier(this.modifier, this.modifier.actions);
+    this.modifierservice.updateItemModifier(this.modifier, this.modifier.actions);
     this.hideSpinner = true;
   }
 

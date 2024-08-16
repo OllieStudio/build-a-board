@@ -10,6 +10,7 @@ import { ModifierColorComponent } from '../modifier-color/modifier-color.compone
 import { ModifierTextComponent } from '../modifier-text/modifier-text.component';
 import { ModifierSvgComponent } from '../modifier-svg/modifier-svg.component';
 import { ModifierActionsComponent } from '../modifier-actions/modifier-actions.component';
+import { ModifiersService } from 'src/app/creator/services/modifiers.service';
 
 @Component({
   selector: 'app-modifier',
@@ -22,10 +23,20 @@ export class ModifierComponent {
   @Input() modifier:Modifier;
   show: boolean = false;
   
-  constructor(public creator:CreatorUIService){
+  constructor(private modifiers:ModifiersService){
   }
 
   toggle(){
     this.show = !this.show;
   }
+
+  enableControls():boolean{
+    return (this.modifier.type === 'image' && this.modifier.property === 'track') || this.modifier.type === 'text' || this.modifier.type === 'svg';
+  }
+
+  deleteModifier(){
+    this.modifiers.deleteModifier(this.modifier);
+  }
+
+
 }

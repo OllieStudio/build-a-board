@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Modifier } from 'src/app/services/interfaces/componente';
 import { FormsModule } from '@angular/forms';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
+import { ModifiersService } from 'src/app/creator/services/modifiers.service';
 
 @Component({
   selector: 'app-modifier-color',
@@ -18,7 +19,7 @@ export class ModifierColorComponent {
   limitOptions: boolean = false;
   colorOptions: string[];
   
-  constructor(private creator: CreatorUIService){
+  constructor(private modifierservice: ModifiersService){
   }
 
 
@@ -32,7 +33,7 @@ export class ModifierColorComponent {
 
   onColorChange(newColor: string) {
     this.color = newColor;
-    this.creator.updateItemModifier(this.modifier, newColor);
+    this.modifierservice.updateItemModifier(this.modifier, newColor);
   }
   
 }

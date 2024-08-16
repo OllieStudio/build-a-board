@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { ItemSnapshot } from './creator.service';
+import { ComponentService } from './component.service';
+import { GameDataService } from './gamedata.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class HistoryService {
   private history: BehaviorSubject<ItemSnapshot[]> = new BehaviorSubject<ItemSnapshot[]>([]);
   private snapshotChanges: Subject<ItemSnapshot> = new Subject<ItemSnapshot>();
 
-  constructor() {
+  constructor(private gamedataservice:GameDataService) {
     this.snapshotChanges
       .pipe(
         distinctUntilChanged(),
@@ -29,8 +31,8 @@ export class HistoryService {
       });
   }
 
-  public addItemSnapshot(snapshot: ItemSnapshot): void {
-    this.snapshotChanges.next(snapshot);
+  public addItemSnapshot(data?:any): void {
+    this.snapshotChanges.next(this.componenteToSnapshot(data));
   }
  
   public updateItemSnapshot(update: any): void {
@@ -63,5 +65,14 @@ export class HistoryService {
 
   public disableNextButton():boolean{
     return this.currentIndex >= this.history.getValue().length-1;
+  }
+
+  componenteToSnapshot(data: any): ItemSnapshot {
+    let snapshot:ItemSnapshot = {} as ItemSnapshot;
+    snapshot.id = data.id;
+    snapshot.template = data.template.replace(/\n/g,'');
+    snapshot.timestamp = ~~(Date.now());
+    snapshot.gameid = this.gamedataservice.game?.id;
+    return snapshot;
   }
 }

@@ -1,14 +1,14 @@
 
-<div class="design-drawer z-depth-1 " [ngClass]="{'opened': !creator.closedrawer}">
-    <button (click)="creator.closedrawer = !creator.closedrawer" aria-label="Mostrar páginas" class="BIeccA CGQFuA"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 16"
+<div class="design-drawer z-depth-1 " [ngClass]="{'opened': !drawer.closedrawer}">
+    <button (click)="drawer.closedrawer = !drawer.closedrawer" aria-label="Mostrar páginas" class="BIeccA CGQFuA"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 16"
         width="96" height="16" fill="rgb(223, 223, 223)">
         <path class="Axi_6A" d="M0 16v-4c20 0 12-12 32-12h32c20 0 12 12 32 12V16z"></path>
         <path class="zl9Kag" d="M0 12.5c20 0 12-12 32-12h32c20 0 12 12 32 12"></path>
       </svg>
-    <i *ngIf="!creator.closedrawer"  class="material-icons-outlined arrow">expand_more</i>
-    <i *ngIf="creator.closedrawer" class="material-icons-outlined arrow">expand_less</i></button>
-  <div id="components" class="row components-container small" (cdkDropListDropped)="creator.dropElement($event)" cdkDropListConnectedTo="canvas" cdkDropList>
-    <div class="component" *ngFor="let component of components | reverse" cdkDrag [cdkDragData]="component" (dblclick)="creator.addNewComponentToCanvas(component)">
+    <i *ngIf="!drawer.closedrawer"  class="material-icons-outlined arrow">expand_more</i>
+    <i *ngIf="drawer.closedrawer" class="material-icons-outlined arrow">expand_less</i></button>
+  <div id="components" class="row components-container small" (cdkDropListDropped)="dragservice.dropElement($event)" cdkDropListConnectedTo="canvas" cdkDropList>
+    <div class="component" *ngFor="let component of components | reverse" cdkDrag [cdkDragData]="component" (dblclick)="component.addComponent(component)">
       <img src="{{component.imagem}}" class="component-image" alt="">
       <p>{{component.name}}</p>
       <i (click)="removeComponent(component)" class="material-icons white-text link right">delete</i>

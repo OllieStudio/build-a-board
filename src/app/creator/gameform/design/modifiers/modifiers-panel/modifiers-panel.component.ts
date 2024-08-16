@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
 import { ModifierComponent } from '../modifier/modifier.component';
+import { Modifier } from 'src/app/services/interfaces/componente';
+import { ModifiersService } from 'src/app/creator/services/modifiers.service';
 
 @Component({
   selector: 'app-modifiers-panel',
@@ -11,9 +13,9 @@ import { ModifierComponent } from '../modifier/modifier.component';
   styleUrls: ['./modifiers-panel.component.css']
 })
 export class ModifiersPanelComponent {
-  modifiers:any[];
+  modifiers:Modifier[];
   
-  constructor(public creator:CreatorUIService){
-   this.creator.modifiers.subscribe(event => this.modifiers = event);
+  constructor(public modifierservice:ModifiersService){
+   this.modifierservice.modifiers.subscribe(event => this.modifiers = event);
   }
 }

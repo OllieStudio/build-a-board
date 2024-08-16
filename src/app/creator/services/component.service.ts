@@ -1,0 +1,136 @@
+import { Injectable } from '@angular/core';
+import { Componente, Modifier } from 'src/app/services/interfaces/componente';
+import { HistoryService } from './history.service';
+import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
+import { GameDataService } from './gamedata.service';
+import { ImageService } from './image.service';
+import { UploadService } from 'src/app/services/upload.service';
+import componentes_data from '../data/componentes.json';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ComponentService {
+  currentComponent: Componente;
+  componentesData: Componente[];
+
+  constructor(private http:HttpClient, private history: HistoryService, private uploads: UploadService, private aiservice: GoogleGeminiAIService, private imageservice: ImageService, private gamedataservice: GameDataService) { 
+    this.componentesData = componentes_data;
+  }
+
+  nameChange(nameValue: string) {
+    this.currentComponent.name = nameValue;
+    this.history.addItemSnapshot(this.currentComponent);
+  }
+
+  async saveItem() {
+    await this.checkBase64Image();
+    if (!this.currentComponent.name) this.currentComponent.name = this.currentComponent.title;
+    if (!this.currentComponent.id) this.currentComponent.id = this.currentComponent.name.toLowerCase().replace(/\s/g, '');
+    if (this.currentComponent.three?.prompt3d) this.currentComponent.three.code = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
+    this.currentComponent.template = this.getTemplate();
+    this.currentComponent.imagem = this.currentComponent['background'] || await this.imageservice.convertElementToImage(this.getHTMLElement());
+    this.gamedataservice.saveComponent(this.currentComponent);
+  }
+
+  setComponentBackground(value: string) {
+    const divElement = document.getElementById('background-img') as HTMLImageElement;
+    divElement.src = value;
+  }
+
+  async addGroupComponents(modifier: Modifier, value: any) {
+    if(confirm(`Deseja adicionar ${value} ${modifier.multiple} ao grupo ${this.currentComponent.name}?`)){
+      const element = this.componentesData.find(el => el.id === modifier.multiple);
+      element.imagem = element.template;
+
+      for (let index = 0; index < value; index++) {
+        element['group'] = this.currentComponent.name;
+        element.name = modifier.multiple + '-' + index;
+        this.gamedataservice.saveComponent(element);
+      }
+    }
+  }
+
+  addComponent(item: Componente) {
+    this.currentComponent = item;
+
+    switch (item.type) {
+      case 'SVG':
+        this.addSvgFileComponent(item.template);
+        break;
+      case 'PNG':
+        this.addImageComponent(item.template);
+        break;
+      default:
+        this.placeSvgComponent(item.template);
+        break;
+    }
+  }
+
+  placeSvgComponent(svgFileUrl: string): void {
+    const divElement = document.getElementById('editableObject');
+
+    if (divElement) {
+      const children = Array.from( divElement.childNodes);
+      const svgElement = document.createElement('object');
+      svgElement.data = svgFileUrl;
+      svgElement.type = 'image/svg+xml';
+
+      //divElement.appendChild(svgElement);
+      divElement.innerHTML = svgFileUrl;
+      children.forEach(child => {
+        divElement.appendChild(child);
+      })
+    }
+  }
+
+  addSvgFileComponent(template: string) {
+    this.http.get(template, { responseType: 'text' }).subscribe(
+      data => {
+        this.placeSvgComponent(data);
+      }
+    );
+  }
+
+  addImageComponent(template: string) {
+    this.setComponentBackground(template);
+  }
+
+
+  getTemplate(): string {
+    const divElement = document.getElementById('editableObject');
+    return divElement.innerHTML;
+  }
+
+  getHTMLElement(): HTMLElement {
+    const divElement = document.getElementById('editableObject');
+    return divElement;
+  }
+
+  describe3D(currentComponent: Componente): string {
+    const prompt = `${currentComponent.three?.prompt3d} with ${currentComponent.modifiers.map(modifier => { if (currentComponent[modifier.property]) return modifier.property + ': ' + currentComponent[modifier.property] }).join(', ')}`
+    console.log(prompt);
+    return prompt
+  }
+
+  async checkBase64Image() {
+    const divElement = document.getElementById('editableObject');
+    const imgElements = divElement.getElementsByTagName('img');
+
+    for (let i = 0; i < imgElements.length; i++) {
+      const imgElement = imgElements[i];
+      const src = imgElement.src;
+      const isBase64 = src.startsWith('data:image/');
+
+      if (isBase64) {
+        const url = await this.imageservice.uploadImg(src, `${this.currentComponent.id}.png`, `game/${this.gamedataservice.game.id}/imgs/`);
+        imgElement.src = url;
+        this.uploads.addUpload(url, this.currentComponent, this.currentComponent.modifiers.find(modifier => modifier.property === 'background')[0]);
+
+        if (this.currentComponent['background']) this.currentComponent['background'] = url;
+      }
+    }
+
+  }
+}

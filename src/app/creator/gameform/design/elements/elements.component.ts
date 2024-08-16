@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
+import { DragDropService } from 'src/app/creator/services/drag.service';
+import { ElementsService } from 'src/app/creator/services/elements.service';
 import { GameDataService } from 'src/app/creator/services/gamedata.service';
+import { ModifiersService } from 'src/app/creator/services/modifiers.service';
 import { FileuploadModule } from 'src/app/creator/shared/fileupload/fileupload.module';
 import { PromptInputComponent } from 'src/app/creator/shared/prompt-input/prompt-input.component';
 import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
@@ -22,7 +25,7 @@ export class ElementsComponent {
   path:string = `ELEMENTS/`;
   hideSpinner:boolean = true;
 
-  constructor(private gameservice:GameDataService, public creator:CreatorUIService, private aiservice:GoogleGeminiAIService){
+  constructor(private gameservice:GameDataService, public dragservice:DragDropService, public elements:ElementsService, public modifiers:ModifiersService, private aiservice:GoogleGeminiAIService){
     this.gameservice.getElements().subscribe(res => this.items = [...res]);
     this.gameservice.getCommonElements().subscribe(res => this.items = [...res]);
   }
@@ -45,5 +48,10 @@ export class ElementsComponent {
   const bg = await this.aiservice.textToSVG(prompt, '');
   this.onFileUploaded(bg);
   this.hideSpinner = true;
+}
+
+addElement(item:Elemento){
+  this.elements.addSvgElement(item.template, item.id);
+  this.modifiers.addSVGModifier(item)
 }
 }

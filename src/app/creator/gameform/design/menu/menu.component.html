@@ -1,7 +1,7 @@
 <div class="design-menu grey z-depth-1">
   <ul class="left valign-wrapper" *ngIf="creator.hasItem()">
     <li>
-      <input type="text" placeholder="Nome do Componente" name="componentename" id="componentename" class="browser-default" [(ngModel)]="creator.currentComponent.name"
+      <input type="text" placeholder="Nome do Componente" name="componentename" id="componentename" class="browser-default" [(ngModel)]="component.currentComponent.name"
        >
     </li>
     <li class="valign" >
@@ -14,7 +14,7 @@
     <li class="valign"><a ><i class="material-icons-outlined  black-text">more_vert</i></a></li>
   </ul>
     <ul class="right right-2 valign-wrapper">
-         <li class="valign"><a (click)="creator.saveItem()"><i class="material-icons-outlined  black-text">save</i></a></li>
+         <li class="valign"><a (click)="component.saveItem()"><i class="material-icons-outlined  black-text">save</i></a></li>
         <li class="valign"><a><i class="material-icons-outlined  black-text">refresh</i></a></li>
         <li class="valign"><a><i class="material-icons-outlined  black-text">more_vert</i></a></li>
       </ul>

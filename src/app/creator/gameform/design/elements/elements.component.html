@@ -17,8 +17,8 @@
 
   <p class="disclaimer">Arraste ou clique 2x para inserir no componente em edição</p>
 
-    <div id="svg-container" class="row top-5" (cdkDropListDropped)="creator.dropText($event)" cdkDropListConnectedTo="editableObject" cdkDropList>
-        <div class="col s6 svgcard top-3" *ngFor="let item of items" cdkDrag [cdkDragData]="item" (dblclick)="creator.addSVGLayer(item.template, item.id);creator.addSVGModifier(item)">
+    <div id="svg-container" class="row top-5" (cdkDropListDropped)="dragservice.dropElement($event)" cdkDropListConnectedTo="editableObject" cdkDropList>
+        <div class="col s6 svgcard top-3" *ngFor="let item of items" cdkDrag [cdkDragData]="item" (dblclick)="addElement(item)">
                 <img src="{{item.template}}" alt="" class="responsive-img">
                 <span>{{item.name}}</span>
         </div>

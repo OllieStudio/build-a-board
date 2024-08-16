@@ -90,7 +90,7 @@ constructor(private storage:StorageService){
               break;
             case 'svg':
             case 'img':
-              let fileImg: any = myReader.result.toString().split(',')[1];
+              let fileImg: any = myReader.result.toString();
               await this.uploadImg(fileImg, file.name);
               break;
             case 'pdf':

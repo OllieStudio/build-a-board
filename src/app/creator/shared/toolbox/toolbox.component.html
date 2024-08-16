@@ -10,8 +10,8 @@
     </ul>
 </div>
 
-<div id="toolbox-drawer" [ngClass]="{'closed': creator.closeToolbox}">
-    <button (click)="creator.closeToolbox = !creator.closeToolbox" aria-label="Mostrar páginas" class="BIeccA CGQFuA"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 16"
+<div id="toolbox-drawer" [ngClass]="{'closed': drawer.closeToolbox}">
+    <button (click)="drawer.toggleToolbox()" aria-label="Mostrar páginas" class="BIeccA CGQFuA"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 16"
         width="96" height="16" fill="rgb(48, 48, 48)">
         <path class="Axi_6A" d="M0 16v-4c20 0 12-12 32-12h32c20 0 12 12 32 12V16z"></path>
         <path class="zl9Kag" d="M0 12.5c20 0 12-12 32-12h32c20 0 12 12 32 12"></path>
@@ -20,6 +20,6 @@
     <i class="material-icons-outlined grey-text row">expand_more</i>
     </button>
  <div id="router-container">
-   <router-outlet *ngIf="!creator.closeToolbox"  ></router-outlet>
+   <router-outlet *ngIf="!drawer.closeToolbox"  ></router-outlet>
  </div>
 </div>

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Modifier } from 'src/app/services/interfaces/componente';
 import { FormsModule } from '@angular/forms';
-import { CreatorUIService } from 'src/app/creator/services/creator.service';
+import { ModifiersService } from 'src/app/creator/services/modifiers.service';
 
 @Component({
   selector: 'app-modifier-radio',
@@ -16,12 +16,12 @@ export class ModifierRadioComponent {
   @Input() modifier:Modifier;
   selectedOption: string;
   
-  constructor(private creator: CreatorUIService){
+  constructor(private modifierservice: ModifiersService){
     this.selectedOption = '';
   }
 
   onOptionChange(event: any) {
-    this.creator.updateItemModifier(this.modifier, event)
+    this.modifierservice.updateItemModifier(this.modifier, event)
   }
   
 }

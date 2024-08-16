@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
+import { DragDropService } from 'src/app/creator/services/drag.service';
 import { GameDataService } from 'src/app/creator/services/gamedata.service';
 import { AiButtonComponent } from 'src/app/creator/shared/ai-button/ai-button.component';
 import { FileuploadModule } from 'src/app/creator/shared/fileupload/fileupload.module';
@@ -24,7 +25,7 @@ export class TextComponent {
   activeTab:string = '';
   editText:Texto;
 
-  constructor(private gameservice:GameDataService, public creator:CreatorUIService){
+  constructor(private gameservice:GameDataService, public dragservice:DragDropService,  public creator:CreatorUIService){
      this.gameservice.getTexts().subscribe(res => this.items = res)
   }
 

@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreatorUIService } from 'src/app/creator/services/creator.service';
 import { Modifier } from 'src/app/services/interfaces/componente';
 import { FormsModule } from '@angular/forms';
+import { ModifiersService } from 'src/app/creator/services/modifiers.service';
 
 @Component({
   selector: 'app-modifier-number',
@@ -15,11 +15,11 @@ export class ModifierNumberComponent {
   @Input() modifier:Modifier;
   numberInput: number = 1;
   
-  constructor(private creator: CreatorUIService){
+  constructor(private modifierservice: ModifiersService){
   }
 
   onNumberInputChange(event: any) {
-    this.creator.updateItemModifier(this.modifier, event)
+    this.modifierservice.updateItemModifier(this.modifier, event)
   }
   
 }

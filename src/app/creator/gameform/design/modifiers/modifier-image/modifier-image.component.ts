@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Modifier } from 'src/app/services/interfaces/componente';
 import { GameDataService } from 'src/app/creator/services/gamedata.service';
@@ -11,6 +11,8 @@ import { Upload } from 'src/app/services/interfaces/upload';
 import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
 import { ArtStyle, AspectRatio, VertexAIService } from 'src/app/services/google-vertex-ai.service';
 import { FormsModule } from '@angular/forms';
+import { ModifiersService } from 'src/app/creator/services/modifiers.service';
+import { ComponentService } from 'src/app/creator/services/component.service';
 
 @Component({
   selector: 'app-modifier-image',
@@ -19,44 +21,49 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './modifier-image.component.html',
   styleUrls: ['./modifier-image.component.css']
 })
-export class ModifierImageComponent {
+export class ModifierImageComponent implements OnInit{
   @Input() modifier:Modifier = {} as Modifier;
   hideSpinner = true;
   styles: string[];
   selectedStyle:string;
+  path: any;
+  activeTab: any;
 
   constructor(private vertex:VertexAIService, private aiservice:GoogleGeminiAIService, private gamedataservice:GameDataService, private creator: CreatorUIService,
-     private uploads:UploadService){
+     private uploads:UploadService, private modifierservice:ModifiersService, private component:ComponentService){
       this.styles = this.enumToArray(ArtStyle);
   }
   
-  path:string = `game/${this.gamedataservice.game.titulo}/components/${this.modifier?.component}/${this.modifier?.property}_`;
-  activeTab: string = 'upload';
+  ngOnInit(): void {
+    this.path = `game/${this.gamedataservice.game?.id}/imgs/${this.modifier?.component}_${this.modifier?.property}_`;
+    this.activeTab = 'upload';
+  }
+  
 
   setActiveTab(tab: string) {
     this.activeTab = tab;
   }
 
   onValueChange(event: any) {
-    this.creator.updateItemModifier(this.modifier, event);
+    this.modifierservice.updateItemModifier(this.modifier, event);
     this.addToUploads(event);
   }
 
   private addToUploads(event: any) {
-    this.uploads.addUpload(event, this.creator.currentComponent, this.modifier);
+    this.uploads.addUpload(event, this.component.currentComponent, this.modifier);
   }
 
   async generateImage(prompt){
     this.hideSpinner = false;
     const bg = await this.vertex.generateImage(`${prompt}, ${this.modifier.imageprompt}`, this.modifier.ratio || AspectRatio.Square, this.selectedStyle);
-    this.creator.updateItemModifier(this.modifier, bg);
+    this.modifierservice.updateItemModifier(this.modifier, bg);
     this.hideSpinner = true;
   }
   
   async generateSVG(prompt){
     this.hideSpinner = false;
     const bg = await this.aiservice.textToSVG(prompt, this.modifier.svgprompt);
-    this.creator.updateItemModifier(this.modifier, bg);
+    this.modifierservice.updateItemModifier(this.modifier, bg);
     this.hideSpinner = true;
   }
 

@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { ComponentService } from 'src/app/creator/services/component.service';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
+import { DragDropService } from 'src/app/creator/services/drag.service';
+import { DrawerService } from 'src/app/creator/services/drawer.service';
+import { ElementsService } from 'src/app/creator/services/elements.service';
 
 @Component({
   selector: 'app-canvas',
@@ -8,9 +12,9 @@ import { CreatorUIService } from 'src/app/creator/services/creator.service';
 })
 export class CanvasComponent {
   
-  constructor(public creator:CreatorUIService){
-    this.creator.closeToolBox();
-    this.creator.closeDrawer();
+  constructor(public creator:CreatorUIService, public elements:ElementsService, public dragservice:DragDropService,  public component:ComponentService, public drawer:DrawerService){
+    this.drawer.closeToolBox();
+    this.drawer.closeDrawer();
   }
 
 }
