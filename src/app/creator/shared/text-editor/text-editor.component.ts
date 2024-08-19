@@ -24,11 +24,11 @@ export class TextEditorComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.currentContent = this.textData.content;
-    this.selectedColor = this.textData.selectedColor;
-    this.selectedFont = this.textData.selectedFont;
-    this.selectedSize = this.textData.selectedSize;
-    this.selectedStyle = this.textData.selectedStyle;
+    this.currentContent = this.textData?.content;
+    this.selectedColor = this.textData?.selectedColor;
+    this.selectedFont = this.textData?.selectedFont;
+    this.selectedSize = this.textData?.selectedSize;
+    this.selectedStyle = this.textData?.selectedStyle;
     
   }
 

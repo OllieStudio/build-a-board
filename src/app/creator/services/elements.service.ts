@@ -5,13 +5,19 @@ import { Elemento, Texto } from 'src/app/services/interfaces/componente';
   providedIn: 'root'
 })
 export class ElementsService {
-addedElements:Elemento[];
+
+addedElements:Elemento[] = [
+ 
+];
 
   constructor() { }
 
+  addNewElement(data: any) {
+    this.addedElements.push(data);
+  }
 
-  addTextElement(data: Texto) {
-    const container = document.getElementById('editableObject');
+  addTextElement(data: Texto, containerId?: string) {
+    const container = document.getElementById(containerId);
 
     if (container) {
       const span = document.createElement('span');
@@ -22,19 +28,19 @@ addedElements:Elemento[];
       span.style.fontStyle = data.selectedStyle;
       span.style.color = data.selectedColor;
 
-      span.style.position = 'absolute';
-      span.style.top = '0';
-      span.style.left = '0';
-      span.style.width = '100%';
-      span.style.height = '100%';
-      span.style.display = 'flex';
-      span.style.flexDirection = 'column';
-      span.style.padding = '5%';
+      // span.style.position = 'absolute';
+      // span.style.top = '0';
+      // span.style.left = '0';
+      // span.style.width = '100%';
+      // span.style.height = '100%';
+      // span.style.display = 'flex';
+      // span.style.flexDirection = 'column';
+      // span.style.padding = '5%';
 
-      span.style.justifyContent = 'center';
-      span.style.alignItems = 'center';
-      span.style.pointerEvents = 'none';
-      span.style.userSelect = 'none';
+      // span.style.justifyContent = 'center';
+      // span.style.alignItems = 'center';
+      // span.style.pointerEvents = 'none';
+      // span.style.userSelect = 'none';
 
       container.appendChild(span);
 
@@ -57,32 +63,20 @@ addedElements:Elemento[];
     }
   }
 
-  addSvgElement(value: any, id?: string) {
-    const divElement = document.getElementById('editableObject');
+  addSvgElement(value: string, id?: string) {
+    const divElement = document.getElementById(id).firstChild as HTMLDivElement;
     if (divElement) {
-
       const object = document.createElement('object');
       object.data = value;
-      object.style.width = '50%';
-      object.style.height = 'auto';
-
-      const div = document.createElement('div');
-      div.id = id;
-      div.style.position = 'absolute';
-      div.style.top = '0';
-      div.style.left = '0';
-      div.style.width = '100%';
-      div.style.height = '100%';
-      div.style.display = 'flex';
-      div.style.flexDirection = 'column';
-      div.style.padding = '5%';
-      div.style.justifyContent = 'center';
-      div.style.alignItems = 'center';
-      div.style.pointerEvents = 'none';
-      div.style.userSelect = 'none';
-
-      div.append(object);
-      divElement.appendChild(div);
+      object.type = "image/svg+xml";
+      
+      // Set the object element to fit the div
+      object.style.width = '100%';
+      object.style.height = '100%';
+      
+      // Clear previous content and append the object
+      divElement.innerHTML = '';
+      divElement.appendChild(object);
     }
   }
 
@@ -122,7 +116,7 @@ addedElements:Elemento[];
       span.style.alignItems = data.horizontalAlign;
   }
 
-  addImageElement(data: any) {
+  addImageElement(data: any, containerId?: string) {
     throw new Error('Method not implemented.');
   }
 

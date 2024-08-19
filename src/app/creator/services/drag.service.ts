@@ -5,6 +5,7 @@ import { HistoryService } from './history.service';
 import { ModifiersService } from './modifiers.service';
 import { ComponentService } from './component.service';
 import { CreatorUIService } from './creator.service';
+import { Componente, Elemento, Texto } from 'src/app/services/interfaces/componente';
 
 @Injectable({
   providedIn: 'root'
@@ -16,25 +17,44 @@ export class DragDropService {
   dropElement(event: CdkDragDrop<string[]>) {
     console.log(event);
     if ( event.previousContainer.id === "components" && event.container.id === "canvas") {
-      this.component.addComponent(event.item.data);
-      this.creator.hasItemLoaded = true;
-      this.modifiers.setModifiers();
-      this.history.addItemSnapshot(event.item.data);
+      this.addComponent(event.item.data);
     }
     if (event.previousContainer.id === "text-container" && this.component.currentComponent.allowdrop) {
-      this.elements.addTextElement(event.item.data);
-      this.modifiers.addTextModifier(event.item.data);
-      this.history.addItemSnapshot(event.item.data);
+      this.addText({...event.item.data, type: "text"} as unknown as Texto);
     }
     if (event.previousContainer.id === "svg-container" && this.component.currentComponent.allowdrop) {
-      this.elements.addSvgElement(event.item.data);
-      this.modifiers.addSVGModifier(event.item.data);
-      this.history.addItemSnapshot(event.item.data);
+      this.addElement({...event.item.data, type: "element"} as unknown as Elemento);
     }
     if ( event.previousContainer.id === "upload-container") {
-      this.elements.addImageElement(event.item.data);
-      this.modifiers.addImageModifier(event.item.data);
-      this.history.addItemSnapshot(event.item.data);
+      this.addImage({...event.item.data, type: "image"} as unknown as Elemento);
     }
+  }
+
+  private addImage(data: any) {
+    //this.elements.addImageElement(data);
+    this.elements.addNewElement(data);
+    this.modifiers.addImageModifier(data);
+    this.history.addItemSnapshot(data);
+  }
+
+  private addElement(data:Elemento) {
+    //this.elements.addSvgElement(data);
+    this.elements.addNewElement(data);
+    this.modifiers.addSVGModifier(data);
+    this.history.addItemSnapshot(data);
+  }
+
+  private addText(data:Texto) {
+    //this.elements.addTextElement(data);
+    this.elements.addNewElement(data);
+    this.modifiers.addTextModifier(data);
+    this.history.addItemSnapshot(data);
+  }
+
+  private addComponent(data:Componente) {
+    this.component.addComponent(data);
+    this.creator.hasItemLoaded = true;
+    this.modifiers.setModifiers();
+    this.history.addItemSnapshot(data);
   }
 }

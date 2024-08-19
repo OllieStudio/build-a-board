@@ -54,6 +54,7 @@ import { UploadsComponent } from './gameform/design/uploads/uploads.component';
 import { AiButtonComponent } from './shared/ai-button/ai-button.component';
 import { PromptInputComponent } from './shared/prompt-input/prompt-input.component';
 import { ElementsComponent } from './gameform/design/elements/elements.component';
+import { ElementItemComponent } from './gameform/design/canvas/element-item/element-item.component';
 
 
 
@@ -97,7 +98,7 @@ import { ElementsComponent } from './gameform/design/elements/elements.component
     ComponentsComponent,
     SearchbarComponent,
     ZoomComponent,
-    
+    ElementItemComponent
   ],
   exports:[
     CreatorComponent
@@ -118,7 +119,7 @@ import { ElementsComponent } from './gameform/design/elements/elements.component
     UploadsComponent,
     AiButtonComponent,
     PromptInputComponent,
-    ElementsComponent
+    ElementsComponent,
   ],
   providers:  [ AuthService, FormService, DatabaseService, HistoryService,
     HttpClient, DatePipe, AngularFirestoreModule],

@@ -1,7 +1,7 @@
 <div id="components" class="tool-container ptop-5" (cdkDropListDropped)="dragservice.dropElement($event)" cdkDropListConnectedTo="canvas" cdkDropList>
   <app-searchbar (search)="searchTerm = $event"></app-searchbar> 
   <p class="disclaimer">Arraste para a área de trabalho ou clique 2x para editar</p>
-  <div cdkDrag [cdkDragData]="item" *ngFor="let item of creator.componentesData | filterBy: searchTerm" (dblclick)="component.addComponent(item)" class="tool-item hoverable" >
+  <div cdkDrag [cdkDragData]="item" *ngFor="let item of creator.componentesData | filterBy: searchTerm" (dblclick)="dragservice.addComponent(item)" class="tool-item hoverable" >
     <a routerLinkActive="active" class="grey-text">
       <i class="material-icons-outlined grey-text">{{item.icon}}</i>
       <span class="grey-text">{{item.title}}</span>

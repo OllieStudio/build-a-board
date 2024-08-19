@@ -2,7 +2,27 @@
 <div id="canvas" cdkDropList (cdkDropListDropped)="dragservice.dropElement($event)" cdkDropListConnectedTo="components" class="design-canvas" >
 </div>
 
-<div id="editableObject" [ngStyle]="{'zoom': creator.zoomValue/100}" cdkDragBoundary="#canvas" cdkDrag cdkDropList (cdkDropListDropped)="dragservice.dropElement($event)" class="editable-object">
+<div id="editableObject" [ngStyle]="{'zoom': creator.zoomValue/100}" (cdkDropListDropped)="dragservice.dropElement($event)" cdkDragBoundary="#canvas" cdkDrag class="editable-object">
     <img alt="" class="background-img" id="background-img">
-    <div id="{{element.id}}" *ngFor="let element of elements.addedElements" cdkDrag cdkDragBoundary="#editableObject"></div>
+    <!-- <app-element-item  [data]="element" class="element-item" cdkDrag [cdkDragBoundary]="'#editableObject'"></app-element-item> -->
+
+    <app-element-item
+    *ngFor="let element of elements.addedElements"
+    [id]="element.id" 
+    [data]="element" 
+    class="element-item"
+    cdkDrag
+    cdkDragBoundary="#editableObject"
+    (cdkDragEnded)="onDragEnded($event)"
+    >
+    </app-element-item>
+<div
+    id="456"
+    class="element-item"
+    cdkDrag
+    cdkDragBoundary="#editableObject"
+    (cdkDragEnded)="onDragEnded($event)"
+    style="border: 1px solid rgb(216, 27, 27); width: 50px; height: 50px;">
+    element1
+</div>
 </div>

@@ -651,3 +651,16 @@ h6.loginsubtitle{
 	left: 50%;
 	transform: translate(-50%, -50%);
   }
+
+  .element-item{
+    width:150px;
+    height: 150px;
+    display: block;
+    position: absolute;
+    top: 0;
+  }
+
+  .element-item * {
+    user-select: none; 
+    pointer-events: none;
+  }

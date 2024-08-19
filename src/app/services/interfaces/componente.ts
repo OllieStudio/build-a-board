@@ -35,6 +35,8 @@ export interface Modifier {
 }
 
 export interface Texto{
+  type:'text';
+  name: string;
   textAlign: string;
   horizontalAlign: string;
   verticalAlign: string;
@@ -51,6 +53,7 @@ export interface Texto{
 }
 
 export interface Elemento{
+  type:'element';
   size: string;
   name: string;
   horizontalAlign: string;

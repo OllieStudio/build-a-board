@@ -50,8 +50,4 @@ export class ElementsComponent {
   this.hideSpinner = true;
 }
 
-addElement(item:Elemento){
-  this.elements.addSvgElement(item);
-  this.modifiers.addSVGModifier(item)
-}
 }

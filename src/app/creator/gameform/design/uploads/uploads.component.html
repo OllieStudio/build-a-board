@@ -7,7 +7,7 @@
   <p class="disclaimer">Arraste ou clique 2x para aplicar a imagen no componente.</p>
 
     <div id="upload-container" class="row" (cdkDropListDropped)="dragservice.dropElement($event)" cdkDropListConnectedTo="editableObject" cdkDropList>
-        <div class="col s4 preview-container top-1" *ngFor="let upload of uploads" cdkDrag [cdkDragData]="upload" (dblclick)="elements.addImageElement(upload.url);">
+        <div class="col s4 preview-container top-1" *ngFor="let upload of uploads" cdkDrag [cdkDragData]="upload" (dblclick)="dragservice.addImage(upload.url);">
           <div class="preview-content"  [ngStyle]="{'background-image': 'url('+upload.url+')'}"></div>
            <div class="tools-container">
                <i (click)="removeUpload(upload)" class="material-icons white-text link right">delete</i>

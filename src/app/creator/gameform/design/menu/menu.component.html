@@ -1,8 +1,7 @@
 <div class="design-menu grey z-depth-1">
   <ul class="left valign-wrapper" *ngIf="creator.hasItem()">
     <li>
-      <input type="text" placeholder="Nome do Componente" name="componentename" id="componentename" class="browser-default" [(ngModel)]="component.currentComponent.name"
-       >
+      <input type="text" placeholder="Nome do Componente" name="componentename" id="componentename" class="browser-default" [(ngModel)]="component.currentComponent.name" >
     </li>
     <li class="valign" >
       <app-zoom  [value]="creator.zoomValue" (zoomValueChange)="creator.zoomValueChange($event)"></app-zoom>
