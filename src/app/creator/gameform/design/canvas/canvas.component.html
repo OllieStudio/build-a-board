@@ -3,7 +3,7 @@
 </div>
 
 <div id="editableObject" [ngStyle]="{'zoom': creator.zoomValue/100}" (cdkDropListDropped)="dragservice.dropElement($event)" cdkDragBoundary="#canvas" cdkDrag class="editable-object">
-    <img alt="" class="background-img" id="background-img">
+    <img alt="" class="background-img" id="background-img" />
     <!-- <app-element-item  [data]="element" class="element-item" cdkDrag [cdkDragBoundary]="'#editableObject'"></app-element-item> -->
 
     <app-element-item

@@ -56,15 +56,15 @@ export class ModifierImageComponent implements OnInit{
   async generateImage(prompt){
     this.hideSpinner = false;
     const bg = await this.vertex.generateImage(`${prompt}, ${this.modifier.imageprompt}`, this.modifier.ratio || AspectRatio.Square, this.selectedStyle);
-    this.modifierservice.updateItemModifier(this.modifier, bg);
     this.hideSpinner = true;
+    this.modifierservice.updateItemModifier(this.modifier, bg);
   }
   
   async generateSVG(prompt){
     this.hideSpinner = false;
     const bg = await this.aiservice.textToSVG(prompt, this.modifier.svgprompt);
-    this.modifierservice.updateItemModifier(this.modifier, bg);
     this.hideSpinner = true;
+    this.modifierservice.updateItemModifier(this.modifier, bg);
   }
 
    enumToArray(enumObj: any): string[] {
