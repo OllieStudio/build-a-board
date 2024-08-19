@@ -86,10 +86,12 @@ addedElements:Elemento[] = [
     object.style.justifyContent = data.verticalAlign;
     object.style.alignItems = data.horizontalAlign;
     object.style.width = `${data.size}%`;
+    object.style.height = 'auto';
+    this.setElementColor(data.selectedColor, data.id);
 }
 
   setElementColor(value: any, id) {
-    const obj = document.getElementById(id) as unknown as SVGElement;
+    const obj = document.getElementById(id).firstChild as unknown as SVGElement;
     if (obj) {
       const updateFill = (element: SVGElement, color: string) => {
         const elements = element.querySelectorAll('*');

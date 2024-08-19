@@ -4,11 +4,12 @@ import { Modifier } from 'src/app/services/interfaces/componente';
 import { TextEditorComponent } from 'src/app/creator/shared/text-editor/text-editor.component';
 import { AlignSelectorComponent } from 'src/app/creator/shared/align-selector/align-selector.component';
 import { ModifiersService } from 'src/app/creator/services/modifiers.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-modifier-svg',
   standalone: true,
-  imports: [CommonModule, TextEditorComponent, AlignSelectorComponent],
+  imports: [CommonModule, TextEditorComponent, AlignSelectorComponent, FormsModule],
   templateUrl: './modifier-svg.component.html',
   styleUrls: ['./modifier-svg.component.css']
 })
@@ -27,6 +28,10 @@ export class ModifierSvgComponent {
 
   onVerticalChange($event){
     this.modifier.data.verticalAlign = $event;
+    this.modifierservice.updateItemModifier(this.modifier, this.modifier.data);
+  }
+
+  changeColor($event){
     this.modifierservice.updateItemModifier(this.modifier, this.modifier.data);
   }
 

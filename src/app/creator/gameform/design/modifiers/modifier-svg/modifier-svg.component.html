@@ -1,9 +1,15 @@
 <div class="col s12">
-    <app-align-selector (verticalChange)="onVerticalChange($event)" (horizontalChange)="onHorizontalChange($event)"></app-align-selector>
+    <!-- <app-align-selector (verticalChange)="onVerticalChange($event)" (horizontalChange)="onHorizontalChange($event)"></app-align-selector> -->
+    
+      <div >
+        <label for="color">Cor:</label>
+        <input id="color" type="color" [(ngModel)]="modifier.data.selectedColor" (change)="changeColor($event.target.value)"  name="color">
+      </div>
+
     <div class=" zoom valign-wrapper">
         <i class="material-icons col s2 valign grey-text">expand_more</i>
         <p class="range-field col s6 valign">
-            <input type="range" (input)="changeSize($event.target.value)" (change)="changeSize($event.target.value)" [value]="50"  min="10" max="300" step="2"  />
+            <input type="range" (input)="changeSize($event.target.value)" (change)="changeSize($event.target.value)" [value]="50"  min="10" max="200" step="2"  />
         </p>
         <i class="material-icons col s2 valign grey-text">expand_less</i>
     </div>

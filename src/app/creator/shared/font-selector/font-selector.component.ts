@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class FontSelectorComponent {
   fonts: string[] = [];
-  sizes: number[] = [8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40];
+  sizes: number[] = [8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 54, 60, 66, 72, 78, 84, 90, 96];
   styles: string[] = ['normal', 'italic', 'oblique', 'bold', 'bold italic', 'bold oblique'];
 
   @Input() selectedFont: string = 'Roboto';

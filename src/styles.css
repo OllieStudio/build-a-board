@@ -658,9 +658,11 @@ h6.loginsubtitle{
     display: block;
     position: absolute;
     top: 0;
+    overflow: hidden;
   }
 
   .element-item * {
     user-select: none; 
     pointer-events: none;
+    cursor: grab;
   }
