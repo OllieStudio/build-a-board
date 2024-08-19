@@ -5,10 +5,7 @@ import { Elemento, Texto } from 'src/app/services/interfaces/componente';
   providedIn: 'root'
 })
 export class ElementsService {
-
-addedElements:Elemento[] = [
- 
-];
+addedElements:Elemento[] = [];
 
   constructor() { }
 
@@ -27,20 +24,6 @@ addedElements:Elemento[] = [
       span.style.fontSize = data.selectedSize + 'px';
       span.style.fontStyle = data.selectedStyle;
       span.style.color = data.selectedColor;
-
-      // span.style.position = 'absolute';
-      // span.style.top = '0';
-      // span.style.left = '0';
-      // span.style.width = '100%';
-      // span.style.height = '100%';
-      // span.style.display = 'flex';
-      // span.style.flexDirection = 'column';
-      // span.style.padding = '5%';
-
-      // span.style.justifyContent = 'center';
-      // span.style.alignItems = 'center';
-      // span.style.pointerEvents = 'none';
-      // span.style.userSelect = 'none';
 
       container.appendChild(span);
 
@@ -121,6 +104,5 @@ addedElements:Elemento[] = [
   addImageElement(data: any, containerId?: string) {
     throw new Error('Method not implemented.');
   }
-
 
 }

@@ -1,4 +1,4 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { Injectable } from '@angular/core';
 import { ElementsService } from './elements.service';
 import { HistoryService } from './history.service';
@@ -56,5 +56,11 @@ export class DragDropService {
     this.creator.hasItemLoaded = true;
     this.modifiers.setModifiers();
     this.history.addItemSnapshot(data);
+  }
+
+  onDragEnded(event: CdkDragEnd) {
+    const { x, y } = event.source.getFreeDragPosition();
+    event.source.element.nativeElement.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    this.modifiers.updateElementPosition(event.source.element.nativeElement.id, x, y);
   }
 }
