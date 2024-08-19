@@ -36,7 +36,7 @@ export class ComponentService {
 
   setComponentBackground(value: string) {
     const divElement = document.getElementById('background-img') as HTMLImageElement;
-    divElement.src = value;
+    divElement.style.backgroundImage = `url(${value})`;
   }
 
   async addGroupComponents(modifier: Modifier, value: any) {

@@ -9,10 +9,8 @@
         </div>
     </div>
     <div class="row modifier-content top-1 bottom-0" [hidden]="!show">
-        <div class="col s8 modifier-descr bottom-1 top-0">
+        <div class="col s12 modifier-descr bottom-1 top-0">
             {{modifier.description}}
-        </div>
-        <div class="col s4" >
             <div *ngIf="enableControls()">
                 <i (click)="deleteModifier()" class="material-icons right link grey-text">delete</i>
             </div>
