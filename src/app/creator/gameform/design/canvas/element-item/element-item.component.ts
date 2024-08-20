@@ -24,10 +24,10 @@ export class ElementItemComponent implements AfterViewInit {
         this.service.addTextElement(this.data, this.elRef.nativeElement.id);
         break;
       case 'element':
-        this.service.addSvgElement(this.data.template, this.elRef.nativeElement.id);
+        this.service.addSvgElement(this.data, this.elRef.nativeElement.id);
         break;
       case 'image':
-        this.service.addImageElement(this.data.template, this.elRef.nativeElement.id);
+        this.service.addImageElement(this.data, this.elRef.nativeElement.id);
         break;
     
       default:

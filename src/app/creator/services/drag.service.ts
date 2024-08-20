@@ -17,7 +17,10 @@ export class DragDropService {
   dropElement(event: CdkDragDrop<string[]>) {
     console.log(event);
     if ( event.previousContainer.id === "components" && event.container.id === "canvas") {
-      this.addComponent(event.item.data);
+      this.addNewComponent(event.item.data);
+    }
+    if ( event.previousContainer.id === "drawer" && event.container.id === "canvas") {
+      this.addDrawerComponent(event.item.data);
     }
     if (event.previousContainer.id === "text-container" && this.component.currentComponent.allowdrop) {
       this.addText({...event.item.data, type: "text"} as unknown as Texto);
@@ -51,9 +54,17 @@ export class DragDropService {
     this.history.addItemSnapshot(data);
   }
 
-  private addComponent(data:Componente) {
+  private addNewComponent(data:Componente) {
     this.component.addComponent(data);
     this.creator.hasItemLoaded = true;
+    this.modifiers.setModifiers();
+    this.history.addItemSnapshot(data);
+  }
+ 
+  private addDrawerComponent(data:Componente) {
+    this.component.loadComponent(data);
+    this.creator.hasItemLoaded = true;
+    this.elements.loadElements(data);
     this.modifiers.setModifiers();
     this.history.addItemSnapshot(data);
   }
@@ -61,6 +72,19 @@ export class DragDropService {
   onDragEnded(event: CdkDragEnd) {
     const { x, y } = event.source.getFreeDragPosition();
     event.source.element.nativeElement.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-    this.modifiers.updateElementPosition(event.source.element.nativeElement.id, x, y);
+    
+    
+    const element = event.source.element.nativeElement;
+    const parentElement = element.offsetParent;
+
+    const elementRect = element.getBoundingClientRect();
+    const parentRect = parentElement.getBoundingClientRect();
+
+    const parentx = elementRect.x - parentRect.x;
+    const parenty = elementRect.y - parentRect.y;
+
+    console.log(`Absolute position relative to parent: x=${x}, y=${y}`);
+    // Get the x and y positions relative to the offset parent
+    this.modifiers.updateElementPosition(event.source.element.nativeElement.id, parentx, parenty);
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Componente } from '../../services/interfaces/componente';
 import componentes_data from '../data/componentes.json';
+import { ElementsService } from './elements.service';
 
 export interface ItemSnapshot {
   id:string;
@@ -42,11 +43,12 @@ export class CreatorUIService implements OnInit {
   public componentesData: Componente[] = [];
   hasItemLoaded: boolean;
 
-  constructor() {
+  constructor(private elements:ElementsService) {
     this.componentesData = componentes_data;
-   }
+  }
 
   ngOnInit(): void {
+   
   }
 
 

@@ -8,6 +8,7 @@ import { HistoryService } from './history.service';
   providedIn: 'root'
 })
 export class ModifiersService {
+  
 
   modifiers: EventEmitter<Modifier[]> = new EventEmitter();
 
@@ -74,11 +75,11 @@ export class ModifiersService {
       this.history.addItemSnapshot();
     }
 
-    updateElementPosition(data: any, x: number, y: number) {
+    updateElementPosition(data: any, x: any, y: any) {
       let modifier:Modifier = this.component.currentComponent.modifiers.find(m => m.data?.id === data);
       modifier.data.x = x;
       modifier.data.y = y;
-      this.setModifiers();
+      this.setModifiers();      
     }
 
     deleteModifier(modifier: Modifier) {

@@ -35,6 +35,8 @@ export interface Modifier {
 }
 
 export interface Texto{
+  x: string;
+  y: string;
   type:'text';
   name: string;
   textAlign: string;
@@ -53,6 +55,9 @@ export interface Texto{
 }
 
 export interface Elemento{
+  rotation: any;
+  x: string;
+  y: string;
   type:'element';
   size: string;
   name: string;

@@ -68,11 +68,11 @@ export class HistoryService {
   }
 
   componenteToSnapshot(data: any): ItemSnapshot {
-    let snapshot:ItemSnapshot = {} as ItemSnapshot;
-    snapshot.id = data.id;
-    snapshot.template = data.template.replace(/\n/g,'');
-    snapshot.timestamp = ~~(Date.now());
-    snapshot.gameid = this.gamedataservice.game?.id;
-    return snapshot;
+      let snapshot:ItemSnapshot = {} as ItemSnapshot;
+      snapshot.id = data?.id;
+      snapshot.template = data?.template.replace(/\n/g,'');
+      snapshot.timestamp = ~~(Date.now());
+      snapshot.gameid = this.gamedataservice.game?.id;
+      return snapshot;
   }
 }

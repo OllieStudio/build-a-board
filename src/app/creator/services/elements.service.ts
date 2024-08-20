@@ -1,13 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Elemento, Texto } from 'src/app/services/interfaces/componente';
+import { Componente, Elemento, Texto } from 'src/app/services/interfaces/componente';
+import { ElementSnapshot } from './creator.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ElementsService {
+ 
 addedElements:Elemento[] = [];
 
-  constructor() { }
+  constructor() {
+    this.addedElements = [];
+   }
+
+  loadElements(data: Componente) {
+    data.modifiers.forEach(modifier => {
+      if (modifier.type === 'svg' || modifier.type === 'text' || (modifier.type === 'image' && modifier.property != 'background')) {
+        if(modifier.data) this.addedElements.push(modifier.data);
+      }
+    });
+  }
 
   addNewElement(data: any) {
     this.addedElements.push(data);
@@ -15,6 +27,8 @@ addedElements:Elemento[] = [];
 
   addTextElement(data: Texto, containerId?: string) {
     const container = document.getElementById(containerId);
+    container.style.top = data.y;
+    container.style.left = data.x;
 
     if (container) {
       const span = document.createElement('span');
@@ -46,11 +60,28 @@ addedElements:Elemento[] = [];
     }
   }
 
-  addSvgElement(value: string, id?: string) {
+  addSvgElement(item: Elemento, id?: string) {
     const divElement = document.getElementById(id).firstChild as HTMLDivElement;
+    const parentElement = document.getElementById(id) as HTMLDivElement;
+    
+    if(item.x && item.y){
+            parentElement.style.position = 'absolute';
+            parentElement.style.left = `${item.x}px`;
+            parentElement.style.top = `${item.y}px`;
+    }
+
+    if(item.size){
+      parentElement.style.width = `${item.size}%`;
+      parentElement.style.height = 'auto';
+    }
+    
+    if(item.rotation){
+      parentElement.style.transform = `rotate(${item.rotation}deg)`;
+    }
+
     if (divElement) {
       const object = document.createElement('object');
-      object.data = value;
+      object.data = item.template;
       object.type = "image/svg+xml";
       
       // Set the object element to fit the div

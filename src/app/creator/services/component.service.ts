@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ComponentService {
+
   currentComponent: Componente;
   componentesData: Componente[];
 
@@ -83,6 +84,25 @@ export class ComponentService {
         divElement.appendChild(child);
       })
     }
+  }
+
+  loadComponent(componente: Componente) {
+    this.currentComponent = componente;
+    const divElement = document.getElementById('editableObject');
+    if (divElement) {
+      // Create a temporary container to parse the template string
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = componente.template.trim();
+  
+      // Get the root element from the parsed template
+      const rootElement = tempDiv.firstElementChild;
+  
+      // Insert the root element before the existing child nodes
+      if (rootElement) {
+        divElement.insertBefore(rootElement, divElement.firstChild);
+      }
+    }
+    this.setComponentBackground(componente['background']);
   }
 
   addSvgFileComponent(template: string) {
