@@ -5,11 +5,12 @@ import { TextEditorComponent } from 'src/app/creator/shared/text-editor/text-edi
 import { AlignSelectorComponent } from 'src/app/creator/shared/align-selector/align-selector.component';
 import { ModifiersService } from 'src/app/creator/services/modifiers.service';
 import { FormsModule } from '@angular/forms';
+import { RotationEditorComponent } from 'src/app/creator/shared/rotation-editor/rotation-editor.component';
 
 @Component({
   selector: 'app-modifier-svg',
   standalone: true,
-  imports: [CommonModule, TextEditorComponent, AlignSelectorComponent, FormsModule],
+  imports: [CommonModule, TextEditorComponent, AlignSelectorComponent, FormsModule, RotationEditorComponent],
   templateUrl: './modifier-svg.component.html',
   styleUrls: ['./modifier-svg.component.css']
 })
@@ -23,6 +24,11 @@ export class ModifierSvgComponent {
 
   changeSize(event: any) {
     this.modifier.data.size = event;
+    this.modifierservice.updateItemModifier(this.modifier, this.modifier.data)
+  }
+ 
+  changeRotation(event: any) {
+    this.modifier.data.rotation = event;
     this.modifierservice.updateItemModifier(this.modifier, this.modifier.data)
   }
 

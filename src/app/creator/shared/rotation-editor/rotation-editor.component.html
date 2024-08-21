@@ -1,0 +1,9 @@
+<div class="rotation-editor">
+    <div class="rotatable-element" [style.transform]="getRotationStyle()">
+      <!-- Your element to be rotated (e.g., an image or div) -->
+    </div>
+    <div class="rotation-knob" cdkDrag (cdkDragMoved)="onDrag($event)" cdkDragBoundary=".rotation-editor">
+      <i class="material-icons">rotate_right</i> <!-- Icon for rotation knob -->
+    </div>
+  </div>
+  

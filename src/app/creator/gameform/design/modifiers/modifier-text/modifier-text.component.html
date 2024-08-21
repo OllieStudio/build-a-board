@@ -1,4 +1,11 @@
 <div class="col s12">
     <app-align-selector (verticalChange)="onVerticalChange($event)" (horizontalChange)="onHorizontalChange($event)"></app-align-selector>
+    <div class=" zoom valign-wrapper">
+        <i class="material-icons col s2 valign grey-text">rotate_right</i>
+        <p class="range-field col s6 valign">
+            <input type="range" (input)="changeRotation($event.target.value)" (change)="changeRotation($event.target.value)" [value]="modifier.data.rotation"  min="-180" max="180" step="2"  />
+        </p>
+        <i class="material-icons col s2 valign grey-text">rotate_left</i>
+    </div>
     <app-text-editor (textChange)="onTextChange($event)" [textData]="modifier.data"></app-text-editor>
 </div>

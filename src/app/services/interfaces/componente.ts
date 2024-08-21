@@ -35,6 +35,7 @@ export interface Modifier {
 }
 
 export interface Texto{
+  rotation: any;
   x: string;
   y: string;
   type:'text';

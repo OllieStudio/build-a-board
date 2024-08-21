@@ -22,6 +22,7 @@ addedElements:Elemento[] = [];
   }
 
   addNewElement(data: any) {
+    data.id = data.id + this.addedElements.length;
     this.addedElements.push(data);
   }
 
@@ -101,6 +102,10 @@ addedElements:Elemento[] = [];
     object.style.alignItems = data.horizontalAlign;
     object.style.width = `${data.size}%`;
     object.style.height = 'auto';
+    object.style.transform = `rotate(${data.rotation}deg)`;
+    object.style.left = `${data.x}px`;
+    object.style.top = `${data.y}px`;
+    
     this.setElementColor(data.selectedColor, data.id);
 }
 
@@ -130,10 +135,18 @@ addedElements:Elemento[] = [];
       span.innerText = data.content;
       span.style.justifyContent = data.verticalAlign;
       span.style.alignItems = data.horizontalAlign;
+      span.style.transform = `rotate(${data.rotation}deg)`;
+      span.style.left = `${data.x}px`;
+      span.style.top = `${data.y}px`;
   }
 
   addImageElement(data: any, containerId?: string) {
     throw new Error('Method not implemented.');
+  }
+
+  setElementRotation(data: any) {
+    const element = document.getElementById(data.id);
+          element.style.transform = `rotate(${data.rotation}deg)`;
   }
 
 }

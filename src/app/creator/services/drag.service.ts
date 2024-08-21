@@ -34,21 +34,21 @@ export class DragDropService {
   }
 
   private addImage(data: any) {
-    //this.elements.addImageElement(data);
+    data.id = data.id + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addImageModifier(data);
     this.history.addItemSnapshot(data);
   }
 
   private addElement(data:Elemento) {
-    //this.elements.addSvgElement(data);
+    data.id = data.id + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addSVGModifier(data);
     this.history.addItemSnapshot(data);
   }
 
   private addText(data:Texto) {
-    //this.elements.addTextElement(data);
+    data.id = data.id + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addTextModifier(data);
     this.history.addItemSnapshot(data);
@@ -73,7 +73,6 @@ export class DragDropService {
     const { x, y } = event.source.getFreeDragPosition();
     event.source.element.nativeElement.style.transform = `translate3d(${x}px, ${y}px, 0)`;
     
-    
     const element = event.source.element.nativeElement;
     const parentElement = element.offsetParent;
 
@@ -83,8 +82,6 @@ export class DragDropService {
     const parentx = elementRect.x - parentRect.x;
     const parenty = elementRect.y - parentRect.y;
 
-    console.log(`Absolute position relative to parent: x=${x}, y=${y}`);
-    // Get the x and y positions relative to the offset parent
-    this.modifiers.updateElementPosition(event.source.element.nativeElement.id, parentx, parenty);
+    this.modifiers.updateModifierPosition(event.source.element.nativeElement.id, parentx, parenty);
   }
 }

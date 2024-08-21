@@ -25,6 +25,11 @@ export class ModifierTextComponent {
     this.modifierservice.updateItemModifier(this.modifier, {id: this.modifier.data.id, ...event})
   }
 
+  changeRotation(event: any) {
+    this.modifier.data.rotation = event;
+    this.modifierservice.updateItemModifier(this.modifier, this.modifier.data)
+  }
+
   onVerticalChange($event){
     this.modifier.data.verticalAlign = $event;
     this.modifierservice.updateItemModifier(this.modifier, this.modifier.data);

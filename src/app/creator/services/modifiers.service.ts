@@ -75,11 +75,12 @@ export class ModifiersService {
       this.history.addItemSnapshot();
     }
 
-    updateElementPosition(data: any, x: any, y: any) {
+    updateModifierPosition(data: any, x: any, y: any) {
       let modifier:Modifier = this.component.currentComponent.modifiers.find(m => m.data?.id === data);
       modifier.data.x = x;
       modifier.data.y = y;
-      this.setModifiers();      
+      // if(modifier.data?.rotation) this.elements.setElementRotation(modifier.data);
+      this.setModifiers(); 
     }
 
     deleteModifier(modifier: Modifier) {

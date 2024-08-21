@@ -654,7 +654,7 @@ h6.loginsubtitle{
 
   .element-item{
     width:150px;
-    height: 150px;
+    height: auto;
     display: block;
     position: absolute;
     top: 0;
