@@ -12,7 +12,11 @@ export class ModifiersService {
 
   modifiers: EventEmitter<Modifier[]> = new EventEmitter();
 
-  constructor(private component:ComponentService, private elements:ElementsService, private history:HistoryService) { }
+  constructor(private component:ComponentService, private elements:ElementsService, private history:HistoryService) {
+    this.component.componentEmitter.subscribe(cmp => {
+      this.setModifiers();
+    })
+   }
 
   setModifiers() {
     this.modifiers.emit(this.component.currentComponent.modifiers);

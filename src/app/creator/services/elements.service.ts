@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Componente, Elemento, Texto } from 'src/app/services/interfaces/componente';
 import { ElementSnapshot } from './creator.service';
+import { ComponentService } from './component.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,11 @@ export class ElementsService {
  
 addedElements:Elemento[] = [];
 
-  constructor() {
+  constructor(private component:ComponentService) {
     this.addedElements = [];
+    this.component.componentEmitter.subscribe(cmp => {
+      if(cmp === null) this.addedElements = [];
+    })
    }
 
   loadElements(data: Componente) {

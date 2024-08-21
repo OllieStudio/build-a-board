@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Componente, Modifier } from 'src/app/services/interfaces/componente';
 import { HistoryService } from './history.service';
 import { GoogleGeminiAIService } from 'src/app/services/google-gemini-ai.service';
@@ -15,6 +15,7 @@ export class ComponentService {
 
   currentComponent: Componente;
   componentesData: Componente[];
+  componentEmitter: EventEmitter<Componente> = new EventEmitter();
 
   constructor(private http:HttpClient, private history: HistoryService, private uploads: UploadService, private aiservice: GoogleGeminiAIService, private imageservice: ImageService, private gamedataservice: GameDataService) { 
     this.componentesData = componentes_data;
@@ -37,7 +38,11 @@ export class ComponentService {
 
   setComponentBackground(value: string) {
     const divElement = document.getElementById('background-img') as HTMLImageElement;
-    divElement.src = value;
+    if(value){
+      divElement.src = value;
+    }else{
+      divElement.removeAttribute('src');
+    } 
   }
 
   async addGroupComponents(modifier: Modifier, value: any) {
@@ -54,6 +59,7 @@ export class ComponentService {
   }
 
   addComponent(item: Componente) {
+    if(this.currentComponent) this.resetComponent();
     this.currentComponent = item;
 
     switch (item.type) {
@@ -67,6 +73,17 @@ export class ComponentService {
         this.placeSvgComponent(item.template);
         break;
     }
+  }
+
+  resetComponent() {
+    this.setComponentBackground(null);
+    this.componentEmitter.emit(null);
+    this.currentComponent = null;
+    const component = document.getElementById('editableObject');
+    const children = Array.from(component.childNodes);
+    component.innerHTML = '';
+    children.slice(children.length > 2 ? 1 : 0).forEach(child => component.appendChild(child));
+
   }
 
   placeSvgComponent(svgFileUrl: string): void {
@@ -87,6 +104,7 @@ export class ComponentService {
   }
 
   loadComponent(componente: Componente) {
+    if(this.currentComponent) this.resetComponent();
     this.currentComponent = componente;
     const divElement = document.getElementById('editableObject');
     if (divElement) {
