@@ -144,8 +144,34 @@ addedElements:Elemento[] = [];
       span.style.top = `${data.y}px`;
   }
 
-  addImageElement(data: any, containerId?: string) {
-    throw new Error('Method not implemented.');
+  addImageElement(item: any, id?: string) {
+    const divElement = document.getElementById(id) as HTMLDivElement;
+    
+    if(item.x && item.y){
+      divElement.style.position = 'absolute';
+      divElement.style.left = `${item.x}px`;
+      divElement.style.top = `${item.y}px`;
+    }
+
+    if(item.size){
+      divElement.style.width = `${item.size}%`;
+      divElement.style.height = 'auto';
+    }
+    
+    if(item.rotation){
+      divElement.style.transform = `rotate(${item.rotation}deg)`;
+    }
+
+    if (divElement) {
+      const object = document.createElement('img');
+      object.src = item.template;
+      object.style.width = '100%';
+      object.style.height = '100%';
+      
+      // Clear previous content and append the object
+      divElement.innerHTML = '';
+      divElement.appendChild(object);
+    }
   }
 
   setElementRotation(data: any) {

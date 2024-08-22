@@ -25,7 +25,7 @@ export class DesignComponent implements OnInit {
 
   getTool(route:any){
     if(this.router.url.includes(route)){
-      this.drawer.toggleToolbox();
+      //this.drawer.toggleToolbox();
     }
     this.router.navigateByUrl('creator/design/' + route);
   }
