@@ -37,28 +37,28 @@ export class DragDropService {
     data.id = (data.id || data.idField) + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addImageModifier(data);
-    this.history.addItemSnapshot();
+    this.history.addItemSnapshot("adicionou imagem " + data.id);
   }
 
   private addElement(data:Elemento) {
     data.id = data.id + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addSVGModifier(data);
-    this.history.addItemSnapshot();
+    this.history.addItemSnapshot("adicionou SVG " + data.id);
   }
 
   private addText(data:Texto) {
     data.id = data.id + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addTextModifier(data);
-    this.history.addItemSnapshot();
+    this.history.addItemSnapshot("adiciounou texto " + data.id);
   }
 
   private addNewComponent(data:Componente) {
     this.component.addComponent(data);
     this.creator.hasItemLoaded = true;
     this.modifiers.setModifiers();
-    this.history.addItemSnapshot();
+    this.history.addItemSnapshot("adicionou componente " + data.id);
   }
  
   private addDrawerComponent(data:Componente) {
@@ -66,6 +66,8 @@ export class DragDropService {
     this.creator.hasItemLoaded = true;
     this.elements.loadElements(data);
     this.modifiers.setModifiers();
+    this.history.addItemSnapshot("carregou componente " + data.id);
+
   }
 
   onDragEnded(event: CdkDragEnd) {

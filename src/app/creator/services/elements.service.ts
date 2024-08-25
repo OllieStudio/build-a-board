@@ -25,7 +25,9 @@ addedElements:Elemento[] = [];
   loadElements(data: Componente) {
     data.modifiers.forEach(modifier => {
       if (modifier.type === 'svg' || modifier.type === 'text' || modifier.type === 'upload') {
-        if(modifier.data) this.addedElements.push(modifier.data);
+        if (modifier.data && !this.addedElements.some(element => element.id === modifier.data.id)) {
+          this.addedElements.push(modifier.data);
+        }
       }
     });
   }

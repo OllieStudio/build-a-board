@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { ElementsService } from 'src/app/creator/services/elements.service';
 
 @Component({
@@ -9,11 +9,15 @@ import { ElementsService } from 'src/app/creator/services/elements.service';
     </div>
   `
 })
-export class ElementItemComponent implements AfterViewInit {
+export class ElementItemComponent implements AfterViewInit, OnDestroy {
   @Input() data:any;
   content: string = '';
 
   constructor(private elRef: ElementRef, private service:ElementsService) {}
+  
+  ngOnDestroy(): void {
+    console.log("destroyed", this.data.id);
+  }
 
   ngAfterViewInit() {
     // Manipulate the DOM here

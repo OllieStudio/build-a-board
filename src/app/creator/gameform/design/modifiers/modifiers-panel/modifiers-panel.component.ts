@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreatorUIService } from 'src/app/creator/services/creator.service';
 import { ModifierComponent } from '../modifier/modifier.component';
@@ -15,7 +15,11 @@ import { ModifiersService } from 'src/app/creator/services/modifiers.service';
 export class ModifiersPanelComponent {
   modifiers:Modifier[];
   
-  constructor(public modifierservice:ModifiersService){
-   this.modifierservice.modifiers.subscribe(event => this.modifiers = event);
+  constructor(public modifierservice:ModifiersService, private cdr: ChangeDetectorRef){
+   this.modifierservice.modifiers.subscribe(event => {
+    this.modifiers = [];
+    if(event) this.modifiers = event;
+    this.cdr.detectChanges();
+    });
   }
 }

@@ -8,7 +8,7 @@
     <!-- <app-element-item  [data]="element" class="element-item" cdkDrag [cdkDragBoundary]="'#editableObject'"></app-element-item> -->
 
     <app-element-item
-    *ngFor="let element of elements.addedElements"
+    *ngFor="let element of elements.addedElements; trackBy: trackById"
     [id]="element.id" 
     [data]="element" 
     class="element-item"
@@ -19,7 +19,6 @@
 
 </div>
 
-<!-- <div style="position: absolute;top: 200px; right: 200px">
-    {{drawer.closeToolbox}}
-    {{drawer.closedrawer}}
-</div> -->
+ <div style="position: absolute;top: 100px; left: 100px; display:flex; flex-direction:column">
+    <span *ngFor="let hist of history; let i = index" style="font-size:12px" >{{hist.description}}</span>
+</div> 

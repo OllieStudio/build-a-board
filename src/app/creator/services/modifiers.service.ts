@@ -14,12 +14,12 @@ export class ModifiersService {
 
   constructor(private component:ComponentService, private elements:ElementsService, private history:HistoryService) {
     this.component.componentEmitter.subscribe(cmp => {
-      this.setModifiers();
+        this.setModifiers();
     })
    }
 
   setModifiers() {
-    this.modifiers.emit(this.component.currentComponent.modifiers);
+    this.modifiers.emit(this.component.currentComponent?.modifiers);
   }
   
   addTextModifier(data: Texto) {
@@ -78,14 +78,14 @@ export class ModifiersService {
       default:
         break;
       }
-      this.history.addItemSnapshot();
+      this.history.addItemSnapshot("modificou " + modifier.title + " " + modifier.data?.id);
     }
 
     updateModifierPosition(data: any, x: any, y: any) {
       let modifier:Modifier = this.component.currentComponent.modifiers.find(m => m.data?.id === data);
       modifier.data.x = x;
       modifier.data.y = y;
-      this.history.addItemSnapshot()
+      this.history.addItemSnapshot("modificou posição " + modifier.title + " " + data)
       this.setModifiers(); 
     }
 
@@ -98,5 +98,6 @@ export class ModifiersService {
           object.remove();
         }
   
+      this.history.addItemSnapshot("removeu " + modifier.title + " " + modifier.data?.id);
     }
 }

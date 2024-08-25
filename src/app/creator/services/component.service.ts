@@ -77,13 +77,13 @@ export class ComponentService {
   }
 
   resetComponent() {
+    this.currentComponent = null;
     this.setComponentBackground(null);
     this.componentEmitter.emit(null);
-    this.currentComponent = null;
-    const component = document.getElementById('editableObject');
-    const children = Array.from(component.childNodes);
-    component.innerHTML = '';
-    children.slice(children.length > 2 ? 1 : 0).forEach(child => component.appendChild(child));
+    const element = document.getElementById('editableObject');
+    const children = Array.from(element.childNodes);
+    element.innerHTML = '';
+    children.slice(children.length > 2 ? 1 : 0).forEach(child => element.appendChild(child));
 
   }
 

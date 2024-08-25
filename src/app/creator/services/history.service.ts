@@ -34,7 +34,6 @@ export class HistoryService {
 
       this.component.componentEmitter.subscribe(cmp => {
        if(cmp) {
-        this.addItemSnapshot();
       }
       });
   }
@@ -43,8 +42,8 @@ export class HistoryService {
     throw new Error('Method not implemented.');
   }
 
-  public addItemSnapshot(): void {
-    this.snapshotChanges.next(this.componenteToSnapshot(this.component.currentComponent));
+  public addItemSnapshot(descr:string): void {
+    this.snapshotChanges.next(this.componenteToSnapshot(this.component.currentComponent, descr));
   }
  
   public updateItemSnapshot(update: any): void {
@@ -60,6 +59,7 @@ export class HistoryService {
     if (this.currentIndex > 0) {
       this.currentIndex--;
       this.currentSnapshot = history[this.currentIndex];
+      this.component.resetComponent();
       this.component.loadComponent(this.currentSnapshot.data);
     }
   }
@@ -83,12 +83,13 @@ export class HistoryService {
     return this.currentIndex >= this.history.getValue().length-1;
   }
 
-  componenteToSnapshot(data: Componente): ItemSnapshot {
+  componenteToSnapshot(data: Componente, descr:string): ItemSnapshot {
       let snapshot:ItemSnapshot = {} as ItemSnapshot;
       snapshot.id = data?.id;
-      snapshot.data = data;
+      snapshot.data = JSON.parse(JSON.stringify(data));
       snapshot.timestamp = ~~(Date.now());
       snapshot.gameid = this.gamedataservice.game?.id;
+      snapshot.description = descr;
       return snapshot;
   }
 }
