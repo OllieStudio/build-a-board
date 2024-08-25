@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Componente, Elemento, Texto } from 'src/app/services/interfaces/componente';
 import { ElementSnapshot } from './creator.service';
 import { ComponentService } from './component.service';
+import { Upload } from 'src/app/services/interfaces/upload';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,17 @@ addedElements:Elemento[] = [];
   constructor(private component:ComponentService) {
     this.addedElements = [];
     this.component.componentEmitter.subscribe(cmp => {
-      if(cmp === null) this.addedElements = [];
+      if(cmp === null) {
+        this.addedElements = [];
+      }else{
+        this.loadElements(cmp);
+      }
     })
    }
 
   loadElements(data: Componente) {
     data.modifiers.forEach(modifier => {
-      if (modifier.type === 'svg' || modifier.type === 'text' || (modifier.type === 'image' && modifier.property != 'background')) {
+      if (modifier.type === 'svg' || modifier.type === 'text' || modifier.type === 'upload') {
         if(modifier.data) this.addedElements.push(modifier.data);
       }
     });
@@ -112,6 +117,15 @@ addedElements:Elemento[] = [];
     
     this.setElementColor(data.selectedColor, data.id);
 }
+  
+updateUplElement(data:Upload) {
+    const object = document.getElementById(data.id);
+    object.style.width = `${data.size}%`;
+    object.style.height = 'auto';
+    object.style.transform = `rotate(${data.rotation}deg)`;
+    object.style.left = `${data.x}px`;
+    object.style.top = `${data.y}px`;
+}
 
   setElementColor(value: any, id) {
     const obj = document.getElementById(id).firstChild as unknown as SVGElement;
@@ -164,7 +178,7 @@ addedElements:Elemento[] = [];
 
     if (divElement) {
       const object = document.createElement('img');
-      object.src = item.template;
+      object.src = item.url;
       object.style.width = '100%';
       object.style.height = '100%';
       

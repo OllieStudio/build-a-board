@@ -18,10 +18,10 @@ export class UploadService {
       tipo: componente?.classname || 'upload',
       url: event,
       timestamp: new Date().getTime(),
-      name: (componente?.classname || 'upload')  + "_" + (modifier?.type || 'default') + "_" + new Date().getTime(),
+      name: (componente?.classname || 'upload') + "_" + (modifier?.type || 'default') + "_" + new Date().getTime(),
       alt: "",
       description: "",
-      component: componente?.id
+      component: componente?.id,
     };
 
     this.database.add(upload, 'GAMES/'+this.gameservice.game.id+'/UPLOADS').then(list =>{

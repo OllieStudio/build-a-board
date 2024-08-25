@@ -17,13 +17,13 @@ export class ComponentService {
   componentesData: Componente[];
   componentEmitter: EventEmitter<Componente> = new EventEmitter();
 
-  constructor(private http:HttpClient, private history: HistoryService, private uploads: UploadService, private aiservice: GoogleGeminiAIService, private imageservice: ImageService, private gamedataservice: GameDataService) { 
+  constructor(private http:HttpClient, private uploads: UploadService, private aiservice: GoogleGeminiAIService, private imageservice: ImageService, private gamedataservice: GameDataService) { 
     this.componentesData = componentes_data;
   }
 
   nameChange(nameValue: string) {
     this.currentComponent.name = nameValue;
-    this.history.addItemSnapshot(this.currentComponent);
+    this.componentEmitter.emit(this.currentComponent);
   }
 
   async saveItem() {
@@ -73,6 +73,7 @@ export class ComponentService {
         this.placeSvgComponent(item.template);
         break;
     }
+     this.componentEmitter.emit(this.currentComponent);
   }
 
   resetComponent() {
@@ -121,6 +122,7 @@ export class ComponentService {
       }
     }
     this.setComponentBackground(componente['background']);
+    this.componentEmitter.emit(this.currentComponent);
   }
 
   addSvgFileComponent(template: string) {

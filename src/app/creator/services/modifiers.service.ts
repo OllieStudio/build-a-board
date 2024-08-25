@@ -47,8 +47,8 @@ export class ModifiersService {
   addImageModifier(data: any) {
     let modifier:Modifier = {} as Modifier;
     modifier.component = this.component.currentComponent.id;
-    modifier.type = 'img';
-    modifier.property = 'img';
+    modifier.type = 'upload';
+    modifier.property = 'upload';
     modifier.title = 'Imagem';
     modifier.data = data;
     this.component.currentComponent.modifiers.push(modifier);
@@ -70,6 +70,8 @@ export class ModifiersService {
         break;
        case 'svg': this.elements.updateSVGElement(value);
         break;
+       case 'upload': this.elements.updateUplElement(value);
+        break;
       // case 'text': this.setComponentText(value)
       //   break;
       
@@ -83,7 +85,7 @@ export class ModifiersService {
       let modifier:Modifier = this.component.currentComponent.modifiers.find(m => m.data?.id === data);
       modifier.data.x = x;
       modifier.data.y = y;
-      // if(modifier.data?.rotation) this.elements.setElementRotation(modifier.data);
+      this.history.addItemSnapshot()
       this.setModifiers(); 
     }
 

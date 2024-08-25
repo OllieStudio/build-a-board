@@ -11,11 +11,12 @@ import { ModifierTextComponent } from '../modifier-text/modifier-text.component'
 import { ModifierSvgComponent } from '../modifier-svg/modifier-svg.component';
 import { ModifierActionsComponent } from '../modifier-actions/modifier-actions.component';
 import { ModifiersService } from 'src/app/creator/services/modifiers.service';
+import { ModifierUploadComponent } from '../modifier-upload/modifier-upload.component';
 
 @Component({
   selector: 'app-modifier',
   standalone: true,
-  imports: [CommonModule, ModifierActionsComponent, ModifierSvgComponent, ModifierTextComponent, ModifierColorComponent, ModifierRadioComponent, ModifierImageComponent, ModifierInputComponent, ModifierNumberComponent],
+  imports: [CommonModule, ModifierUploadComponent, ModifierActionsComponent, ModifierSvgComponent, ModifierTextComponent, ModifierColorComponent, ModifierRadioComponent, ModifierImageComponent, ModifierInputComponent, ModifierNumberComponent],
   templateUrl: './modifier.component.html',
   styleUrls: ['./modifier.component.css']
 })
@@ -31,7 +32,7 @@ export class ModifierComponent {
   }
 
   enableControls():boolean{
-    return (this.modifier.type === 'image' && this.modifier.property === 'track') || this.modifier.type === 'text' || this.modifier.type === 'svg';
+    return (this.modifier.type === 'image' && this.modifier.property === 'track') || this.modifier.type === 'upload' || this.modifier.type === 'text' || this.modifier.type === 'svg';
   }
 
   deleteModifier(){

@@ -4,6 +4,8 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { ItemSnapshot } from './creator.service';
 import { ComponentService } from './component.service';
 import { GameDataService } from './gamedata.service';
+import { Componente } from 'src/app/services/interfaces/componente';
+import { ElementsService } from './elements.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class HistoryService {
   private history: BehaviorSubject<ItemSnapshot[]> = new BehaviorSubject<ItemSnapshot[]>([]);
   private snapshotChanges: Subject<ItemSnapshot> = new Subject<ItemSnapshot>();
 
-  constructor(private gamedataservice:GameDataService) {
+  constructor(private gamedataservice:GameDataService, private elements:ElementsService, private component:ComponentService) {
     this.snapshotChanges
       .pipe(
         distinctUntilChanged(),
@@ -29,10 +31,20 @@ export class HistoryService {
         this.history.next(updatedHistory);
         console.log(updatedHistory)
       });
+
+      this.component.componentEmitter.subscribe(cmp => {
+       if(cmp) {
+        this.addItemSnapshot();
+      }
+      });
   }
 
-  public addItemSnapshot(data?:any): void {
-    this.snapshotChanges.next(this.componenteToSnapshot(data));
+  resetHistory() {
+    throw new Error('Method not implemented.');
+  }
+
+  public addItemSnapshot(): void {
+    this.snapshotChanges.next(this.componenteToSnapshot(this.component.currentComponent));
   }
  
   public updateItemSnapshot(update: any): void {
@@ -48,6 +60,7 @@ export class HistoryService {
     if (this.currentIndex > 0) {
       this.currentIndex--;
       this.currentSnapshot = history[this.currentIndex];
+      this.component.loadComponent(this.currentSnapshot.data);
     }
   }
   
@@ -56,6 +69,9 @@ export class HistoryService {
     if (this.currentIndex < history.length-1) {
       this.currentIndex++;
       this.currentSnapshot = history[this.currentIndex];
+      this.component.loadComponent(this.currentSnapshot.data);
+      this.elements.loadElements(this.currentSnapshot.data);
+
     }
   }
 
@@ -67,10 +83,10 @@ export class HistoryService {
     return this.currentIndex >= this.history.getValue().length-1;
   }
 
-  componenteToSnapshot(data: any): ItemSnapshot {
+  componenteToSnapshot(data: Componente): ItemSnapshot {
       let snapshot:ItemSnapshot = {} as ItemSnapshot;
       snapshot.id = data?.id;
-      snapshot.template = data?.template.replace(/\n/g,'');
+      snapshot.data = data;
       snapshot.timestamp = ~~(Date.now());
       snapshot.gameid = this.gamedataservice.game?.id;
       return snapshot;

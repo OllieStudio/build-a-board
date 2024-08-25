@@ -4,6 +4,7 @@ import componentes_data from '../data/componentes.json';
 import { ElementsService } from './elements.service';
 
 export interface ItemSnapshot {
+  data: Componente;
   id:string;
   gameid:string;
   name: string;

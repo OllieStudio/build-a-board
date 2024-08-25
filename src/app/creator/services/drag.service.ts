@@ -29,36 +29,36 @@ export class DragDropService {
       this.addElement({...event.item.data, type: "element"} as unknown as Elemento);
     }
     if ( event.previousContainer.id === "upload-container") {
-      this.addImage({...event.item.data, type: "image"} as unknown as Elemento);
+      this.addImage({...event.item.data, type: "upload"} as unknown as Elemento);
     }
   }
 
   private addImage(data: any) {
-    data.id = data.id + this.elements.addedElements.length;
+    data.id = (data.id || data.idField) + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addImageModifier(data);
-    this.history.addItemSnapshot(data);
+    this.history.addItemSnapshot();
   }
 
   private addElement(data:Elemento) {
     data.id = data.id + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addSVGModifier(data);
-    this.history.addItemSnapshot(data);
+    this.history.addItemSnapshot();
   }
 
   private addText(data:Texto) {
     data.id = data.id + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addTextModifier(data);
-    this.history.addItemSnapshot(data);
+    this.history.addItemSnapshot();
   }
 
   private addNewComponent(data:Componente) {
     this.component.addComponent(data);
     this.creator.hasItemLoaded = true;
     this.modifiers.setModifiers();
-    this.history.addItemSnapshot(data);
+    this.history.addItemSnapshot();
   }
  
   private addDrawerComponent(data:Componente) {
@@ -66,7 +66,6 @@ export class DragDropService {
     this.creator.hasItemLoaded = true;
     this.elements.loadElements(data);
     this.modifiers.setModifiers();
-    this.history.addItemSnapshot(data);
   }
 
   onDragEnded(event: CdkDragEnd) {

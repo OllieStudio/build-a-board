@@ -26,7 +26,7 @@ export class ElementItemComponent implements AfterViewInit {
       case 'element':
         this.service.addSvgElement(this.data, this.elRef.nativeElement.id);
         break;
-      case 'image':
+      case 'upload':
         this.service.addImageElement(this.data, this.elRef.nativeElement.id);
         break;
     
