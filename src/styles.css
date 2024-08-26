@@ -685,3 +685,16 @@ h6.loginsubtitle{
   display: block;  
 }
 
+
+.modifier-title{
+ font-family: 'Roboto', sans-serif;
+   font-size: 14px;
+   font-weight: 500;
+   color: white;
+}
+
+.modifier-header{
+    border-bottom: 1px solid #444;
+    margin-left: 0!important;
+    margin-right: 0!important;
+}

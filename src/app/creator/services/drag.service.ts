@@ -37,21 +37,21 @@ export class DragDropService {
     data.id = (data.id || data.idField) + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addImageModifier(data);
-    this.history.addItemSnapshot("adicionou imagem " + data.id);
+    this.history.addItemSnapshot("adicionou imagem " );
   }
 
   private addElement(data:Elemento) {
     data.id = data.id + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addSVGModifier(data);
-    this.history.addItemSnapshot("adicionou SVG " + data.id);
+    this.history.addItemSnapshot("adicionou SVG " );
   }
 
   private addText(data:Texto) {
     data.id = data.id + this.elements.addedElements.length;
     this.elements.addNewElement(data);
     this.modifiers.addTextModifier(data);
-    this.history.addItemSnapshot("adiciounou texto " + data.id);
+    this.history.addItemSnapshot("adiciounou texto " );
   }
 
   private addNewComponent(data:Componente) {

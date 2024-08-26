@@ -55,6 +55,7 @@ import { AiButtonComponent } from './shared/ai-button/ai-button.component';
 import { PromptInputComponent } from './shared/prompt-input/prompt-input.component';
 import { ElementsComponent } from './gameform/design/elements/elements.component';
 import { ElementItemComponent } from './gameform/design/canvas/element-item/element-item.component';
+import { HistoryPanelComponent } from './gameform/design/history-panel/history-panel.component';
 
 
 
@@ -120,6 +121,7 @@ import { ElementItemComponent } from './gameform/design/canvas/element-item/elem
     AiButtonComponent,
     PromptInputComponent,
     ElementsComponent,
+    HistoryPanelComponent
   ],
   providers:  [ AuthService, FormService, DatabaseService, HistoryService,
     HttpClient, DatePipe, AngularFirestoreModule],

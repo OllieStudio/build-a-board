@@ -78,14 +78,14 @@ export class ModifiersService {
       default:
         break;
       }
-      this.history.addItemSnapshot("modificou " + modifier.title + " " + modifier.data?.id);
+      this.history.addItemSnapshot("modificou " + modifier.title );
     }
 
     updateModifierPosition(data: any, x: any, y: any) {
       let modifier:Modifier = this.component.currentComponent.modifiers.find(m => m.data?.id === data);
       modifier.data.x = x;
       modifier.data.y = y;
-      this.history.addItemSnapshot("modificou posição " + modifier.title + " " + data)
+      this.history.addItemSnapshot("modificou posição " + modifier.title)
       this.setModifiers(); 
     }
 
@@ -98,6 +98,6 @@ export class ModifiersService {
           object.remove();
         }
   
-      this.history.addItemSnapshot("removeu " + modifier.title + " " + modifier.data?.id);
+      this.history.addItemSnapshot("removeu " + modifier.title );
     }
 }

@@ -1,0 +1,19 @@
+<div id="historypanel">
+    <div class="row modifier-header bottom-0" (click)="toggle()">
+        <div class="col m10 modifier-title bottom-0">
+            Histórico
+        </div>
+        <div class="col m2">
+            <i class="material-icons white-text link" *ngIf="!show" > expand_more</i>
+            <i class="material-icons white-text link" *ngIf="show" > expand_less</i>
+        </div>
+    </div>
+    <ul class="modifier-content top-1 bottom-0" *ngIf="show">
+        <li class="valign-wrapper" *ngFor="let hist of history; let indd = index" > 
+            <i class="material-icons valign">arrow_right</i>
+            <span class="valign">{{hist.description}}</span>
+            <i *ngIf="showVisible(indd)"  class="material-icons valign">visibility</i>
+            <i *ngIf="!showVisible(indd)" (click)="restoreHistory(indd)" class="material-icons valign restore-icon">replay</i>
+        </li>
+    </ul> 
+</div>

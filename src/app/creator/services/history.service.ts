@@ -44,6 +44,7 @@ export class HistoryService {
 
   public addItemSnapshot(descr:string): void {
     this.snapshotChanges.next(this.componenteToSnapshot(this.component.currentComponent, descr));
+    this.currentIndex = this.history.getValue().length;
   }
  
   public updateItemSnapshot(update: any): void {
@@ -54,10 +55,10 @@ export class HistoryService {
     return this.history.asObservable();
   }
 
-  public getPreviousItemSnapshot(): void {
+  public getPreviousItemSnapshot(index?:number): void {
     const history = this.history.getValue();
     if (this.currentIndex > 0) {
-      this.currentIndex--;
+      (index)? this.currentIndex = index : this.currentIndex--;
       this.currentSnapshot = history[this.currentIndex];
       this.component.resetComponent();
       this.component.loadComponent(this.currentSnapshot.data);
