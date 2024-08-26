@@ -44,11 +44,34 @@ export class ImageService {
     });
   }
 
+  convertChildNodesToImage(element: HTMLElement, scale: number = 2): Promise<void> {
+    const promises = Array.from(element.children).map(async (subelem: HTMLElement) => {
+          if (subelem.classList.contains('element-item')) {
+              try {
+                  const img = await this.convertSVGToImage(subelem, scale);
+                  if(img) subelem.innerHTML = `<img src="${img}" style="width:100%; height:100%" />`;
+              } catch (error) {
+                  console.error('Error converting element to image:', error);
+              }
+          }
+      });
+      return Promise.all(promises).then(() => {
+      }).catch((error) => {
+          console.error('Error converting child nodes to images:', error);
+      });
+  }
+
+  convertSVGToImage(subelem: any, scale: number) {
+    return subelem.firstChild?.firstChild?.attributes[0]?.nodeValue;
+  }
+
   convertElementToImage(element: HTMLElement, scale: number = 2): Promise<string> {
+    
     return html2canvas(element, {
       scale,
-      useCORS: true, // Enables cross-origin resource sharing if you have external resources
-      backgroundColor: null // Ensures it respects the element's background
+      useCORS: true, 
+      backgroundColor: null,
+      allowTaint: true, 
     }).then(canvas => canvas.toDataURL('image/png'));
   }
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Modifier } from 'src/app/services/interfaces/componente';
 import { FormsModule } from '@angular/forms';
@@ -12,12 +12,15 @@ import { ModifiersService } from 'src/app/creator/services/modifiers.service';
   styleUrls: ['./modifier-radio.component.css']
 })
 
-export class ModifierRadioComponent {
+export class ModifierRadioComponent implements OnInit {
   @Input() modifier:Modifier;
   selectedOption: string;
   
   constructor(private modifierservice: ModifiersService){
-    this.selectedOption = '';
+  }
+  
+  ngOnInit(): void {
+    this.selectedOption = this.modifier.options[0];
   }
 
   onOptionChange(event: any) {

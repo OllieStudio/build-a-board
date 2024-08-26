@@ -32,7 +32,8 @@ export class ComponentService {
     if (!this.currentComponent.id) this.currentComponent.id = this.currentComponent.name.toLowerCase().replace(/\s/g, '');
     if (this.currentComponent.three?.prompt3d) this.currentComponent.three.code = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
     this.currentComponent.template = this.getTemplate();
-    this.currentComponent.imagem = this.currentComponent['background'] || await this.imageservice.convertElementToImage(this.getHTMLElement());
+    await this.imageservice.convertChildNodesToImage(this.getHTMLElement());
+    this.currentComponent.imagem = await this.imageservice.convertElementToImage(this.getHTMLElement()) || this.currentComponent['background'];
     this.gamedataservice.saveComponent(this.currentComponent);
   }
 

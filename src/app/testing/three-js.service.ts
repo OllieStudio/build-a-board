@@ -163,7 +163,7 @@ export class ThreeService {
 
 
 
-  public async loadBoard(textureUrl: string, boardWidth: number, boardHeight: number) {
+  public async loadBoard(textureUrl: string, boardWidth: number = 30, boardHeight: number = 30) {
     const maxWidth = 1024;
   
     const blobToBase64 = (blob: Blob): Promise<string> => new Promise((resolve, reject) => {
