@@ -48,8 +48,15 @@ export class ImageService {
     const promises = Array.from(element.children).map(async (subelem: HTMLElement) => {
           if (subelem.classList.contains('element-item')) {
               try {
+                if(subelem.classList.contains('element')){
                   const img = await this.convertSVGToImage(subelem, scale);
-                  if(img) subelem.innerHTML = `<img src="${img}" style="width:100%; height:100%" />`;
+                  subelem.innerHTML = `<img src="${img}" style="width:100%; height:100%" />`;
+                }else{
+                  if(subelem.classList.contains('text')){
+                    const txt = subelem.children[1]?.outerHTML;
+                    if(txt) subelem.innerHTML = txt;
+                  }
+                }
               } catch (error) {
                   console.error('Error converting element to image:', error);
               }
@@ -77,7 +84,7 @@ export class ImageService {
 
   public uploadImg(file: any, filename: string, path: string): Promise<any> {
   return new Promise((resolve, reject) => {
-    this.storage.uploadImage(file.replace('data:image/png;base64, ', ''), path + filename)
+    this.storage.uploadImage(file.split(',')[1], path + filename)
       .then(result => {
         resolve(result);
       })

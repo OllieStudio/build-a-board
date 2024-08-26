@@ -33,7 +33,9 @@ export class ComponentService {
     if (this.currentComponent.three?.prompt3d) this.currentComponent.three.code = await this.aiservice.textTo3D(this.describe3D(this.currentComponent))
     this.currentComponent.template = this.getTemplate();
     await this.imageservice.convertChildNodesToImage(this.getHTMLElement());
-    this.currentComponent.imagem = await this.imageservice.convertElementToImage(this.getHTMLElement()) || this.currentComponent['background'];
+    const image = await this.imageservice.convertElementToImage(this.getHTMLElement()) || this.currentComponent['background'];
+    const url = await this.imageservice.uploadImg(image, `template-${this.currentComponent.id}.png`, `game/${this.gamedataservice.game.id}/imgs/`);
+    this.currentComponent.imagem = url;
     this.gamedataservice.saveComponent(this.currentComponent);
   }
 

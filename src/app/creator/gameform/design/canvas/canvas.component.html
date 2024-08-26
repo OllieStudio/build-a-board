@@ -11,7 +11,7 @@
     *ngFor="let element of elements.addedElements; trackBy: trackById"
     [id]="element.id" 
     [data]="element" 
-    class="element-item"
+    class="element-item {{element.type}}"
     cdkDrag
     cdkDragBoundary="#editableObject"
     (cdkDragEnded)="dragservice.onDragEnded($event)">

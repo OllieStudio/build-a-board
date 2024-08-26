@@ -24,7 +24,7 @@ export class JogoTipoComponent implements OnInit{
 
   ngOnInit(): void {
     this.jogoFormGroup.patchValue(this.gamedataservice.game);
-    this.jogoFormGroup.controls['tipojogo'].value(this.gamedataservice.game?.tipo);
+    this.jogoFormGroup.controls['tipo'].value(this.gamedataservice.game?.tipo);
   }
 
   registerForm(){

@@ -6,7 +6,8 @@
     background: linear-gradient(to bottom, rgb(127, 124, 124), rgb(44, 42, 44));
     padding: 10px;
     width: 220px;
-    overflow:auto;
+    max-height: 65vh;
+    overflow: hidden;
 }
 
 #historypanel ul{
@@ -18,6 +19,8 @@
     background-color: #CCC;
     width: 100%;
     border-radius: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #historypanel ul li{

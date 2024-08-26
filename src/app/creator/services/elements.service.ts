@@ -39,8 +39,10 @@ addedElements:Elemento[] = [];
 
   addTextElement(data: Texto, containerId?: string) {
     const container = document.getElementById(containerId);
-    container.style.top = data.y;
-    container.style.left = data.x;
+    container.style.position = 'absolute';
+    container.style.top  = `${data.y}px`;
+    container.style.left = `${data.x}px`;
+    container.style.transform = `rotate(${data.rotation}deg)`;
 
     if (container) {
       const span = document.createElement('span');
