@@ -33,13 +33,14 @@ export class HistoryService {
       });
 
       this.component.componentEmitter.subscribe(cmp => {
-       if(cmp) {
+       if(!cmp) {
+        this.resetHistory();  
       }
       });
   }
 
   resetHistory() {
-    throw new Error('Method not implemented.');
+    this.history.next([]);
   }
 
   public addItemSnapshot(descr:string): void {

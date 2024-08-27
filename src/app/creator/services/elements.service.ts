@@ -43,6 +43,8 @@ addedElements:Elemento[] = [];
     container.style.top  = `${data.y}px`;
     container.style.left = `${data.x}px`;
     container.style.transform = `rotate(${data.rotation}deg)`;
+    container.style.width = `auto`;
+    container.style.height = 'auto';
 
     if (container) {
       const span = document.createElement('span');

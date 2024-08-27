@@ -30,7 +30,8 @@ export class ModifierActionsComponent {
 
   async generateCode(prompt, action:GameAction){
     this.hideSpinner = false;
-    const code = await this.aiservice.textToCode(' a function named ' + action.id + ', that performs ' + prompt + ', consider words surrounded by % as parameters if present');
+    const prompt_en = await this.aiservice.translateText(prompt, 'translate to english for code generation');
+    const code = await this.aiservice.textToCode(' a function named ' + action.id + ', that performs ' + prompt_en + '');
     this.modifier.actions.find(a => a.id == action.id).code = code.replace("```javascript", "").replace("```", "");
     this.modifier.actions.find(a => a.id == action.id).prompt = prompt;
     this.modifierservice.updateItemModifier(this.modifier, this.modifier.actions);
@@ -39,7 +40,7 @@ export class ModifierActionsComponent {
 
   testCode(action: GameAction, mockParameters?: any[]) {
    
-    alert(this.runner.runScript(action.code, [1, 6]));
+    alert(this.runner.runScript(action.code, []));
   }
   
 }

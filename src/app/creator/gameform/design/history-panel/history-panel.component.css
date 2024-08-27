@@ -21,6 +21,7 @@
     border-radius: 12px;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 46vh;
 }
 
 #historypanel ul li{
