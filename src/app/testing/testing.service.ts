@@ -82,4 +82,10 @@ export class TestingService {
           const components = await firstValueFrom(components$);
           return components;
         }
+        
+
+    getRulesContent(chapter:string){
+      return this.gamedata.game[chapter];
+    }
+
 }

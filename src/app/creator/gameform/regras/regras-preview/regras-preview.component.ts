@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GameDataService } from '../../../services/gamedata.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { GameDataService } from '../../../services/gamedata.service';
   styleUrls: ['./regras-preview.component.css']
 })
 export class RegrasPreviewComponent {
+@Input() hideButtons:boolean;
 
 constructor(public gamedataservice:GameDataService){
 

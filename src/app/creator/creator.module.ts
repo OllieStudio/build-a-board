@@ -102,7 +102,8 @@ import { HistoryPanelComponent } from './gameform/design/history-panel/history-p
     ElementItemComponent
   ],
   exports:[
-    CreatorComponent
+    CreatorComponent,
+    RegrasPreviewComponent
   ],
   entryComponents: [CreatorComponent],
   imports: [
@@ -121,7 +122,7 @@ import { HistoryPanelComponent } from './gameform/design/history-panel/history-p
     AiButtonComponent,
     PromptInputComponent,
     ElementsComponent,
-    HistoryPanelComponent
+    HistoryPanelComponent,
   ],
   providers:  [ AuthService, FormService, DatabaseService, HistoryService,
     HttpClient, DatePipe, AngularFirestoreModule],

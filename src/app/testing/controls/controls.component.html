@@ -5,6 +5,10 @@
         <h1 class="top-0 bottom-2">{{testing.currentRound}}</h1>
     </div>
     <div id="controls-container">
+        <a (click)="openRules()" id="rulesbook"> 
+            <i class="material-icons black-text">menu_book</i>
+            <span>regras</span>
+        </a>
         <app-control-item *ngFor="let control of testing.controls" [control]="control" (click)="controlSelected(control)"></app-control-item>
     </div>
 </div>
@@ -14,3 +18,27 @@
     <img src="{{testing.activeControl?.imagem}}" class="component-image center" [ngClass]="testing.activeControl?.classname" alt="">
     <a class="btn actionbutton" *ngFor="let action of testing.activeControl?.actions" (click)="testCode(action)" >{{action.title}}</a>
 </div>
+
+  <!-- Modal Structure -->
+  <div id="modalrules" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <app-regras-preview [hideButtons]="true"></app-regras-preview>
+        </div>
+        <!-- <div class="row">
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col" *ngFor="let tab of steps_regras" ><a (click)="getTab(tab.route)">{{tab.label}}</a></li>
+              </ul>
+            </div>
+            <div *ngFor="let tab of steps_regras" id="{{tab.route}}" class="col s12">
+                <div [innerHTML]="testing.getRulesContent(tab.route)"></div>
+            </div>
+          </div> -->
+                
+
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">fechar</a>
+    </div>
+  </div>

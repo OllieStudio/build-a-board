@@ -89,3 +89,20 @@
  height: 20vw;
  z-index: 999;
 }
+
+#rulesbook{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+#rulesbook i{
+    font-size:60px;
+}
+
+#rulesbook span{
+    font-size:13px;
+    color: black;
+}
