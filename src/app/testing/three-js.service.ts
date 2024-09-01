@@ -27,6 +27,7 @@ export class ThreeService {
 
   public initializeScene(container:HTMLElement) {
     // Scene setup
+    this.resetScene();
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0xDDDDDD);
 
@@ -96,8 +97,6 @@ export class ThreeService {
     });
   }
 
- 
-
   public loadModelFromUrl(modelUrl: string) {
     const loader = new GLTFLoader();
     loader.load(modelUrl, (gltf) => {
@@ -114,8 +113,6 @@ export class ThreeService {
     this.scene.add(mesh);
     this.enableInteractions(mesh);
   }
-
-  
 
   private enableInteractions(object: THREE.Object3D, constrain?:boolean) {
     // Add the object to the draggable objects array
@@ -160,8 +157,6 @@ export class ThreeService {
         if(constrain) object.rotation.x = -Math.PI/2;
     });
 }
-
-
 
   public async loadBoard(textureUrl: string, boardWidth: number = 30, boardHeight: number = 30) {
     const maxWidth = 1024;
@@ -217,5 +212,41 @@ export class ThreeService {
       console.error('Error loading texture:', error);
     }
   }
+
+  public resetScene(): void {
+    // Dispose of the existing scene and its members
+    if (this.scene) {
+      this.scene.traverse((object) => {
+        if (object instanceof THREE.Mesh) {
+          object.geometry.dispose();
+          if (object.material instanceof THREE.Material) {
+            object.material.dispose();
+          }
+        }
+      });
+  
+      this.renderer.dispose();
+      this.scene.clear();
+    }
+  
+    // Clear controls
+    if (this.controls) this.controls.dispose();
+    if (this.dragControls) this.dragControls.dispose();
+    if (this.transformControls) this.transformControls.dispose();
+  
+    // Reset arrays
+    this.draggableObjects = [];
+  
+    // Set all members to null to prepare for the new scene creation
+    this.scene = null;
+    this.camera = null;
+    this.renderer = null;
+    this.controls = null;
+    this.dragControls = null;
+    this.transformControls = null;
+    this.ambientLight = null;
+    this.directionalLight = null;
+  }
+  
   
 }

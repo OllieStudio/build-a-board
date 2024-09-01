@@ -18,3 +18,11 @@
 .player-item.active{
     border: 4px solid #fffb00;
 }
+
+.player-name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+    width: 82%;
+    margin-top: -2px;
+}

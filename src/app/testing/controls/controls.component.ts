@@ -19,7 +19,7 @@ export class ControlsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.testing.initControls();
+    // this.testing.initControls();
    }
 
    controlSelected(control:Componente){

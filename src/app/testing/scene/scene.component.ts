@@ -18,7 +18,7 @@ export class SceneComponent implements OnInit {
 
   constructor(private testing:TestingService) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.testing.initializeScene(this.container.nativeElement);
   }
 

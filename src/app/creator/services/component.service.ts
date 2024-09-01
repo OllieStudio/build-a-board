@@ -34,7 +34,7 @@ export class ComponentService {
     this.currentComponent.template = this.getTemplate();
     await this.imageservice.convertChildNodesToImage(this.getHTMLElement());
     const image = await this.imageservice.convertElementToImage(this.getHTMLElement()) || this.currentComponent['background'];
-    const url = await this.imageservice.uploadImg(image, `template-${this.currentComponent.id}.png`, `game/${this.gamedataservice.game.id}/imgs/`);
+    const url = await this.imageservice.uploadImg(image, `template-${this.currentComponent.name}.png`, `game/${this.gamedataservice.game.id}/imgs/`);
     this.currentComponent.imagem = url;
     this.gamedataservice.saveComponent(this.currentComponent);
   }

@@ -32,3 +32,13 @@
     right: 15px;
     z-index:99999;
 }
+
+.addplayerbutton{
+    position: absolute;
+    font-size: 40px;
+    font-weight: 800;
+    color: white;
+    top: 40px;
+    right: 10px;
+    cursor:pointer;
+}

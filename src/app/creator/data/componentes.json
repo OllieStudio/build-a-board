@@ -718,7 +718,7 @@
       "type":"SVG",
       "price":"5",
       "three":{
-        "type": "file",
+        "type": "pawn",
         "file":"assets/OBJ/pawn.obj"
       },
       "classname": "peao-tradicional",

@@ -15,6 +15,6 @@ export class PlayersComponent implements OnInit {
   constructor(public testing:TestingService){}
   
   ngOnInit(): void {
-   this.testing.initPlayers();
+  //  this.testing.initPlayers();
   }
 }

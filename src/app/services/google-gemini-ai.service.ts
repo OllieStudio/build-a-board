@@ -50,7 +50,7 @@ export class GoogleGeminiAIService {
   }
 
   async textToCode(prompt: string): Promise<any> {
-    prompt = 'you are working on a virtual board game, create a plain traditional javascript code for ' + prompt;
+    prompt = 'you are working on a virtual board game, create a plain traditional javascript code for ' + prompt + ' any parameter must have a default value';
 
     try {
       const result = await this.model.generateContent(prompt);
