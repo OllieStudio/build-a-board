@@ -26,7 +26,9 @@ export class ControlsComponent implements OnInit{
     { label: 'Resumo', route: 'resumo' }
     ]
   tabs: any;
-  constructor(public testing: TestingService, private runner:ScriptRunnerService, private materialize:MaterializeService){
+  showResult:boolean = false;
+  result:any;
+  constructor(public testing: TestingService, private materialize:MaterializeService){
     
   }
 
@@ -36,12 +38,8 @@ export class ControlsComponent implements OnInit{
   }
 
    controlSelected(control:Componente){
-    this.testing.activeControl = control;
+    this.testing.getControl(control);
    }
-
-   testCode(action: GameAction, mockParameters?: any[]) {
-    alert(this.runner.runScript(action.code, [1, 6]));
-  }
 
   async openRules(){
     this.materialize.openModal('#modalrules');

@@ -1,4 +1,5 @@
 <div class="component">
-    <img src="{{control.imagem}}" class="component-image" [ngClass]="control.classname" alt="">
-    <!-- <p class="component-name">{{control.classname}}</p> -->
+    <img src="{{control.imagem}}" class="component-image bottom-0" [ngClass]="control.classname" alt="">
+    <h6 class="ammount-display" *ngIf="control.ammount > 1" >x{{control.ammount}}</h6>
+    <p class="component-name top-0">{{control.name}}</p>
 </div>

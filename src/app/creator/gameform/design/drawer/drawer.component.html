@@ -10,6 +10,8 @@
   <div id="drawer" class="row components-container small" (cdkDropListDropped)="dragservice.dropElement($event)" cdkDropListConnectedTo="canvas" cdkDropList>
     <div class="component" *ngFor="let component of components | reverse" cdkDrag [cdkDragData]="component" (dblclick)="dragservice.addDrawerComponent(component)">
       <img src="{{component.imagem}}" class="component-image" alt="">
+      <h6 class="ammount-display" *ngIf="component.ammount > 1" >x{{component.ammount}}</h6>
+
       <p>{{component.name}}</p>
       <i (click)="removeComponent(component)" class="material-icons white-text link right">delete</i>
     </div>

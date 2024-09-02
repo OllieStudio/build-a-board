@@ -124,3 +124,38 @@
     font-size:13px;
     color: black;
 }
+
+.result-display{
+    font-size: 55px;
+    color: rgb(6, 0, 0);
+    text-align: center;
+    text-shadow: 1px 1px;
+    margin-bottom: 0;
+    border-radius: 60px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white;
+    margin: 0;
+    width: 80px;
+    height: 80px;
+    line-height: 71px;
+    border: 2px solid blueviolet;
+    text-align: center;
+    font-family: 'Barlow Condensed';
+}
+
+.ammount-display {
+    font-size: 25px;
+    color: rgb(6, 0, 0);
+    text-align: center;
+    position: absolute;
+    top: 117px;
+    right: 20px;
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 71px;
+    text-align: center;
+    font-family: 'Barlow Condensed';
+}

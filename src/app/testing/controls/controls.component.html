@@ -16,10 +16,12 @@
 
 <div id="activeControl" class="component center" [hidden]="!testing.activeControl" >
     <i (click)="testing.activeControl = null" class="material-icons purple link close-button">close</i>
+    <h1 *ngIf="testing.showResult" class="result-display">{{testing.result}}</h1>
     <div class="content">
       <img src="{{testing.activeControl?.imagem}}" class="component-image center" [ngClass]="testing.activeControl?.classname" alt="">
+      <h5 class="ammount-display" *ngIf="testing.activeControl?.ammount > 1" >x{{testing.activeControl?.ammount}}</h5>
       <div>
-        <a class="btn actionbutton" *ngFor="let action of testing.activeControl?.actions" (click)="testCode(action)" >{{action.title}}</a>
+        <a class="btn actionbutton" *ngFor="let action of testing.activeControl?.actions" (click)="testing.runCode(action)" >{{action.title}}</a>
       </div>
     </div>
 </div>

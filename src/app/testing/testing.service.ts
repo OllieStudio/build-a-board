@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { ThreeService } from './three-js.service';
 import { GameDataService } from '../creator/services/gamedata.service';
 import { Player } from './testing.component';
-import { Componente } from '../services/interfaces/componente';
+import { Componente, GameAction } from '../services/interfaces/componente';
 import { findIndex, firstValueFrom } from 'rxjs';
+import { ScriptRunnerService } from './script-runner.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestingService {
- 
+  
   players:Player[];
   controls:Componente[];
   colors = ['red', 'green', 'blue', 'yellow', 'black', 'white'];
@@ -20,8 +21,10 @@ export class TestingService {
   components: any[];
   decks: any[];
   playerOrder: boolean = true;
+  result: any;
+  showResult: boolean;
 
-  constructor(private threeJsService: ThreeService, private gamedata:GameDataService) {}
+  constructor(private threeJsService: ThreeService, private gamedata:GameDataService, private runner:ScriptRunnerService) {}
 
   async initializeScene(container): Promise<void> {
     this.components = await this.initComponents();
@@ -51,7 +54,7 @@ export class TestingService {
       this.threeJsService.loadModelFromFile(comp.three.file, comp.color);
      }
   }
-
+  
   async loadInitialObjects(): Promise<void> {
       const threedObjects = this.components.filter(comp => comp.three);
       if(threedObjects.length > 0){
@@ -92,6 +95,26 @@ export class TestingService {
         return components;
       }
         
+    getControl(control: Componente) {
+      this.activeControl = control;
+      this.result = null;
+      this.showResult = false;
+    }
+
+    async runCode(action: GameAction, mockParameters?: any[]) {
+      this.result = await this.runner.runScript(action.code, [1, 6]);
+  
+      switch (action.id) {
+        case 'roll':
+          this.showResult = true;
+          
+          break;
+      
+        default:
+          this.showResult = false;
+          break;
+      }
+    }
 
     getRulesContent(chapter:string){
       return this.gamedata.game[chapter];

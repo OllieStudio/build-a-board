@@ -16,6 +16,7 @@ export interface Componente {
   multiple?:string;
   actions?: GameAction[];
   modifiers?: Modifier[];
+  ammount?:number;
 }
 
 
@@ -32,6 +33,7 @@ export interface Modifier {
   imageprompt?: string;
   svgprompt?: string;
   data?:any;
+  max?:number;
 }
 
 export interface Texto{

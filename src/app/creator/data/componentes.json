@@ -435,6 +435,7 @@
         {
           "type": "number",
           "property": "ammount",
+          "max": 6,
           "title":"Quantidade",
           "description":"Informe a quantidade de dados"
         },
@@ -479,6 +480,7 @@
         {
           "type": "number",
           "property": "ammount",
+          "max": 1,
           "title":"Quantidade",
           "description":"Informe a quantidade de dados"
         },
@@ -507,6 +509,7 @@
         {
           "type": "number",
           "property": "ammount",
+          "max": 1,
           "title":"Quantidade",
           "description":"Informe a quantidade de dados"
         },
@@ -558,6 +561,7 @@
         {
           "type": "number",
           "property": "ammount",
+          "max": 3,
           "title":"Quantidade",
           "description":"Informe a quantidade de dados"
         },
@@ -602,6 +606,7 @@
           "type": "number",
           "property": "ammount",
           "title":"Quantidade",
+          "max": 3,
           "description":"Informe a quantidade de dados"
         },
         {
@@ -643,6 +648,7 @@
         {
           "type": "number",
           "property": "ammount",
+          "max": 2,
           "title":"Quantidade",
           "description":"Informe a quantidade de dados"
         },
