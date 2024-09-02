@@ -9,6 +9,7 @@ import { findIndex, firstValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class TestingService {
+ 
   players:Player[];
   controls:Componente[];
   colors = ['red', 'green', 'blue', 'yellow', 'black', 'white'];
@@ -17,6 +18,8 @@ export class TestingService {
   activeControl: Componente;
   pawns: any[];
   components: any[];
+  decks: any[];
+  playerOrder: boolean = true;
 
   constructor(private threeJsService: ThreeService, private gamedata:GameDataService) {}
 
@@ -26,7 +29,8 @@ export class TestingService {
     this.loadInitialObjects();
     this.initPlayers();
     this.initControls();
-  }
+    this.initDecks();
+    }
 
   async initPlayers(): Promise<void> {
   this.players = [];
@@ -76,16 +80,43 @@ export class TestingService {
       initControls(): void {
           this.controls = this.components.filter(comp => comp.actions);
         }
-
-        async initComponents(): Promise<Componente[]> {
-          const components$ = this.gamedata.getComponents();
-          const components = await firstValueFrom(components$);
-          return components;
+    
+      initDecks(): void {
+          this.decks = this.components.filter(comp => comp.type === 'deck');
+          this.decks.forEach( deck => deck.cards = this.components.filter(comp => comp.deck === deck.name) )
         }
+
+      async initComponents(): Promise<Componente[]> {
+        const components$ = this.gamedata.getComponents();
+        const components = await firstValueFrom(components$);
+        return components;
+      }
         
 
     getRulesContent(chapter:string){
       return this.gamedata.game[chapter];
     }
+
+    nextRound() {
+      this.currentRound += 1;
+      this.currentPlayer = this.playerOrder ? 0 : this.players.length - 1;
+    }
+    
+    nextPlayer() {
+      if (this.playerOrder) {
+        if (this.currentPlayer < this.players.length - 1) {
+          this.currentPlayer += 1;
+        } else {
+          this.nextRound();
+        }
+      } else {
+        if (this.currentPlayer > 0) {
+          this.currentPlayer -= 1;
+        } else {
+          this.nextRound();
+        }
+      }
+    }
+    
 
 }

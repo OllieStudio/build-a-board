@@ -1,0 +1,11 @@
+<div id="step-controls" class="row">
+    <a class="step-button link">
+        <i class="material-symbols-outlined" [ngClass]="testing.playerOrder ? 'black-text' : 'blue-text'" (click)="reverseOrder()">swap_horiz</i>
+    </a>
+    <a class="step-button link">
+        <i class="material-symbols-outlined black-text" (click)="nextPlayert()">fast_forward</i>
+    </a>
+    <a class="step-button link">
+        <i class="material-symbols-outlined black-text" (click)="nextRound()">skip_next</i>
+    </a>
+</div>

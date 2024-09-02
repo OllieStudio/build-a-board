@@ -3,5 +3,5 @@
     <div id="players-container">
         <app-player-item *ngFor="let player of testing.players" [active]="player.index === testing.currentPlayer" [player]="player"></app-player-item>
     </div>
-    <i *ngIf="testing.players?.length < testing.pawns?.length" (click)="testing.addPlayer(testing.players?.length)" class="material-icons addplayerbutton">add</i>
+    <i *ngIf="testing.players?.length < testing.pawns?.length" (click)="testing.addPlayer(testing.players?.length)" class="material-symbols-outlined addplayerbutton">person_add</i>
 </div>

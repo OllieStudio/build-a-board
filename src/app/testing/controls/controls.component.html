@@ -2,7 +2,8 @@
     <!-- <span id="players-title">Jogadores</span> -->
     <div id="round-counter">
         <p class="top-0 bottom-0">RODADA</p>
-        <h1 class="top-0 bottom-2">{{testing.currentRound}}</h1>
+        <h1 class="top-0 bottom-0">{{testing.currentRound}}</h1>
+        <app-step-controls></app-step-controls>
     </div>
     <div id="controls-container">
         <a (click)="openRules()" id="rulesbook"> 
@@ -14,9 +15,13 @@
 </div>
 
 <div id="activeControl" class="component center" [hidden]="!testing.activeControl" >
-    <i (click)="testing.activeControl = null" class="material-icons purple link">close</i>
-    <img src="{{testing.activeControl?.imagem}}" class="component-image center" [ngClass]="testing.activeControl?.classname" alt="">
-    <a class="btn actionbutton" *ngFor="let action of testing.activeControl?.actions" (click)="testCode(action)" >{{action.title}}</a>
+    <i (click)="testing.activeControl = null" class="material-icons purple link close-button">close</i>
+    <div class="content">
+      <img src="{{testing.activeControl?.imagem}}" class="component-image center" [ngClass]="testing.activeControl?.classname" alt="">
+      <div>
+        <a class="btn actionbutton" *ngFor="let action of testing.activeControl?.actions" (click)="testCode(action)" >{{action.title}}</a>
+      </div>
+    </div>
 </div>
 
   <!-- Modal Structure -->
