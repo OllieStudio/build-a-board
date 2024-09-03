@@ -8,11 +8,12 @@ import { MaterializeService } from '@ollieestudio/fire-lib';
 import { RegrasPreviewComponent } from 'src/app/creator/gameform/regras/regras-preview/regras-preview.component';
 import { CreatorModule } from 'src/app/creator/creator.module';
 import { StepControlsComponent } from './step-controls/step-controls.component';
+import { AmmountDisplayComponent } from '../shared/ammount-display/ammount-display.component';
 
 @Component({
   selector: 'app-controls',
   standalone: true,
-  imports: [CommonModule, ControlItemComponent, CreatorModule, StepControlsComponent],
+  imports: [CommonModule, ControlItemComponent, CreatorModule, StepControlsComponent, AmmountDisplayComponent],
   templateUrl: './controls.component.html',
   styleUrls: ['./controls.component.css']
 })

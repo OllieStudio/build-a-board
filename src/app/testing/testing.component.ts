@@ -6,6 +6,8 @@ import { DockComponent } from './dock/dock.component';
 import { ControlsComponent } from './controls/controls.component';
 
 export interface Player {
+  cards?: any;
+  points?: any;
   name: string;
   color: string;
   index:number;

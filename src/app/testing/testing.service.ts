@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { ThreeService } from './three-js.service';
 import { GameDataService } from '../creator/services/gamedata.service';
 import { Player } from './testing.component';
@@ -23,6 +23,7 @@ export class TestingService {
   playerOrder: boolean = true;
   result: any;
   showResult: boolean;
+  resultEmitter: EventEmitter<any> = new EventEmitter();
 
   constructor(private threeJsService: ThreeService, private gamedata:GameDataService, private runner:ScriptRunnerService) {}
 
@@ -86,7 +87,11 @@ export class TestingService {
     
       initDecks(): void {
           this.decks = this.components.filter(comp => comp.type === 'deck');
-          this.decks.forEach( deck => deck.cards = this.components.filter(comp => comp.deck === deck.name) )
+          this.decks.forEach( deck => {
+            deck.cards = this.components.filter(comp => comp.group === deck.name);
+            deck.ammount = deck.cards.length;
+            deck.cards.map(card => card.background = deck.background);
+          } )
         }
 
       async initComponents(): Promise<Componente[]> {
@@ -102,14 +107,29 @@ export class TestingService {
     }
 
     async runCode(action: GameAction, mockParameters?: any[]) {
-      this.result = await this.runner.runScript(action.code, [1, 6]);
-  
+      
       switch (action.id) {
         case 'roll':
+          this.result = await this.runner.runScript(action.code);
+          this.resultEmitter.emit(this.result);
           this.showResult = true;
+          break;
+          case 'shuffle':
+          this.result = await this.runner.runScript(action.code);
+          this.activeControl['cards'] = this.result.map(index => this.activeControl['cards'][index]);
+          this.resultEmitter.emit(this.result);
+          break;
+          case 'pick':
+          this.result = await this.runner.runScript(action.code);
+          this.resultEmitter.emit(this.activeControl['cards'][0]);
+          break;
+          case 'distribute':
+            this.result = await this.runner.runScript(action.code, [this.players.length]);
+            this.players.forEach((player, i) => {
+            player.cards = this.result[i].map(index => this.activeControl['cards'][index]);
+          });
           
           break;
-      
         default:
           this.showResult = false;
           break;

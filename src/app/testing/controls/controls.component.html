@@ -19,7 +19,7 @@
     <h1 *ngIf="testing.showResult" class="result-display">{{testing.result}}</h1>
     <div class="content">
       <img src="{{testing.activeControl?.imagem}}" class="component-image center" [ngClass]="testing.activeControl?.classname" alt="">
-      <h5 class="ammount-display" *ngIf="testing.activeControl?.ammount > 1" >x{{testing.activeControl?.ammount}}</h5>
+      <app-ammount-display class="ammount-container" [size]="'big'" [ammount]="testing.activeControl?.ammount"></app-ammount-display>
       <div>
         <a class="btn actionbutton" *ngFor="let action of testing.activeControl?.actions" (click)="testing.runCode(action)" >{{action.title}}</a>
       </div>

@@ -1,0 +1,22 @@
+
+.ammount-display {
+    color: rgb(6, 0, 0);
+    position: absolute;
+    margin: 0;
+    font-family: 'Barlow Condensed';
+    z-index: 99999;
+}
+
+.big{
+    font-size: 25px;
+}
+
+.small{
+    font-size: 15px;
+}
+
+.med{
+    font-size: 18px;
+    top: 84px;
+    right: -9px;
+}

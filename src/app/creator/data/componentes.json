@@ -160,7 +160,7 @@
       "classname": "deck-cartas-P",
       "price":"60",
       "allowdrop":true,
-      "type":"",
+      "type":"deck",
       "modifiers":[
         {
           "type": "radio",
@@ -220,7 +220,7 @@
       "classname": "deck-cartas-M",
       "price":"60",
       "allowdrop":true,
-      "type":"",
+      "type":"deck",
       "modifiers":[
         {
           "type": "radio",
@@ -279,7 +279,7 @@
       "classname": "deck-cartas-G",
       "price":"60",
       "allowdrop":true,
-      "type":"",
+      "type":"deck",
       "modifiers":[
         {
           "type": "radio",
