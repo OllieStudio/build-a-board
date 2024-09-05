@@ -1,7 +1,9 @@
-<div id="players" class="scroll-panel">
+<div id="players" class="scroll-panel" >
     <!-- <span id="players-title">Jogadores</span> -->
-    <div id="players-container">
-        <app-player-item *ngFor="let player of testing.players" [active]="player.index === testing.currentPlayer" [player]="player"></app-player-item>
+    <div id="players-container" >
+        <app-player-item *ngFor="let player of testing.players" [id]="player.name" class="playeritem"
+        cdkDropList (cdkDropListDropped)="testing.dropElement($event, player)" 
+        [active]="player.index === testing.currentPlayer" [player]="player"></app-player-item>
     </div>
     <i *ngIf="testing.players?.length < testing.pawns?.length" (click)="testing.addPlayer(testing.players?.length)" class="material-symbols-outlined addplayerbutton">person_add</i>
 </div>

@@ -4,9 +4,10 @@ import { SceneComponent } from './scene/scene.component';
 import { PlayersComponent } from './players/players.component';
 import { DockComponent } from './dock/dock.component';
 import { ControlsComponent } from './controls/controls.component';
+import { Componente } from '../services/interfaces/componente';
 
 export interface Player {
-  cards?: any;
+  items?: Componente[];
   points?: any;
   name: string;
   color: string;

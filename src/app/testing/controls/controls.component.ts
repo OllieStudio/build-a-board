@@ -9,11 +9,12 @@ import { RegrasPreviewComponent } from 'src/app/creator/gameform/regras/regras-p
 import { CreatorModule } from 'src/app/creator/creator.module';
 import { StepControlsComponent } from './step-controls/step-controls.component';
 import { AmmountDisplayComponent } from '../shared/ammount-display/ammount-display.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-controls',
   standalone: true,
-  imports: [CommonModule, ControlItemComponent, CreatorModule, StepControlsComponent, AmmountDisplayComponent],
+  imports: [CommonModule, DragDropModule, ControlItemComponent, CreatorModule, StepControlsComponent, AmmountDisplayComponent],
   templateUrl: './controls.component.html',
   styleUrls: ['./controls.component.css']
 })

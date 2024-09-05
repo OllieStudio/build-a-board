@@ -12,6 +12,6 @@ import { AmmountDisplayComponent } from '../../shared/ammount-display/ammount-di
 })
 
 export class ControlItemComponent {
-
+  @Input() isSmall:boolean;
   @Input() control:Componente;
 }

@@ -13,6 +13,7 @@
     background: linear-gradient(to top, rgb(235, 234, 234), rgb(219, 218, 218)); 
     border-radius: 15px;
     font-size: 12px;
+    position:relative;
 }
 
 .player-name{
@@ -22,3 +23,14 @@
     width: 82%;
     margin-top: -2px;
 }
+
+.player-items{
+    width: 120%;
+    position: absolute;
+    bottom: 0px;
+    left: -12px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    height: 40px;
+};

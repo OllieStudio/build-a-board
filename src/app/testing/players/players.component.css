@@ -42,3 +42,8 @@
     right: 10px;
     cursor:pointer;
 }
+
+.playeritem{
+    width: 80px;
+    height: 90px;
+}

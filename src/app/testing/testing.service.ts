@@ -51,7 +51,7 @@ export class TestingService {
     if(index <= this.pawns.length){
       const color = this.pawns[index]?.color || this.colors[index];
       const comp = this.pawns[index];
-      this.players.push({index: index, color: color, name:comp.name});
+      this.players.push({index: index, color: color, name:comp.name, items:[]});
       this.threeJsService.loadModelFromFile(comp.three.file, comp.color);
      }
   }
@@ -123,10 +123,25 @@ export class TestingService {
           this.result = await this.runner.runScript(action.code);
           this.resultEmitter.emit(this.activeControl['cards'][0]);
           break;
-          case 'distribute':
-            this.result = await this.runner.runScript(action.code, [this.players.length]);
+          case 'deal':
+            this.result = await this.runner.runScript(action.code, [this.activeControl['cards'].length, this.players.length]);
             this.players.forEach((player, i) => {
-            player.cards = this.result[i].map(index => this.activeControl['cards'][index]);
+              const playerdeck = JSON.parse(JSON.stringify(this.activeControl));
+              
+              playerdeck.cards = this.result[i].map(index => {
+                // Get the item at the specified index
+                const item = this.activeControl['cards'][index];
+                // Remove the item from the main array
+                this.activeControl['cards'].splice(index, 1);
+                // Return the item to map it to playerdeck.cards
+                return item;
+              });
+              
+              const existingDeck = player.items.find(item => item.name === playerdeck.name);
+              existingDeck ? existingDeck['cards'].push(...playerdeck.cards) : player.items.push(playerdeck);
+              (existingDeck || playerdeck).ammount = (existingDeck || playerdeck).cards.length;
+
+              this.activeControl['ammount'] = this.activeControl['cards'].length;
           });
           
           break;
@@ -161,5 +176,27 @@ export class TestingService {
       }
     }
     
+    playersID(){
+      return this.players?.map(player => player.name);
+    }
 
-}
+    dropElement(event: any, player?: Player) {
+      const deck = event.item?.data;
+      const card = deck.cards.shift(); // Use shift() to remove the first card
+    
+      if (!card) return; // Safety check in case deck is empty
+    
+      const playerDeck = player.items.find(item => item.name === deck.name);
+    
+      if (playerDeck) {
+        playerDeck['cards'].push(card);
+        playerDeck.ammount = playerDeck['cards'].length; // Update player's deck amount
+      } else {
+        const newDeck = { ...deck, cards: [card], ammount: 1 }; // Shallow clone + update
+        player.items.push(newDeck);
+      }
+    
+      deck.ammount = deck.cards.length; // Update original deck's amount
+    }
+    
+    }
