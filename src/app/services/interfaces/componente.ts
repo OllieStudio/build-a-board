@@ -19,6 +19,7 @@ export interface Componente {
   actions?: GameAction[];
   modifiers?: Modifier[];
   ammount?:number;
+  cards?:Componente[];
 }
 
 

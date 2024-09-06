@@ -20,7 +20,7 @@ export class PlayerItemComponent {
   constructor(public testing:TestingService){}
 
   controlSelected(control:Componente){
-
+    this.testing.resultEmitter.emit(control);
   }
 
 }

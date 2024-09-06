@@ -29,12 +29,13 @@ export interface Player {
 export class TestingComponent {
   card: Componente;
   showcard: boolean;
-  cards: Componente[];
   showhand: boolean;
+  deck: Componente;
 
   constructor(private testing:TestingService) { 
     testing.resultEmitter.subscribe(result => {
       if(result.type === '') this.showCard(result);
+      if(result.type === 'deck') this.showHand(result);
     });
   }
 
@@ -43,8 +44,8 @@ export class TestingComponent {
     this.showcard = true;
   }
   
-  showHand(result: Componente[]) {
-    this.cards = result;
+  showHand(result: Componente) {
+    this.deck = result;
     this.showhand = true;
   }
 
@@ -55,7 +56,7 @@ export class TestingComponent {
 
   closeHand(){
     this.showhand = false;
-    this.cards = null;
+    this.deck = null;
   }
 
   ngOnInit(): void {

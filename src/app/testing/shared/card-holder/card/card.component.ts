@@ -13,6 +13,7 @@ import { TestingService } from 'src/app/testing/testing.service';
 export class CardComponent {
     @Input() isSmall:boolean;
     @Input() closed:boolean = true;
+    @Input() deck:Componente;
     @Input() card:Componente;
     @Output() closeEvent: EventEmitter<boolean> = new EventEmitter();
 

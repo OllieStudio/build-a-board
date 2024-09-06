@@ -3,6 +3,6 @@
         <app-dock id="dock" ></app-dock>
         <app-scene id="scene" ></app-scene>
         <app-players id="players" ></app-players>
-        <app-card (closeEvent)="closeCard()" *ngIf="showcard" style="position: absolute; top: 12vh; left: 35vw;" [isSmall]="true" [closed]="false" [card]="card"></app-card>
-        <app-card-holder (closeEvent)="closeHand()" *ngIf="showhand" style="position: absolute; top: 12vh; left: 25vw;" [cards]="cards"></app-card-holder>
+        <app-card (closeEvent)="closeCard()" *ngIf="showcard" style="position: absolute; top: 15vh; left: 35vw;" [isSmall]="true" [closed]="false" [card]="card"></app-card>
+        <app-card-holder (closeEvent)="closeHand()" *ngIf="showhand" style="position: absolute; top: 15vh; left: 22vw;" [deck]="deck"></app-card-holder>
 </div>  
