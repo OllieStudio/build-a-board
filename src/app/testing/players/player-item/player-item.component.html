@@ -3,7 +3,7 @@
     'border': '4px solid ' + player.color, 
     'box-shadow': active ? '0 0 15px 4px #FFF' : 'none' 
   }" >
-    <i class="material-icons player-avatar"  [ngStyle]="{ 'color': player.color }" >person</i>
+    <i class="material-icons notranslate player-avatar"  [ngStyle]="{ 'color': player.color }" >person</i>
     <!-- <span class="player-name">{{ player.name }}</span> -->
     <div class="player-items">
       <app-control-item [isSmall]="true" *ngFor="let control of player.items" style="width:25px; height:40px" [control]="control" (click)="controlSelected(control)"></app-control-item>

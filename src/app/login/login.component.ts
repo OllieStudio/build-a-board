@@ -19,8 +19,8 @@ import { RouterModule } from '@angular/router';
    <div class="overlay">
 
   <div class="card-title row s12 center valign-wrapper top-10">
-    <h5 class="valign logintitle col s12 center top-10 left-2">
-      <i class="material-icons right ">blur_on</i>LOGIN/SIGNUP</h5>
+    <h5 class="valign logintitle col s12 center top-10 left-2 notranslate">
+      <i class="material-icons right notranslate">blur_on</i>LOGIN/SIGNUP</h5>
   </div>
 
   <router-outlet></router-outlet>

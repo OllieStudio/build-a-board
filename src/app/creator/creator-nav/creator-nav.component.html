@@ -6,29 +6,29 @@
     <ul id="main-links" class="left grey-text text-lighten-1" *ngIf="gameservice.game?.id">
       <li class="hoverable" routerLink="./sobre">
         <h3 class="valign-wrapper">
-          <i class="material-icons valign ">fingerprint</i> SOBRE O JOGO</h3>
+          <i class="material-icons notranslate valign ">fingerprint</i> SOBRE O JOGO</h3>
       </li>
       <li class="hoverable" routerLink="./regras">
-        <h3 class="valign-wrapper "><i class="material-icons valign ">gavel</i> REGRAS</h3>
+        <h3 class="valign-wrapper "><i class="material-icons notranslate valign ">gavel</i> REGRAS</h3>
       </li>
       <li class="hoverable" routerLink="./design">
-        <h3 class=" valign-wrapper"><i class="material-icons valign ">extension</i> GAME DESIGN</h3>
+        <h3 class=" valign-wrapper"><i class="material-icons notranslate valign ">extension</i> GAME DESIGN</h3>
       </li>
       <li class="hoverable" routerLink="./testing">
-        <h3 class="valign-wrapper"><i class="material-icons valign ">science</i>
+        <h3 class="valign-wrapper"><i class="material-icons notranslate valign ">science</i>
           TESTAR JOGO</h3>
       </li>
       <li class="hoverable" routerLink="./checkout">
-        <h3 class="valign-wrapper"><i class="material-icons valign ">shopping_basket</i>
+        <h3 class="valign-wrapper"><i class="material-icons notranslate valign ">shopping_basket</i>
           CHECKOUT</h3>
       </li>
     </ul>
     <ul id="tool-link" class="right hide-on-med-and-down">
-      <li *ngIf="gameservice.game?.id"><a >         <i class="material-icons grey-text">search</i></a></li>
-      <li *ngIf="gameservice.game?.id"><a >         <i class="material-icons grey-text">visibility</i></a></li>
-      <li><a [routerLink]="'/creator'">         <i class="material-icons grey-text">home</i></a></li>
-      <li><a [routerLink]="'/creator/profile'"> <i class="material-icons grey-text">account_circle</i></a></li>
-      <li><a (click)="logout()"> <i class="material-icons grey-text">logout</i></a></li>
+      <li *ngIf="gameservice.game?.id"><a >         <i class="material-icons notranslate grey-text">search</i></a></li>
+      <li *ngIf="gameservice.game?.id"><a >         <i class="material-icons notranslate grey-text">visibility</i></a></li>
+      <li><a [routerLink]="'/creator'">         <i class="material-icons notranslate grey-text">home</i></a></li>
+      <li><a [routerLink]="'/creator/profile'"> <i class="material-icons notranslate grey-text">account_circle</i></a></li>
+      <li><a (click)="logout()"> <i class="material-icons notranslate grey-text">logout</i></a></li>
     </ul>
   </div>
 </nav>

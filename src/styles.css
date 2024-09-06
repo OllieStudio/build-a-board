@@ -20,6 +20,31 @@ body {
   background: url("/assets/img/icons-lt.png");
 }
 
+/* google translate */
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate{
+ display: none;
+} 
+
+.goog-te-gadget-icon {
+    display:none;
+  }
+  
+.goog-te-gadget-simple span a {
+  color: #CCC;
+}
+
+.goog-te-gadget-simple {
+  height: 40px;
+  margin-top: 0px;
+  width: 180px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* google translate */
+
 textarea{
   padding: 8px 13px!important;
 }

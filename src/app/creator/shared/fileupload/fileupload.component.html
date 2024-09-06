@@ -5,7 +5,7 @@
       <input type="file" (change)="fileChanged($event)" accept="{{_accepts}}" [multiple]="multiple" >
     </div>
     <div class="col s9 center">
-      <i *ngIf="!hideSpinner" class="material-icons spinner sufix">autorenew</i>
+      <i *ngIf="!hideSpinner" class="material-icons notranslate spinner sufix">autorenew</i>
       <img src="{{_value}}" alt="image preview" class="responsive-img preview" [hidden]="!_value || multiple">
     </div>
 </div>
