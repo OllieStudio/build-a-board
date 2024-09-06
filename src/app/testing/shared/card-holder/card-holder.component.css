@@ -1,0 +1,10 @@
+
+.card-holder{
+
+}
+
+.close-button{
+    position:absolute;
+    top:5px;
+    right: -15px;
+}

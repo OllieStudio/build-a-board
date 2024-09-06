@@ -78,6 +78,10 @@ select.small, input.small{
   max-width: 100vw !important;
 }
 
+.rounded{
+  border-radius: 50px;
+}
+
 .top-3{
   margin-top: 3vh;
 }

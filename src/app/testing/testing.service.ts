@@ -10,7 +10,7 @@ import { ScriptRunnerService } from './script-runner.service';
   providedIn: 'root'
 })
 export class TestingService {
-  
+
   players:Player[];
   controls:Componente[];
   colors = ['red', 'green', 'blue', 'yellow', 'black', 'white'];
@@ -63,6 +63,9 @@ export class TestingService {
               switch(comp.three.type){
                 case 'board':
                   this.threeJsService.loadBoard(comp.imagem, comp.size.split('x')[0], comp.size.split('x')[1]);
+                  break;
+                case 'card':
+                  this.threeJsService.loadBoard(comp.imagem, comp.size.split('x')[0]/10, comp.size.split('x')[1]/10);
                   break;
                 case 'model':
                   this.threeJsService.loadModelFromUrl(comp.three.url);
@@ -120,8 +123,8 @@ export class TestingService {
           this.resultEmitter.emit(this.result);
           break;
           case 'pick':
-          this.result = await this.runner.runScript(action.code);
-          this.resultEmitter.emit(this.activeControl['cards'][0]);
+          const card = this.activeControl['cards'].shift();
+          this.resultEmitter.emit(card);
           break;
           case 'deal':
             this.result = await this.runner.runScript(action.code, [this.activeControl['cards'].length, this.players.length]);
@@ -141,9 +144,9 @@ export class TestingService {
               existingDeck ? existingDeck['cards'].push(...playerdeck.cards) : player.items.push(playerdeck);
               (existingDeck || playerdeck).ammount = (existingDeck || playerdeck).cards.length;
 
-              this.activeControl['ammount'] = this.activeControl['cards'].length;
-          });
-          
+            });
+            
+            this.activeControl['ammount'] = this.activeControl['cards'].length;
           break;
         default:
           this.showResult = false;
@@ -186,17 +189,44 @@ export class TestingService {
     
       if (!card) return; // Safety check in case deck is empty
     
-      const playerDeck = player.items.find(item => item.name === deck.name);
-    
-      if (playerDeck) {
-        playerDeck['cards'].push(card);
-        playerDeck.ammount = playerDeck['cards'].length; // Update player's deck amount
-      } else {
-        const newDeck = { ...deck, cards: [card], ammount: 1 }; // Shallow clone + update
-        player.items.push(newDeck);
-      }
-    
-      deck.ammount = deck.cards.length; // Update original deck's amount
+      this.addCardToHand(card, deck, player); 
     }
+
+  public addCardToHand( card: Componente, deck:Componente = this.activeControl, player:Player = this.players[this.currentPlayer]) {
+    const playerDeck = player.items.find(item => item.name === deck.name);
     
+    if (playerDeck) {
+      playerDeck['cards'].push(card);
+      playerDeck.ammount = playerDeck['cards'].length;
+    } else {
+      const newDeck = { ...deck, cards: [card], ammount: 1 };
+      player.items.push(newDeck);
     }
+
+    deck.ammount = deck['cards'].length;
+  }
+
+  discardCardToDeck( card: Componente, deck:Componente = this.activeControl, player:Player = this.players[this.currentPlayer]) {
+    const playerDeck = player.items.find(item => item.name === deck.name);
+    
+    if(deck){
+      deck['cards'].push(card);
+      deck.ammount = deck['cards'].length;
+    }
+
+    if (playerDeck ) {
+      playerDeck['cards'] = playerDeck['cards'].filter(item => item.name !== card.name);
+      playerDeck.ammount = playerDeck['cards'].length;
+    } 
+  }
+
+  dropCard(card: Componente) {
+    this.threeJsService.loadBoard(card.imagem, 5, 8, 0.02);
+    this.activeControl.ammount = this.activeControl['cards'].length;
+  }
+  
+  setCardVisible(card: Componente) {
+    throw new Error('Method not implemented.');
+  }
+
+}

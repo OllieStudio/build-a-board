@@ -1,4 +1,5 @@
 export interface Componente {
+  size?: any;
   allowdrop?: boolean;
   type?: any;
   prompt3d?: any;
@@ -7,6 +8,7 @@ export interface Componente {
   three?: any;
   quantidade?: number;
   imagem?: any;
+  background?: any;
   categoria?: string;
   id:string;
   template:string;

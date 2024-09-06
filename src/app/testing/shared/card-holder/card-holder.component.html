@@ -1,0 +1,4 @@
+<div class="card-holder">
+    <i (click)="closeCards()" class="material-icons rounded white link close-button">close</i>
+    <app-card *ngFor="let card of cards" [isSmall]="true" [closed]="true" [card]="card"></app-card>
+</div>

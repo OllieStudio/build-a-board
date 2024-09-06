@@ -72,7 +72,7 @@ export class ThreeService {
       const model = gltf.scene;
       model.position.set(0, 0.5, 0);
       this.scene.add(model);
-      this.enableInteractions(model);
+      this.enableInteractions(model, true);
     });
   }
 
@@ -103,7 +103,7 @@ export class ThreeService {
       const model = gltf.scene;
       model.position.set(0, 0.5, 0);
       this.scene.add(model);
-      this.enableInteractions(model);
+      this.enableInteractions(model, true);
     });
   }
 
@@ -111,12 +111,13 @@ export class ThreeService {
     const material = new THREE.MeshStandardMaterial({ color });
     const mesh = new THREE.Mesh(geometry, material);
     this.scene.add(mesh);
-    this.enableInteractions(mesh);
+    this.enableInteractions(mesh, true);
   }
 
   private enableInteractions(object: THREE.Object3D, constrain?:boolean) {
     // Add the object to the draggable objects array
     this.draggableObjects.push(object);
+    const previousY = object.position.y;
 
     // Reinitialize DragControls with the updated set of draggable objects
     if (this.dragControls) {
@@ -133,7 +134,7 @@ export class ThreeService {
     // Constrain movement to X and Z axes only
     this.dragControls.addEventListener('drag', (event) => {
         // Prevent movement on the Y axis
-        if(constrain) object.position.y = 0;
+        if(constrain) object.position.y = previousY;
         if(constrain) object.rotation.x = -Math.PI/2;
 
     });
@@ -153,12 +154,12 @@ export class ThreeService {
     this.transformControls.setTranslationSnap(0.1);
     this.transformControls.addEventListener('objectChange', () => {
         // Prevent movement on the Y axis during translation
-        if(constrain) object.position.y = 0;
+        if(constrain) object.position.y = previousY;
         if(constrain) object.rotation.x = -Math.PI/2;
     });
 }
 
-  public async loadBoard(textureUrl: string, boardWidth: number = 30, boardHeight: number = 30) {
+  public async loadBoard(textureUrl: string, boardWidth: number = 30, boardHeight: number = 30, zIndex:number = 0.0) {
     const maxWidth = 1024;
   
     const blobToBase64 = (blob: Blob): Promise<string> => new Promise((resolve, reject) => {
@@ -204,7 +205,7 @@ export class ThreeService {
         new THREE.MeshBasicMaterial({ map: texture })
       );
       board.rotation.x = -Math.PI / 2;
-      board.position.y = 0.01;
+      board.position.y = zIndex;
 
       this.scene.add(board);
       this.enableInteractions(board, true);

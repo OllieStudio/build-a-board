@@ -16,7 +16,7 @@
 
 <div id="activeControl" class="component center" [hidden]="!testing.activeControl" 
  cdkDropList  [cdkDropListConnectedTo]="testing.playersID()">
-    <i (click)="testing.activeControl = null" class="material-icons purple link close-button">close</i>
+    <i (click)="testing.activeControl = null" class="material-icons rounded white link close-button">close</i>
     <h1 *ngIf="testing.showResult" class="result-display">{{testing.result}}</h1>
     <div class="content" >
       <img cdkDrag [cdkDragData]="testing.activeControl"  [cdkDragDisabled]="false" cdkDragPreview src="{{testing.activeControl?.imagem}}" class="component-image center" [ngClass]="testing.activeControl?.classname" alt="">
