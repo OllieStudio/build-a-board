@@ -23,6 +23,7 @@ export class CardComponent {
 
     dropCard(){
       this.closeEvent.emit(true);
+      if(this.deck) this.deck['cards'] = this.deck['cards'].filter(card => card.name !== this.card.name);
       this.testing.dropCard(this.card);
     }
 
@@ -37,7 +38,8 @@ export class CardComponent {
     }
 
     discard(){
-      this.testing.discardCardToDeck(this.card);
+      const deck = this.testing.decks.find(deck => deck.name === this.deck?.name)
+      this.testing.discardCardToDeck(this.card, deck);
       this.closeEvent.emit(true);
     }
   }

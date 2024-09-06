@@ -8,6 +8,7 @@ import { Componente } from '../services/interfaces/componente';
 import { TestingService } from './testing.service';
 import { CardComponent } from './shared/card-holder/card/card.component';
 import { CardHolderComponent } from './shared/card-holder/card-holder.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 export interface Player {
   items?: Componente[];
@@ -20,7 +21,7 @@ export interface Player {
 @Component({
   selector: 'app-testing',
   standalone: true,
-  imports: [CommonModule, SceneComponent, PlayersComponent, DockComponent, ControlsComponent, CardHolderComponent, CardComponent],
+  imports: [CommonModule, DragDropModule, SceneComponent, PlayersComponent, DockComponent, ControlsComponent, CardHolderComponent, CardComponent],
   templateUrl: './testing.component.html',
   styleUrls: ['./testing.component.css']
 })

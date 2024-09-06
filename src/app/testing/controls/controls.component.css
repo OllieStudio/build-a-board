@@ -60,7 +60,7 @@
 
 .actionbutton{
     margin-right: 10px;
-    padding: 4px 12px;
+    padding: 0px 12px;
     border: 1px solid #CCC;
     background-color: #3c3d3e;
     color: white;
@@ -100,12 +100,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .close-button{
     position:absolute;
     top: 10px;
     right: 10px;
+    z-index: 10;
 }
 
 #rulesbook{
@@ -150,3 +152,102 @@
     top: 152px;
     right: 78px;
 }
+
+.deck {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .shuffle {
+    position: absolute;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform-origin: bottom center;
+    animation: shuffle 2s ease-in-out infinite;
+  }
+
+  .shuffle:nth-child(1) { z-index: 5; animation-delay: 0s; }
+  .shuffle:nth-child(2) { z-index: 4; animation-delay: 0.1s; }
+  .shuffle:nth-child(3) { z-index: 3; animation-delay: 0.2s; }
+  .shuffle:nth-child(4) { z-index: 2; animation-delay: 0.3s; }
+  .shuffle:nth-child(5) { z-index: 1; animation-delay: 0.4s; }
+
+  @keyframes shuffle {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-80px) rotate(20deg);
+    }
+  }
+
+
+  .deal {
+    position: absolute;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform-origin: center center;
+    animation: deal 2s ease-in-out forwards;
+  }
+
+  /* First and fourth card dealt to the left */
+  .deal:nth-child(1), .deal:nth-child(4) {
+    z-index: 6;
+    animation-delay: 0s, 1s;
+    animation-name: deal-left;
+  }
+
+  /* Second and fifth card dealt to the center */
+  .deal:nth-child(2), .deal:nth-child(5) {
+    z-index: 5;
+    animation-delay: 0.2s, 1.2s;
+    animation-name: deal-center;
+  }
+
+  /* Third and sixth card dealt to the right */
+  .deal:nth-child(3), .deal:nth-child(6) {
+    z-index: 4;
+    animation-delay: 0.4s, 1.4s;
+    animation-name: deal-right;
+  }
+
+  @keyframes deal-left {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-200px, -200px) scale(0.5);
+      opacity: 0;
+    }
+  }
+
+  @keyframes deal-center {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0px, -200px) scale(0.5);
+      opacity: 0;
+    }
+  }
+
+  @keyframes deal-right {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(200px, -200px) scale(0.5);
+      opacity: 0;
+    }
+  }

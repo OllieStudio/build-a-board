@@ -24,6 +24,7 @@ export class TestingService {
   result: any;
   showResult: boolean;
   resultEmitter: EventEmitter<any> = new EventEmitter();
+  actionPlay: string;
 
   constructor(private threeJsService: ThreeService, private gamedata:GameDataService, private runner:ScriptRunnerService) {}
 
@@ -110,7 +111,7 @@ export class TestingService {
     }
 
     async runCode(action: GameAction, mockParameters?: any[]) {
-      
+      this.setPlayAction(action.id);
       switch (action.id) {
         case 'roll':
           this.result = await this.runner.runScript(action.code);
@@ -153,6 +154,13 @@ export class TestingService {
           break;
       }
     }
+
+  setPlayAction(id: string) {
+    this.actionPlay = id;
+          setTimeout(() => {
+            this.actionPlay = null;
+          }, 3000);
+  }
 
     getRulesContent(chapter:string){
       return this.gamedata.game[chapter];
