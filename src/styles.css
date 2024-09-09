@@ -9,15 +9,14 @@
 html,
 body {
   height: 100%;
+  width: 100vw;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-body {
   background: url("/assets/img/icons-lt.png");
+  overflow-x: hidden;
 }
 
 /* google translate */
