@@ -1,5 +1,5 @@
 <div class="component" [ngClass]="isSmall ? '' : 'not-small'">
     <img src="{{control.imagem}}" class="component-image bottom-0" [ngClass]="control.classname" alt="">
     <app-ammount-display [ngClass]="isSmall ? '' : 'ammount-container'" [size]="'small'" [ammount]="control.ammount"></app-ammount-display>
-    <p *ngIf="!isSmall" class="component-name top-1">{{control.name}}</p>
+    <p *ngIf="!isSmall" class="component-name top-1 notranslate">{{control.name}}</p>
 </div>

@@ -1,5 +1,6 @@
 <div class="card-holder" cdkDropList [cdkDropListData]="deck.cards">
-    <i (click)="closeCards()" class="material-icons rounded white link close-button">close</i>
-    <i class="material-symbols-outlined rounded white link drag-button">drag_pan</i>
+    <i (click)="closeCards()" class="material-icons notranslate rounded white link close-button">close</i>
+    <i class="material-symbols-outlined notranslate 
+ notranslate rounded white link drag-button">drag_pan</i>
     <app-card cdkDrag *ngFor="let card of deck.cards" (closeEvent)="handleCardClosed($event)" [isSmall]="true" [closed]="true" [card]="card" [deck]="deck"></app-card>
 </div>

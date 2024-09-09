@@ -4,8 +4,12 @@
       <img src="assets/img/logo.png" alt="" class="logo">
     </a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a [ngxScrollTo]="'#hero'"> Home</a></li>
-      <li><a [ngxScrollTo]="'#sobre'">Build-A-Board</a></li>
+      <li>
+        <i class="material-icons notranslate grey-text" style="width: 18px; float: left;">g_translate</i>
+        <div id="google_translate_element"></div>
+      </li>
+      <li><a [ngxScrollTo]="'#hero'" class="notranslate "> Home</a></li>
+      <li><a [ngxScrollTo]="'#sobre'" class="notranslate ">Build-A-Board</a></li>
       <li><a [ngxScrollTo]="'#comofunciona'">Como Funciona</a></li>
       <li><a [ngxScrollTo]="'#resources'">Recursos</a></li>
       <li><a [ngxScrollTo]="'#destaques'">Jogos em Destaque</a></li>

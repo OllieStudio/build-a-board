@@ -4,15 +4,15 @@
             {{modifier.title}}
         </div>
         <div class="col m2">
-            <i class="material-icons white-text link" *ngIf="!show" > expand_more</i>
-            <i class="material-icons white-text link" *ngIf="show" > expand_less</i>
+            <i class="material-icons notranslate white-text link" *ngIf="!show" > expand_more</i>
+            <i class="material-icons notranslate white-text link" *ngIf="show" > expand_less</i>
         </div>
     </div>
     <div class="row modifier-content top-1 bottom-0" [hidden]="!show">
         <div class="col s12 modifier-descr bottom-1 top-0">
             {{modifier.description}}
             <div *ngIf="enableControls()">
-                <i (click)="deleteModifier()" class="material-icons right link grey-text">delete</i>
+                <i (click)="deleteModifier()" class="material-icons notranslate right link grey-text">delete</i>
             </div>
         </div>
        

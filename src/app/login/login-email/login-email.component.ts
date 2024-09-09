@@ -20,8 +20,8 @@ import { LoginService } from '../login.service';
       <div class="row center-align pleft-15 pright-15">
         <div class="col s12" style="position:relative">
           <input id="loginpassword" placeholder="Senha" name="password"  [type]="showPassword ? 'text' : 'password'" class="browser-default" [formControlName]="'password'" [autocomplete]="'current-password'"  />
-            <i class="purple-text material-symbols-outlined link suffix" *ngIf="!showPassword" (click)="showPassword = !showPassword">visibility</i>
-            <i class="purple-text material-symbols-outlined link suffix" *ngIf="showPassword" (click)="showPassword = !showPassword">visibility_off</i>
+            <i class="purple-text material-symbols-outlined notranslate link suffix" *ngIf="!showPassword" (click)="showPassword = !showPassword">visibility</i>
+            <i class="purple-text material-symbols-outlined notranslate link suffix" *ngIf="showPassword" (click)="showPassword = !showPassword">visibility_off</i>
         </div>
       </div>
       <div class="row pleft-15 pright-15">
