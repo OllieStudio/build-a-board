@@ -2,7 +2,7 @@
     <ul>
         <li *ngFor="let item of items" class="hoverable" (click)="getRoute(item.route)">
             <a  routerLinkActive="active" class="grey-text">
-              <i class="material-icons-outlined">{{item.icon}}</i>
+              <i class="material-icons-outlined notranslate">{{item.icon}}</i>
               <span>{{item.title}}</span>
             </a>
           </li>
@@ -17,7 +17,7 @@
         <path class="zl9Kag" d="M0 12.5c20 0 12-12 32-12h32c20 0 12 12 32 12"></path>
       </svg>
     
-    <i class="material-icons-outlined grey-text row">expand_more</i>
+    <i class="material-icons-outlined notranslate grey-text row">expand_more</i>
     </button>
  <div id="router-container">
    <router-outlet *ngIf="!drawer.closeToolbox"  ></router-outlet>

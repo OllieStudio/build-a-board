@@ -5,14 +5,14 @@
         <path class="Axi_6A" d="M0 16v-4c20 0 12-12 32-12h32c20 0 12 12 32 12V16z"></path>
         <path class="zl9Kag" d="M0 12.5c20 0 12-12 32-12h32c20 0 12 12 32 12"></path>
       </svg>
-    <i *ngIf="!drawer.closedrawer"  class="material-icons-outlined arrow">expand_more</i>
-    <i *ngIf="drawer.closedrawer" class="material-icons-outlined arrow">expand_less</i></button>
+    <i *ngIf="!drawer.closedrawer"  class="material-icons-outlined notranslate arrow">expand_more</i>
+    <i *ngIf="drawer.closedrawer" class="material-icons-outlined notranslate arrow">expand_less</i></button>
   <div id="drawer" class="row components-container small" (cdkDropListDropped)="dragservice.dropElement($event)" cdkDropListConnectedTo="canvas" cdkDropList>
     <div class="component" *ngFor="let component of components | reverse" cdkDrag [cdkDragData]="component" (dblclick)="dragservice.addDrawerComponent(component)">
       <img src="{{component.imagem}}" class="component-image" alt="">
       <h6 class="ammount-display" *ngIf="component.ammount > 1" >x{{component.ammount}}</h6>
 
-      <p>{{component.name}}</p>
+      <p class="notranslate">{{component.name}}</p>
       <i (click)="removeComponent(component)" class="material-icons notranslate white-text link right">delete</i>
     </div>
   </div>

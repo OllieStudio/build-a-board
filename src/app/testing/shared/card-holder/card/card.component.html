@@ -1,27 +1,27 @@
 <div class="playingcard">
-    <img [hidden]="!closed"    src="{{card.imagem}}" class="component-image bottom-0" [ngClass]="card.classname" alt="">
-    <img [hidden]="closed"   src="{{card.background}}" class="component-image bottom-0" [ngClass]="card.classname" alt="">
+    <img [hidden]="!closed"    src="{{card?.imagem}}" class="component-image bottom-0" [ngClass]="card.classname" alt="">
+    <img [hidden]="closed"   src="{{card?.background}}" class="component-image bottom-0" [ngClass]="card.classname" alt="">
     <!-- <p *ngIf="!isSmall" class="component-name top-1">{{card.name}}</p> -->
     
     <div class="playingcard-actions">
         <a (click)="closed = !closed" class="playingcard-action">
-            <i class="material-symbols-outlined">flip</i>
+            <i class="material-symbols-outlined notranslate">flip</i>
             <span>virar</span>
         </a>
         <a (click)="dropCard()" class="playingcard-action">
-            <i class="material-symbols-outlined">swipe_up</i>
+            <i class="material-symbols-outlined notranslate">swipe_up</i>
             <span>jogar</span>
         </a>
         <a (click)="setVisible()" class="playingcard-action">
-            <i class="material-symbols-outlined">visibility</i>
+            <i class="material-symbols-outlined notranslate">visibility</i>
             <span>mostrar</span>
         </a>
         <a (click)="addToHand()" class="playingcard-action">
-            <i class="material-symbols-outlined">place_item</i>
+            <i class="material-symbols-outlined notranslate">place_item</i>
             <span>guardar</span>
         </a>
         <a (click)="discard()" class="playingcard-action">
-            <i class="material-symbols-outlined">playing_cards</i>
+            <i class="material-symbols-outlined notranslate">playing_cards</i>
             <span>descartar</span>
         </a>
     </div>

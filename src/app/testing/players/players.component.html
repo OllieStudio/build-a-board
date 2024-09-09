@@ -5,6 +5,6 @@
         cdkDropList (cdkDropListDropped)="testing.dropElement($event, player)" 
         [active]="player.index === testing.currentPlayer" [player]="player"></app-player-item>
     </div>
-    <i *ngIf="testing.players?.length < testing.pawns?.length" (click)="testing.addPlayer(testing.players?.length)" class="material-symbols-outlined 
+    <i *ngIf="testing.players?.length < testing.pawns?.length" (click)="testing.addPlayer(testing.players?.length)" class="material-symbols-outlined notranslate 
  notranslate addplayerbutton">person_add</i>
 </div>

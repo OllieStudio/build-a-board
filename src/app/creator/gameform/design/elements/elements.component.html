@@ -20,7 +20,7 @@
     <div id="svg-container" class="row top-5" (cdkDropListDropped)="dragservice.dropElement($event)" cdkDropListConnectedTo="editableObject" cdkDropList>
         <div class="col s6 svgcard top-3" *ngFor="let item of items" cdkDrag [cdkDragData]="item" (dblclick)="dragservice.addElement(item)">
                 <img src="{{item.template}}" alt="" class="responsive-img">
-                <span>{{item.name}}</span>
+                <span class="notranslate">{{item.name}}</span>
         </div>
     </div>
 </div>
